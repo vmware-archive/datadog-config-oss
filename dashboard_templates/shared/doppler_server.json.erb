@@ -1,0 +1,82 @@
+{
+    "graphs": [
+        {
+            "title": "Agent Listener Received Byte Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "avg:cf.collector.DopplerServer.agentListener.receivedByteCount{ deployment: <%= deployment %> }"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Agent Listener Received Bytes Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.DopplerServer.agentListener.receivedByteCount{ deployment: <%= deployment %> })"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Number of Sinks",
+            "definition": {
+                "requests": [
+                    { "q": "cf.collector.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= deployment %> } by {ip}, cf.collector.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= deployment %> } by {ip}, cf.collector.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Message Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "avg:cf.collector.DopplerServer.agentListener.receivedMessageCount{ deployment: <%= deployment %>}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Messages Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.DopplerServer.agentListener.receivedMessageCount{ deployment: <%= deployment %>})"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Current Buffer Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "avg:cf.collector.DopplerServer.agentListener.currentBufferCount{ deployment: <%= deployment %> }"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Number of CPUs",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "avg:cf.collector.DopplerServer.numCpus{ deployment: <%= deployment %>}"
+                    }
+                ],
+                "events": []
+            }
+        }
+    ],
+    "title": "<%= environment %> Doppler Server",
+    "description": "created by cfaccounts+datadog-prod@pivotallabs.com"
+}

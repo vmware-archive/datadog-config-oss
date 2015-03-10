@@ -1,0 +1,7 @@
+{
+    "notify_no_data": false,
+              "name": "<%= environment %> Services: System disk full",
+          "silenced": false,
+             "query": "avg(last_10m):avg:bosh.healthmonitor.system.disk.system.percent{deployment:<%= services_deployment %>} by {job,index} > 92",
+           "message": "Healthmonitor reports that the system disk is over 92% full on one of the services deployment VMs. <%= services_pagerduty %>"
+}

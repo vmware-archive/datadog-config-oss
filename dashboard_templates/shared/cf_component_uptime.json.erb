@@ -1,0 +1,81 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:cloudcontroller} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Cloud Controller Uptime (seconds)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "DEA Uptime (seconds)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:healthmanager} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Health Manager Uptime (seconds)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:marketplacegateway} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Marketplace Gateway Uptime (seconds)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:router} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Router Uptime (seconds)"
+    }
+  ],
+  "description": "The uptime of all the jobs",
+  "title": "<%= environment %> Component Uptime"
+}

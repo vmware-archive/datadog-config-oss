@@ -1,0 +1,27 @@
+[
+  "200",
+  {
+    "board_title"=>"some-deployment Health",
+    "widgets" => [
+      {
+        "query" => "avg:some_metric{deployment:some-deployment,another-tag:blah}",
+        "conditional_formats" => [
+          {
+            "color" => "white_on_red",
+            "value" => 100
+          },
+          {
+            "color" => "white_on_green",
+            "value" => 200
+          }
+        ]
+      },
+      {
+        "query" => "avg:some_other_metric{deployment:some-bosh-deployment}"
+      },
+      {
+        "query" => "avg:some_other_other_metric{environment:prod}"
+      }
+    ]
+  }
+]

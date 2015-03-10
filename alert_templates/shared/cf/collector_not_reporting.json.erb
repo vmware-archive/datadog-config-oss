@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "name": "<%= environment %> CF: Collector is not reporting",
+  "silenced": false,
+  "query": "min(last_10m):avg:cf.collector.cpu_load_avg{deployment:<%= deployment %>}  < 0",
+  "message": "This alert should only be triggered when the collector has stopped reporting data to DataDog. <%= backend_pagerduty %>"
+}
+

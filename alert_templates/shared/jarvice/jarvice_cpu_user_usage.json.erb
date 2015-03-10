@@ -1,0 +1,17 @@
+{
+  "event_object": "7ab75f31f6597cf37a660b0a9bf115c8",
+  "notify_audit": false,
+  "timeout_h": null,
+  "silenced": false,
+  "query": "avg(last_5m):avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-jarvice} by {index,job} > 80",
+  "message": "<%= environment %> Jarvice: A Jarvice VM ({{job.name}} {{index.name}}) user-level CPU utilization has spiked above 80% for the last five minutes. \n@pagerduty-datadog-monitoringAndMetrics-<%= environment %>",
+  "id": 145373,
+  "name": "<%= environment %> Jarvice: Experiencing very high CPU utilization",
+  "no_data_timeframe": 2,
+  "creator": 33155,
+  "notify_no_data": false,
+  "renotify_interval": null,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}

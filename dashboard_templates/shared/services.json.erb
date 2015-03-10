@@ -1,0 +1,43 @@
+{
+  "graphs": [
+  {
+    "definition": {
+      "requests": [
+        {
+          "q": "per_minute(sum:cf.collector.services.http_status{status:2xx, deployment: <%= deployment %>})"
+        },
+        {
+          "q": "per_minute(sum:cf.collector.services.http_status{status:5xx, deployment: <%= deployment %>})"
+        },
+        {
+          "q": "per_minute(sum:cf.collector.services.http_status{status:4xx, deployment: <%= deployment %>})"
+        },
+        {
+          "q": "per_minute(sum:cf.collector.services.http_status{deployment: <%= deployment %>})"
+        }
+      ],
+      "events": [
+        <%= default_events_json %>
+      ],
+      "viz": "timeseries"
+    },
+    "title": "Rates of ADGW requests"
+  },
+  {
+    "title": "Error rates(%)",
+    "definition": {
+      "requests": [
+        {
+          "q": "100*per_minute(sum:cf.collector.services.http_status{status:5xx,deployment: <%= deployment %>})/per_minute(sum:cf.collector.services.http_status{deployment: <%= deployment %>})"
+        }
+      ],
+      "viz": "timeseries",
+      "events": [
+        <%= default_events_json %>
+      ]
+    }
+  }
+  ],
+  "title": "<%= environment %> Services",
+  "description": "created by cfaccounts+datadog-prod@pivotallabs.com"
+}

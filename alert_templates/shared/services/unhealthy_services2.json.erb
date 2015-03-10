@@ -1,0 +1,7 @@
+{
+    "notify_no_data": false,
+              "name": "<%= environment %> Services Z2: Deployment Unhealthy",
+          "silenced": false,
+             "query": "avg(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= services_deployment %>,job:appdirect_gateway_z2} by {index} < 0.7",
+           "message": "The BOSH agent on one or more of the services instances has missed some heartbeat messages. This may mean that one of the VMs in the deployment has disappeared. <%= services_pagerduty %>"
+}

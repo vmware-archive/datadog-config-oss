@@ -1,0 +1,453 @@
+---
+prod:
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
+  color: white_on_red
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
+  color: white_on_red
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+  color: white_on_red
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
+  color: white_on_red
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
+    ) *25
+  color: white_on_red
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
+    ) *25
+  color: white_on_green
+  value: 100
+- query: sum:cf.collector.reservable_stagers{deployment:}
+  color: white_on_red
+  value: 250
+- query: sum:cf.collector.reservable_stagers{deployment:}
+  color: white_on_yellow
+  value: 350
+- query: sum:cf.collector.reservable_stagers{deployment:}
+  color: white_on_green
+  value: 350
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
+  color: white_on_yellow
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+  color: white_on_yellow
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
+    ) *25
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
+    ) *25
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
+  color: white_on_yellow
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
+  color: white_on_yellow
+  value: 100
+- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
+  color: white_on_green
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_yellow
+  value: 100
+- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
+    ) *50
+  color: white_on_green
+  value: 100
+- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+  color: white_on_red
+  value: 2
+- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+  color: white_on_yellow
+  value: 24
+- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+  color: white_on_green
+  value: 24
+- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024
+  color: white_on_red
+  value: 6
+- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024
+  color: white_on_yellow
+  value: 7.2
+- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024
+  color: white_on_green
+  value: 7.2
+- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024
+  color: white_on_red
+  value: 18
+- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024
+  color: white_on_yellow
+  value: 22
+- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024
+  color: white_on_green
+  value: 22
+- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+  color: white_on_red
+  value: 0.005
+- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+  color: white_on_yellow
+  value: 0.01
+- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+  color: white_on_green
+  value: 0.01
+- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
+  color: red_on_white
+  value: 0
+- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
+  color: yellow_on_white
+  value: 10
+- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
+  color: green_on_white
+  value: 10
+- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
+  color: red_on_white
+  value: 25
+- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
+  color: yellow_on_white
+  value: 30
+- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
+  color: green_on_white
+  value: 30
+- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+  color: red_on_white
+  value: 7
+- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+  color: yellow_on_white
+  value: 10
+- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+  color: green_on_white
+  value: 10
+- query: per_second(sum:cf.collector.router.requests{component:login,deployment:})
+  color: red_on_white
+  value: 0
+- query: per_second(sum:cf.collector.router.requests{component:login,deployment:})
+  color: yellow_on_white
+  value: 0.25
+- query: per_second(sum:cf.collector.router.requests{component:login,deployment:})
+  color: green_on_white
+  value: 0.25
+- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+  color: red_on_white
+  value: 1
+- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+  color: yellow_on_white
+  value: 2.5
+- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+  color: green_on_white
+  value: 2.5
+- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
+  color: red_on_white
+  value: 60
+- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
+  color: yellow_on_white
+  value: 80
+- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
+  color: green_on_white
+  value: 80
+- query: per_second(sum:cf.collector.router.requests{deployment:})
+  color: red_on_white
+  value: 80
+- query: per_second(sum:cf.collector.router.requests{deployment:})
+  color: yellow_on_white
+  value: 100
+- query: per_second(sum:cf.collector.router.requests{deployment:})
+  color: green_on_white
+  value: 100
+- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_red
+  value: 0.5
+- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_yellow
+  value: 1
+- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_green
+  value: 1
+- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_red
+  value: 0.5
+- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
+  color: white_on_red
+  value: 0
+- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
+  color: white_on_yellow
+  value: 0
+- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
+  color: white_on_green
+  value: 0
+- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
+    *100
+  color: white_on_red
+  value: 15
+- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
+    *100
+  color: white_on_yellow
+  value: 25
+- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
+    *100
+  color: white_on_green
+  value: 25
+- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
+  color: white_on_red
+  value: 4
+- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
+  color: white_on_yellow
+  value: 2
+- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
+  color: white_on_green
+  value: 2
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+  color: white_on_red
+  value: 50
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+  color: white_on_yellow
+  value: 20
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+  color: white_on_green
+  value: 20
+- query: avg:natbox.pingout.health{*}
+  color: white_on_red
+  value: 1
+- query: avg:natbox.pingout.health{*}
+  color: white_on_green
+  value: 1
+- query: avg:natbox.pingout.health{*}
+  color: white_on_red
+  value: 1
+- query: avg:natbox.pingout.health{*}
+  color: white_on_green
+  value: 1
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_red
+  value: 0.5
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_yellow
+  value: 0.65
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_green
+  value: 1
+- query: avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}
+  color: white_on_red
+  value: 0.4
+- query: avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}
+  color: white_on_green
+  value: 0.41
+- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
+  color: white_on_red
+  value: 100
+- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
+  color: white_on_yellow
+  value: 50
+- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
+  color: white_on_green
+  value: 20
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
+  color: white_on_red
+  value: 100
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
+  color: white_on_yellow
+  value: 30
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
+  color: white_on_green
+  value: 30
+- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
+  color: white_on_green
+  value: -10
+- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
+  color: white_on_red
+  value: -100
+- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
+  color: white_on_green
+  value: -10
+- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
+  color: white_on_red
+  value: -100
+- query: sum:cf.collector.mem_free_bytes{deployment:,job:dea}
+  color: white_on_green
+  value: 1
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+  color: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+  color: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+  color: white_on_green
+  value: 65
+- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+  color: white_on_red
+  value: 85
+- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+  color: white_on_yellow
+  value: 75
+- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+  color: white_on_green
+  value: 75
+- query: avg:pws.circuit.loggregator{host:production}
+  color: white_on_red
+  value: 1
+- query: avg:pws.circuit.loggregator{host:production}
+  color: white_on_green
+  value: 1
+- query: avg:pws.circuit.cloud_controller_get{host:production}
+  color: white_on_red
+  value: 1
+- query: avg:pws.circuit.cloud_controller_get{host:production}
+  color: white_on_green
+  value: 1

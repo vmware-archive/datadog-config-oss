@@ -1,0 +1,175 @@
+<%
+  services = %w(ClearDB CloudAMQP ElephantSQL MongoLab RedisCloud SendGrid)
+  timeframes = %w( 5m 10m 30m 1h )
+  title_height = 6
+  width = 15
+  height = 8
+  padding = 1
+  screen_height = (title_height+height)*services.length
+  column_width = (width + padding) * timeframes.length
+%>
+
+{
+  "board_bgtype": "board_graph",
+  "board_title": "cf services prod screenboard",
+  "height": 86,
+  "id": 2890,
+  "templated": false,
+  "widgets": [
+  <% services.each_with_index do |service, service_index| %>
+    {
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": <%= title_height %>,
+      "text": "<%= service %>",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": <%= width * timeframes.length %>,
+      "x": 0,
+      "y": <%= (title_height+height)*service_index %>
+    },
+    <% timeframes.each_with_index do |timeframe, timeframe_index| %>
+      {
+        "aggregator": "avg",
+        "conditional_formats":
+        [
+          {
+            "color": "white_on_green",
+            "comparator": ">=",
+            "invert": false,
+            "value": 1
+          },
+          {
+            "color": "white_on_red",
+            "comparator": "<",
+            "invert": false,
+            "value": 1
+          }
+        ],
+        "height": <%= height %>,
+        "precision": 2,
+        "query": "avg:nyet.services.health{service:<%= service.downcase %>}",
+        "text_align": "center",
+        "text_size": "auto",
+        "timeframe": "<%= timeframe %>",
+        "title": true,
+        "title_align": "center",
+        "title_size": 20,
+        "title_text": "<%= timeframe %>",
+        "type": "query_value",
+        "unit": "auto",
+        "width": <%= width %>,
+        "x": <%= timeframe_index * (width + padding) %>,
+        "y": <%= (title_height+height)*service_index + title_height %>
+      },
+    <% end %>
+  <% end %>
+  {
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": <%= title_height %>,
+      "text": "Wildly Inaccurate ADGW Request Rate",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": <%= column_width * 2 %>,
+      "x": <%= column_width %>,
+      "y": 0
+  },
+  {
+    "height": <%= (screen_height / 2) - title_height %>,
+    "legend": false,
+    "legend_size": "0",
+    "tile_def": {
+      "events": [
+        {
+          "q": "tags:deployment:prod start_deploy"
+        },
+        {
+          "q": "tags:deployment:prod end_deploy"
+        }
+      ],
+      "requests": [
+        {
+          "q": "ewma_5(per_minute(sum:cf.collector.services.http_status{deployment:cf-cfapps-io2} by {status}))"
+        }
+      ],
+      "viz": "timeseries"
+    },
+    "timeframe": "1h",
+    "title": true,
+    "title_align": "left",
+    "title_size": 16,
+    "title_text": "Rates of ADGW requests",
+    "type": "timeseries",
+    "width": <%= column_width * 2 %>,
+    "x": <%= column_width %>,
+    "y": <%= title_height %>
+  },
+  {
+    "color": "#4d4d4d",
+    "font_size": "auto",
+    "height": <%= title_height %>,
+    "text": "Error Rates",
+    "text_align": "left",
+    "title": true,
+    "title_align": "left",
+    "title_size": 16,
+    "title_text": "",
+    "type": "free_text",
+    "width": <%= column_width %>,
+    "x": <%= column_width %>,
+    "y": <%= screen_height / 2 %>
+  },
+  {
+    "height": <%= (screen_height / 2) - title_height %>,
+    "legend": false,
+    "legend_size": "0",
+    "tile_def": {
+      "events": [
+        {
+          "q": "tags:deployment:prod start_deploy"
+        },
+        {
+          "q": "tags:deployment:prod end_deploy"
+        }
+      ],
+      "requests": [
+        {
+          "q": "100*per_minute(sum:cf.collector.services.http_status{status:5xx,deployment: cf-cfapps-io2})/per_minute(sum:cf.collector.services.http_status{deployment: cf-cfapps-io2})"
+        }
+      ],
+      "viz": "timeseries"
+    },
+    "timeframe": "1h",
+    "title": true,
+    "title_align": "left",
+    "title_size": 16,
+    "title_text": "Error rates(%)",
+    "type": "timeseries",
+    "width": <%= column_width %>,
+    "x": <%= column_width %>,
+    "y": <%= (screen_height / 2) + title_height %>
+  },
+  {
+    "height": <%= (screen_height / 2) - title_height %>,
+    "sizing": "fit",
+    "title": true,
+    "title_align": "left",
+    "title_size": 16,
+    "title_text": "",
+    "type": "image",
+    "url": "http://www.chillestmonkey.com/img/monkey.gif",
+    "width": <%= column_width %>,
+    "x": <%= column_width * 2 %>,
+    "y": <%= (screen_height / 2) + title_height %>
+  }
+  ]
+}

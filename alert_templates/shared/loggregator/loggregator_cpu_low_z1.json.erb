@@ -1,0 +1,10 @@
+{
+    "message": "<%= environment %> CF: A loggregator VM's user-level CPU utilization has dropped below 2% for the last five minutes. \n\nSuggested investigation:\n1. Log onto the affected VM and check the `doppler` logs to look for signs of inactivity.\n1. Send the `doppler` process the `USR1` signal to dump its goroutine list to STDERR.\n1. Look in the goroutine dump for signs of deadlock.\n1. Capture the logfiles (with e.g. `bosh logs` on the jumpbox) for later study.\n1. Restart the affected process (with `monit`) or VM (with `bosh restart loggregator_z1 $INSTANCE_NUMBER`).\n\n<%= monitoringAndMetrics_pagerduty %>",
+    "name": "Loggregator job (z1) is experiencing very low CPU utilization",
+    "no_data_timeframe": 10,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "silenced": false,
+    "query": "max(last_5m):avg:bosh.healthmonitor.system.cpu.user{job:loggregator_z1} by {index} < 2",
+    "type": "metric alert"
+}

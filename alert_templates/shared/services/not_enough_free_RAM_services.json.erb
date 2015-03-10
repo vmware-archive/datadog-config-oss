@@ -1,0 +1,7 @@
+{
+    "notify_no_data": false,
+              "name": "<%= environment %> Services: Not enough free RAM",
+          "silenced": false,
+             "query": "avg(last_5m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= services_deployment %>} by {job,index} > 90",
+           "message": "Healthmonitor reports system has used more than 90% of its RAM. <%= services_pagerduty %>"
+}

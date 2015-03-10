@@ -1,0 +1,24 @@
+{
+  "board_title": "<%= deployment %> Health",
+  "widgets": [
+    {
+      "query": "avg:some_metric{deployment:<%= deployment %>,another-tag:blah}",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "value": <%= threshold_value('avg:some_metric{deployment:,another-tag:blah}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "value": <%= threshold_value('avg:some_metric{deployment:,another-tag:blah}', 'white_on_green') %>
+        }
+      ]
+    },
+    {
+      "query": "avg:some_other_metric{deployment:<%= bosh_deployment %>}"
+    },
+    {
+      "query": "avg:some_other_other_metric{environment:<%= environment %>}"
+    }
+  ]
+}

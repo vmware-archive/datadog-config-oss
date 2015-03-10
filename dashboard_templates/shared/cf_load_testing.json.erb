@@ -1,0 +1,78 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "per_second(avg:cf.collector.router.requests{deployment:<%= deployment %>} by {index})",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "bee attack"
+          }
+        ]
+      },
+      "title": "Requests per second by router"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "per_second(cf.collector.router.requests{component:app,deployment:<%= deployment %>} by {dea_index})",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "bee attack"
+          }
+        ]
+      },
+      "title": "Requests per second by DEA"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+          "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "bee attack"
+          }
+        ]
+      },
+      "title": "Router CPU"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "aws.ec2.network_out{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "aws.ec2.network_out{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "bee attack"
+          }
+        ]
+      },
+      "title": "Network out by DEA"
+    }
+  ],
+  "description": "Metrics that may be interesting when running a load test on the system",
+  "title": "<%= environment %> Load Testing"
+}

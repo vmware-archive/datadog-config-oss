@@ -1,0 +1,7 @@
+{
+    "notify_no_data": false,
+              "name": "<%= environment %> CF: Loggregator smoke tests are failing",
+          "silenced": false,
+           "query": "max(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1} < 1",
+           "message": "The smoke tests have been unable to read logs recently. <%= monitoringAndMetrics_pagerduty %>"
+}

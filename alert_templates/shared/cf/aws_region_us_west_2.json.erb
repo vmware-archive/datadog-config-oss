@@ -1,0 +1,8 @@
+{
+  "notify_no_data": false,
+  "name": "<%= environment %> CF: AWS has instance on  us-west-2 (usally fraudulent incident)",
+  "silenced": false,
+  "query": "max(last_5m):max:aws.ec2.host_ok{region:us-west-2} > 1",
+  "message": "This alert should only be triggered when AWS has more than 1 instance in us-west-2 <%= backend_email %>"
+}
+

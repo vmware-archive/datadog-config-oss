@@ -1,0 +1,7 @@
+{
+    "notify_no_data": true,
+              "name": "<%= environment %> Bosh: Running out of system disk",
+          "silenced": false,
+             "query": "avg(last_10m):avg:bosh.healthmonitor.system.disk.system.percent{deployment:<%= bosh_deployment %>} by {job,index} > 90",
+           "message": "Healthmonitor reports system disk is > 90% full. <%= bosh_pagerduty %>"
+}

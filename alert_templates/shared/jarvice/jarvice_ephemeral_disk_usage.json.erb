@@ -1,0 +1,17 @@
+{
+  "event_object": "457cca8516082955ad13650451d221d8",
+  "notify_audit": false,
+  "timeout_h": null,
+  "silenced": false,
+  "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>-jarvice} by {deployment,job,index} > 70",
+  "message": "Healthmonitor reports that the persistent disk usage is > 70% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}},\n{{index.name}}\n@pagerduty-datadog-monitoringAndMetrics-<%= environment %>",
+  "id": 145370,
+  "name": "<%= environment %> Jarvice: Ephemeral disk usage greater than 70%",
+  "no_data_timeframe": 120,
+  "creator": 33155,
+  "notify_no_data": false,
+  "renotify_interval": null,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}

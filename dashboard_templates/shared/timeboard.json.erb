@@ -1,0 +1,229 @@
+{
+  "title": "<%= environment %> Timeboard (experimental)",
+  "description": "compare this deploy to past deploys",
+  "graphs": [
+    {
+      "title": "<%= environment %> Bad Requests (purple) and Bad Gateway (blue) requests",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_second(avg:cf.collector.router.bad_requests{deployment:<%= deployment %>})"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Requests to Router",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>})"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Total Routes",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "stacked": false,
+            "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Reservable Stagers",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> User CPU",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "stacked": false,
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z1} by {index}"
+          },
+          {
+            "stacked": false,
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z2} by {index}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> System CPU",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "stacked": false,
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z1} by {index}"
+          },
+          {
+            "stacked": false,
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z2} by {index}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> CPU Lemmings",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "stacked": false,
+            "q": "sum:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Apps w/ All Inst. Reporting (blue), Running Instances (purple), Desired Apps (y...",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredApps{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>} + sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredAppsPendingStaging{deployment:<%= deployment %>}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Crashed Instances (blue) & Crashed Indices (purple)",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedIndices{deployment:<%= deployment %>}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> NYET Run Time (ms)",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "stacked": false,
+            "q": "max:nyet.full_run.response_time_ms{deployment:<%= deployment %>} by {app_type}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> HM9000 Messages Sent per Minute",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartCrashed{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartEvacuating{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartMissing{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopDuplicate{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopExtra{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopEvacuationComplete{deployment:<%= deployment %>})"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "<%= environment %> Apps with Missing Instances (blue), Missing Indices (purple) & Undesired Apps (...",
+      "definition": {
+        "events": [
+          <%= default_events_json %>
+        ],
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithMissingInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfMissingIndices{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfUndesiredRunningApps{deployment:<%= deployment %>}"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    }
+  ]
+}

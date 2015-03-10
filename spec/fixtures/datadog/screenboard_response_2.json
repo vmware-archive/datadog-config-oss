@@ -1,0 +1,68 @@
+[
+  "200",
+  {
+    "board_title"=>"some-deployment Health",
+    "widgets" => [
+      {
+        "title_size"=>16,
+        "title"=>true,
+        "refresh_every"=>30000,
+        "tick_pos"=>"50%",
+        "title_align"=>"left",
+        "tick_edge"=>"left",
+        "text_align"=>"center",
+        "title_text"=>"",
+        "height"=>6,
+        "bgcolor"=>"white",
+        "html"=>"[Random Website](http://www.google.com)",
+        "y"=>50,
+        "x"=>39,
+        "font_size"=>"24",
+        "tick"=>false,
+        "type"=>"note",
+        "width"=>49,
+        "auto_refresh"=>false
+      },
+      {
+        "title_size"=>16,
+        "title"=>true,
+        "refresh_every"=>30000,
+        "tick_pos"=>"50%",
+        "title_align"=>"left",
+        "tick_edge"=>"left",
+        "text_align"=>"center",
+        "title_text"=>"",
+        "height"=>6,
+        "bgcolor"=>"white",
+        "html"=>"[DEA Status](/screen/board/1234)",
+        "y"=>0,
+        "x"=>39,
+        "font_size"=>"24",
+        "tick"=>false,
+        "type"=>"note",
+        "width"=>49,
+        "auto_refresh"=>false
+      },
+      {
+        "title_size"=>16,
+        "title"=>true,
+        "refresh_every"=>30000,
+        "tick_pos"=>"50%",
+        "title_align"=>"left",
+        "tick_edge"=>"left",
+        "text_align"=>"center",
+        "title_text"=>"",
+        "height"=>6,
+        "bgcolor"=>"white",
+        "html"=>"[DEA Status](/dash/dash/123456)",
+        "y"=>0,
+        "x"=>39,
+        "font_size"=>"24",
+        "tick"=>false,
+        "type"=>"note",
+        "width"=>49,
+        "auto_refresh"=>false
+      }
+    ]
+  }
+]

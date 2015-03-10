@@ -1,0 +1,43 @@
+---
+cf_deployment:
+  deployment: "cf-deployment-example"
+  bosh_deployment: "cf-deployment-example"
+  services_deployment: "cf-services-deployment-example"
+  micro_deployment: "cf-micro-deployment-example"
+  health_screen_image: "http://<dashboard_img_url>"
+  router_elb_name: "cf-router"
+  domain_url: "<your cf domain url>"
+
+  backend_pagerduty: "@pagerduty-backend"
+  bosh_pagerduty: "@pagerduty-bosh"
+  services_pagerduty: "@pagerduty-services"
+  cloudops_pagerduty: "@pagerduty-cloudops"
+  monitoringAndMetrics_pagerduty: "@pagerduty-monitoringAndMetrics"
+
+  services_email: "@<your services email>"  # services_email: @services@example.com
+  backend_email: "@<your backend email>"
+  cloudops_email: "@<your cloudops email>"
+  monitoringAndMetrics_email: "@<your monitoring and metrics email>"
+
+  params: &prod_params
+    expected_routes: 100
+    min_deas_that_can_stage: 3
+    min_reservable_stagers: 100
+    nyet_timeout_secs: 360
+    smoke_timeout_secs: 360
+
+  credentials:
+    api_key: "<your datadog api key>"
+    app_key: "<your datadog app key>"
+
+  jobs: &jobs
+    - appdirect_gateway
+    - cloud_controller
+    - collector
+    - dea_next
+    - health_manager
+    - login
+    - nats
+    - router
+    - syslog_aggregator
+    - uaa

@@ -1,0 +1,45 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_minute(sum:cf.collector.log_count{deployment:<%= deployment %>,level:fatal} by {job})"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Fatals per minute"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_minute(sum:cf.collector.log_count{deployment:<%= deployment %>,level:error} by {job})"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Errors per minute"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_minute(sum:cf.collector.log_count{deployment:<%= deployment %>,level:warn} by {job})"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Warnings per minute"
+    }
+  ],
+  "description": "Information about log rates in the system.",
+  "title": "<%= environment %> Logging"
+}

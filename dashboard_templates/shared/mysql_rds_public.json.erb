@@ -1,0 +1,141 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.cpuutilization{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "CPU in use in the public RDS db instance (percentage)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.database_connections{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "DB Connections in the public RDS db instance"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.read_iops{dbinstanceidentifier:mysql-service-public}"
+          },
+          {
+            "q": "avg:aws.rds.write_iops{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Read/Write IOPS in the public RDS db instance"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.disk_queue_depth{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Disk Queue Depth in the public RDS instance (number of outstanding IOPS)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.read_latency{dbinstanceidentifier:mysql-service-public}"
+          },
+          {
+            "q": "avg:aws.rds.write_latency{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Read/Write Disk Latency in the public RDS instance (seconds)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.free_storage_space{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Free Storage in the public RDS instance (bytes)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.read_throughput{dbinstanceidentifier:mysql-service-public}"
+          },
+          {
+            "q": "avg:aws.rds.write_throughput{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Disk Throughput in the public RDS instance (bytes/second)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.freeable_memory{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Available RAM in the public RDS instance (bytes)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.rds.swap_usage{dbinstanceidentifier:mysql-service-public}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Swap In-Use on the public RDS instance (bytes)"
+    }
+  ],
+  "title": "<%= environment %> MySQL RDS Public",
+  "description": "created by cloudfoundry-datadog@pivotallabs.com"
+}

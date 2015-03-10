@@ -1,0 +1,7 @@
+{
+  "notify_no_data": false,
+  "name": "<%= environment %> HM9000 storing desired state is slow",
+  "silenced": false,
+  "query": "avg(last_5m):avg:cf.collector.HM9000.HM9000.DesiredStateSyncTimeInMilliseconds{deployment:<%= deployment %>}  > 5000",
+  "message": "HM9000 is taking more than five seconds to save off its desired state. <%= backend_pagerduty if deployment == "cf-a1" %>"
+}

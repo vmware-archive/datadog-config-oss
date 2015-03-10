@@ -1,0 +1,9 @@
+{
+  "name": "<%= environment %> CF: Router Dial Errors are too high",
+  "message": "<%= environment %> CF: Router Dial Errors are too high. <%= backend_pagerduty %>",
+  "query": "avg(last_15m):avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>} > 50",
+  "no_data_timeframe": 20,
+  "notify_no_data": false,
+  "notify_audit": false,
+  "silenced": true
+}

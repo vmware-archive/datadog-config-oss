@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "no_data_timeframe": 20,
+  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min",
+  "silenced": false,
+  "query": "max(last_15m):max:logstash.messages.rate{msg_type:syslog,environment:<%= environment %>} < 1",
+  "message": "None of logstash instances have received any messages in the last 15 min <%= monitoringAndMetrics_email %>"
+}

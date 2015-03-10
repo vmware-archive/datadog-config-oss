@@ -1,0 +1,17 @@
+{
+  "event_object": "44a768fd9de20d5339094acb94fe7fb5",
+  "notify_audit": true,
+  "timeout_h": 1,
+  "silenced": false,
+  "query": "max(last_30m):avg:natbox.pingout.health{*} < 1",
+  "message": "nat-box unhealthy <%= cloudops_pagerduty %>",
+  "id": 81184,
+  "name": "nat-box-monitor",
+  "no_data_timeframe": 60,
+  "creator": 20852,
+  "notify_no_data": true,
+  "renotify_interval": 0,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}

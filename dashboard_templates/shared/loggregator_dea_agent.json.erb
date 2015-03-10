@@ -1,0 +1,116 @@
+{
+    "graphs": [
+        {
+            "title": "Current Buffer Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.currentBufferCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Message Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Messages Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Sent Message Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Sent Messages Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Byte Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.receivedByteCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Received Bytes Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.receivedByteCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Sent Byte Count",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentByteCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Sent Bytes Per Second",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.sentByteCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ],
+                "events": []
+            }
+        },
+        {
+            "title": "Number of CPUs",
+            "definition": {
+                "requests": [
+                    {
+                        "q": "avg:cf.collector.LoggregatorDeaAgent.numCpus{ deployment: <%= deployment %>} by {ip}"
+                    }
+                ],
+                "events": []
+            }
+        }
+    ],
+    "title": "<%= environment %> Loggregator Dea Agent",
+    "description": "created by cfaccounts+datadog-prod@pivotallabs.com"
+}

@@ -1,0 +1,213 @@
+{
+  "graphs": [
+    {
+      "title": "State of apps",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          {
+            "q": "sum:cf.collector.dea_registry_born{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_crashed{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_deleted{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_started{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopped{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopping{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_resuming{deployment:<%= deployment %>}"
+          }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {stack}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: Total Reservable Stagers in the System"
+    },
+    {
+      "title": "Reserved Mem",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          { "q": "avg:cf.collector.dea_registry_mem_reserved{deployment:<%= deployment %>} by {ip}" }
+        ]
+      }
+    },
+    {
+      "title": "Reserved Disk",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          { "q": "avg:cf.collector.dea_registry_disk_reserved{deployment:<%= deployment %>} by {ip}" }
+        ]
+      }
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: Reservable Stagers per DEA"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.available_memory_ratio{deployment:<%= deployment %>,job:dea}",
+            "stacked": true
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: Average of total DEAs ratio of memory available"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cf.collector.available_memory_ratio{deployment:<%= deployment %>,job:dea} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: DEA ratio of memory available"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.available_disk_ratio{deployment:<%= deployment %>,job:dea}",
+            "stacked": true
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: Average of total DEAs ratio of disk available"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cf.collector.available_disk_ratio{deployment:<%= deployment %>,job:dea} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: DEA ratio of disk available"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: DEA System CPU"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "<%= environment %> CF: DEA User CPU"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "events": [ <%= default_events_json %> ],
+        "requests": [
+          {
+            "q": "avg:cf.collector.total_warden_response_time_in_ms{deployment:<%= deployment %>} by {ip} / avg:cf.collector.warden_request_count{deployment:<%= deployment %>} by {ip}",
+            "stacked": false
+          }
+        ]
+      },
+      "title": "<%= environment %> CF: Average Warden Response Time to DEA"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:cf.collector.warden_error_response_count{*} by {ip})",
+            "stacked": true
+          }
+        ],
+        "events": [ <%= default_events_json %> ]
+      },
+      "title": "<%= environment %> CF: Warden -> DEA Response Timeouts"
+    }
+  ],
+  "description": "Information about DEA's reservable stagers and available memory and disk",
+  "title": "<%= environment %> DEA Radiator"
+}

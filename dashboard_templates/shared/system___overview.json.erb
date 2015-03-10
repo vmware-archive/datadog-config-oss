@@ -1,0 +1,104 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "system.load.1{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "system.load.5{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "system.load.15{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "System load"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "system.cpu.idle{deployment:<%= deployment %>}, system.cpu.system{deployment:<%= deployment %>}, system.cpu.iowait{deployment:<%= deployment %>}, system.cpu.user{deployment:<%= deployment %>}, system.cpu.stolen{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "CPU usage (%)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "max:system.cpu.iowait{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "I/O wait (%)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "sum:system.mem.free{deployment:<%= deployment %>},sum:system.mem.used{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "System memory"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "sum:system.net.bytes_rcvd{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:system.net.bytes_sent{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Network traffic (kb/s)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "processes{deployment:<%= deployment %>}",
+            "viz": "treemap",
+            "group_by": "family",
+            "size_by": "pct_mem",
+            "color_by": "user"
+          }
+        ]
+      },
+      "title": "Processes memory usage"
+    }
+  ],
+  "title": "<%= environment %> System - Overview (*)",
+  "description": ""
+}

@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "name": "<%= environment %> CF: nyet is not reporting",
+  "silenced": false,
+  "query": "min(last_10m):avg:nyet.full_run.response_time_ms{deployment:<%= deployment %>,app_type:ruby} < 0",
+  "message": "This alert should only be triggered when the nyet has stopped reporting data to DataDog. <%= backend_pagerduty %>"
+}
+

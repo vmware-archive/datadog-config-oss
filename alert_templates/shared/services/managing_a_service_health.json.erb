@@ -1,0 +1,7 @@
+{
+  "notify_no_data": true,
+  "name": "<%= environment %> Managing a Service Health",
+  "silenced": false,
+  "query": "avg(last_30m):avg:nyet.services.health{service:service-management} < 0.6",
+  "message": "The test that manages the dummy-dev service on production has failed at least half of the time over the last half hour. This likely means an integration issue with AppDirect or a problem with the AppDirect gateway. <%= services_pagerduty %> <%= services_email %>"
+}

@@ -1,0 +1,172 @@
+{
+  "title": "<%= environment %>: Logsearch Information",
+  "description": "Information about Logsearch installation",
+  "graphs": [
+    {
+      "title": "<%= environment %>: logstash.parse_failures.total per second",
+      "definition": {
+        "requests": [
+          {
+            "q": "rate(logstash.parse_failures.total{environment: <%= environment %> } by {ip})"
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: total syslog message by ip per second",
+      "definition": {
+        "requests": [
+          {
+            "q": "rate(logstash.messages.total{environment: <%= environment %>,msg_type:syslog } by {ip} )"
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: total relp message by ip per second",
+      "definition": {
+        "requests": [
+          {
+            "q": "rate(logstash.messages.total{environment: <%= environment %>,msg_type:relp } by {ip} )",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Total Elasticsearch Indexed Docs",
+      "definition": {
+        "requests": [
+          {
+            "q": "elasticsearch.docs.count{environment: <%= environment %> } by {node}",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch average Indexing Time (ms)",
+      "definition": {
+        "requests": [
+          {
+            "q": "elasticsearch.index_time_in_millis{environment: <%= environment %> } by {node}  / elasticsearch.index_total{environment: <%= environment %> } by {node} ",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch average Fetch Time (ms)",
+      "definition": {
+        "requests": [
+          {
+            "q": "elasticsearch.fetch_time_in_millis{environment: <%= environment %> } by {node}  / elasticsearch.fetch_total{environment: <%= environment %> } by {node} ",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch average Query Time (ms)",
+      "definition": {
+        "requests": [
+          {
+            "q": "elasticsearch.query_time_in_millis{environment: <%= environment %> } by {node}  / elasticsearch.query_total{environment: <%= environment %> } by {node} ",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch Heap Used (%)",
+      "definition": {
+        "requests": [
+          {
+            "q": "(elasticsearch.heap_used_in_bytes{environment: <%= environment %> } by {node}  / elasticsearch.heap_committed_in_bytes{environment: <%= environment %> } by {node}) * 100",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch system CPU usage (%)",
+      "definition": {
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{job:elasticsearch} by {deployment}",
+            "stacked": false
+          }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch user CPU usage (%)",
+      "definition": {
+        "requests": [
+            {
+              "q": "bosh.healthmonitor.system.cpu.user{job:elasticsearch} by {deployment}",
+              "stacked": false
+            }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch mem usage (%)",
+      "definition": {
+        "requests": [
+            {
+              "q": "bosh.healthmonitor.system.mem.percent{job:elasticsearch} by {deployment}",
+              "stacked": false
+            }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch system disk usage (%)",
+      "definition": {
+        "requests": [
+            {
+              "q": "bosh.healthmonitor.system.disk.system.percent{job:elasticsearch} by {deployment}",
+              "stacked": false
+            }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Elasticsearch persistent disk usage (%)",
+      "definition": {
+        "requests": [
+            {
+              "q": "bosh.healthmonitor.system.disk.persistent.percent{job:elasticsearch} by {deployment}",
+              "stacked": false
+            }
+        ],
+        "events": []
+      }
+    },
+    {
+      "title": "<%= environment %>: Logstash user CPU usage (%)",
+      "definition": {
+        "requests": [
+            {
+              "q": "bosh.healthmonitor.system.cpu.user{job:logstash} by {deployment}",
+              "stacked": false
+            }
+        ],
+        "events": []
+      }
+    }
+  ]
+}

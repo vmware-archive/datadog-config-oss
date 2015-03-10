@@ -1,0 +1,110 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "aws.ec2.cpuutilization{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Percent of EC2 Compute Units in use <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Maximum consumed memory percentage per job on <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "aws.ec2.network_in{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Network inbound (bytes/min) <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "aws.ec2.network_out{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Network outbound (bytes/min) <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.disk_read_ops{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Disk read operations per second per job on <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.disk_write_ops{deployment:<%= deployment %>} by {job}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Disk write operations per second per job on <%= deployment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "aws.rds.free_storage_space{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Free RDS storage"
+    }
+  ],
+  "title": "<%= environment %> Resource Usage",
+  "description": "created by cloudfoundry-datadog@pivotallabs.com"
+}

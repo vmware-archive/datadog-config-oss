@@ -1,0 +1,8 @@
+---
+prod:
+- query: avg:some_metric{deployment:,another-tag:blah}
+  color: white_on_red
+  value: 100
+- query: avg:some_metric{deployment:,another-tag:blah}
+  color: white_on_green
+  value: 200

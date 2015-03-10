@@ -1,0 +1,111 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_total_read_time{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Read time, by device (sec per op)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_total_write_time{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Write time, by device (sec per op)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_read_ops{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Reads, by device (ops per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_write_ops{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Writes, by device (ops per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_read_bytes{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk bytes read, by device (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_write_bytes{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk bytes written, by device (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ebs.volume_queue_length{deployment:<%= deployment %>} by {device}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Queue length, by device (ops)"
+    }
+  ],
+  "title": "<%= environment %> AWS - EBS (*)",
+  "description": ""
+}

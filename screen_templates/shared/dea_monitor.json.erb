@@ -1,0 +1,272 @@
+{
+  "board_title": "dea-monitor",
+  "board_bgtype": "board_graph",
+  "height": 80,
+  "width": "100%",
+  "templated": false,
+  "widgets": [
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Reservable Stagers",
+      "height": 23.000000158945713,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 90,
+      "timeframe": "2d",
+      "y": 0.8333333333333334,
+      "x": -3.9736429998290155e-08,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Percentage of Runners with >4 Reservable Stagers",
+      "height": 26.000000158945713,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cloudops_tools.dea_monitor.reservable_stagers_aggregate{*}*100"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 90,
+      "timeframe": "2d",
+      "y": 25.833337148030598,
+      "x": 0.41666662693023665,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Current Distribution of Reservable Stagers By ip",
+      "height": 19.916666825612385,
+      "tile_def": {
+        "viz": "distribution",
+        "requests": [
+          {
+            "q": "min:cf.collector.reservable_stagers{*} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 90,
+      "timeframe": "1h",
+      "y": 53.666090647379555,
+      "x": 0.6655093431472777,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "State of apps",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.dea_registry_born{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_crashed{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_deleted{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_started{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopped{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopping{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_resuming{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 0.9997113545735677,
+      "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Average of total DEAs ratio of memory available",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.available_memory_ratio{deployment:<%= deployment %>,job:dea}",
+            "stacked": true
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 15.999711354573568,
+      "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Average of total DEAs ratio of disk available",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.available_disk_ratio{deployment:<%= deployment %>,job:dea}",
+            "stacked": true
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 30.999713897705078,
+      "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "DEA User CPU",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 45.99971389770508,
+      "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "DEA System CPU",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 60.99971389770508,
+      "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    }
+  ],
+  "id": 13996
+}

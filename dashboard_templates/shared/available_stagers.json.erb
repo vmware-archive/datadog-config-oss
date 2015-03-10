@@ -1,0 +1,20 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.can_stage{deployment:<%= deployment %>,stack:lucid64} by {ip}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Available Stagers"
+    }
+  ],
+  "description": "The top of the chart is the number of available stagers, and the individual bars represent whether a single stager is available.",
+  "title": "<%= environment %> Available Stagers"
+}

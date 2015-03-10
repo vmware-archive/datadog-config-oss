@@ -1,0 +1,15 @@
+---
+prod:
+  credentials:
+    api_key: "my_api_key"
+    app_key: "my_app_key"
+
+  deployment: "some-deployment"
+  bosh_deployment: "some-bosh-deployment"
+  services_deployment: "services-deployment"
+
+  backend_pagerduty: "@pagerduty-backend"
+
+  jobs:
+    - hello
+    - world

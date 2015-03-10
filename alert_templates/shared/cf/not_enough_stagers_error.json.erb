@@ -1,0 +1,7 @@
+{
+  "notify_no_data": false,
+  "name": "<%= environment %> CF: Not enough stagers available",
+  "silenced": false,
+  "query": "avg(last_30m):sum:cf.collector.can_stage{deployment:<%= deployment %>}  < <%= params.fetch('min_deas_that_can_stage') %>",
+  "message": "Fewer than <%= params.fetch('min_deas_that_can_stage') %> stagers have been available for the past 30 minutes <%= backend_pagerduty %>"
+}

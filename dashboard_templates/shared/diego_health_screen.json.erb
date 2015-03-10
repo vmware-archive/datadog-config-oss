@@ -1,0 +1,1386 @@
+<%
+  cf_deployment = "#{deployment}-cf"
+  diego_deployment = "#{deployment}-diego"
+%>
+{
+  "title":"<%= environment %> Diego Health",
+  "description":"<%= environment %> Diego Health",
+  "graphs":[
+    {
+      "title": "Cell: Tasks",
+      "definition":{
+        "requests":[
+          {
+            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksPending{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Cell: Actual LRPs",
+      "definition":{
+        "requests":[
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Cell: Desired LRPs",
+      "definition":{
+        "requests":[
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} - (cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashingDesiredLRPs{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Cell: Available Memory",
+      "definition":{
+        "requests":[
+          {
+            "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Cell: Available Disk",
+      "definition":{
+        "requests":[
+          {
+            "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Cell: Running Containers",
+      "definition":{
+        "requests":[
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersExpected{deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Canaries",
+      "definition":{
+        "requests":[
+          {
+            "q": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"NSYNC: Freshness (bool)",
+      "definition":{
+        "requests":[
+          {
+            "q":"max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"NSYNC: Bulker Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"NSYNC: Received Desired Apps (per minute)",
+      "definition":{
+        "requests": [
+          { "q": "per_minute(cf.collector.MetronAgent.forwarder.nsync_listener.LRPsDesired{deployment:<%= deployment %>})" }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Stager: Staging Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestSucceededDuration{deployment: <%= deployment %>} / 1000000000",
+            "type": "bars"
+          },
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestFailedDuration{deployment: <%= deployment %>} / 1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Stager: Staging Messages (per minute)",
+      "definition":{
+        "requests": [
+          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsReceived{deployment: <%= deployment %>})" },
+          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsSucceeded{deployment: <%= deployment %>})" },
+          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsFailed{deployment: <%= deployment %>})" }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Converger: DesiredLRP Listener - Starts/Stops (per minute)",
+      "definition":{
+        "requests": [
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.LRPInstanceStartRequests{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.LRPInstanceStopRequests{deployment:<%= deployment %>})" }
+         ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Converger: Actions Taken (per minute)",
+      "definition":{
+        "requests": [
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsDeleted{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsStopped{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksPruned{deployment:<%= deployment %>})" }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Converger: Time To Converge (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    <%
+    [
+      {:title => "Go: # Goroutines", :metric => "numGoRoutines"},
+      {:title => "Go: # CPUs", :metric => "numCPUS"},
+      {:title => "Go: # Mallocs", :metric => "memoryStats.numMallocs"},
+      {:title => "Go: GC Pause Time (NS)", :metric => "memoryStats.lastGCPauseTimeNS"},
+      {:title => "Go: Heap (bytes)", :metric => "memoryStats.numBytesAllocatedHeap"},
+      {:title => "Go: Stack (bytes)", :metric => "memoryStats.numBytesAllocatedStack"},
+    ].each do |metric|
+    %>
+    {
+      "title":"<%= metric[:title] %>",
+      "definition":{
+        "requests": [
+          {
+            "q": "cf.collector.MetronAgent.forwarder.auctioneer.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.converger.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.executor.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.file_server.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.nsync_bulker.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.nsync_listener.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.rep.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.route_emitter.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.stager.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.tps.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.warden.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    <% end %>
+    {
+      "title":"Etcd: Raft Term",
+      "definition":{
+        "requests":[
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Etcd: Watchers",
+      "definition":{
+        "requests":[
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDWatchers{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Etcd: BandwidthRate (bytes per second)",
+      "definition":{
+        "requests":[
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDReceivedBandwidthRate{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDSentBandwidthRate{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Etcd: RequestRate (per second)",
+      "definition":{
+        "requests":[
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDReceivedRequestRate{deployment:<%= deployment %>}"
+          },
+          {
+            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDSentRequestRate{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"System Disk Percent",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ],
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Ephemeral Disk Percent",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Persistent Disk Percent",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"System Memory Percent",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ],
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title":"CPU System",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ],
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title":"CPU User",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ],
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title":"CPU Wait",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ],
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Route Emitter: Total Routes",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Route Emitter: Bulk Updates (per second)",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesSynced{deployment:<%= deployment %>})"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Route Emitter: Incremental Updates (per second)",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesRegistered{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "-rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesUnregistered{deployment:<%= deployment %>})"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Route Emitter: Bulk Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Rep: Bulk Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.rep.RepBulkSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"TPS: HTTP Response Buckets",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount1XX{deployment:<%= deployment %>})",
+            "type": "bars"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount2XX{deployment:<%= deployment %>})",
+            "type": "bars"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount3XX{deployment:<%= deployment %>})",
+            "type": "bars"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount4XX{deployment:<%= deployment %>})",
+            "type": "bars"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount5XX{deployment:<%= deployment %>})",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Auctioneer: LRP Auctions (per minute)",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Auctioneer: Task Auctions (per minute)",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerTaskAuctionsStarted{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerTaskAuctionsFailed{deployment:<%= deployment %>})"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Auctioneer: Fetch Cell States Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Metrics Server: Metrics Reporting Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.MetricsReportingDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    }
+  ]
+}

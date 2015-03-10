@@ -1,0 +1,102 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.create.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) for app to be 'created'"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.read.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) to read app(?)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.start.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) for app to be started(?)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.app_routable.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) for app to become associated with a URL"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.update.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) to scale nyet app to two instances"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.delete.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) to delete nyet app"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:nyet.crud_app.health{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Nyet tests healthy?"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "max:nyet.full_run.response_time_ms{deployment:<%= deployment %>} by {app_type}",
+			"stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Time (ms) for full nyet run"
+    }
+  ],
+  "description": "Timing measurements taken while running nyet tests (Blue = Java, Purple = Ruby)",
+  "title": "<%= environment %> Nyet Timing"
+}

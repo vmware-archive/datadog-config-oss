@@ -1,0 +1,210 @@
+{
+    "description": "created by cfaccounts+datadog-prod@pivotallabs.com",
+    "graphs": [
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.currentBufferCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Current Buffer Count (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Sent Messages Per Second (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Sent Message Count (DEAAgent) by DEA"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {loggregatoraddress}",
+                        "stacked": false
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Sent Message Count (DEAAgent) by AZ"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of Dump Sinks (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of Syslog Sinks (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of WebSocket Sinks (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "rate(cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Log Messages Per Second (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Log Message Count (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000 "
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "bosh.healthmonitor.system.mem.percent{job:loggregator_z1} by {index}",
+                        "stacked": false
+                    },
+                    {
+                        "q": "bosh.healthmonitor.system.mem.percent{job:loggregator_z2} by {index}",
+                        "stacked": false
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Memory Used Percentage (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.LoggregatorTrafficcontroller.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (LoggregatorTrafficcontroller)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "cf.collector.LoggregatorTrafficcontroller.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (LoggregatorTrafficcontroller)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "rate(sum:cf.collector.MetronAgent.legacyAgentListener.receivedMessageCount{ deployment: <%= deployment %> }) - rate(sum:cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> })"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Total message loss per second between Metron and Doppler Server"
+        },
+        {
+            "definition": {
+                "viz": "toplist",
+                "requests": [
+                    {
+                        "q": "top(rate(sum:cf.collector.MetronAgent.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> } by {appid}), 10, 'last', 'desc')"
+                    }
+                ]
+            },
+            "title":  "<%= environment %>: log message rate by app id"
+        }
+    ],
+    "title": "<%= environment %> Loggregator Information"
+}

@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "no_data_timeframe": 20,
+  "name": "<%= environment %> Logsearch: cf_logsearch_elasticsearch running out of persistent disk",
+  "silenced": false,
+  "query": "avg(last_5m):max:bosh.healthmonitor.system.disk.persistent.percent{job:elasticsearch} > 90",
+  "message": "One or more of the Elasticsearch instances are reporting low system disk space. <%= monitoringAndMetrics_email %>"
+}

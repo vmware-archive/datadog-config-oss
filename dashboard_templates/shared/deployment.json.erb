@@ -1,0 +1,110 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:create}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh create (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:deploy}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh deploy (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:deployment}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh deployment (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:diff}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh diff (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:login}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh login (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:target}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh target (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:test}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh test (seconds)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "ci.bosh.exec.duration{deployment:<%= deployment %>,bosh_cmd:upload}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "bosh upload (seconds)"
+    }
+  ],
+  "description": "Bosh command execution times",
+  "title": "<%= environment %> Deployment"
+}

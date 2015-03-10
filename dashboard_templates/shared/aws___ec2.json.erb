@@ -1,0 +1,129 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.cpuutilization{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "CPU usage, by host (%)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "sum:aws.ec2.network_in{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:aws.ec2.network_out{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Overall network traffic (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.network_in{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Network in, by host (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.network_out{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Network out, by host (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.disk_read_bytes{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk bytes read, by host (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.disk_write_bytes{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk bytes written, by host (bytes per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.disk_read_ops{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk reads, by host (ops per sec)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "aws.ec2.disk_write_ops{deployment:<%= deployment %>} by {host}"
+          }
+        ],
+        "events": [
+          {
+            "q": "*"
+          }
+        ]
+      },
+      "title": "Disk writes, by host(ops per sec)"
+    }
+  ],
+  "title": "<%= environment %> AWS - EC2 (*)",
+  "description": ""
+}

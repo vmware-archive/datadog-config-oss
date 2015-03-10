@@ -1,0 +1,85 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>} by {host}",
+            "type": "area"
+          }
+        ]
+      },
+      "title": "CF App router dial errors (per 5 minutes)"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{domain:pivotal.run.io} by {host}, 10, 'max', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "CF App Toplist (per 5 minutes)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:cfapps.io} by {host}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Non-CF router dial errors (per 5 minutes)"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{domain:cfapps.io} by {host}, 10, 'max', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "Non-CF Toplist (per 5 minutes)"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "top(sum:cloudops_tools.app_instance_monitor.router.dial.errors{*} by {domain}, 10, 'mean', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "router dial error domains"
+    }
+  ],
+  "description": "created by cfaccounts+datadog-<%= environment %>@pivotallabs.com",
+  "id": 31141,
+  "title": "router dial error"
+}

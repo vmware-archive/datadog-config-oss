@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "name": "<%= environment %> CF: AWS is not reporting",
+  "silenced": false,
+  "query": "min(last_1h):avg:aws.ec2.host_ok{deployment:<%= deployment %>} < 0",
+  "message": "This alert should only be triggered when AWS has stopped reporting data to DataDog. <%= backend_pagerduty %>"
+}
+

@@ -1,0 +1,21 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.host_ok{deployment:<%= deployment %>,job:collector}"
+          },
+          {
+            "q": "aws.ec2.host_ok{deployment:<%= deployment %>,job:health_manager}"
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "<%= deployment %> Collector"
+    }
+  ],
+  "title": "<%= environment %> Collector and Health Monitor",
+  "description": "Cloudwatch status of the machines running the collector and health manager jobs"
+}

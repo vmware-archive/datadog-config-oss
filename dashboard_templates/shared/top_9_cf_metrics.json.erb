@@ -1,0 +1,114 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>,
+          {
+            "q": "restart tags:source:<%= deployment %>"
+          }
+        ]
+      },
+      "title": "Core: BOSH jobs healthy"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= services_deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>,
+          {
+            "q": "restart tags:source:<%= deployment %>-services"
+          }
+        ]
+      },
+      "title": "Services: BOSH jobs healthy"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "max:bosh.healthmonitor.system.mem.percent{deployment:<%= services_deployment %>}"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:runner_z1}"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:runner_z2}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Maximum memory usage (%)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.systemdiskephemeralpercent{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "max:bosh.healthmonitor.systemdiskpersistentpercent{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Maximum disk utilization (%)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.cpuutilization{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "aws.ec2.cpuutilization{deployment:<%= services_deployment %>}"
+          },
+          {
+            "q": "aws.ec2.cpuutilization{deployment:<%= bosh_deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Avg CPU utilization (%)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Dead VMs"
+    }
+  ],
+  "title": "<%= environment %> Top 9 CF Metrics",
+  "description": "created by cfaccounts+datadog-prod@pivotallabs.com"
+}

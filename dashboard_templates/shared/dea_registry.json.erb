@@ -1,0 +1,59 @@
+{
+  "title": "<%= environment %> DEA instance registry",
+  "description": "This dashboard shows DEA registry",
+  "graphs": [
+    {
+      "title": "State of apps",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          {
+            "q": "sum:cf.collector.dea_registry_born{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_crashed{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_deleted{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_started{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopped{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_stopping{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_resuming{deployment:<%= deployment %>}"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Reserved Mem",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          { "q": "avg:cf.collector.dea_registry_mem_reserved{deployment:<%= deployment %>} by {ip}" }
+        ]
+      }
+    },
+    {
+      "title": "Reserved Disk",
+      "definition": {
+        "events": [<%= default_events_json %>],
+        "requests": [
+          { "q": "avg:cf.collector.dea_registry_disk_reserved{deployment:<%= deployment %>} by {ip}" }
+        ]
+      }
+    }
+  ]
+}

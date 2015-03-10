@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "no_data_timeframe": 20,
+  "name": "<%= environment %> Logsearch: Unhealthy below threshold for kibana",
+  "silenced": false,
+  "query": "avg(last_5m):min:bosh.healthmonitor.system.healthy{job:kibana} < 0.8",
+  "message": "One or more of the kibana BOSH agents are reporting either that the VM that they are running on or the kibana job that they are running is unhealthy. <%= monitoringAndMetrics_email %>"
+}

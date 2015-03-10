@@ -1,0 +1,1099 @@
+{
+  "board_title": "<%= environment %> Health",
+  "board_bgtype": "board_graph",
+  "height": 109,
+  "width": "100%",
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": null,
+      "name": "scope"
+    }
+  ],
+  "templated": false,
+  "widgets": [
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Router Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 56,
+      "y": 0,
+      "x": 0,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": "16",
+      "title": true,
+      "title_align": "left",
+      "title_text": "Unknown Route (blue) and Bad Gateway (purple) requests",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:cf.collector.router.bad_requests{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 4,
+      "x": 0,
+      "type": "timeseries"
+    },
+    {
+      "title_size": "16",
+      "title": true,
+      "title_align": "left",
+      "title_text": "Requests to Router",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 30,
+      "x": 0,
+      "type": "timeseries"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Routes (24h)",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "1d",
+      "y": 56,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "DEA Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 56,
+      "y": 0,
+      "x": 56,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": "16",
+      "title": true,
+      "title_align": "left",
+      "title_text": "Reservable Stagers",
+      "height": 33,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 4,
+      "x": 56,
+      "type": "timeseries"
+    },
+    {
+      "title_size": "16",
+      "title": true,
+      "title_align": "left",
+      "title_text": "User CPU",
+      "height": 21,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 39,
+      "x": 56,
+      "type": "timeseries"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "System CPU",
+      "height": 21,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "stacked": false
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 62,
+      "x": 56,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "DEA Uptime (24h)",
+      "height": 22,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "1d",
+      "y": 85,
+      "x": 56,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "App Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 56,
+      "y": 0,
+      "x": 112,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Apps w/ All Inst. Reporting (blue), Running Instances (purple), Desired Apps (yellow), Desired Instances (black)",
+      "height": 25,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredApps{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>} + sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredAppsPendingStaging{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 4,
+      "x": 112,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Crashed Indices (blue) & Crashed Instances (purple)",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedIndices{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedInstances{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 31,
+      "x": 112,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Apps with Missing Instances (blue), Missing Indices (purple) & Undesired Apps (yellow)",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithMissingInstances{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfMissingIndices{deployment:<%= deployment %>}"
+          },
+          {
+            "q": "cf.collector.HM9000.HM9000.NumberOfUndesiredRunningApps{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 57,
+      "x": 112,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "HM9000 Messages Sent per Minute",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartCrashed{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartEvacuating{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StartMissing{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopDuplicate{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopExtra{deployment:<%= deployment %>})"
+          },
+          {
+            "q": "per_minute(cf.collector.HM9000.HM9000.StopEvacuationComplete{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "4h",
+      "y": 83,
+      "x": 112,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+
+      ],
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "Number of Routes",
+      "precision": "*",
+      "width": 28,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "x": 168,
+      "y": 4,
+      "query": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "height": 11,
+      "type": "query_value",
+      "timeframe": "5m",
+      "unit": "",
+      "aggr": "avg"
+    },
+    {
+      "metric": "",
+      "height": 11,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z2}.rollup(avg,60)) ) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 20,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 28,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 3,
+      "title_text": "DEA",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 4,
+      "x": 196
+    },
+    {
+      "metric": "cf.collector.total_users",
+      "height": 11,
+      "query": "avg:cf.collector.total_users{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "unit": "",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 28,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>"
+      ],
+      "precision": "*",
+      "title_text": "Number of Users",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "avg",
+      "y": 17,
+      "x": 168
+    },
+    {
+      "sizing": "zoom",
+      "title_size": 16,
+      "title": true,
+      "url": "<%= health_screen_image %>",
+      "title_align": "left",
+      "title_text": "",
+      "height": 26,
+      "width": 28,
+      "y": 17,
+      "x": 196,
+      "type": "image"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+
+      ],
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "Running Apps",
+      "precision": "*",
+      "width": 28,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "x": 168,
+      "y": 30,
+      "query": "avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "height": 11,
+      "type": "query_value",
+      "timeframe": "5m",
+      "unit": "",
+      "aggr": "avg"
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= bosh_deployment %>",
+        "job:bosh"
+      ],
+      "precision": 1,
+      "title_text": "BOSH",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh}', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 43,
+      "x": 168
+    },
+    {
+      "metric": "",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 1,
+      "title_text": "UAA",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 43,
+      "x": 187
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:login_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:login_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 18,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:login_z1",
+        "job:login_z2"
+      ],
+      "precision": 1,
+      "title_text": "Login",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 43,
+      "x": 206
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:api_z1",
+        "job:api_z2"
+      ],
+      "precision": 1,
+      "title_text": "API",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 52,
+      "x": 168
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:router_z1",
+        "job:router_z2"
+      ],
+      "precision": 1,
+      "title_text": "Router",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 61,
+      "x": 168
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App request roundtrip (ns) (Week)",
+      "height": 25,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:app_benchmarking.rest_of_time{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_gorouter{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_app{deployment:<%= deployment %>} by {status}",
+            "type": "bars"
+          },
+          {
+            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= deployment %>} by {status})",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          }
+        ],
+        "outliers": "1%",
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "1w",
+      "y": 82,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_worker_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_worker_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:api_worker_z1",
+        "job:api_worker_z2"
+      ],
+      "precision": 1,
+      "title_text": "API Worker",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:api_worker_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_worker_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:api_worker_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_worker_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 52,
+      "x": 187
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:clock_global}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 18,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:clock_global"
+      ],
+      "precision": 1,
+      "title_text": "API Clock",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:clock_global}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:clock_global}', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 52,
+      "x": 206
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:nats_z1",
+        "job:nats_z2"
+      ],
+      "precision": 1,
+      "title_text": "NATS",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 61,
+      "x": 187
+    },
+    {
+      "title_size": "16",
+      "title": true,
+      "aggregator": "min",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1}', 'white_on_green') %>
+        }
+      ],
+      "title_align": "center",
+      "text_align": "center",
+      "title_text": "Stats",
+      "precision": 1,
+      "width": 18,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "x": 206,
+      "y": 61,
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:stats_z1}",
+      "text_size": "auto",
+      "height": 7,
+      "type": "query_value",
+      "timeframe": "5m",
+      "unit": "auto",
+      "aggr": "avg"
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z1,job:hm9000_z1}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:hm9000_z1"
+      ],
+      "precision": 1,
+      "title_text": "HM9000",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1,job:hm9000_z1}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1,job:hm9000_z1}', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 70,
+      "x": 168
+    },
+    {
+      "metric": "",
+      "height": 7,
+      "query": "(  (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60))  ) * 0.25",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 18,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 1,
+      "title_text": "Loggregator",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('(  (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))  ) * 0.25', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('(  (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))  ) * 0.25', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 70,
+      "x": 206
+    },
+    {
+      "metric": "bosh.healthmonitor.system.healthy",
+      "height": 7,
+      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60))) * 0.5",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "job:etcd_z1",
+        "job:etcd_z2"
+      ],
+      "precision": 1,
+      "title_text": "ETCD",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))) * 0.5', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))) * 0.5', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 70,
+      "x": 187
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "System Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 56,
+      "y": 0,
+      "x": 168,
+      "font_size": "36",
+      "type": "free_text"
+    }
+  ],
+  "id": 5934
+}
