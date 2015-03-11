@@ -84,8 +84,8 @@ class Synchronizer
       erb = erbfile.result(context_binding)
       JSON.parse(erb)
     rescue => e
-      require 'pry'
-      binding.pry
+      puts "process_template error, #{e.message}"
+      raise e
     end
   end
 

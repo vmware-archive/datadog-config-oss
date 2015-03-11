@@ -1,5 +1,4 @@
 require "synchronizer"
-require 'pry'
 
 class ScreenSynchronizer < Synchronizer
 
