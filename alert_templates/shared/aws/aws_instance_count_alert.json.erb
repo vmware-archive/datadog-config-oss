@@ -1,17 +1,17 @@
 {
-  "event_object": "06c46432ab319e53aee4ad83644a9737",
+  "event_object": "f9e10a631d2e9ce440f0c002070d0a9c",
   "notify_audit": false,
   "timeout_h": null,
   "silenced": false,
-  "query": "max(last_1h):sum:aws.ec2.host_ok{*} > 0",
+  "query": "change(last_1d):sum:aws.ec2.host_ok{*} > 0",
   "message": "Check if this is supposed to happen(when doing a 'bosh deploy') or fraud instances have been spun up by some attacker. <%= cloudops_email %>",
-  "id": 152632,
+  "id": 152927,
   "name": "<%= environment %> Instance Count changes in the AWS account",
-  "no_data_timeframe": 120,
-  "creator": 35324,
+  "no_data_timeframe": 48,
+  "creator": 12842,
   "notify_no_data": false,
   "renotify_interval": null,
-  "state": "Alert",
+  "state": "OK",
   "escalation_message": null,
   "silenced_timeout_ts": null
 }
