@@ -451,3 +451,21 @@ prod:
 - query: avg:pws.circuit.cloud_controller_get{host:production}
   color: white_on_green
   value: 1
+- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+  color: white_on_red
+  value: 20
+- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+  color: white_on_yellow
+  value: 15
+- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+  color: white_on_green
+  value: 15
+- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
+  color: white_on_red
+  value: 20
+- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
+  color: white_on_yellow
+  value: 15
+- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
+  color: white_on_green
+  value: 15

@@ -2046,7 +2046,7 @@
     },
     {
       "metric": "new_relic.apdex.score",
-      "height": 6,
+      "height": 4,
       "query": "avg:new_relic.apdex.score{application:webconsole_production}",
       "text_size": "auto",
       "unit": "auto",
@@ -2055,14 +2055,14 @@
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "left",
-      "width": 15,
+      "width": 11,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
         "application:webconsole_production"
       ],
       "precision": 2,
-      "title_text": "Console Apdex - 5m",
+      "title_text": "Apdex - 5m",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
@@ -2086,12 +2086,12 @@
         }
       ],
       "aggr": "avg",
-      "y": 50.99971389770508,
-      "x": 60.00000218550364
+      "y": 64,
+      "x": 141
     },
     {
       "metric": "new_relic.errors.all.errors_per_minute",
-      "height": 6,
+      "height": 4,
       "query": "avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}",
       "text_size": "auto",
       "unit": "auto",
@@ -2100,14 +2100,14 @@
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "left",
-      "width": 15,
+      "width": 11,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
         "application:webconsole_production"
       ],
       "precision": 2,
-      "title_text": "Console - Error Rate - 5m",
+      "title_text": "Error Rate - 5m",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
@@ -2125,8 +2125,8 @@
         }
       ],
       "aggr": "avg",
-      "y": 50.99971389770508,
-      "x": 75.00000218550365
+      "y": 64,
+      "x": 152
     },
     {
       "metric": "cloudops_tools.ssh_abuse_monitor.ssh.attempts",
@@ -2607,7 +2607,7 @@
     },
     {
       "metric": "pws.circuit.loggregator",
-      "height": 6,
+      "height": 4,
       "query": "avg:pws.circuit.loggregator{host:production}",
       "text_size": "auto",
       "unit": "auto",
@@ -2616,7 +2616,7 @@
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "left",
-      "width": 20,
+      "width": 22,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
@@ -2641,12 +2641,12 @@
         }
       ],
       "aggr": "avg",
-      "y": 59,
-      "x": 65
+      "y": 70,
+      "x": 141
     },
     {
       "metric": "pws.circuit.cloud_controller_get",
-      "height": 6,
+      "height": 4,
       "query": "avg:pws.circuit.cloud_controller_get{host:production}",
       "text_size": "auto",
       "unit": "auto",
@@ -2655,7 +2655,7 @@
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "left",
-      "width": 20,
+      "width": 22,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
@@ -2680,8 +2680,118 @@
         }
       ],
       "aggr": "avg",
-      "y": 67,
-      "x": 65
+      "y": 76,
+      "x": 141
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 7,
+      "bgcolor": "white",
+      "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
+      "y": 57,
+      "x": 141,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 44,
+      "auto_refresh": false
+    },
+    {
+      "metric": "cf.collector.cc.thread_info.event_machine.threadqueue.size",
+      "height": 4,
+      "query": "max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 22,
+      "timeframe": "10m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Max ThreadQueue Size - 10m",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": ">",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_yellow",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_yellow') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_green') %>
+        }
+      ],
+      "aggr": "max",
+      "y": 64,
+      "x": 163
+    },
+    {
+      "metric": "cf.collector.cc.thread_info.event_machine.resultqueue.size",
+      "height": 4,
+      "query": "max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 22,
+      "timeframe": "10m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Max ResultQueue Size - 10m",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": ">",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_yellow",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_yellow') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_green') %>
+        }
+      ],
+      "aggr": "max",
+      "y": 70,
+      "x": 163
     }
   ],
   "id": 14530
