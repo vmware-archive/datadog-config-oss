@@ -1,0 +1,112 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.job_queue_length.cc_generic{*} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Avg of cf.collector.cc.job_queue_length.cc_generic over * by ip"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.size{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.event_machine.threadqueue.size"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.size{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.event_machine.resultqueue.size"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.event_machine.connection_count{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.event_machine.connection_count"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.thread_count{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.thread_count"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.num_waiting{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.event_machine.threadqueue.num_waiting"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.num_waiting{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cc.thread_info.event_machine.resultqueue.num_waiting"
+    }
+  ],
+    "description": "created by <%= cloudops_email %>",
+  "id": 43205,
+  "title": "cloud_controller_ng Event Machine statistics"
+}
