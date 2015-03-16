@@ -104,6 +104,66 @@
         ]
       },
       "title": "resultqueue.num_waiting"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:new_relic.application_summary.response_time{application:webconsole_<%= environment %>uction} by {host}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "new_relic.application_summary.response_time"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:new_relic.external.all_web.average_response_time{application:webconsole_<%= environment %>uction} by {host}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "new_relic.external.all_web.average_response_time"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cc.requests.outstanding{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Request Queue"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:cf.collector.cc.requests.completed{*} by {name})",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Requests Completed per second (throughput)"
     }
   ],
     "description": "created by <%= cloudops_email %>",

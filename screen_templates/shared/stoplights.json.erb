@@ -2086,7 +2086,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 64,
+      "y": 62,
       "x": 141
     },
     {
@@ -2125,7 +2125,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 64,
+      "y": 62,
       "x": 152
     },
     {
@@ -2641,7 +2641,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 70,
+      "y": 68,
       "x": 141
     },
     {
@@ -2680,7 +2680,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 76,
+      "y": 74,
       "x": 141
     },
     {
@@ -2690,12 +2690,12 @@
       "tick_pos": "50%",
       "title_align": "left",
       "tick_edge": "left",
-      "text_align": "left",
+      "text_align": "center",
       "title_text": "",
-      "height": 7,
+      "height": 6,
       "bgcolor": "white",
       "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
-      "y": 57,
+      "y": 56,
       "x": 141,
       "font_size": "24",
       "tick": false,
@@ -2745,7 +2745,7 @@
         }
       ],
       "aggr": "max",
-      "y": 64,
+      "y": 62,
       "x": 163
     },
     {
@@ -2790,7 +2790,52 @@
         }
       ],
       "aggr": "max",
-      "y": 70,
+      "y": 68,
+      "x": 163
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000",
+      "text_size": "auto",
+      "unit": "s",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 22,
+      "timeframe": "10m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 3,
+      "title_text": "Max Response Time Console - 10m",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "color": "white_on_red",
+          "invert": false,
+          "comparator": ">",
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_red') %>
+        },
+        {
+          "color": "white_on_yellow",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_yellow') %>
+        },
+        {
+          "color": "white_on_green",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_green') %>
+        }
+      ],
+      "aggr": "avg",
+      "y": 74,
       "x": 163
     }
   ],

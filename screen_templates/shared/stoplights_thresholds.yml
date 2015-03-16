@@ -469,3 +469,12 @@ prod:
 - query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
   color: white_on_green
   value: 15
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
+  color: white_on_red
+  value: 3
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
+  color: white_on_yellow
+  value: 1
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
+  color: white_on_green
+  value: 1
