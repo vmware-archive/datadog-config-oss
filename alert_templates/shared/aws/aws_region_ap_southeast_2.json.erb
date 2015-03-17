@@ -1,8 +1,8 @@
 {
   "notify_no_data": true,
-  "name": "<%= environment %> CF: AWS has instance on ap-southeast-2 (usally fraudulent incident)",
+  "name": "<%= environment %> CF: AWS has instance on ap-southeast-2",
   "silenced": false,
   "query": "max(last_5m):max:aws.ec2.cloudops.instance_count{region:ap-southeast-2} > 0",
-  "message": "This alert should only be triggered when AWS has instance in ap-southeast-2 <%= cloudops_email %>"
+  "message": "ap-southeast-2 should have no instances, any instances that exist are possibly fraudulent. <%= cloudops_email %>"
 }
 
