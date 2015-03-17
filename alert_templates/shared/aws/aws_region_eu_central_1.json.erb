@@ -1,0 +1,8 @@
+{
+  "notify_no_data": true,
+  "name": "<%= environment %> CF: AWS has instance on eu-central-1 (usally fraudulent incident)",
+  "silenced": false,
+  "query": "max(last_5m):max:aws.ec2.cloudops.instance_count{region:eu-central-1} > 0",
+  "message": "This alert should only be triggered when AWS has instance in eu-central-1 <%= cloudops_email %>"
+}
+
