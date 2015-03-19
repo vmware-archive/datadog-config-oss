@@ -1385,7 +1385,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 38,
+      "y": 41,
       "x": 23.87890625
     },
     {
@@ -1430,7 +1430,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 50,
+      "y": 53,
       "x": 23.87890625
     },
     {
@@ -1475,7 +1475,7 @@
         }
       ],
       "aggr": "avg",
-      "y": 44,
+      "y": 47,
       "x": 23.87890625
     },
     {
@@ -1520,17 +1520,17 @@
         }
       ],
       "aggr": "avg",
-      "y": 32,
-      "x": 23.87890625
+      "y": 35,
+      "x": 23.916666666666668
     },
     {
       "metric": "",
       "height": 4,
       "query": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>})",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "/s",
       "title_size": 20,
-      "title": true,
+      "title": false,
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "left",
@@ -1565,8 +1565,8 @@
         }
       ],
       "aggr": "avg",
-      "y": 26,
-      "x": 23.87890625
+      "y": 31,
+      "x": 23.916666666666668
     },
     {
       "title_size": 20,
@@ -2854,6 +2854,26 @@
       "x": 0,
       "type": "event_stream",
       "event_size": "s"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "left",
+      "text_align": "center",
+      "title_text": "",
+      "height": 5,
+      "bgcolor": "white",
+      "html": "[Router](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>)",
+      "y": 26,
+      "x": 24,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 13,
+      "auto_refresh": false
     }
   ],
   "id": 14530
