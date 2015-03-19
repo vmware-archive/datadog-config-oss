@@ -1,205 +1,317 @@
 {
-    "graphs": [
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.ec2.network_in{*}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.ec2.network_in"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.ec2.network_out{*}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.ec2.network_out"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.request_count{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.request_count"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.httpcode_elb_5xx{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.httpcode_elb_5xx"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.httpcode_backend_5xx{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.httpcode_backend_5xx"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.latency{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.latency"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.surge_queue_length{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.surge_queue_length"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.healthy_host_count{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.healthy_host_count"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:aws.elb.un_healthy_host_count{host:<%= router_elb_name %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "aws.elb.un_healthy_host_count"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>} by {ip})",
-                        "stacked": false
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "Requests per second, by router"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.total_routes"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.bad_gateways"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.latency.1m{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.latency.1m"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.rejected_requests{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.rejected_requests"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.requests{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.requests"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.responses{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.responses"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.routed_app_requests{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.routed_app_requests"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "avg:cf.collector.router.total_requests{deployment:<%= deployment %>}"
-                    }
-                ],
-                "events": [<%= default_events_json %>]
-            },
-            "title": "cf.collector.router.total_requests"
-        }
-    ],
-    "description": "Health statistics from the routers and their ELBs",
-    "title": "<%= environment %> Router and ELB health metrics"
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.network_in{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.ec2.network_in"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.network_out{*} by {name}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.ec2.network_out"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.elb.request_count{host:cf-router} by {availability-zone}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.request_count"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.elb.httpcode_elb_5xx{host:cf-router} by {availability-zone}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.httpcode_elb_5xx"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.elb.httpcode_backend_5xx{host:cf-router} by {availability-zone}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.httpcode_backend_5xx"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.elb.latency{host:cf-router} by {availability-zone}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.latency"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.elb.surge_queue_length{host:cf-router} by {availability-zone}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.surge_queue_length"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:aws.elb.healthy_host_count{host:cf-router}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.healthy_host_count"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "avg:aws.elb.un_healthy_host_count{host:cf-router}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "title": "aws.elb.un_healthy_host_count"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>} by {ip})",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "title": "Requests per second, by router"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.total_routes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.bad_gateways"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.latency.1m{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.latency.1m"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.rejected_requests{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.rejected_requests"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.requests{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.requests"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.responses{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.responses"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.routed_app_requests{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.routed_app_requests"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.router.total_requests{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "cf.collector.router.total_requests"
+    }
+  ],
+  "description": "Health statistics from the routers and their ELBs",
+  "id": 19608,
+  "title": "<%= environment %> Router and ELB health metrics"
 }
