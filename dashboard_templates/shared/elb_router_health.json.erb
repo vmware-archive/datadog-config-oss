@@ -180,7 +180,7 @@
         "requests": [
           {
             "q": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
-            "type": "area"
+            "type": "line"
           }
         ],
         "events": [
@@ -196,7 +196,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -206,7 +206,7 @@
           }
         ]
       },
-      "title": "cf.collector.router.bad_gateways"
+      "title": "router.bad_gateways per second"
     },
     {
       "definition": {
@@ -230,7 +230,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.rejected_requests{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.rejected_requests{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -240,14 +240,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.rejected_requests"
+      "title": "router.rejected_requests per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.requests{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.requests{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -257,14 +257,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.requests"
+      "title": "router.requests per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.responses{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.responses{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -274,14 +274,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.responses"
+      "title": "router.responses per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.routed_app_requests{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.routed_app_requests{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -291,14 +291,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.routed_app_requests"
+      "title": "router.routed_app_requests per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.total_requests{deployment:<%= deployment %>} by {ip}",
+            "q": "per_second(avg:cf.collector.router.total_requests{deployment:<%= deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -308,7 +308,7 @@
           }
         ]
       },
-      "title": "cf.collector.router.total_requests"
+      "title": "router.total_requests per second"
     }
   ],
   "description": "Health statistics from the routers and their ELBs",
