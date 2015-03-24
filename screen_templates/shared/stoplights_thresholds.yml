@@ -1,13 +1,13 @@
 ---
 prod:
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
@@ -16,14 +16,14 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
@@ -32,14 +32,14 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
@@ -48,24 +48,24 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
@@ -74,18 +74,18 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
-    ) *25
+    ) *25"
   color: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
-    ) *25
+    ) *25"
   color: white_on_green
   value: 100
 - query: sum:cf.collector.reservable_stagers{deployment:}
@@ -103,14 +103,14 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
@@ -119,28 +119,28 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
-    ) *25
+    ) *25"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
-    ) *25
+    ) *25"
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
@@ -149,24 +149,24 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
@@ -175,56 +175,56 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100
   color: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50
+    ) *50"
   color: white_on_green
   value: 100
-- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_red
   value: 2
-- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_yellow
   value: 24
-- query: (min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600
+- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_green
   value: 24
-- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024
+- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024"
   color: white_on_red
   value: 6
-- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024
+- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024"
   color: white_on_yellow
   value: 7.2
-- query: (min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024
+- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    by {ip}) / 0.000001024"
   color: white_on_green
   value: 7.2
-- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024
+- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024"
   color: white_on_red
   value: 18
-- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024
+- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024"
   color: white_on_yellow
   value: 22
-- query: (sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024
+- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+    ) / 0.000001024"
   color: white_on_green
   value: 22
-- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
   color: white_on_red
   value: 0.005
-- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
   color: white_on_yellow
   value: 0.01
-- query: (avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})
+- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
   color: white_on_green
   value: 0.01
 - query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
