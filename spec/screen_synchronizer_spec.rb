@@ -151,6 +151,11 @@ describe ScreenSynchronizer do
                   "title"=>"some-deployment DEA Radiator"
                 },
                 {
+                  "resource"=>"/api/v1/screen/4321",
+                  "id"=>4321,
+                  "title"=>"Other Status"
+                },
+                {
                   "resource"=>"/api/v1/screen/2468",
                   "id"=>2468,
                   "title"=>"No specials"
@@ -172,9 +177,19 @@ describe ScreenSynchronizer do
           expect(synchronizer.identify_target_link('/dash/dash/123456')).to eq(expect_dash)
         end
 
+        it 'change the note link for dashboards v2' do
+          expect_dash = '/dash/dash/<%= lookup_note_asset(environment + \' DEA Radiator\', :dashboard) %>'
+          expect(synchronizer.identify_target_link('/dash/123456')).to eq(expect_dash)
+        end
+
         it 'change the note link for screenboards' do
           expect_screen = '/screen/board/<%= lookup_note_asset( deployment + \' DEA Radiator\', :screenboard) %>'
           expect(synchronizer.identify_target_link('/screen/board/1234')).to eq(expect_screen)
+        end
+
+        it 'change the note link for screenboards v2' do
+          expect_screen = '/screen/board/<%= lookup_note_asset(\'Other Status\', :screenboard) %>'
+          expect(synchronizer.identify_target_link('/screen/4321')).to eq(expect_screen)
         end
 
         it 'should handle screen titles with no special vars' do

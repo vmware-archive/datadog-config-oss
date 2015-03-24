@@ -94,16 +94,16 @@ class ScreenSynchronizer < Synchronizer
 
   def identify_target_link(url)
     case url
-    when /\/dash\/dash/
-      id = url.match(/.*\/dash\/dash\/(\d+).*/).captures.first
+    when /\/dash/
+      id = url.match(/.*\/dash\/(\d+).*/).captures.first
       title = @dog.get_dashboards[1]["dashes"].select { |v| v["id"] == id }.first["title"]
       if title == filter_environment_specifics(title)
         return "/dash/dash/<%= lookup_note_asset('#{title}', :dashboard) %>"
       else
         return "/dash/dash/<%= lookup_note_asset(#{filter_environment_specifics(title)}\', :dashboard) %>"
       end
-    when /\/screen\/board/
-      id = url.match(/.*\/screen\/board\/(\d+).*/).captures.first
+    when /\/screen/
+      id = url.match(/.*\/screen\/(\w+\/)*(\d+).*/).captures.last
       title = @dog.get_all_screenboards[1]["screenboards"].select { |v| v["id"] == id.to_i }.first["title"]
       if title == filter_environment_specifics(title)
         return "/screen/board/<%= lookup_note_asset('#{title}', :screenboard) %>"
