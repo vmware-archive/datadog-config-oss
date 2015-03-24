@@ -419,27 +419,33 @@
         "deployment:<%= deployment %>"
       ],
       "precision": 0,
-      "title_text": "",
+      "title_text": "Reserveable Stagers - 5m avg",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:cf.collector.reservable_stagers{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "aggr": "sum",
@@ -450,7 +456,7 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "",
+      "title_text": "Reserveable Stagers - 1h",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
@@ -889,7 +895,7 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "CPU Lemmings - 4h",
+      "title_text": "Hours since last DEA start - 4h",
       "height": 12.000000158945717,
       "tile_def": {
         "viz": "timeseries",
@@ -908,10 +914,10 @@
           }
         ]
       },
-      "width": 29,
+      "width": 28,
       "timeframe": "4h",
-      "y": 35.90856806437174,
-      "x": 70.80439976851146,
+      "y": 80.82754898071289,
+      "x": 70.83189102013905,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -934,32 +940,38 @@
 
       ],
       "precision": 1,
-      "title_text": "Hours since last crash",
+      "title_text": "Hours since last DEA start",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "aggr": "avg",
-      "y": 35.991031646728516,
-      "x": 49.88860285282135
+      "y": 80.99971389770508,
+      "x": 49.916089018185936
     },
     {
       "title_size": 20,
@@ -1870,7 +1882,7 @@
       "query": "avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:<%= deployment %>} *100",
       "text_size": "auto",
       "unit": "",
-      "title_size": 20,
+      "title_size": 16,
       "title": true,
       "aggregator": "avg",
       "title_align": "left",
@@ -1882,32 +1894,38 @@
 
       ],
       "precision": 1,
-      "title_text": "Reservable Stager Aggr %",
+      "title_text": "% of DEAs w/ >4GB Free RAM",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:} *100', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "aggr": "avg",
-      "y": 50.99248123168945,
-      "x": 49.97106643517812
+      "y": 95.95486323038737,
+      "x": 49.955151518185936
     },
     {
       "metric": "cloudops_tools.dea_monitor.additional_runners_needed",
@@ -2372,15 +2390,17 @@
         "job:dea"
       ],
       "precision": 2,
-      "title_text": "",
+      "title_text": "Mem Free Bytes - 5m avg",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('sum:cf.collector.mem_free_bytes{deployment:,job:dea}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:cf.collector.mem_free_bytes{deployment:,job:dea}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "aggr": "sum",
@@ -2391,7 +2411,7 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "",
+      "title_text": "Mem Free Bytes - 1h",
       "height": 12.000000158945717,
       "tile_def": {
         "viz": "timeseries",
@@ -2417,17 +2437,13 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "Disk usage (%) for last hour.",
-      "height": 12,
+      "title_text": "Ephemeral Disk usage (%) - 1h",
+      "height": 12.000000158945717,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
           {
             "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {deployment, job, index}",
-            "type": "line"
-          },
-          {
-            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{*} by {deployment, job, index}",
             "type": "line"
           }
         ],
@@ -2435,17 +2451,17 @@
 
         ]
       },
-      "width": 30,
+      "width": 28,
       "timeframe": "1h",
-      "y": 80.9895871480306,
-      "x": 70.97222610314687,
+      "y": 35.83333559830984,
+      "x": 70.83333551883698,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
     },
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
-      "height": 5,
+      "height": 11.916666825612383,
       "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{*}",
       "text_size": "auto",
       "unit": "%",
@@ -2454,7 +2470,7 @@
       "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
-      "width": 21,
+      "width": 20.916666666666668,
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
@@ -2485,12 +2501,12 @@
         }
       ],
       "aggr": "max",
-      "y": 80.9895871480306,
-      "x": 49.97106643517812
+      "y": 35.91579945882162,
+      "x": 49.916089018185936
     },
     {
       "metric": "bosh.healthmonitor.system.disk.persistent.percent",
-      "height": 5,
+      "height": 12.000000158945717,
       "query": "avg:bosh.healthmonitor.system.disk.persistent.percent{*}",
       "text_size": "auto",
       "unit": "%",
@@ -2530,8 +2546,8 @@
         }
       ],
       "aggr": "avg",
-      "y": 87.9919064839681,
-      "x": 49.97106643517812
+      "y": 49.98408762613932,
+      "x": 49.99131993452708
     },
     {
       "title_size": 16,
@@ -2984,6 +3000,66 @@
       "type": "note",
       "width": 12,
       "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Persistent Disk usage (%) - 1h",
+      "height": 12.000000158945717,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{*} by {deployment, job, index}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 28,
+      "timeframe": "1h",
+      "y": 49.83217593034109,
+      "x": 70.83333551883698,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU Utilization (%) - 1h",
+      "height": 13.000000158945717,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.cpu.sys{*} by {deployment,job,index}",
+            "type": "line"
+          },
+          {
+            "q": "max:bosh.healthmonitor.system.cpu.usr{*} by {deployment,job,index}",
+            "type": "line"
+          },
+          {
+            "q": "max:bosh.healthmonitor.system.cpu.wait{*} by {deployment,job,index}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 49.083333333333336,
+      "timeframe": "1h",
+      "y": 64.66579945882161,
+      "x": 49.66579910119375,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "id": 14530
