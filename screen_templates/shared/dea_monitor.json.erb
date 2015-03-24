@@ -3,6 +3,9 @@
   "board_bgtype": "board_graph",
   "height": 80,
   "width": "100%",
+  "template_variables": [
+
+  ],
   "templated": false,
   "widgets": [
     {
@@ -145,16 +148,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.available_memory_ratio{deployment:<%= deployment %>,job:dea}",
-            "stacked": true
+            "q": "avg:cf.collector.available_memory_ratio{deployment:<%= deployment %>,job:dea} by {ip}",
+            "type": "area"
           }
         ],
         "events": [
           {
             "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
           }
         ]
       },
@@ -176,16 +176,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.available_disk_ratio{deployment:<%= deployment %>,job:dea}",
-            "stacked": true
+            "q": "avg:cf.collector.available_disk_ratio{deployment:<%= deployment %>,job:dea} by {ip}",
+            "type": "area"
           }
         ],
         "events": [
           {
             "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
           }
         ]
       },
@@ -263,6 +260,136 @@
       "timeframe": "1h",
       "y": 60.99971389770508,
       "x": 90.00000218550365,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Reserved Memory",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.dea_registry_mem_reserved{deployment:<%= deployment %>} by {ip}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 1,
+      "x": 137,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Reserved Disk",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.dea_registry_disk_reserved{deployment:<%= deployment %>} by {ip}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 16,
+      "x": 137,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "<%= environment %> CF: Average Warden Response Time to DEA",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.total_warden_response_time_in_ms{deployment:<%= deployment %>} by {ip} / avg:cf.collector.warden_request_count{deployment:<%= deployment %>} by {ip}",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "1h",
+      "y": 31,
+      "x": 137,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App request roundtrip (ms) (4 hrs)",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "(avg:app_benchmarking.rest_of_time{deployment:<%= deployment %>} by {status})/1000000, (avg:app_benchmarking.time_in_gorouter{deployment:<%= deployment %>} by {status})/1000000, (avg:app_benchmarking.time_in_app{deployment:<%= deployment %>} by {status})/1000000",
+            "type": "bars"
+          },
+          {
+            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= deployment %>} by {status})/1000000",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          }
+        ],
+        "outliers": "1%",
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 47,
+      "timeframe": "4h",
+      "y": 46,
+      "x": 137,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
