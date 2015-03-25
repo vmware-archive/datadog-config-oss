@@ -1945,32 +1945,38 @@
         "deployment:<%= deployment %>"
       ],
       "precision": 0,
-      "title_text": "Additional Runners Needed",
+      "title_text": "Additional DEAs Needed",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
         {
+          "comparator": ">=",
           "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_red') %>,
           "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_red') %>
+          "custom_fg_color": null
         },
         {
+          "comparator": ">=",
           "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_yellow') %>,
           "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_yellow') %>
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "aggr": "max",
-      "y": 65.99248123168945,
-      "x": 49.97106643517812
+      "y": 109.96238581339519,
+      "x": 49.98408726851145
     },
     {
       "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
@@ -2896,8 +2902,8 @@
       "width": 38,
       "query": "source:aws",
       "timeframe": "1d",
-      "y": 80.9997189839681,
-      "x": 151.99943252404532,
+      "y": 81.99942398071289,
+      "x": 151.99942807356516,
       "type": "event_stream",
       "event_size": "s"
     },
@@ -3060,6 +3066,49 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "metric": "aws.ec2.status_check_failed",
+      "height": 12.000000158945717,
+      "query": "max:aws.ec2.status_check_failed{*}",
+      "text_size": "auto",
+      "unit": "fail",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 23,
+      "timeframe": "10m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{*}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{*}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "aggr": "max",
+      "y": 85.91580581665039,
+      "x": 11.915509184201559
     }
   ],
   "id": 14530
