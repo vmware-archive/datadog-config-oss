@@ -1,0 +1,26 @@
+---
+prod:
+- query: avg:aws.elb.un_healthy_host_count{$zone}
+  color: green_on_white
+  value: 1
+- query: avg:aws.elb.un_healthy_host_count{$zone}
+  color: red_on_white
+  value: 1
+- query: sum:aws.elb.healthy_host_count{$zone}
+  color: red_on_white
+  value: 1
+- query: sum:aws.elb.healthy_host_count{$zone}
+  color: green_on_white
+  value: 1
+- query: avg:aws.ec2.cpuutilization{$zone,$deployment,$job}
+  color: red_on_white
+  value: 10
+- query: avg:aws.ec2.cpuutilization{$zone,$deployment,$job}
+  color: green_on_white
+  value: 10
+- query: max:aws.ebs.volume_queue_length{$zone,$deployment,$job}
+  color: red_on_white
+  value: 20
+- query: avg:aws.ebs.volume_queue_length{$zone,$deployment,$job}
+  color: white_on_red
+  value: 20

@@ -1,0 +1,673 @@
+{
+  "board_title": "AWS",
+  "board_bgtype": "board_graph",
+  "height": 84,
+  "width": "100%",
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": "availability-zone",
+      "name": "zone"
+    },
+    {
+      "default": "*",
+      "prefix": null,
+      "name": "elb"
+    },
+    {
+      "default": "*",
+      "prefix": "deployment",
+      "name": "deployment"
+    },
+    {
+      "default": "*",
+      "prefix": "job",
+      "name": "job"
+    }
+  ],
+  "templated": true,
+  "widgets": [
+    {
+      "x": 47,
+      "title": false,
+      "height": 18,
+      "width": 57,
+      "timeframe": "1w",
+      "y": 0,
+      "query": "source:aws",
+      "type": "event_stream",
+      "event_size": "s"
+    },
+    {
+      "metric": "aws.ec2.host_ok",
+      "height": 5,
+      "query": "sum:aws.ec2.host_ok{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 16,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+        "$zone",
+        "$deployment",
+        "$job"
+      ],
+      "precision": 0,
+      "title_text": "Active EC2 Instances",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "sum",
+      "y": 36,
+      "x": 18
+    },
+    {
+      "metric": "",
+      "height": 5,
+      "query": "sum:aws.ebs.volume_read_ops{$zone,$deployment,$job}/avg:aws.ebs.volume_read_ops{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 16,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "EBS Volumes",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "avg",
+      "y": 65,
+      "x": 18
+    },
+    {
+      "title_size": 16,
+      "y": 26,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+        {
+          "color": "green_on_white",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('avg:aws.elb.un_healthy_host_count{$zone}', 'green_on_white') %>
+        },
+        {
+          "color": "red_on_white",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('avg:aws.elb.un_healthy_host_count{$zone}', 'red_on_white') %>
+        }
+      ],
+      "title_align": "left",
+      "text_align": "right",
+      "title_text": "Unhealthy",
+      "precision": 0,
+      "width": 12,
+      "query": "avg:aws.elb.un_healthy_host_count{$zone}",
+      "x": 34,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "text_size": "auto",
+      "height": 5,
+      "type": "query_value",
+      "timeframe": "1d",
+      "unit": "auto",
+      "aggr": "avg"
+    },
+    {
+      "title_size": 16,
+      "y": 19,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+        {
+          "color": "red_on_white",
+          "invert": false,
+          "comparator": "<",
+          "value": <%= threshold_value('sum:aws.elb.healthy_host_count{$zone}', 'red_on_white') %>
+        },
+        {
+          "color": "green_on_white",
+          "invert": false,
+          "comparator": ">=",
+          "value": <%= threshold_value('sum:aws.elb.healthy_host_count{$zone}', 'green_on_white') %>
+        }
+      ],
+      "title_align": "left",
+      "text_align": "right",
+      "title_text": "Healthy hosts",
+      "precision": 0,
+      "width": 12,
+      "query": "sum:aws.elb.healthy_host_count{$zone}",
+      "x": 34,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "text_size": "auto",
+      "height": 5,
+      "type": "query_value",
+      "timeframe": "1d",
+      "unit": "auto",
+      "aggr": "avg"
+    },
+    {
+      "metric": "aws.ec2.cpuutilization",
+      "height": 5,
+      "query": "avg:aws.ec2.cpuutilization{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 12,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+        "$zone",
+        "$deployment",
+        "$job"
+      ],
+      "precision": 0,
+      "title_text": "Min Utilization",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "red_on_white",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:aws.ec2.cpuutilization{$zone,$deployment,$job}', 'red_on_white') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "green_on_white",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:aws.ec2.cpuutilization{$zone,$deployment,$job}', 'green_on_white') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "aggr": "avg",
+      "y": 43,
+      "x": 34
+    },
+    {
+      "metric": "aws.ec2.cpuutilization",
+      "height": 5,
+      "query": "avg:aws.ec2.cpuutilization{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 12,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+        "$zone",
+        "$deployment",
+        "$job"
+      ],
+      "precision": 0,
+      "title_text": "Max utilization",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "avg",
+      "y": 36,
+      "x": 34
+    },
+    {
+      "title_size": 16,
+      "y": 19,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+
+      ],
+      "title_align": "left",
+      "text_align": "right",
+      "title_text": "Requests",
+      "precision": 0,
+      "width": 16,
+      "query": "sum:aws.elb.request_count{$zone}",
+      "x": 18,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "text_size": "auto",
+      "height": 5,
+      "type": "query_value",
+      "timeframe": "1d",
+      "unit": "/s",
+      "aggr": "avg"
+    },
+    {
+      "title_size": 16,
+      "y": 26,
+      "title": true,
+      "aggregator": "max",
+      "conditional_formats": [
+
+      ],
+      "title_align": "left",
+      "text_align": "right",
+      "title_text": "Latency",
+      "precision": 0,
+      "width": 16,
+      "query": "1000*avg:aws.elb.latency{$zone}",
+      "x": 18,
+      "metric_type": "standard",
+      "calc_func": "raw",
+      "text_size": "auto",
+      "height": 5,
+      "type": "query_value",
+      "timeframe": "4h",
+      "unit": "ms",
+      "aggr": "avg"
+    },
+    {
+      "metric": "aws.ebs.volume_queue_length",
+      "height": 5,
+      "query": "max:aws.ebs.volume_queue_length{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 12,
+      "timeframe": "4h",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Worst Q Length",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "red_on_white",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:aws.ebs.volume_queue_length{$zone,$deployment,$job}', 'red_on_white') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "aggr": "max",
+      "y": 65,
+      "x": 34
+    },
+    {
+      "metric": "aws.ebs.volume_queue_length",
+      "height": 5,
+      "query": "avg:aws.ebs.volume_queue_length{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 12,
+      "timeframe": "4h",
+      "type": "query_value",
+      "tags": [
+        "$zone"
+      ],
+      "precision": 0,
+      "title_text": "Avg Q Length",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:aws.ebs.volume_queue_length{$zone,$deployment,$job}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "aggr": "avg",
+      "y": 72,
+      "x": 34
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "type": "note",
+      "title_align": "left",
+      "tick_edge": "right",
+      "text_align": "center",
+      "title_text": "",
+      "height": 14,
+      "bgcolor": "blue",
+      "html": "ELBs",
+      "y": 19,
+      "x": 0.75,
+      "font_size": "36",
+      "tick": true,
+      "tick_pos": "50%",
+      "width": 16,
+      "auto_refresh": false
+    },
+    {
+      "sizing": "fit",
+      "title_size": 16,
+      "title": true,
+      "url": "/static/images/screenboard/integrations/aws.png",
+      "title_align": "left",
+      "title_text": "",
+      "height": 14,
+      "width": 32,
+      "y": 0,
+      "x": 0,
+      "type": "image"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "ELB requests per second",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:aws.elb.request_count{$elb} by {hostname}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 28,
+      "timeframe": "1d",
+      "y": 19,
+      "x": 47,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "ELB Latency (ms)",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "1000*avg:aws.elb.latency{$elb} by {hostname}",
+            "stacked": false
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 28,
+      "timeframe": "1d",
+      "y": 19,
+      "x": 76,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "type": "note",
+      "title_align": "left",
+      "tick_edge": "right",
+      "text_align": "center",
+      "title_text": "",
+      "height": 14,
+      "bgcolor": "pink",
+      "html": "EC2 Instances",
+      "y": 36,
+      "x": 0.75,
+      "font_size": "36",
+      "tick": true,
+      "tick_pos": "50%",
+      "width": 16,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "type": "note",
+      "title_align": "left",
+      "tick_edge": "right",
+      "text_align": "center",
+      "title_text": "",
+      "height": 14,
+      "bgcolor": "white",
+      "html": "EBS Volumes",
+      "y": 65,
+      "x": 0.75,
+      "font_size": "36",
+      "tick": true,
+      "tick_pos": "50%",
+      "width": 16,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU Utilization by instance (%)",
+      "height": 12,
+      "tile_def": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "aws.ec2.cpuutilization{$zone,$deployment,$job} by {host}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 57,
+      "timeframe": "1d",
+      "y": 36,
+      "x": 47,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "type": "note",
+      "title_align": "left",
+      "tick_edge": "right",
+      "text_align": "center",
+      "title_text": "",
+      "height": 18,
+      "bgcolor": "yellow",
+      "html": "Latest status updates",
+      "y": 0,
+      "x": 34,
+      "font_size": "24",
+      "tick": true,
+      "tick_pos": "50%",
+      "width": 12,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "EBS IOps by volume",
+      "height": 12,
+      "tile_def": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "top(avg:aws.ebs.volume_read_ops{$zone,$deployment,$job} by {name,device}, 20, 'mean', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "1d",
+      "y": 65,
+      "x": 47,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "EBS queue length by volume",
+      "height": 12,
+      "tile_def": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "max:aws.ebs.volume_queue_length{$zone,$deployment,$job} by {host,device}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 28,
+      "timeframe": "1d",
+      "y": 65,
+      "x": 76,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "metric": "",
+      "height": 5,
+      "query": "sum:aws.ebs.volume_read_ops{$zone,$deployment,$job} + sum:aws.ebs.volume_write_ops{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 16,
+      "timeframe": "4h",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "EBS Overall IOps",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "avg",
+      "y": 72,
+      "x": 18
+    },
+    {
+      "metric": "aws.ec2.cpuutilization",
+      "height": 5,
+      "query": "avg:aws.ec2.cpuutilization{$zone,$deployment,$job}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "right",
+      "width": 16,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+        "$zone",
+        "$deployment",
+        "$job"
+      ],
+      "precision": 0,
+      "title_text": "Average Utilization",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+
+      ],
+      "aggr": "avg",
+      "y": 43,
+      "x": 18
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Instances failing Status Checks - 4h",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:aws.ec2.status_check_failed{$zone,$deployment,$job} by {deployment,index,job,instance_id}",
+            "type": "bars"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 57,
+      "timeframe": "4h",
+      "y": 50,
+      "x": 47,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    }
+  ],
+  "id": 18760
+}
