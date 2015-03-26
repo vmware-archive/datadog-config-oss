@@ -478,9 +478,9 @@ prod:
 - query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
   color: white_on_green
   value: 1
-- query: max:aws.ec2.status_check_failed{*}
+- query: max:aws.ec2.status_check_failed{deployment:}
   color: white_on_red
   value: 0
-- query: max:aws.ec2.status_check_failed{*}
+- query: max:aws.ec2.status_check_failed{deployment:}
   color: white_on_green
   value: 0

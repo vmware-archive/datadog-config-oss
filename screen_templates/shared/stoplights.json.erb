@@ -2899,11 +2899,11 @@
       "title_align": "left",
       "title_text": "AWS Events",
       "height": 18,
-      "width": 38,
+      "width": 32,
       "query": "source:aws",
       "timeframe": "1d",
-      "y": 81.99942398071289,
-      "x": 151.99942807356516,
+      "y": 87,
+      "x": 152,
       "type": "event_stream",
       "event_size": "s"
     },
@@ -3069,8 +3069,8 @@
     },
     {
       "metric": "aws.ec2.status_check_failed",
-      "height": 12.000000158945717,
-      "query": "max:aws.ec2.status_check_failed{*}",
+      "height": 4,
+      "query": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "fail",
       "title_size": 16,
@@ -3078,11 +3078,11 @@
       "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
-      "width": 23,
+      "width": 18,
       "timeframe": "10m",
       "type": "query_value",
       "tags": [
-
+        "deployment:<%= deployment %>"
       ],
       "precision": 0,
       "title_text": "",
@@ -3093,7 +3093,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{*}', 'white_on_red') %>,
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3101,14 +3101,34 @@
           "comparator": "<=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{*}', 'white_on_green') %>,
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
       ],
       "aggr": "max",
-      "y": 85.91580581665039,
-      "x": 11.915509184201559
+      "y": 86.91666666666667,
+      "x": 183.91666666666666
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "left",
+      "text_align": "center",
+      "title_text": "",
+      "height": 6,
+      "bgcolor": "white",
+      "html": "[AWS](/screen/board/<%= lookup_note_asset('AWS', :screenboard) %>)",
+      "y": 81,
+      "x": 152,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 50,
+      "auto_refresh": false
     }
   ],
   "id": 14530
