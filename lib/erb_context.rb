@@ -32,9 +32,16 @@ class ErbContext < OpenStruct
   def lookup_note_asset(title, screen_or_dash)
     case screen_or_dash
     when :screenboard
-      dog.get_all_screenboards[1]["screenboards"].select{ |v| v["title"] == title }.first["id"].to_s
+      all_things = dog.get_all_screenboards[1]["screenboards"]
     when :dashboard
-      dog.get_dashboards[1]["dashes"].select{ |v| v["title"] == title }.first["id"]
+      all_things = dog.get_dashboards[1]["dashes"]
+    end
+
+    lookup = all_things.find{ |v| v["title"] == title }
+    if lookup.nil?
+      return ""
+    else
+      return lookup["id"].to_s
     end
   end
 end
