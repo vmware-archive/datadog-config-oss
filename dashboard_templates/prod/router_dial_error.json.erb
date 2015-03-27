@@ -5,7 +5,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>} by {host}",
+            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io} by {host}",
             "type": "area"
           }
         ]
@@ -17,7 +17,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{domain:pivotal.run.io} by {host}, 10, 'max', 'desc')",
+            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io} by {host}, 10, 'max', 'desc')",
             "style": {
               "palette": "dog_classic"
             },
@@ -79,7 +79,7 @@
       "title": "router dial error domains"
     }
   ],
-  "description": "created by cfaccounts+datadog-<%= environment %>@pivotallabs.com",
+  "description": "created by cfaccounts+datadog-prod@pivotallabs.com",
   "id": 31141,
   "title": "router dial error"
 }
