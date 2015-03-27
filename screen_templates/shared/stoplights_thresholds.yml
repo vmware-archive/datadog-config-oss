@@ -332,13 +332,13 @@ prod:
 - query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
   color: white_on_green
   value: 2
-- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_red
   value: 50
-- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_yellow
   value: 20
-- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
+- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_green
   value: 20
 - query: avg:natbox.pingout.health{*}

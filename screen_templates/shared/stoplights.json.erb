@@ -2004,19 +2004,19 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:' + domain_url + '}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_red') %>
         },
         {
           "color": "white_on_yellow",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:' + domain_url + '}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_yellow') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:' + domain_url + '}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_green') %>
         }
       ],
       "aggr": "avg",
