@@ -1,7 +1,0 @@
-{
-    "notify_no_data": false,
-              "name": "<%= environment %> CF: Nyet tests are failing",
-          "silenced": false,
-           "query": "avg(last_5m):avg:nyet.status{deployment:<%= deployment %>,app_type:ruby,loggregator_enabled:0} < 1",
-           "message": "The nyet tests have been unable to stage and run an application recently. <%= backend_pagerduty %>"
-}

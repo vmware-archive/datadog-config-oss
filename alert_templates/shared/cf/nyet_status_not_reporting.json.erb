@@ -1,8 +1,0 @@
-{
-  "notify_no_data": true,
-  "name": "<%= environment %> CF: nyet is not reporting health",
-  "silenced": false,
-  "query": "min(last_10m):avg:nyet.status{deployment:<%= deployment %>,app_type:ruby,loggregator_enabled:0} < 0",
-  "message": "This alert should only be triggered when the nyet has stopped reporting its health to DataDog. <%= backend_pagerduty %>"
-}
-
