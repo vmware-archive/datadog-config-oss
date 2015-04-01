@@ -1,6 +1,6 @@
 {
   "notify_no_data": true,
-  "no_data_timeframe": 800,
+  "no_data_timeframe": 1500,
   "name": "<%= environment %> CF: AWS has instance on ap-southeast-1",
   "silenced": false,
   "query": "max(last_5m):max:aws.ec2.cloudops.instance_count{region:ap-southeast-1} > 0",
