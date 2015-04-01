@@ -27,7 +27,7 @@
       ],
       "precision": 0,
       "title_text": "DEA - 5m",
-      "calc_func": "raw",
+      "x": 11.992188413937887,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -43,9 +43,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 12.989004770914713,
-      "x": 11.992188413937887
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -67,7 +69,7 @@
       ],
       "precision": 0,
       "title_text": "Bosh - 5m",
-      "calc_func": "raw",
+      "x": 11.989294330279032,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -83,9 +85,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 66.99363581339519,
-      "x": 11.989294330279032
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -106,7 +110,7 @@
       ],
       "precision": 0,
       "title_text": "UAA - 5m",
-      "calc_func": "raw",
+      "x": 11.992188413937887,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -122,9 +126,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 24.991321563720703,
-      "x": 11.992188413937887
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -145,7 +151,7 @@
       ],
       "precision": 0,
       "title_text": "Login - 5m",
-      "calc_func": "raw",
+      "x": 11.992188413937887,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -161,9 +167,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 30.99247868855795,
-      "x": 11.992188413937887
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -184,7 +192,7 @@
       ],
       "precision": 0,
       "title_text": "API - 5m",
-      "calc_func": "raw",
+      "x": 11.992188413937887,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -200,9 +208,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 18.990161895751953,
-      "x": 11.992188413937887
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -224,7 +234,7 @@
       ],
       "precision": 0,
       "title_text": "HM9000 - 5m",
-      "calc_func": "raw",
+      "x": 11.989294330279032,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -240,9 +250,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 60.99392573038737,
-      "x": 11.989294330279032
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -263,7 +275,7 @@
       ],
       "precision": 0,
       "title_text": "Router - 5m",
-      "calc_func": "raw",
+      "x": 11.99797530968984,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -279,9 +291,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 6.9950815836588545,
-      "x": 11.99797530968984
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -302,7 +316,7 @@
       ],
       "precision": 0,
       "title_text": "NATS - 5m",
-      "calc_func": "raw",
+      "x": 11.99797530968984,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -318,9 +332,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 42.99479548136393,
-      "x": 11.99797530968984
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -342,7 +358,7 @@
       ],
       "precision": 0,
       "title_text": "Stats - 5m",
-      "calc_func": "raw",
+      "x": 11.989294330279032,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -358,9 +374,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 54.99276606241862,
-      "x": 11.989294330279032
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -381,7 +399,7 @@
       ],
       "precision": 0,
       "title_text": "Loggregator - 5m",
-      "calc_func": "raw",
+      "x": 11.989294330279032,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -397,9 +415,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 48.993055979410805,
-      "x": 11.989294330279032
+      "calc_func": "raw"
     },
     {
       "metric": "cf.collector.reservable_stagers",
@@ -420,7 +440,7 @@
       ],
       "precision": 0,
       "title_text": "Reserveable Stagers - 5m avg",
-      "calc_func": "raw",
+      "x": 49.850984851519264,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -448,9 +468,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "sum",
       "y": 5.988137563069661,
-      "x": 49.850984851519264
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -502,7 +524,7 @@
       ],
       "precision": 0,
       "title_text": "Bosh - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -518,9 +540,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 66.99363581339519,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -541,7 +565,7 @@
       ],
       "precision": 0,
       "title_text": "UAA - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -557,9 +581,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 24.986980438232422,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -581,7 +607,7 @@
       ],
       "precision": 0,
       "title_text": "HM9000 - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -597,9 +623,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 60.99392573038737,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -620,7 +648,7 @@
       ],
       "precision": 0,
       "title_text": "Loggregator - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -636,9 +664,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 48.993055979410805,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -674,7 +704,7 @@
       ],
       "precision": 0,
       "title_text": "API - 24h",
-      "calc_func": "raw",
+      "x": 25.98813847700755,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -690,9 +720,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 18.985823313395183,
-      "x": 25.98813847700755
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -714,7 +746,7 @@
       ],
       "precision": 0,
       "title_text": "Stats - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -730,9 +762,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 54.99276606241862,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -753,7 +787,7 @@
       ],
       "precision": 0,
       "title_text": "NATS - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -769,9 +803,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 42.99334589640299,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -792,7 +828,7 @@
       ],
       "precision": 0,
       "title_text": "Router - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -808,9 +844,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 6.987847646077474,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",
@@ -832,7 +870,7 @@
       ],
       "precision": 0,
       "title_text": "Login - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -848,9 +886,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 30.988137563069667,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -871,7 +911,7 @@
       ],
       "precision": 0,
       "title_text": "DEA - 24h",
-      "calc_func": "raw",
+      "x": 25.989585518836975,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -887,9 +927,11 @@
           "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 12.983219146728516,
-      "x": 25.989585518836975
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -941,7 +983,7 @@
       ],
       "precision": 1,
       "title_text": "Hours since last DEA start",
-      "calc_func": "raw",
+      "x": 49.916089018185936,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -969,9 +1011,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 80.99971389770508,
-      "x": 49.916089018185936
+      "calc_func": "raw"
     },
     {
       "title_size": 20,
@@ -1035,7 +1079,7 @@
       ],
       "precision": 2,
       "title_text": "Cell: Min Memory",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1057,9 +1101,11 @@
           "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 5.988137563069661,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1080,7 +1126,7 @@
       ],
       "precision": 2,
       "title_text": "Cells: Total Memory",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1102,9 +1148,11 @@
           "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 12.95138931274414,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -1179,7 +1227,7 @@
       ],
       "precision": 2,
       "title_text": "Cell: Tasks",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1201,9 +1249,11 @@
           "value": <%= threshold_value('(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 20.99247868855794,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "title_size": 20,
@@ -1269,7 +1319,7 @@
       ],
       "precision": 2,
       "title_text": "Cells: Receive Rate - 5m",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1291,9 +1341,11 @@
           "value": <%= threshold_value('max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}', 'green_on_white') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 35.991031646728516,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1314,7 +1366,7 @@
       ],
       "precision": 2,
       "title_text": "Cells: Send Rate - 5m",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1336,9 +1388,11 @@
           "value": <%= threshold_value('max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}', 'green_on_white') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 42.95138931274414,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -1374,7 +1428,7 @@
       ],
       "precision": 2,
       "title_text": "API Req/sec - 5min",
-      "calc_func": "raw",
+      "x": 35.90856643517812,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1402,9 +1456,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 18.99160893758138,
-      "x": 35.90856643517812
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1425,7 +1481,7 @@
       ],
       "precision": 2,
       "title_text": "Login Req/sec - 5min",
-      "calc_func": "raw",
+      "x": 35.90856643517812,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1453,9 +1509,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 30.99247868855795,
-      "x": 35.90856643517812
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1476,7 +1534,7 @@
       ],
       "precision": 2,
       "title_text": "UAA Req/sec - 5min",
-      "calc_func": "raw",
+      "x": 35.90856643517812,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1504,9 +1562,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 24.991321563720703,
-      "x": 35.90856643517812
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1527,7 +1587,7 @@
       ],
       "precision": 1,
       "title_text": "DEA Req/sec - 5min",
-      "calc_func": "raw",
+      "x": 35.90856643517812,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1555,9 +1615,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 12.989004770914713,
-      "x": 35.90856643517812
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -1578,7 +1640,7 @@
       ],
       "precision": 1,
       "title_text": "Router Req/sec - 5min",
-      "calc_func": "raw",
+      "x": 35.90856643517812,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1606,9 +1668,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 6.9921875,
-      "x": 35.90856643517812
+      "calc_func": "raw"
     },
     {
       "title_size": 20,
@@ -1723,7 +1787,7 @@
       ],
       "precision": 1,
       "title_text": "",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1751,9 +1815,11 @@
           "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
       "y": 50.99248123168945,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "metric": "cf.collector.MetronAgent.forwarder.executor.ContainersActual",
@@ -1774,7 +1840,7 @@
       ],
       "precision": 2,
       "title_text": "Cell: Containers - 1d",
-      "calc_func": "raw",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1796,9 +1862,11 @@
           "value": <%= threshold_value('sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "sum",
       "y": 65.99248123168945,
-      "x": 100.85214451948802
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -1895,7 +1963,7 @@
       ],
       "precision": 1,
       "title_text": "% of DEAs w/ >4GB Free RAM",
-      "calc_func": "raw",
+      "x": 49.955151518185936,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1923,9 +1991,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 95.95486323038737,
-      "x": 49.955151518185936
+      "calc_func": "raw"
     },
     {
       "metric": "cloudops_tools.dea_monitor.additional_runners_needed",
@@ -1946,7 +2016,7 @@
       ],
       "precision": 0,
       "title_text": "Additional DEAs Needed",
-      "calc_func": "raw",
+      "x": 49.98408726851145,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1974,9 +2044,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
       "y": 109.96238581339519,
-      "x": 49.98408726851145
+      "calc_func": "raw"
     },
     {
       "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
@@ -1997,7 +2069,7 @@
       ],
       "precision": 0,
       "title_text": "CF dial Error",
-      "calc_func": "raw",
+      "x": 151.9719361861547,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2019,9 +2091,11 @@
           "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 40.90567398071289,
-      "x": 151.9719361861547
+      "calc_func": "raw"
     },
     {
       "metric": "natbox.pingout.health",
@@ -2042,7 +2116,7 @@
       ],
       "precision": 1,
       "title_text": "NAT Box - 5m",
-      "calc_func": "raw",
+      "x": 11.989294330279032,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2058,9 +2132,11 @@
           "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 72.8255246480306,
-      "x": 11.989294330279032
+      "calc_func": "raw"
     },
     {
       "metric": "natbox.pingout.health",
@@ -2081,7 +2157,7 @@
       ],
       "precision": 1,
       "title_text": "NAT box - 24h",
-      "calc_func": "raw",
+      "x": 25.905672351519268,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2097,9 +2173,11 @@
           "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 72.8255246480306,
-      "x": 25.905672351519268
+      "calc_func": "raw"
     },
     {
       "metric": "new_relic.apdex.score",
@@ -2120,7 +2198,7 @@
       ],
       "precision": 2,
       "title_text": "Apdex - 5m",
-      "calc_func": "raw",
+      "x": 1.9713541666666667,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2142,9 +2220,11 @@
           "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 61.992191314697266,
-      "x": 151.9719361861547
+      "y": 95.9921875,
+      "calc_func": "raw"
     },
     {
       "metric": "new_relic.errors.all.errors_per_minute",
@@ -2165,7 +2245,7 @@
       ],
       "precision": 2,
       "title_text": "Error Rate - 5m",
-      "calc_func": "raw",
+      "x": 12.971354166666666,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2181,9 +2261,11 @@
           "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 61.992191314697266,
-      "x": 162.9716513554255
+      "y": 95.9921875,
+      "calc_func": "raw"
     },
     {
       "metric": "cloudops_tools.ssh_abuse_monitor.ssh.attempts",
@@ -2204,7 +2286,7 @@
       ],
       "precision": 0,
       "title_text": "SSH Attempts - 15m",
-      "calc_func": "raw",
+      "x": 11.999422351519266,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2226,9 +2308,11 @@
           "value": <%= threshold_value('avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 78.99884414672852,
-      "x": 11.999422351519266
+      "calc_func": "raw"
     },
     {
       "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
@@ -2249,7 +2333,7 @@
       ],
       "precision": 0,
       "title_text": "Non-CF dial Error",
-      "calc_func": "raw",
+      "x": 151.97049168745676,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2271,9 +2355,11 @@
           "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 47.98755772908529,
-      "x": 151.97049168745676
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -2294,7 +2380,7 @@
       ],
       "precision": 0,
       "title_text": "Running Instances Delta (hour)",
-      "calc_func": "raw",
+      "x": 151.9719361861547,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2322,9 +2408,11 @@
           "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_red') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 5.988137563069661,
-      "x": 151.9719361861547
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -2345,7 +2433,7 @@
       ],
       "precision": 0,
       "title_text": "Applications Delta (hour)",
-      "calc_func": "raw",
+      "x": 151.9719361861547,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2373,9 +2461,11 @@
           "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_red') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 20.99247868855794,
-      "x": 151.9719361861547
+      "calc_func": "raw"
     },
     {
       "metric": "cf.collector.mem_free_bytes",
@@ -2397,7 +2487,7 @@
       ],
       "precision": 2,
       "title_text": "Mem Free Bytes - 5m avg",
-      "calc_func": "raw",
+      "x": 49.88860285282135,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2409,9 +2499,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "sum",
       "y": 20.908565521240234,
-      "x": 49.88860285282135
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -2484,7 +2576,7 @@
       ],
       "precision": 0,
       "title_text": "Top Ephemeral Disk usage (%) past hour",
-      "calc_func": "raw",
+      "x": 49.916089018185936,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2506,9 +2598,11 @@
           "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
       "y": 35.91579945882162,
-      "x": 49.916089018185936
+      "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.disk.persistent.percent",
@@ -2529,7 +2623,7 @@
       ],
       "precision": 0,
       "title_text": "Top Persistent Disk usage (%) past hour",
-      "calc_func": "raw",
+      "x": 49.99131993452708,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2551,9 +2645,11 @@
           "value": <%= threshold_value('avg:bosh.healthmonitor.system.disk.persistent.percent{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
       "y": 49.98408762613932,
-      "x": 49.99131993452708
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -2679,7 +2775,7 @@
       ],
       "precision": 2,
       "title_text": "Console Loggregator Circuit",
-      "calc_func": "raw",
+      "x": 1.9713541666666667,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2695,9 +2791,11 @@
           "value": <%= threshold_value('avg:pws.circuit.loggregator{host:production}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 67.99190139770508,
-      "x": 151.9719361861547
+      "y": 101.99088541666667,
+      "calc_func": "raw"
     },
     {
       "metric": "pws.circuit.cloud_controller_get",
@@ -2718,7 +2816,7 @@
       ],
       "precision": 2,
       "title_text": "CC GET Circuit",
-      "calc_func": "raw",
+      "x": 1.9713541666666667,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2734,9 +2832,11 @@
           "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:production}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 73.99161148071289,
-      "x": 151.9719361861547
+      "y": 107.99088541666667,
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -2750,8 +2850,8 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
-      "y": 55.99971389770508,
-      "x": 151.99943252404532,
+      "y": 90,
+      "x": 2,
       "font_size": "24",
       "tick": false,
       "type": "note",
@@ -2777,7 +2877,7 @@
       ],
       "precision": 0,
       "title_text": "Max ThreadQueue Size - 10m",
-      "calc_func": "raw",
+      "x": 23.971354166666668,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2799,9 +2899,11 @@
           "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
-      "y": 61.992191314697266,
-      "x": 173.97135635217032
+      "y": 95.9921875,
+      "calc_func": "raw"
     },
     {
       "metric": "cf.collector.cc.thread_info.event_machine.resultqueue.size",
@@ -2822,7 +2924,7 @@
       ],
       "precision": 0,
       "title_text": "Max ResultQueue Size - 10m",
-      "calc_func": "raw",
+      "x": 23.971354166666668,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2844,9 +2946,11 @@
           "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_green') %>
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
-      "y": 67.99190139770508,
-      "x": 173.97135635217032
+      "y": 101.99088541666667,
+      "calc_func": "raw"
     },
     {
       "metric": "",
@@ -2867,7 +2971,7 @@
       ],
       "precision": 3,
       "title_text": "Max Response Time Console - 10m",
-      "calc_func": "raw",
+      "x": 23.971354166666668,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2889,9 +2993,11 @@
           "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_green') %>
         }
       ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 73.99161148071289,
-      "x": 173.97135635217032
+      "y": 107.99088541666667,
+      "calc_func": "raw"
     },
     {
       "title_size": 13,
@@ -2902,7 +3008,7 @@
       "width": 32,
       "query": "source:aws",
       "timeframe": "1d",
-      "y": 87,
+      "y": 94,
       "x": 152,
       "type": "event_stream",
       "event_size": "s"
@@ -3086,7 +3192,7 @@
       ],
       "precision": 0,
       "title_text": "",
-      "calc_func": "raw",
+      "x": 183.91666666666666,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3106,9 +3212,11 @@
           "custom_fg_color": null
         }
       ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
       "aggr": "max",
-      "y": 86.91666666666667,
-      "x": 183.91666666666666
+      "y": 93.91666666666667,
+      "calc_func": "raw"
     },
     {
       "title_size": 16,
@@ -3122,8 +3230,42 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[AWS](/screen/board/<%= lookup_note_asset('AWS', :screenboard) %>)",
-      "y": 81,
+      "y": 88,
       "x": 152,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 50,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Cloudops Apps Uptime",
+      "height": 18,
+      "width": 50,
+      "query": "source:pingdom cloudops <%= environment %>",
+      "timeframe": "1d",
+      "y": 64,
+      "x": 152,
+      "type": "event_stream",
+      "event_size": "s"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "top",
+      "text_align": "center",
+      "title_text": "",
+      "height": 5,
+      "bgcolor": "white",
+      "html": "Cloudops App Status",
+      "y": 58.916666666666664,
+      "x": 151.83333333333334,
       "font_size": "24",
       "tick": false,
       "type": "note",
