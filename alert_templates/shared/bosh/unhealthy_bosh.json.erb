@@ -1,7 +1,8 @@
 {
-    "notify_no_data": true,
-              "name": "<%= environment %> Bosh: System health",
-          "silenced": false,
-             "query": "avg(last_10m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1",
-           "message": "A job in Bosh is being reported as unhealthy. <%= bosh_pagerduty %>"
+  "query": "avg(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1",
+  "message": "A job in Bosh is being reported as unhealthy. <%= bosh_email %>",
+  "silenced": false,
+  "name": "<%= environment %> Bosh: System health",
+  "no_data_timeframe": 10,
+  "notify_no_data": true
 }

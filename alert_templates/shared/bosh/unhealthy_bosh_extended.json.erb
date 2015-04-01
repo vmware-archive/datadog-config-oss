@@ -1,0 +1,8 @@
+{
+  "silenced": false,
+  "query": "avg(last_30m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1",
+  "message": "For an extended period of time, one or more of the BOSH agents are reporting either that the VM that they are running on or the job that they are running is unhealthy. <%= bosh_pagerduty %>",
+  "name": "<%= environment %> Bosh: Extended downtime for BOSH Agent reporting as unhealthy",
+  "no_data_timeframe": 60,
+  "notify_no_data": true
+}
