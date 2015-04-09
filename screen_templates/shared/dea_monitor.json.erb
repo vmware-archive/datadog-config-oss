@@ -393,6 +393,32 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App Staging Failed",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:cloudops_tools.failed_stages.counts_per_5min{*}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 47,
+      "timeframe": "4h",
+      "y": 61,
+      "x": 137,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "id": 13996
