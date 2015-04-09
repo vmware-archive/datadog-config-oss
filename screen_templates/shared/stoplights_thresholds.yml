@@ -334,13 +334,13 @@ prod:
   value: 2
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_red
-  value: 50
+  value: 30
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_yellow
-  value: 20
+  value: 10
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}
   color: white_on_green
-  value: 20
+  value: 10
 - query: avg:natbox.pingout.health{*}
   color: white_on_red
   value: 1
@@ -451,24 +451,15 @@ prod:
 - query: avg:pws.circuit.cloud_controller_get{host:production}
   color: white_on_green
   value: 1
-- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+- query: max:cf.collector.cc.requests.outstanding{*}
   color: white_on_red
-  value: 20
-- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+  value: 5
+- query: max:cf.collector.cc.requests.outstanding{*}
   color: white_on_yellow
-  value: 15
-- query: max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}
+  value: 3
+- query: max:cf.collector.cc.requests.outstanding{*}
   color: white_on_green
-  value: 15
-- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
-  color: white_on_red
-  value: 20
-- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
-  color: white_on_yellow
-  value: 15
-- query: max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}
-  color: white_on_green
-  value: 15
+  value: 3
 - query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
   color: white_on_red
   value: 3
@@ -484,3 +475,15 @@ prod:
 - query: max:aws.ec2.status_check_failed{deployment:}
   color: white_on_green
   value: 0
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+  color: white_on_green
+  value: 1
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+  color: white_on_yellow
+  value: 1
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+  color: white_on_yellow
+  value: 5
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+  color: white_on_red
+  value: 5

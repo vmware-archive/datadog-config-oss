@@ -2191,33 +2191,39 @@
       "title_align": "left",
       "text_align": "left",
       "width": 11,
-      "timeframe": "5m",
+      "timeframe": "15m",
       "type": "query_value",
       "tags": [
         "application:webconsole_production"
       ],
       "precision": 2,
-      "title_text": "Apdex - 5m",
+      "title_text": "Apdex - 15m",
       "x": 1.9713541666666667,
       "metric_type": "standard",
       "conditional_formats": [
         {
+          "comparator": "<",
           "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_red') %>,
           "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_red') %>
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
@@ -2238,27 +2244,31 @@
       "title_align": "left",
       "text_align": "left",
       "width": 11,
-      "timeframe": "5m",
+      "timeframe": "15m",
       "type": "query_value",
       "tags": [
         "application:webconsole_production"
       ],
       "precision": 2,
-      "title_text": "Error Rate - 5m",
+      "title_text": "Error Rate - 15m",
       "x": 12.971354166666666,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
@@ -2859,97 +2869,56 @@
       "auto_refresh": false
     },
     {
-      "metric": "cf.collector.cc.thread_info.event_machine.threadqueue.size",
-      "height": 4,
-      "query": "max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}",
+      "metric": "cf.collector.cc.requests.outstanding",
+      "height": 10,
+      "query": "max:cf.collector.cc.requests.outstanding{*}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
       "title": true,
-      "aggregator": "max",
+      "aggregator": "avg",
       "title_align": "left",
       "text_align": "center",
       "width": 22,
-      "timeframe": "10m",
+      "timeframe": "15m",
       "type": "query_value",
       "tags": [
 
       ],
-      "precision": 0,
-      "title_text": "Max ThreadQueue Size - 10m",
-      "x": 23.971354166666668,
+      "precision": 2,
+      "title_text": "Max Response Queue Size - 10m",
+      "x": 24,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.threadqueue.size{*}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 95.9921875,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "cf.collector.cc.thread_info.event_machine.resultqueue.size",
-      "height": 4,
-      "query": "max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 16,
-      "title": true,
-      "aggregator": "max",
-      "title_align": "left",
-      "text_align": "center",
-      "width": 22,
-      "timeframe": "10m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 0,
-      "title_text": "Max ResultQueue Size - 10m",
-      "x": 23.971354166666668,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": ">",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.cc.thread_info.event_machine.resultqueue.size{*}', 'white_on_green') %>
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "max",
-      "y": 101.99088541666667,
+      "y": 96,
       "calc_func": "raw"
     },
     {
@@ -3271,6 +3240,59 @@
       "type": "note",
       "width": 50,
       "auto_refresh": false
+    },
+    {
+      "metric": "cloudops_tools.failed_stages.counts_per_5min",
+      "height": 12,
+      "query": "avg:cloudops_tools.failed_stages.counts_per_5min{*}",
+      "text_size": "auto",
+      "unit": "/5m",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": "*",
+      "title_text": "App Staging Failures",
+      "x": 71,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+       {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 95.83333333333333,
+      "calc_func": "raw"
     }
   ],
   "id": 14530
