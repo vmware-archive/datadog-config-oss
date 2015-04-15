@@ -482,8 +482,11 @@ prod:
   color: white_on_yellow
   value: 1
 - query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+  color: white_on_red
+  value: 5
+- query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
   color: white_on_yellow
   value: 5
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
-  color: white_on_red
+- query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
+  color: white_on_green
   value: 5

@@ -3279,7 +3279,7 @@
           "invert": false,
           "custom_fg_color": null
         },
-       {
+        {
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
@@ -3292,6 +3292,51 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 95.83333333333333,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "cloudops_tools.stages.counts_per_5min",
+      "height": 12,
+      "query": "avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "15m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Stage/Hour (avg 15min)",
+      "x": 71,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 110,
       "calc_func": "raw"
     }
   ],
