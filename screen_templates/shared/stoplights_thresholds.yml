@@ -378,9 +378,6 @@ prod:
   color: white_on_green
   value: 20
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
-  color: white_on_red
-  value: 100
-- query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
   color: white_on_yellow
   value: 30
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
