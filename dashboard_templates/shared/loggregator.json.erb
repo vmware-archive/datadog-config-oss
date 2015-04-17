@@ -188,7 +188,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(sum:cf.collector.MetronAgent.legacyAgentListener.receivedMessageCount{ deployment: <%= deployment %> }) - rate(sum:cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> })"
+                        "q": "rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> }) - rate(sum:cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> })"
                     }
                 ]
             },
