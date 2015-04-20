@@ -3338,7 +3338,55 @@
       "aggr": "avg",
       "y": 110,
       "calc_func": "raw"
+    },
+    {
+      "metric": "diego.canary.app.instance",
+      "height": 7,
+      "query": "min:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "auto",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "15m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": "*",
+      "title_text": "Diego Canary App Status",
+      "x": 101,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('min:diego.canary.app.instance{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('min:diego.canary.app.instance{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "min",
+      "y": 80,
+      "calc_func": "raw"
     }
   ],
-  "id": 14530
+  "shared": false,
+  "id": 14530,
+  "title_edited": false
 }

@@ -487,3 +487,9 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
   color: white_on_green
   value: 5
+- query: min:diego.canary.app.instance{deployment:}
+  color: white_on_green
+  value: 1
+- query: min:diego.canary.app.instance{deployment:}
+  color: white_on_red
+  value: 1
