@@ -1,7 +1,0 @@
-{
-  "notify_no_data": true,
-  "name": "<%= environment %> Micro: Available EC2 Compute Units not reporting",
-  "silenced": false,
-  "query": "avg(last_1h):avg:aws.ec2.cpuutilization{name:<%= micro_deployment %>} < 0",
-  "message": "Alert should only be triggered when the micro has stopped reporting its available compute data to DataDog. <%= bosh_pagerduty %>"
-}
