@@ -2551,7 +2551,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {deployment, job, index}",
+            "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>} by {job, index}",
             "type": "line"
           }
         ],
@@ -3092,7 +3092,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{*} by {deployment, job, index}",
+            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>} by {job, index}",
             "type": "line"
           }
         ],
@@ -3118,15 +3118,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.cpu.sys{*} by {deployment,job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "max:bosh.healthmonitor.system.cpu.usr{*} by {deployment,job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.usr{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "max:bosh.healthmonitor.system.cpu.wait{*} by {deployment,job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
