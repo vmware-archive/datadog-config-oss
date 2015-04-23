@@ -3,7 +3,7 @@
   "timeout_h": 0,
   "silenced": false,
   "query": "max(last_1h):max:aws.ec2.status_check_failed{*} by {deployment,job,index,instance_id} > 0",
-  "message": "<%= cloudops_email %>",
+  "message": "<%= cloudops_pagerduty %>",
   "name": "AWS Status Check failed for {{job.name}}/{{index.name}} on {{deployment.name}} (instance-id: {{instance_id.name}})",
   "no_data_timeframe": 120,
   "notify_no_data": false
