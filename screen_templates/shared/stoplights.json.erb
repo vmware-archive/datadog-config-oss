@@ -2347,21 +2347,15 @@
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": ">",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_red') %>
-        },
-        {
           "color": "white_on_yellow",
           "invert": false,
-          "comparator": ">=",
+          "comparator": ">",
           "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_yellow') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
-          "comparator": "<",
+          "comparator": "<=",
           "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_green') %>
         }
       ],
