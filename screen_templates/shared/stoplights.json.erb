@@ -1,6 +1,7 @@
 {
   "board_title": "<%= deployment %> stoplights",
   "board_bgtype": "board_graph",
+  "original_title": "",
   "height": 117,
   "width": "100%",
   "template_variables": [
@@ -481,18 +482,16 @@
       "title_text": "Reserveable Stagers - 1h",
       "height": 12,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
-            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}"
+            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>,job:dea} by {job,index}",
+            "type": "area"
           }
         ],
         "events": [
           {
             "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
           }
         ]
       },
@@ -2516,11 +2515,11 @@
       "title_text": "Mem Free Bytes - 1h",
       "height": 12.000000158945717,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
-            "q": "sum:cf.collector.mem_free_bytes{deployment:<%= deployment %>,job:dea} by {ip}",
-            "type": "area"
+            "q": "avg:cf.collector.mem_free_bytes{deployment:<%= deployment %>,job:dea} by {index,job}",
+            "type": "heatmap"
           }
         ],
         "events": [
