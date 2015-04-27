@@ -5,17 +5,101 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.host_ok{deployment:<%= deployment %>,job:collector}"
-          },
-          {
-            "q": "aws.ec2.host_ok{deployment:<%= deployment %>,job:health_manager}"
+            "q": "avg:cf.collector.healthy{*}"
           }
         ],
-        "events": [<%= default_events_json %>]
+        "events": [
+
+        ]
       },
-      "title": "<%= deployment %> Collector"
+      "title": "cf.collector.healthy"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.mem_bytes{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.mem_bytes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.cpu_load_avg{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.cpu_load_avg"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.mem_used_bytes{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.mem_used_bytes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.mem_free_bytes{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.mem_free_bytes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.nats.latency.1m{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.nats.latency.1m"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.uptime_in_seconds{*}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "cf.collector.uptime_in_seconds"
     }
   ],
-  "title": "<%= environment %> Collector and Health Monitor",
-  "description": "Cloudwatch status of the machines running the collector and health manager jobs"
+  "description": "created by cfaccounts+datadog-<%= environment %>@pivotallabs.com",
+  "id": 47951,
+  "title": "Collector"
 }
