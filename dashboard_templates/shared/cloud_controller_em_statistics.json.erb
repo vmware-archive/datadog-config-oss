@@ -2,7 +2,7 @@
   "graphs": [
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.job_queue_length.cc_generic{*} by {ip}",
@@ -17,7 +17,7 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.size{*} by {name}",
@@ -32,7 +32,7 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.size{*} by {name}",
@@ -47,7 +47,7 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.thread_info.event_machine.connection_count{*} by {name}",
@@ -66,7 +66,7 @@
         "requests": [
           {
             "q": "avg:cf.collector.cc.thread_info.thread_count{*} by {name}",
-            "type": "area"
+            "type": "line"
           }
         ],
         "events": [
@@ -77,7 +77,7 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.num_waiting{*} by {name}",
@@ -137,7 +137,7 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "avg:cf.collector.cc.requests.outstanding{*} by {name}",
@@ -155,8 +155,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.cc.requests.completed{*} by {name})",
-            "type": "area"
+            "q": "per_second(avg:cf.collector.cc.requests.completed{*} by {name})"
           }
         ],
         "events": [
@@ -166,7 +165,7 @@
       "title": "Requests Completed per second (throughput)"
     }
   ],
-    "description": "created by <%= cloudops_email %>",
+  "description": "created by @cloudops-robots@pivotal.io",
   "id": 43205,
   "title": "cloud_controller_ng Event Machine statistics"
 }
