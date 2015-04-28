@@ -5,7 +5,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.job_queue_length.cc_generic{*} by {ip}",
+            "q": "avg:cf.collector.cc.job_queue_length.cc_generic{$job,$index,$deployment} by {ip}",
             "type": "area"
           }
         ],
@@ -20,7 +20,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.size{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.size{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -35,7 +35,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.size{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.size{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -50,7 +50,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.event_machine.connection_count{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.event_machine.connection_count{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -65,7 +65,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.thread_count{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.thread_count{$job,$index,$deployment} by {name}",
             "type": "line"
           }
         ],
@@ -80,7 +80,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.num_waiting{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.event_machine.threadqueue.num_waiting{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -95,7 +95,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.num_waiting{*} by {name}",
+            "q": "avg:cf.collector.cc.thread_info.event_machine.resultqueue.num_waiting{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -140,7 +140,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.cc.requests.outstanding{*} by {name}",
+            "q": "avg:cf.collector.cc.requests.outstanding{$job,$index,$deployment} by {name}",
             "type": "area"
           }
         ],
@@ -155,7 +155,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.cc.requests.completed{*} by {name})"
+            "q": "per_second(avg:cf.collector.cc.requests.completed{$job,$index,$deployment} by {name})"
           }
         ],
         "events": [
@@ -166,6 +166,23 @@
     }
   ],
   "description": "created by @cloudops-robots@pivotal.io",
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": "job",
+      "name": "job"
+    },
+    {
+      "default": "*",
+      "prefix": "index",
+      "name": "index"
+    },
+    {
+      "default": "deployment:<%= deployment %>",
+      "prefix": "deployment",
+      "name": "deployment"
+    }
+  ],
   "id": 43205,
   "title": "cloud_controller_ng Event Machine statistics"
 }
