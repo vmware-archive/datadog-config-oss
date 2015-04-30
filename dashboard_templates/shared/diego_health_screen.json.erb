@@ -227,7 +227,7 @@
         "requests":[
           {
             "q": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "events":[
@@ -258,7 +258,7 @@
         "requests":[
           {
             "q":"max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "events":[
@@ -289,7 +289,7 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -350,11 +350,11 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestSucceededDuration{deployment: <%= deployment %>} / 1000000000",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestFailedDuration{deployment: <%= deployment %>} / 1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -490,19 +490,19 @@
         "requests": [
           {
             "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -1144,7 +1144,7 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -1176,7 +1176,7 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.rep.RepBulkSyncDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -1209,23 +1209,23 @@
         "requests": [
           {
             "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount1XX{deployment:<%= deployment %>})",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount2XX{deployment:<%= deployment %>})",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount3XX{deployment:<%= deployment %>})",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount4XX{deployment:<%= deployment %>})",
-            "type": "bars"
+            "type": "line"
           },
           {
             "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount5XX{deployment:<%= deployment %>})",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "events":[
@@ -1324,7 +1324,7 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
@@ -1356,7 +1356,7 @@
         "requests": [
           {
             "q": "max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.MetricsReportingDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "bars"
+            "type": "line"
           }
         ],
         "viz": "timeseries",
