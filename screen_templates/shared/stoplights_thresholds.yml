@@ -90,13 +90,13 @@ prod:
   value: 100
 - query: sum:cf.collector.reservable_stagers{deployment:}
   color: white_on_red
-  value: 250
+  value: 150
 - query: sum:cf.collector.reservable_stagers{deployment:}
   color: white_on_yellow
-  value: 350
+  value: 250
 - query: sum:cf.collector.reservable_stagers{deployment:}
   color: white_on_green
-  value: 350
+  value: 250
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
   color: white_on_yellow
   value: 100
