@@ -49,17 +49,23 @@
       }
     },
     {
-      "title":"Cell: Actual LRPs",
+      "title":"Cell: LRPs",
       "definition":{
-        "requests":[
+        "requests": [
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>}"
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}"
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>}"
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>}"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
           }
         ],
         "events":[
@@ -85,17 +91,12 @@
       }
     },
     {
-      "title":"Cell: Desired LRPs",
+      "title":"Cell: Missing LRPs",
       "definition":{
-        "requests":[
+        "requests": [
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} - (cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashingDesiredLRPs{deployment:<%= deployment %>}"
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%= deployment %>} -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%= deployment %>} -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%= deployment %>}",
+            "type": "line"
           }
         ],
         "events":[
@@ -158,45 +159,6 @@
           {
             "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
             "type": "bars"
-          }
-        ],
-        "events":[
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      }
-    },
-    {
-      "title":"Cell: Running Containers",
-      "definition":{
-        "requests":[
-          {
-            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersExpected{deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}",
-            "type": "line"
           }
         ],
         "events":[
@@ -388,36 +350,6 @@
           { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsSucceeded{deployment: <%= deployment %>})" },
           { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsFailed{deployment: <%= deployment %>})" }
         ],
-        "viz": "timeseries",
-        "events":[
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      }
-    },
-    {
-      "title":"Converger: DesiredLRP Listener - Starts/Stops (per minute)",
-      "definition":{
-        "requests": [
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.LRPInstanceStartRequests{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.LRPInstanceStopRequests{deployment:<%= deployment %>})" }
-         ],
         "viz": "timeseries",
         "events":[
           {
@@ -1049,37 +981,6 @@
           "requests": [
           {
             "q": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}"
-          }
-        ],
-        "events":[
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      }
-    },
-    {
-      "title":"Route Emitter: Bulk Updates (per second)",
-      "definition":{
-          "viz": "timeseries",
-          "requests": [
-          {
-            "q": "rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesSynced{deployment:<%= deployment %>})"
           }
         ],
         "events":[
