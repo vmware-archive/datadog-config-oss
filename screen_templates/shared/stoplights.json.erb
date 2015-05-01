@@ -1,7 +1,7 @@
 {
   "board_title": "<%= deployment %> stoplights",
   "board_bgtype": "board_graph",
-  "original_title": "",
+  "original_title": "<%= deployment %> stoplights",
   "height": 117,
   "width": "100%",
   "template_variables": [
@@ -937,7 +937,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "Hours since last DEA start - 4h",
-      "height": 12.000000158945717,
+      "height": 12,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -957,8 +957,8 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 80.82754898071289,
-      "x": 70.83189102013905,
+      "y": 80.75000381469727,
+      "x": 70.75000338753064,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1023,7 +1023,7 @@
       "title_text": "Cells: Available Memory",
       "height": 12,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
@@ -1053,8 +1053,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 5.988137563069661,
-      "x": 121.85185968875885,
+      "y": 5.916667938232422,
+      "x": 121.83333672086398,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1068,8 +1068,8 @@
       "title_size": 20,
       "title": true,
       "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
+      "title_align": "center",
+      "text_align": "center",
       "width": 21,
       "timeframe": "5m",
       "type": "query_value",
@@ -1082,22 +1082,28 @@
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": false,
@@ -1115,8 +1121,8 @@
       "title_size": 20,
       "title": true,
       "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
+      "title_align": "center",
+      "text_align": "center",
       "width": 21,
       "timeframe": "5m",
       "type": "query_value",
@@ -1125,32 +1131,38 @@
       ],
       "precision": 2,
       "title_text": "Cells: Total Memory",
-      "x": 100.85214451948802,
+      "x": 100.91667005419731,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": "<=",
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 12.95138931274414,
+      "y": 12.916667938232422,
       "calc_func": "raw"
     },
     {
@@ -1201,8 +1213,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 20.99247868855794,
-      "x": 121.85185968875885,
+      "y": 106.00000381469727,
+      "x": 121.91667005419731,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1226,7 +1238,7 @@
       ],
       "precision": 2,
       "title_text": "Cell: Tasks",
-      "x": 100.85214451948802,
+      "x": 100.91667005419731,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1251,146 +1263,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 20.99247868855794,
-      "calc_func": "raw"
-    },
-    {
-      "title_size": 20,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Cells Etcd Request-Rate: 1h",
-      "height": 12,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.etcd_diego.server.SendingRequestRate{deployment:<%= deployment %>}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      },
-      "width": 28,
-      "timeframe": "1h",
-      "y": 35.991031646728516,
-      "x": 121.85185968875885,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "metric": "",
-      "height": 5,
-      "query": "max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 20,
-      "title": true,
-      "aggregator": "max",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 21,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 2,
-      "title_text": "Cells: Receive Rate - 5m",
-      "x": 100.85214451948802,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "red_on_white",
-          "invert": false,
-          "comparator": "<=",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}', 'red_on_white') %>
-        },
-        {
-          "color": "yellow_on_white",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}', 'yellow_on_white') %>
-        },
-        {
-          "color": "green_on_white",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}', 'green_on_white') %>
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 35.991031646728516,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "",
-      "height": 5,
-      "query": "max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 20,
-      "title": true,
-      "aggregator": "max",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 21,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 2,
-      "title_text": "Cells: Send Rate - 5m",
-      "x": 100.85214451948802,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "red_on_white",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}', 'red_on_white') %>
-        },
-        {
-          "color": "yellow_on_white",
-          "invert": false,
-          "comparator": "<=",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}', 'yellow_on_white') %>
-        },
-        {
-          "color": "green_on_white",
-          "invert": false,
-          "comparator": ">",
-          "value": <%= threshold_value('max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}', 'green_on_white') %>
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 42.95138931274414,
+      "y": 106.00000381469727,
       "calc_func": "raw"
     },
     {
@@ -1710,8 +1583,8 @@
       },
       "width": 28,
       "timeframe": "1d",
-      "y": 50.99248123168945,
-      "x": 121.85185968875885,
+      "y": 78.00000381469727,
+      "x": 121.91667005419731,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1761,8 +1634,8 @@
       },
       "width": 28,
       "timeframe": "1d",
-      "y": 65.99248123168945,
-      "x": 121.85185968875885,
+      "y": 92.00000381469727,
+      "x": 121.91667005419731,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1786,7 +1659,7 @@
       ],
       "precision": 1,
       "title_text": "",
-      "x": 100.85214451948802,
+      "x": 100.91667005419731,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1817,54 +1690,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 50.99248123168945,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "cf.collector.MetronAgent.forwarder.executor.ContainersActual",
-      "height": 12,
-      "query": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 20,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 21,
-      "timeframe": "1d",
-      "type": "query_value",
-      "tags": [
-        "deployment:<%= deployment %>"
-      ],
-      "precision": 2,
-      "title_text": "Cell: Containers - 1d",
-      "x": 100.85214451948802,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": "<=",
-          "value": <%= threshold_value('sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}', 'white_on_green') %>
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "sum",
-      "y": 65.99248123168945,
+      "y": 91.00000381469727,
       "calc_func": "raw"
     },
     {
@@ -3333,49 +3159,518 @@
       "calc_func": "raw"
     },
     {
-      "metric": "diego.canary.app.instance",
-      "height": 7,
-      "query": "min:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
+      "metric": "",
+      "height": 6,
+      "query": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "/5m",
       "board_id": 14530,
       "title_size": 16,
       "title": true,
-      "aggregator": "min",
-      "title_align": "left",
+      "aggregator": "max",
+      "title_align": "center",
       "text_align": "center",
       "width": 21,
-      "timeframe": "15m",
+      "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+
       ],
-      "precision": "*",
-      "title_text": "Diego Canary App Status",
-      "x": 101,
+      "precision": 0,
+      "title_text": "Missing LRPs",
+      "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "comparator": ">=",
-          "color": "white_on_green",
+          "comparator": ">",
+          "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('min:diego.canary.app.instance{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
         {
           "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 20.000001271565754,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "diego.canary.app.instance",
+      "height": 6,
+      "query": "sum:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "auto",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "15m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": 0,
+      "title_text": "Diego Canaries",
+      "x": 126.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('min:diego.canary.app.instance{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
       "res_calc_func": "raw",
-      "aggr": "min",
-      "y": 80,
+      "aggr": "sum",
+      "y": 20.000001271565754,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps",
+      "height": 7,
+      "query": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "unit": "/5m",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>"
+      ],
+      "precision": "*",
+      "title_text": "NSYNC Freshness",
+      "x": 101.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 28.000001271565754,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 7,
+      "query": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000\n",
+      "text_size": "auto",
+      "unit": "s",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "NSYNC bulker time -5m Max",
+      "x": 126.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 28.000001271565754,
+      "calc_func": "raw"
+    },
+    {
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "title_align": "center",
+      "title_text": "Converger Time",
+      "height": 14,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "line"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "line"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "line"
+          },
+          {
+            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskDuration{deployment:<%= deployment %>}/1000000000",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-diego finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-diego failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf failed deploying cf to <%= deployment %>"
+          }
+        ]
+      },
+      "width": 49,
+      "timeframe": "4h",
+      "y": 51.000001668930054,
+      "x": 101.00000338753064,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "title_align": "center",
+      "title_text": "ETCD raft term",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-diego finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-diego failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= deployment %>-cf failed deploying cf to <%= deployment %>"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "4h",
+      "y": 37.00000127156576,
+      "x": 122.00000338753064,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "metric": "system.load.1",
+      "height": 12,
+      "query": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "text_size": "auto",
+      "unit": "auto",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Route Delta (hour)",
+      "x": 101.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 37.00000127156576,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 8,
+      "query": "per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
+      "text_size": "auto",
+      "unit": "/m",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 1,
+      "title_text": "LRP Auction Failuires",
+      "x": 101.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 67.00000381469727,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "system.load.1",
+      "height": 8,
+      "query": "per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
+      "text_size": "auto",
+      "unit": "/Hr",
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "LRP Auctions",
+      "x": 126.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 67.00000381469727,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "system.load.1",
+      "height": 11,
+      "query": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
+      "text_size": "auto",
+      "unit": "s",
+      "board_id": 14530,
+      "title_size": 13,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "left",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "Auction Fetch Cell States",
+      "x": 101.00000338753064,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 78.00000381469727,
       "calc_func": "raw"
     }
   ],

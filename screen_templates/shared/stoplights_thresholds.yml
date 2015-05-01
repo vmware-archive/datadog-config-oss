@@ -227,24 +227,6 @@ prod:
 - query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
   color: white_on_green
   value: 0.01
-- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
-  color: red_on_white
-  value: 0
-- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
-  color: yellow_on_white
-  value: 10
-- query: max:cf.collector.etcd_diego.server.ReceivingRequestRate{deployment:}
-  color: green_on_white
-  value: 10
-- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
-  color: red_on_white
-  value: 25
-- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
-  color: yellow_on_white
-  value: 30
-- query: max:cf.collector.etcd_diego.server.SendingRequestRate{deployment:}
-  color: green_on_white
-  value: 30
 - query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
   color: red_on_white
   value: 7
@@ -302,15 +284,6 @@ prod:
 - query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
   color: white_on_red
   value: 0.5
-- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
-  color: white_on_red
-  value: 0
-- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
-  color: white_on_yellow
-  value: 0
-- query: sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:}
-  color: white_on_green
-  value: 0
 - query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
     *100
   color: white_on_red
@@ -487,9 +460,75 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: min:diego.canary.app.instance{deployment:}
+- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
+  color: white_on_red
+  value: 10
+- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
+  color: white_on_yellow
+  value: 5
+- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
   color: white_on_green
-  value: 1
-- query: min:diego.canary.app.instance{deployment:}
+  value: 5
+- query: sum:diego.canary.app.instance{deployment:}
+  color: white_on_red
+  value: 15
+- query: sum:diego.canary.app.instance{deployment:}
+  color: white_on_yellow
+  value: 19
+- query: sum:diego.canary.app.instance{deployment:}
+  color: white_on_green
+  value: 20
+- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_red
+  value: 0.8
+- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_yellow
+  value: 0.9
+- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+  color: white_on_green
+  value: 0.9
+- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+  color: white_on_red
+  value: 15
+- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+  color: white_on_yellow
+  value: 5
+- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+  color: white_on_green
+  value: 5
+- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+  color: white_on_red
+  value: 5
+- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 3
+- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+  color: white_on_green
+  value: 3
+- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
   color: white_on_red
   value: 1
+- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
+  color: white_on_yellow
+  value: 0.5
+- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
+  color: white_on_green
+  value: 0.5
+- query: per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})
+  color: white_on_green
+  value: 0
+- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+  color: white_on_red
+  value: 1
+- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+  color: white_on_yellow
+  value: 0.5
+- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+  color: white_on_green
+  value: 0.5
