@@ -39,7 +39,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.elb.request_count{host:cf-router} by {availability-zone}",
+            "q": "sum:aws.elb.request_count{*} by {host}",
             "type": "area"
           }
         ],
