@@ -95,7 +95,7 @@
       "definition":{
         "requests": [
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%= deployment %>} -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%= deployment %>} -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%= deployment %>}",
+            "q": "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%= deployment %>})",
             "type": "line"
           }
         ],
