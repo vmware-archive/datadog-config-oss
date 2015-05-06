@@ -51,6 +51,11 @@ describe DashboardSynchronizer do
         "services_deployment" => "services-deployment",
         "bosh_deployment" => "some-bosh-deployment"
       }])
+      expect(dash['template_variables']).to match_array([{
+        "default" => "*",
+        "name" => "somename",
+        "prefix" => "someprefix",
+      }])
       expect(dash['gobbledygook_events'][0]["q"]).to eq("tags:deployment:prod start_deploy")
     end
   end
@@ -104,13 +109,23 @@ describe DashboardSynchronizer do
   end
 
   describe "#run" do
-    it "creates a new dashboard when one does not already exist" do
-      graphs = [{
+    let(:graphs) {
+      [{
         "deployment" => "some-deployment",
         "services_deployment" => "services-deployment",
         "bosh_deployment" => "some-bosh-deployment"
       }]
-      expect_any_instance_of(Dogapi::Client).to receive(:create_dashboard).with("prod Some Dashboard", "Some description", graphs)
+    }
+    let(:template_variables) {
+      [{
+        "default" => "*",
+        "name" => "somename",
+        "prefix" => "someprefix",
+      }]
+    }
+
+    it "creates a new dashboard when one does not already exist" do
+      expect_any_instance_of(Dogapi::Client).to receive(:create_dashboard).with("prod Some Dashboard", "Some description", graphs, template_variables)
 
       # no pre-existing dashboards
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({})
@@ -119,12 +134,7 @@ describe DashboardSynchronizer do
     end
 
     it "updates dashboard that already exists" do
-      graphs = [{
-        "deployment" => "some-deployment",
-        "services_deployment" => "services-deployment",
-        "bosh_deployment" => "some-bosh-deployment"
-      }]
-      expect_any_instance_of(Dogapi::Client).to receive(:update_dashboard).with("123", "prod Some Dashboard", "Some description", graphs)
+      expect_any_instance_of(Dogapi::Client).to receive(:update_dashboard).with("123", "prod Some Dashboard", "Some description", graphs, template_variables)
 
       # It already exists
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({"prod Some Dashboard" => "123"})

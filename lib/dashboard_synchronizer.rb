@@ -27,8 +27,9 @@ class DashboardSynchronizer < Synchronizer
     title = dashboard.fetch(:title)
     description = dashboard.fetch(:description)
     graphs = dashboard.fetch(:graphs)
+    template_variables = dashboard.fetch(:template_variables)
 
-    result = @dog.update_dashboard(id, title, description, graphs)
+    result = @dog.update_dashboard(id, title, description, graphs, template_variables)
 
     if result.first != '200'
       logger.error "Failed to update dashboard #{key.inspect}(#{result.first}): #{result.last}"
@@ -42,8 +43,9 @@ class DashboardSynchronizer < Synchronizer
     title = dashboard.fetch(:title)
     description = dashboard.fetch(:description)
     graphs = dashboard.fetch(:graphs)
+    template_variables = dashboard.fetch(:template_variables)
 
-    result = @dog.create_dashboard(title, description, graphs)
+    result = @dog.create_dashboard(title, description, graphs, template_variables)
 
     if result.first != '200'
       logger.error "Failed to create dashboard #{key.inspect}(#{result.first}): #{result.last}"
