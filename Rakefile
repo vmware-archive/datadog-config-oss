@@ -215,19 +215,25 @@ end
 
 
 DIEGO_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "diego_health_screen.json.erb"))
+DIEGO_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["diego"] }.keys
 
 namespace :diego do
   deployments.each do |d|
     namespace d do
       desc "Push #{d} Datadog Config"
       task :push do
-        DashboardSynchronizer.new(CONFIG_PATH, d).run(DIEGO_DASHBOARD_TEMPLATES)
+        if DIEGO_ENVIRONMENTS.include?(d)
+          puts "[INFO] Synchronizing Diego dashboard for '#{d}' environment"
+          DashboardSynchronizer.new(CONFIG_PATH, d).run(DIEGO_DASHBOARD_TEMPLATES)
+        else
+          puts "[WARN] The environment '#{d}' does not have the Diego you're looking for..."
+        end
       end
     end
   end
 
   desc "Push all Diego Datadog Configs"
   task :push do
-    environments.keys.each { |k| Rake::Task["diego:#{k}:push"].execute }
+    deployments.each { |k| Rake::Task["diego:#{k}:push"].execute }
   end
 end
