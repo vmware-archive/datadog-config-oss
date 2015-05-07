@@ -24,10 +24,10 @@ class DashboardSynchronizer < Synchronizer
     key = key_of(dashboard)
     logger.info "Updating dashboard #{key}"
 
-    title = dashboard.fetch(:title)
-    description = dashboard.fetch(:description)
-    graphs = dashboard.fetch(:graphs)
-    template_variables = dashboard.fetch(:template_variables)
+    title = dashboard.fetch(:title) { logger.error("Missing :title") }
+    description = dashboard.fetch(:description) { logger.error("Missing :description") }
+    graphs = dashboard.fetch(:graphs) { logger.error("Missing :graphs") }
+    template_variables = dashboard[:template_variables]
 
     result = @dog.update_dashboard(id, title, description, graphs, template_variables)
 
