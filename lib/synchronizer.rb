@@ -14,6 +14,8 @@ class Synchronizer
     @environment = environment
 
     @env = YAML.load_file(config_yml).fetch(environment)
+    raise "Unknown environment '#{environment}'" if @env.nil?
+
     @env['environment'] = environment
 
     @api_key = @env.fetch('credentials').fetch('api_key')
