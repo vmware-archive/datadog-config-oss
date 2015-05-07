@@ -3063,7 +3063,7 @@
     {
       "metric": "cloudops_tools.failed_stages.counts_per_5min",
       "height": 12,
-      "query": "avg:cloudops_tools.failed_stages.counts_per_5min{*}",
+      "query": "avg:cloudops_tools.failed_stages.counts_per_5min{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 16,
@@ -3075,7 +3075,7 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-
+        "deployment:<%= deployment %>"
       ],
       "precision": "*",
       "title_text": "App Staging Failures",
@@ -3086,7 +3086,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3094,7 +3094,7 @@
           "comparator": ">",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3102,7 +3102,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{*}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3114,9 +3114,9 @@
       "calc_func": "raw"
     },
     {
-      "metric": "cloudops_tools.stages.counts_per_5min",
+      "metric": "",
       "height": 12,
-      "query": "avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)",
+      "query": "avg:cloudops_tools.stages.counts_per_5min{deployment:<%= deployment %>}.rollup(sum,3600)",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -3139,7 +3139,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3147,7 +3147,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }

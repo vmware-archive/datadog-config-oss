@@ -445,19 +445,19 @@ prod:
 - query: max:aws.ec2.status_check_failed{deployment:}
   color: white_on_green
   value: 0
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
   color: white_on_green
   value: 1
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
   color: white_on_yellow
   value: 1
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{*}
+- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
   color: white_on_red
   value: 5
-- query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
+- query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_yellow
   value: 5
-- query: avg:cloudops_tools.stages.counts_per_5min{*}.rollup(sum,3600)
+- query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
 - query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
