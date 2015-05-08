@@ -1,10 +1,17 @@
 {
+  "event_object": "b57d787236ec0dd30a912065f4ce67cd",
   "notify_audit": false,
   "timeout_h": 0,
   "silenced": false,
-  "query": "max(last_1h):max:aws.ec2.status_check_failed{*} by {deployment,job,index,instance_id} > 0",
+  "query": "max(last_1h):max:aws.ec2.status_check_failed{*} by {deployment,index,instance_id,job} > 1",
   "message": "<%= cloudops_pagerduty %>",
+  "id": 161186,
   "name": "AWS Status Check failed for {{job.name}}/{{index.name}} on {{deployment.name}} (instance-id: {{instance_id.name}})",
-  "no_data_timeframe": 120,
-  "notify_no_data": false
+  "no_data_timeframe": 16,
+  "creator": 67538,
+  "notify_no_data": false,
+  "renotify_interval": null,
+  "state": "OK",
+  "escalation_message": "",
+  "silenced_timeout_ts": null
 }
