@@ -162,21 +162,6 @@
       }
     },
     {
-      "title": "<%= environment %> NYET Run Time (ms)",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "stacked": false,
-            "q": "max:nyet.full_run.response_time_ms{deployment:<%= deployment %>} by {app_type}"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
       "title": "<%= environment %> HM9000 Messages Sent per Minute",
       "definition": {
         "events": [

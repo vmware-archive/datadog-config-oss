@@ -655,31 +655,6 @@
     {
         "title_size": 16,
         "title": true,
-        "title_align": "left",
-        "title_text": "NYET Run Time (ms)",
-        "height": 13.00057872136434,
-        "tile_def": {
-            "viz": "timeseries",
-            "requests": [
-                {
-                    "q": "max:nyet.full_run.response_time_ms{deployment:cf-cfapps-io2}"
-                }
-            ],
-            "events": [
-                {
-                    "q": "tags:deployment:prod end_deploy start_deploy"
-                }
-            ]
-        },
-        "width": 42,
-        "timeframe": "1h",
-        "y": 80.000002543131515,
-        "x": 148.91638402144113,
-        "type": "timeseries"
-    },
-    {
-        "title_size": 16,
-        "title": true,
         "aggregator": "avg",
         "conditional_formats": [
             {

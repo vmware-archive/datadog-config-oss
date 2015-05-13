@@ -23,7 +23,6 @@ cf_deployment:
     expected_routes: 100
     min_deas_that_can_stage: 3
     min_reservable_stagers: 100
-    nyet_timeout_secs: 360
     smoke_timeout_secs: 360
 
   credentials:
