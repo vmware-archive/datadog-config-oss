@@ -1026,7 +1026,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
             "type": "bars"
           }
         ],
@@ -1062,7 +1062,7 @@
     {
       "metric": "",
       "height": 5,
-      "query": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+      "query": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 20,
@@ -1085,7 +1085,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1093,7 +1093,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1101,7 +1101,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1115,7 +1115,7 @@
     {
       "metric": "",
       "height": 5,
-      "query": "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} ) / 0.000001024",
+      "query": "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} ) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 20,
@@ -1138,7 +1138,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1146,7 +1146,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1154,7 +1154,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1599,11 +1599,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersExpected{deployment:<%= deployment %>}",
+            "q": "sum:cf.collector.MetronAgent.forwarder.rep.ContainersExpected{deployment:<%= deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.executor.ContainersActual{deployment:<%= deployment %>}",
+            "q": "sum:cf.collector.MetronAgent.forwarder.rep.ContainersActual{deployment:<%= deployment %>}",
             "type": "line"
           },
           {

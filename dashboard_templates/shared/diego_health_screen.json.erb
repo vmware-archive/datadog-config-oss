@@ -126,7 +126,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
             "type": "bars"
           }
         ],
@@ -157,7 +157,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
+            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
             "type": "bars"
           }
         ],
@@ -480,10 +480,6 @@
           },
           {
             "q": "cf.collector.MetronAgent.forwarder.converger.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.executor.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           },
           {

@@ -194,27 +194,27 @@ prod:
 - query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_green
   value: 24
-- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_red
   value: 6
-- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_yellow
   value: 7.2
-- query: "(min:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_green
   value: 7.2
-- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_red
   value: 18
-- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_yellow
   value: 22
-- query: "(sum:cf.collector.MetronAgent.forwarder.executor.CapacityRemainingMemory{deployment:}
+- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_green
   value: 22
