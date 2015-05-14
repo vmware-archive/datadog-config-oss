@@ -6,51 +6,6 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.currentBufferCount{ deployment: <%= deployment %> } by {ip}"
-                    }
-                ]
-            },
-            "title": "<%= environment %>: Current Buffer Count (DEAAgent)"
-        },
-        {
-            "definition": {
-                "events": [],
-                "requests": [
-                    {
-                        "q": "rate(cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip})"
-                    }
-                ]
-            },
-            "title": "<%= environment %>: Sent Messages Per Second (DEAAgent)"
-        },
-        {
-            "definition": {
-                "events": [],
-                "requests": [
-                    {
-                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {ip}"
-                    }
-                ]
-            },
-            "title": "<%= environment %>: Sent Message Count (DEAAgent) by DEA"
-        },
-        {
-            "definition": {
-                "events": [],
-                "requests": [
-                    {
-                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.sentMessageCount{ deployment: <%= deployment %> } by {loggregatoraddress}",
-                        "stacked": false
-                    }
-                ]
-            },
-            "title": "<%= environment %>: Sent Message Count (DEAAgent) by AZ"
-        },
-        {
-            "definition": {
-                "events": [],
-                "requests": [
-                    {
                         "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.numGoRoutines{deployment: <%= deployment %> } by {ip}"
                     }
                 ]
@@ -103,10 +58,11 @@
         },
         {
             "definition": {
+                "viz": "timeseries",
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> } by {ip})"
+                        "q": "rate(cf.collector.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
                     }
                 ]
             },
@@ -114,10 +70,11 @@
         },
         {
             "definition": {
+                "viz": "timeseries",
                 "events": [],
                 "requests": [
                     {
-                        "q": "cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageReceived{ deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -187,7 +144,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> }) - rate(sum:cf.collector.DopplerServer.dropsondeUnmarshaller.errorReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.heartbeatReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.counterEventReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{ deployment: <%= deployment %> })) "
+                        "q": "ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:cf.collector.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))"
                     }
                 ],
                 "events": [],
@@ -200,7 +157,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "ewma_10(100 * (rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> }) - rate(sum:cf.collector.DopplerServer.dropsondeUnmarshaller.errorReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.heartbeatReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.counterEventReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{ deployment: <%= deployment %> } + sum:cf.collector.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{ deployment: <%= deployment %> })) / (rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })))"
+                        "q": "100 * (ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:cf.collector.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))) / ewma_10((rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })))"
                     }
                 ],
                 "events": []
@@ -216,7 +173,7 @@
                     }
                 ]
             },
-            "title":  "<%= environment %>: log message rate by app id"
+            "title": "<%= environment %>: log message rate by app id"
         }
     ],
     "title": "<%= environment %> Loggregator Information"
