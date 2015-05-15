@@ -378,6 +378,8 @@
       "definition":{
         "requests": [
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsDeleted{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsKicked{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsStopped{deployment:<%= deployment %>})" },
