@@ -391,22 +391,22 @@ prod:
 - query: sum:cf.collector.mem_free_bytes{deployment:,job:dea}
   color: white_on_green
   value: 1
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
   color: white_on_red
   value: 75
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
   color: white_on_yellow
   value: 65
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{*}
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
   color: white_on_green
   value: 65
-- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
   color: white_on_red
   value: 85
-- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
   color: white_on_yellow
   value: 75
-- query: avg:bosh.healthmonitor.system.disk.persistent.percent{*}
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
   color: white_on_green
   value: 75
 - query: avg:pws.circuit.loggregator{host:production}

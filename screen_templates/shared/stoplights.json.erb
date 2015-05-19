@@ -2,7 +2,7 @@
   "board_title": "<%= deployment %> stoplights",
   "board_bgtype": "board_graph",
   "original_title": "<%= deployment %> stoplights",
-  "height": 117,
+  "height": 142,
   "width": "100%",
   "template_variables": [
 
@@ -957,8 +957,8 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 80.75000381469727,
-      "x": 70.75000338753064,
+      "y": 36,
+      "x": 71,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -982,7 +982,7 @@
       ],
       "precision": 1,
       "title_text": "Hours since last DEA start",
-      "x": 49.916089018185936,
+      "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1013,7 +1013,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 80.99971389770508,
+      "y": 36,
       "calc_func": "raw"
     },
     {
@@ -1788,7 +1788,7 @@
       ],
       "precision": 1,
       "title_text": "% of DEAs w/ >4GB Free RAM",
-      "x": 49.955151518185936,
+      "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1819,7 +1819,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 95.95486323038737,
+      "y": 51,
       "calc_func": "raw"
     },
     {
@@ -1841,7 +1841,7 @@
       ],
       "precision": 0,
       "title_text": "Additional DEAs Needed",
-      "x": 49.98408726851145,
+      "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2367,7 +2367,7 @@
       "title_text": "Ephemeral Disk usage (%) - 1h",
       "height": 12.000000158945717,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>} by {job, index}",
@@ -2380,8 +2380,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 35.83333559830984,
-      "x": 70.83333551883698,
+      "y": 102,
+      "x": 71,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -2389,7 +2389,7 @@
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
       "height": 11.916666825612383,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{*}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -2401,83 +2401,95 @@
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
-
+        "deployment:<%= deployment %>"
       ],
       "precision": 0,
       "title_text": "Top Ephemeral Disk usage (%) past hour",
-      "x": 49.916089018185936,
+      "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{*}', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{*}', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{*}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 35.91579945882162,
+      "y": 102,
       "calc_func": "raw"
     },
     {
       "metric": "bosh.healthmonitor.system.disk.persistent.percent",
       "height": 12.000000158945717,
-      "query": "avg:bosh.healthmonitor.system.disk.persistent.percent{*}",
+      "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
       "title": true,
-      "aggregator": "avg",
+      "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
       "width": 21,
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
-
+        "deployment:<%= deployment %>"
       ],
       "precision": 0,
       "title_text": "Top Persistent Disk usage (%) past hour",
-      "x": 49.99131993452708,
+      "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.disk.persistent.percent{*}', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.disk.persistent.percent{*}', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.disk.persistent.percent{*}', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
       "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 49.98408762613932,
+      "aggr": "max",
+      "y": 116,
       "calc_func": "raw"
     },
     {
@@ -2908,7 +2920,7 @@
       "title_text": "Persistent Disk usage (%) - 1h",
       "height": 12.000000158945717,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
             "q": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>} by {job, index}",
@@ -2921,8 +2933,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 49.83217593034109,
-      "x": 70.83333551883698,
+      "y": 116,
+      "x": 71,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -2934,18 +2946,13 @@
       "title_text": "CPU Utilization (%) - 1h",
       "height": 13.000000158945717,
       "tile_def": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>} by {job,index}",
-            "type": "line"
-          },
-          {
-            "q": "max:bosh.healthmonitor.system.cpu.usr{deployment:<%= deployment %>} by {job,index}",
-            "type": "line"
-          },
-          {
-            "q": "max:bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>} by {job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
+            "style": {
+              "palette": "warm"
+            },
             "type": "line"
           }
         ],
@@ -2955,8 +2962,8 @@
       },
       "width": 49.083333333333336,
       "timeframe": "1h",
-      "y": 64.66579945882161,
-      "x": 49.66579910119375,
+      "y": 87,
+      "x": 50,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -3110,7 +3117,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 95.83333333333333,
+      "y": 51,
       "calc_func": "raw"
     },
     {
@@ -3155,7 +3162,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 110,
+      "y": 65,
       "calc_func": "raw"
     },
     {
@@ -3672,6 +3679,27 @@
       "aggr": "avg",
       "y": 78.00000381469727,
       "calc_func": "raw"
+    },
+    {
+      "board_id": 14530,
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "left",
+      "text_align": "center",
+      "title_text": "",
+      "height": 6,
+      "bgcolor": "white",
+      "html": "<%= deployment %> VM health",
+      "y": 81,
+      "x": 50,
+      "font_size": "36",
+      "tick": false,
+      "type": "note",
+      "width": 49,
+      "auto_refresh": false
     }
   ],
   "shared": false,
