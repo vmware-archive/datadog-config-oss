@@ -439,16 +439,13 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
+- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
   color: white_on_red
   value: 10
-- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
+- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
   color: white_on_yellow
   value: 5
-- query: cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}
+- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}

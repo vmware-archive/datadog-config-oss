@@ -934,17 +934,16 @@
       "calc_func": "raw"
     },
     {
-      "title_size": 20,
+      "title_size": 13,
       "title": true,
       "title_align": "left",
-      "title_text": "Cells: Available Memory",
+      "title_text": "Min. Avail. Memory by Cell - 1h",
       "height": 12,
       "tile_def": {
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
-            "type": "bars"
+            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024"
           }
         ],
         "events": [
@@ -978,13 +977,13 @@
     },
     {
       "metric": "",
-      "height": 5,
+      "height": 6,
       "query": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
-      "title_size": 20,
+      "title_size": 13,
       "title": true,
-      "aggregator": "avg",
+      "aggregator": "min",
       "title_align": "center",
       "text_align": "center",
       "width": 21,
@@ -994,7 +993,7 @@
 
       ],
       "precision": 2,
-      "title_text": "Cell: Min Memory",
+      "title_text": "Min. Avail. Memory by Cell - 5m min",
       "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
@@ -1031,11 +1030,11 @@
     },
     {
       "metric": "",
-      "height": 5,
+      "height": 6,
       "query": "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} ) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
-      "title_size": 20,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
@@ -1047,7 +1046,7 @@
 
       ],
       "precision": 2,
-      "title_text": "Cells: Total Memory",
+      "title_text": "Total Avail. Memory - 5m avg",
       "x": 100.91667005419731,
       "metric_type": "standard",
       "conditional_formats": [
@@ -1079,14 +1078,14 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 12.916667938232422,
+      "y": 14,
       "calc_func": "raw"
     },
     {
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "title_align": "left",
-      "title_text": "Cells: Tasks - 1h",
+      "title_text": "Tasks - 1h",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
@@ -1130,7 +1129,7 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 106.00000381469727,
+      "y": 62,
       "x": 121.91667005419731,
       "legend_size": "0",
       "type": "timeseries",
@@ -1138,11 +1137,11 @@
     },
     {
       "metric": "",
-      "height": 12,
+      "height": 6,
       "query": "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "auto",
-      "title_size": 20,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "left",
@@ -1154,8 +1153,8 @@
 
       ],
       "precision": 2,
-      "title_text": "Cell: Tasks",
-      "x": 100.91667005419731,
+      "title_text": "Running Tasks - 1w avg",
+      "x": 125.83333672086398,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1180,7 +1179,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 106.00000381469727,
+      "y": 76,
       "calc_func": "raw"
     },
     {
@@ -1411,53 +1410,10 @@
       "calc_func": "raw"
     },
     {
-      "title_size": 20,
+      "title_size": 13,
       "title": true,
       "title_align": "left",
-      "title_text": "Cell: Freshness",
-      "height": 12,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
-            "type": "bars"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      },
-      "width": 28,
-      "timeframe": "1d",
-      "y": 78.00000381469727,
-      "x": 121.91667005419731,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 20,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Cells: Containers and LRPs - 1d",
+      "title_text": "Running Tasks and LRPs - 1d",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
@@ -1498,66 +1454,13 @@
       },
       "width": 28,
       "timeframe": "1d",
-      "y": 92.00000381469727,
+      "y": 48,
       "x": 121.91667005419731,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
     },
-    {
-      "metric": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps",
-      "height": 12,
-      "query": "max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "unit": "frsh",
-      "title_size": 16,
-      "title": true,
-      "aggregator": "max",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 21,
-      "timeframe": "1d",
-      "type": "query_value",
-      "tags": [
-        "deployment:<%= deployment %>"
-      ],
-      "precision": 1,
-      "title_text": "",
-      "x": 100.91667005419731,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": "<=",
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>
-        },
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": ">",
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "max",
-      "y": 91.00000381469727,
-      "calc_func": "raw"
-    },
-    {
+     {
       "title_size": 16,
       "title": true,
       "color": "#4d4d4d",
@@ -3012,10 +2915,10 @@
     {
       "metric": "",
       "height": 6,
-      "query": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}",
+      "query": "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/5m",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "max",
       "title_align": "center",
@@ -3027,7 +2930,7 @@
 
       ],
       "precision": 0,
-      "title_text": "Missing LRPs",
+      "title_text": "Missing LRPs - 5m max",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3035,7 +2938,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3043,7 +2946,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3051,7 +2954,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3059,7 +2962,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 20.000001271565754,
+      "y": 22,
       "calc_func": "raw"
     },
     {
@@ -3068,20 +2971,20 @@
       "query": "sum:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
       "text_size": "auto",
       "unit": "auto",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 21,
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
         "deployment:<%= deployment %>-diego"
       ],
       "precision": 0,
-      "title_text": "Diego Canaries",
-      "x": 126.00000338753064,
+      "title_text": "Diego Canaries - 15m avg",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3112,16 +3015,16 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "sum",
-      "y": 20.000001271565754,
+      "y": 78,
       "calc_func": "raw"
     },
     {
       "metric": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps",
-      "height": 7,
+      "height": 6,
       "query": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
@@ -3133,7 +3036,7 @@
         "deployment:<%= deployment %>"
       ],
       "precision": "*",
-      "title_text": "NSYNC Freshness",
+      "title_text": "Domain 'cf-apps' Freshness - 5m avg",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3165,29 +3068,29 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 28.000001271565754,
+      "y": 30,
       "calc_func": "raw"
     },
     {
       "metric": "",
-      "height": 7,
+      "height": 6,
       "query": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "max",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 21,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 2,
-      "title_text": "NSYNC bulker time -5m Max",
-      "x": 126.00000338753064,
+      "title_text": "NSYNC Bulker Time - 5m max",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3218,28 +3121,20 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 28.000001271565754,
+      "y": 38,
       "calc_func": "raw"
     },
     {
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "title_align": "center",
-      "title_text": "Converger Time",
-      "height": 14,
+      "title_text": "Converger Times - 4h",
+      "height": 12,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
           {
             "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "line"
-          },
-          {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
-            "type": "line"
-          },
-          {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           },
           {
@@ -3268,19 +3163,19 @@
           }
         ]
       },
-      "width": 49,
+      "width": 28,
       "timeframe": "4h",
-      "y": 51.000001668930054,
-      "x": 101.00000338753064,
+      "y": 34,
+      "x": 121.83333672086398,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
     },
     {
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "title_align": "center",
-      "title_text": "ETCD raft term",
+      "title_text": "ETCD Raft Term - 4h",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
@@ -3312,7 +3207,7 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 37.00000127156576,
+      "y": 20,
       "x": 122.00000338753064,
       "legend_size": "0",
       "type": "timeseries",
@@ -3320,11 +3215,11 @@
     },
     {
       "metric": "system.load.1",
-      "height": 12,
+      "height": 6,
       "query": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "auto",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
@@ -3336,7 +3231,7 @@
 
       ],
       "precision": 0,
-      "title_text": "Route Delta (hour)",
+      "title_text": "Route Delta 1hr - 5m avg",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3368,28 +3263,28 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 37.00000127156576,
+      "y": 70,
       "calc_func": "raw"
     },
     {
       "metric": "",
-      "height": 8,
+      "height": 6,
       "query": "per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/m",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 21,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 1,
-      "title_text": "LRP Auction Failuires",
+      "title_text": "LRP Auction Failures per Minute - 5m avg",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3421,29 +3316,29 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 67.00000381469727,
+      "y": 46,
       "calc_func": "raw"
     },
     {
       "metric": "system.load.1",
-      "height": 8,
+      "height": 6,
       "query": "per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/Hr",
-      "title_size": 16,
+      "title_size": 13,
       "title": true,
       "aggregator": "avg",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 21,
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 2,
-      "title_text": "LRP Auctions",
-      "x": 126.00000338753064,
+      "title_text": "LRP Auctions per Hour - 5m avg",
+      "x": 100.85214451948802,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3458,12 +3353,12 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 67.00000381469727,
+      "y": 54,
       "calc_func": "raw"
     },
     {
       "metric": "system.load.1",
-      "height": 11,
+      "height": 6,
       "query": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
       "text_size": "auto",
       "unit": "s",
@@ -3479,7 +3374,7 @@
 
       ],
       "precision": 2,
-      "title_text": "Auction Fetch Cell States",
+      "title_text": "Max. Fetch Cell State Times - 5m avg",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3511,7 +3406,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 78.00000381469727,
+      "y": 62,
       "calc_func": "raw"
     },
     {
