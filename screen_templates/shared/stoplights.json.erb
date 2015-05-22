@@ -70,7 +70,7 @@
       ],
       "precision": 0,
       "title_text": "Bosh - 5m",
-      "x": 11.989294330279032,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -89,7 +89,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 66.99363581339519,
+      "y": 64,
       "calc_func": "raw"
     },
     {
@@ -131,47 +131,6 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 24.991321563720703,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "",
-      "height": 4,
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:login_z1} *100",
-      "text_size": "auto",
-      "unit": "%",
-      "title_size": 16,
-      "title": true,
-      "aggregator": "min",
-      "title_align": "center",
-      "text_align": "center",
-      "width": 14,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 0,
-      "title_text": "Login - 5m",
-      "x": 11.992188413937887,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_green') %>
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 30.99247868855795,
       "calc_func": "raw"
     },
     {
@@ -235,7 +194,7 @@
       ],
       "precision": 0,
       "title_text": "HM9000 - 5m",
-      "x": 11.989294330279032,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -254,7 +213,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 60.99392573038737,
+      "y": 58,
       "calc_func": "raw"
     },
     {
@@ -317,7 +276,7 @@
       ],
       "precision": 0,
       "title_text": "NATS - 5m",
-      "x": 11.99797530968984,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -336,7 +295,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 42.99479548136393,
+      "y": 40,
       "calc_func": "raw"
     },
     {
@@ -359,7 +318,7 @@
       ],
       "precision": 0,
       "title_text": "Stats - 5m",
-      "x": 11.989294330279032,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -378,7 +337,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 54.99276606241862,
+      "y": 52,
       "calc_func": "raw"
     },
     {
@@ -400,7 +359,7 @@
       ],
       "precision": 0,
       "title_text": "Loggregator - 5m",
-      "x": 11.989294330279032,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -419,7 +378,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 48.993055979410805,
+      "y": 46,
       "calc_func": "raw"
     },
     {
@@ -523,7 +482,7 @@
       ],
       "precision": 0,
       "title_text": "Bosh - 24h",
-      "x": 25.989585518836975,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -542,7 +501,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 66.99363581339519,
+      "y": 64,
       "calc_func": "raw"
     },
     {
@@ -606,7 +565,7 @@
       ],
       "precision": 0,
       "title_text": "HM9000 - 24h",
-      "x": 25.989585518836975,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -625,7 +584,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 60.99392573038737,
+      "y": 58,
       "calc_func": "raw"
     },
     {
@@ -647,7 +606,7 @@
       ],
       "precision": 0,
       "title_text": "Loggregator - 24h",
-      "x": 25.989585518836975,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -666,7 +625,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 48.993055979410805,
+      "y": 46,
       "calc_func": "raw"
     },
     {
@@ -745,7 +704,7 @@
       ],
       "precision": 0,
       "title_text": "Stats - 24h",
-      "x": 25.989585518836975,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -764,7 +723,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 54.99276606241862,
+      "y": 52,
       "calc_func": "raw"
     },
     {
@@ -786,7 +745,7 @@
       ],
       "precision": 0,
       "title_text": "NATS - 24h",
-      "x": 25.989585518836975,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -805,7 +764,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 42.99334589640299,
+      "y": 40,
       "calc_func": "raw"
     },
     {
@@ -847,48 +806,6 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 6.987847646077474,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "bosh.healthmonitor.system.healthy",
-      "height": 4,
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:login_z1} *100",
-      "text_size": "auto",
-      "unit": "%",
-      "title_size": 16,
-      "title": true,
-      "aggregator": "min",
-      "title_align": "center",
-      "text_align": "center",
-      "width": 9,
-      "timeframe": "1d",
-      "type": "query_value",
-      "tags": [
-        "deployment:<%= deployment %>",
-        "job:login_z1"
-      ],
-      "precision": 0,
-      "title_text": "Login - 24h",
-      "x": 25.989585518836975,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:login_z1} *100', 'white_on_green') %>
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 30.988137563069667,
       "calc_func": "raw"
     },
     {
@@ -1337,59 +1254,6 @@
     {
       "metric": "",
       "height": 4,
-      "query": "per_second(sum:cf.collector.router.requests{component:login,deployment:<%= deployment %>})",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 20,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 13,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 2,
-      "title_text": "Login Req/sec - 5min",
-      "x": 35.90856643517812,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "color": "red_on_white",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:login,deployment:})', 'red_on_white') %>,
-          "invert": false,
-          "custom_fg_color": null
-        },
-        {
-          "comparator": "<=",
-          "color": "yellow_on_white",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:login,deployment:})', 'yellow_on_white') %>,
-          "invert": false,
-          "custom_fg_color": null
-        },
-        {
-          "comparator": ">",
-          "color": "green_on_white",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:login,deployment:})', 'green_on_white') %>,
-          "invert": false,
-          "custom_fg_color": null
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 30.99247868855795,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "",
-      "height": 4,
       "query": "per_second(sum:cf.collector.router.requests{component:uaa,deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "auto",
@@ -1703,8 +1567,8 @@
       "title_text": "",
       "height": 6,
       "width": 24,
-      "y": 36.99219131469727,
-      "x": 11.992188413937887,
+      "y": 34,
+      "x": 12,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -1878,7 +1742,7 @@
     {
       "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
       "height": 5,
-      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}",
+      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -1890,7 +1754,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "domain:<%= domain_url %>"
+        "domain:run.pivotal.io"
       ],
       "precision": 0,
       "title_text": "CF dial Error",
@@ -1901,19 +1765,19 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_red') %>
         },
         {
           "color": "white_on_yellow",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_yellow') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_green') %>
         }
       ],
       "is_valid_query": true,
@@ -1941,7 +1805,7 @@
       ],
       "precision": 1,
       "title_text": "NAT Box - 5m",
-      "x": 11.989294330279032,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1960,7 +1824,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 72.8255246480306,
+      "y": 70,
       "calc_func": "raw"
     },
     {
@@ -1982,7 +1846,7 @@
       ],
       "precision": 1,
       "title_text": "NAT box - 24h",
-      "x": 25.905672351519268,
+      "x": 26,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2001,7 +1865,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 72.8255246480306,
+      "y": 70,
       "calc_func": "raw"
     },
     {
@@ -2023,7 +1887,7 @@
       ],
       "precision": 2,
       "title_text": "Apdex - 15m",
-      "x": 1.9713541666666667,
+      "x": 2,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2054,7 +1918,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 95.9921875,
+      "y": 93,
       "calc_func": "raw"
     },
     {
@@ -2076,7 +1940,7 @@
       ],
       "precision": 2,
       "title_text": "Error Rate - 15m",
-      "x": 12.971354166666666,
+      "x": 13,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2099,7 +1963,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 95.9921875,
+      "y": 93,
       "calc_func": "raw"
     },
     {
@@ -2121,7 +1985,7 @@
       ],
       "precision": 0,
       "title_text": "SSH Attempts - 15m",
-      "x": 11.999422351519266,
+      "x": 12,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2146,7 +2010,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 78.99884414672852,
+      "y": 76,
       "calc_func": "raw"
     },
     {
@@ -2616,7 +2480,7 @@
       ],
       "precision": 2,
       "title_text": "Console Loggregator Circuit",
-      "x": 1.9713541666666667,
+      "x": 2,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2635,7 +2499,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 101.99088541666667,
+      "y": 99,
       "calc_func": "raw"
     },
     {
@@ -2657,7 +2521,7 @@
       ],
       "precision": 2,
       "title_text": "CC GET Circuit",
-      "x": 1.9713541666666667,
+      "x": 2,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2676,7 +2540,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 107.99088541666667,
+      "y": 105,
       "calc_func": "raw"
     },
     {
@@ -2691,7 +2555,7 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
-      "y": 90,
+      "y": 87,
       "x": 2,
       "font_size": "24",
       "tick": false,
@@ -2749,7 +2613,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 96,
+      "y": 93,
       "calc_func": "raw"
     },
     {
@@ -2771,7 +2635,7 @@
       ],
       "precision": 3,
       "title_text": "Max Response Time Console - 10m",
-      "x": 23.971354166666668,
+      "x": 24,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2796,7 +2660,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 107.99088541666667,
+      "y": 105,
       "calc_func": "raw"
     },
     {
@@ -2808,7 +2672,7 @@
       "width": 32,
       "query": "source:aws",
       "timeframe": "1d",
-      "y": 94,
+      "y": 113,
       "x": 152,
       "type": "event_stream",
       "event_size": "s"
@@ -2871,26 +2735,6 @@
       "tick": false,
       "type": "note",
       "width": 12,
-      "auto_refresh": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "refresh_every": 30000,
-      "tick_pos": "50%",
-      "title_align": "left",
-      "tick_edge": "left",
-      "text_align": "center",
-      "title_text": "",
-      "height": 5.916666666666667,
-      "bgcolor": "white",
-      "html": "[Login](/dash/dash/<%= lookup_note_asset('UAA', :dashboard) %>)",
-      "y": 30.661169687906906,
-      "x": -3.9736429998290155e-08,
-      "font_size": "24",
-      "tick": false,
-      "type": "note",
-      "width": 11.75,
       "auto_refresh": false
     },
     {
@@ -2987,7 +2831,7 @@
       ],
       "precision": 0,
       "title_text": "",
-      "x": 183.91666666666666,
+      "x": 184,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3010,7 +2854,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 93.91666666666667,
+      "y": 113,
       "calc_func": "raw"
     },
     {
@@ -3025,7 +2869,7 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[AWS](/screen/board/<%= lookup_note_asset('AWS', :screenboard) %>)",
-      "y": 88,
+      "y": 107,
       "x": 152,
       "font_size": "24",
       "tick": false,
@@ -3042,7 +2886,7 @@
       "width": 50,
       "query": "source:pingdom cloudops <%= environment %>",
       "timeframe": "1d",
-      "y": 64,
+      "y": 83,
       "x": 152,
       "type": "event_stream",
       "event_size": "s"
@@ -3059,8 +2903,8 @@
       "height": 5,
       "bgcolor": "white",
       "html": "Cloudops App Status",
-      "y": 58.916666666666664,
-      "x": 151.83333333333334,
+      "y": 78,
+      "x": 152,
       "font_size": "24",
       "tick": false,
       "type": "note",
@@ -3700,6 +3544,62 @@
       "type": "note",
       "width": 49,
       "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "top",
+      "text_align": "center",
+      "title_text": "",
+      "height": 5,
+      "bgcolor": "white",
+      "html": "Router CPU",
+      "y": 56,
+      "x": 152,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 50,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Router CPU (%) -1h",
+      "height": 14,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z1} by {index}",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z2} by {index}",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "width": 50,
+      "timeframe": "1h",
+      "y": 61,
+      "x": 152,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "shared": false,
