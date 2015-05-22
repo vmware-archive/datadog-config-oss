@@ -50,6 +50,7 @@ class ScreenSynchronizer < Synchronizer
       @environment => yaml_array
     }
     screen["widgets"].each do |widget|
+      widget.delete("board_id")
       conditionals = widget["conditional_formats"]
       next unless conditionals
 

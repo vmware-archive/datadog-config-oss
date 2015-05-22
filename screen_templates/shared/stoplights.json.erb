@@ -3015,7 +3015,6 @@
       "query": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} -  cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "max",
@@ -3069,7 +3068,6 @@
       "query": "sum:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
       "text_size": "auto",
       "unit": "auto",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3123,7 +3121,6 @@
       "query": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3177,7 +3174,6 @@
       "query": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "max",
@@ -3226,7 +3222,6 @@
       "calc_func": "raw"
     },
     {
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "title_align": "center",
@@ -3282,7 +3277,6 @@
       "legend": false
     },
     {
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "title_align": "center",
@@ -3330,7 +3324,6 @@
       "query": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "auto",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3384,7 +3377,6 @@
       "query": "per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/m",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3438,7 +3430,6 @@
       "query": "per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/Hr",
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3476,7 +3467,6 @@
       "query": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
       "text_size": "auto",
       "unit": "s",
-      "board_id": 14530,
       "title_size": 13,
       "title": true,
       "aggregator": "avg",
@@ -3525,7 +3515,6 @@
       "calc_func": "raw"
     },
     {
-      "board_id": 14530,
       "title_size": 16,
       "title": true,
       "refresh_every": 30000,
@@ -3575,14 +3564,14 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z1} by {index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z1} by {index}",
             "style": {
               "palette": "dog_classic"
             },
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z2} by {index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z2} by {index}",
             "style": {
               "palette": "dog_classic"
             },
