@@ -1,0 +1,10 @@
+{
+    "name": "<%= environment %> CF: Loggregator Message loss from Metron to Doppler above threshold",
+    "no_data_timeframe": 30,
+    "notify_no_data": true,
+    "notify_audit": false,
+    "silenced": false,
+    "query": "max(last_30m):100 * (ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>})) - ewma_10(rate(sum:cf.collector.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>}))) / ewma_10((rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>}))) > 15.0",
+    "message": "Over the last 15 minutes, the average message loss from Metron to Doppler was greater than the max threshold.\n\n<%= monitoringAndMetrics_pagerduty %>",
+    "type": "metric alert"
+}
