@@ -508,3 +508,9 @@ prod:
 - query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_green
   value: 0.5
+- query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
+  color: white_on_red
+  value: 0.5
+- query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
+  color: white_on_green
+  value: 0.5

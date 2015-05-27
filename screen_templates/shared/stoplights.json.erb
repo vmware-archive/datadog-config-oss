@@ -1460,7 +1460,7 @@
       "type": "timeseries",
       "legend": false
     },
-     {
+    {
       "title_size": 16,
       "title": true,
       "color": "#4d4d4d",
@@ -3484,6 +3484,51 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "metric": "cloudops_tools.dea_monitor.additional_runners_needed",
+      "height": 12,
+      "query": "avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 21,
+      "timeframe": "15m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>"
+      ],
+      "precision": 1,
+      "title_text": "DEA Runners Needed",
+      "x": 50,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 65,
+      "calc_func": "raw"
     }
   ],
   "shared": false,
