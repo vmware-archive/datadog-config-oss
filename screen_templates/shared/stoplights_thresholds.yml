@@ -532,3 +532,28 @@ prod:
 - query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
   color: white_on_green
   value: 0.5
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
