@@ -36,10 +36,19 @@ prod:
     ) *50"
   color: white_on_green
   value: 100
-- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
+    ) *50"
   color: white_on_red
+  value: 50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
   value: 100
-- query: avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
+    ) *50"
   color: white_on_green
   value: 100
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:router_z1}.rollup(avg,60))

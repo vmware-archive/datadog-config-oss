@@ -175,9 +175,9 @@
       "calc_func": "raw"
     },
     {
-      "metric": "bosh.healthmonitor.system.healthy",
+      "metric": "",
       "height": 4,
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z1} *100",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -189,8 +189,7 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>",
-        "job:hm9000_z1"
+
       ],
       "precision": 0,
       "title_text": "HM9000 - 5m",
@@ -198,16 +197,28 @@
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
           "invert": false,
+          "custom_fg_color": null
+        },
+        {
           "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1} *100', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": false,
