@@ -464,6 +464,10 @@
     },
     <%
     [
+      {:prefix => "Bridge", :processes => ["file_server", "nsync_bulker", "nsync_listener", "stager", "tps_listener", "tps_watcher"]},
+      {:prefix => "Non-Bridge", :processes => ["auctionner", "converger", "garden_linux", "receptor", "rep", "route_emitter", "runtime_metrics_server", "ssh_proxy"]},
+    ].each do |group|
+    [
       {:title => "Go: # Goroutines", :metric => "numGoRoutines"},
       {:title => "Go: # CPUs", :metric => "numCPUS"},
       {:title => "Go: # Mallocs", :metric => "memoryStats.numMallocs"},
@@ -471,68 +475,17 @@
       {:title => "Go: Heap (bytes)", :metric => "memoryStats.numBytesAllocatedHeap"},
       {:title => "Go: Stack (bytes)", :metric => "memoryStats.numBytesAllocatedStack"},
     ].each do |metric|
+      requests = group[:processes].map { |process|
+        {
+          "q" => "cf.collector.MetronAgent.forwarder.#{process}.#{metric[:metric]}{deployment:#{deployment}} by {component,index,ip}",
+          "type" => "line",
+        }
+      }
     %>
     {
-      "title":"<%= metric[:title] %>",
+      "title":"<%= group[:prefix] + " " + metric[:title] %>",
       "definition":{
-        "requests": [
-          {
-            "q": "cf.collector.MetronAgent.forwarder.auctioneer.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.converger.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.garden_linux.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.file_server.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.nsync_bulker.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.nsync_listener.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.receptor.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.rep.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.route_emitter.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.ssh_proxy.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.stager.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.tps_listener.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "cf.collector.MetronAgent.forwarder.tps_watcher.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
-            "type": "line"
-          }
-        ],
+        "requests": <%= requests.to_json %>,
         "events":[
           {
             "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
@@ -555,6 +508,7 @@
         ]
       }
     },
+    <% end %>
     <% end %>
     {
       "title":"Etcd: Raft Term",
