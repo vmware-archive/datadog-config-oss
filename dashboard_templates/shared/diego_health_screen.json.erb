@@ -485,6 +485,10 @@
             "type": "line"
           },
           {
+            "q": "cf.collector.MetronAgent.forwarder.garden_linux.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
             "q": "cf.collector.MetronAgent.forwarder.file_server.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           },
@@ -494,6 +498,10 @@
           },
           {
             "q": "cf.collector.MetronAgent.forwarder.nsync_listener.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
+            "q": "cf.collector.MetronAgent.forwarder.receptor.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           },
           {
@@ -509,15 +517,19 @@
             "type": "line"
           },
           {
+            "q": "cf.collector.MetronAgent.forwarder.ssh_proxy.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "type": "line"
+          },
+          {
             "q": "cf.collector.MetronAgent.forwarder.stager.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.tps.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "q": "cf.collector.MetronAgent.forwarder.tps_listener.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.warden.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
+            "q": "cf.collector.MetronAgent.forwarder.tps_watcher.<%= metric[:metric] %>{deployment:<%= deployment %>} by {component,index,ip}",
             "type": "line"
           }
         ],
