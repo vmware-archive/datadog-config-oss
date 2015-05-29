@@ -1119,23 +1119,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount1XX{deployment:<%= deployment %>})",
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount1XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount2XX{deployment:<%= deployment %>})",
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount2XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount3XX{deployment:<%= deployment %>})",
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount3XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount4XX{deployment:<%= deployment %>})",
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount4XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps.responseCount5XX{deployment:<%= deployment %>})",
+            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount5XX{deployment:<%= deployment %>})",
             "type": "line"
           }
         ],
