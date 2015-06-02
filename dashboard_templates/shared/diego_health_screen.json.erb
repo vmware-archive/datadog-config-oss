@@ -374,7 +374,7 @@
       }
     },
     {
-      "title":"Converger: Actions Taken (per minute)",
+      "title":"Converger: LRP Actions Taken (per minute)",
       "definition":{
         "requests": [
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPRuns{deployment:<%= deployment %>})" },
@@ -390,7 +390,35 @@
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionRuns{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= deployment %>})" }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title":"Converger: Task Actions Taken (per minute)",
+      "definition":{
+        "requests": [
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskRuns{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksKicked{deployment:<%= deployment %>})" },
           { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksPruned{deployment:<%= deployment %>})" }
