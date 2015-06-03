@@ -660,8 +660,8 @@
       "title_text": "",
       "height": 6,
       "width": 24,
-      "y": 0.9997100830078125,
-      "x": 11.999422351519266,
+      "y": 1,
+      "x": 12,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -3648,6 +3648,113 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 74,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "smoke.status",
+      "height": 6,
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 15,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "loggregator_enabled:1"
+      ],
+      "precision": 2,
+      "title_text": "Loggregator smoke test",
+      "x": 8,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:1}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:1}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 120,
+      "calc_func": "raw"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Smoke Tests",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 5,
+      "width": 24,
+      "y": 115,
+      "x": 11,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "metric": "smoke.status",
+      "height": 6,
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 15,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>",
+        "loggregator_enabled:0"
+      ],
+      "precision": 2,
+      "title_text": "Runtime smoke test",
+      "x": 23,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:0}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:0}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 120,
       "calc_func": "raw"
     }
   ],

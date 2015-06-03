@@ -557,3 +557,15 @@ prod:
     ) *50"
   color: white_on_green
   value: 100
+- query: avg:smoke.status{deployment:,loggregator_enabled:1}
+  color: white_on_green
+  value: 1
+- query: avg:smoke.status{deployment:,loggregator_enabled:1}
+  color: white_on_red
+  value: 0.5
+- query: avg:smoke.status{deployment:,loggregator_enabled:0}
+  color: white_on_green
+  value: 1
+- query: avg:smoke.status{deployment:,loggregator_enabled:0}
+  color: white_on_red
+  value: 0.5
