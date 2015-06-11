@@ -3688,6 +3688,14 @@
           "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:1}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:1}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": true,
@@ -3747,6 +3755,14 @@
           "color": "white_on_red",
           "custom_bg_color": null,
           "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:0}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:smoke.status{deployment:,loggregator_enabled:0}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         }

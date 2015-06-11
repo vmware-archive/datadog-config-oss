@@ -562,10 +562,16 @@ prod:
   value: 1
 - query: avg:smoke.status{deployment:,loggregator_enabled:1}
   color: white_on_red
-  value: 0.5
+  value: 0.75
+- query: avg:smoke.status{deployment:,loggregator_enabled:1}
+  color: white_on_yellow
+  value: 0.75
 - query: avg:smoke.status{deployment:,loggregator_enabled:0}
   color: white_on_green
   value: 1
 - query: avg:smoke.status{deployment:,loggregator_enabled:0}
   color: white_on_red
-  value: 0.5
+  value: 0.75
+- query: avg:smoke.status{deployment:,loggregator_enabled:0}
+  color: white_on_yellow
+  value: 0.75
