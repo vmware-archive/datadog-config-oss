@@ -434,6 +434,42 @@
       "legend": false
     },
     {
+      "title_size": "16",
+      "title": true,
+      "title_align": "left",
+      "title_text": "Job queue",
+      "height": 24,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "cf.collector.cc.failed_job_count.total{deployment:<%= deployment %>}",
+            "style": { "palette": "warm" }
+          },
+          {
+            "q": "cf.collector.cc.job_queue_length.total{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "cool",
+              "width": "thick"
+            }
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 56,
+      "timeframe": "7d",
+      "y": 83,
+      "x": 168,
+      "type": "timeseries"
+    },
+    {
       "title_size": 16,
       "title": true,
       "aggregator": "max",
