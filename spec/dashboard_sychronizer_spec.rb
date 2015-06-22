@@ -17,16 +17,16 @@ describe DashboardSynchronizer do
   describe "#fetch_from_datadog" do
     let(:dashboards) do
       ["200",
-        {"dashes" =>
-          [{"title" => "My Dashboard",
-            "resource" => "/api/v1/dash/2473",
-            "id" => "2473",
-            "description" => "An informative dashboard."},
-            {"title" => "My First Metrics",
-              "resource" => "/api/v1/dash/2552",
-              "id" => "2552",
-              "description" => "And they are marvelous."}
-          ]}]
+       {"dashes" =>
+        [{"title" => "My Dashboard",
+          "resource" => "/api/v1/dash/2473",
+          "id" => "2473",
+          "description" => "An informative dashboard."},
+          {"title" => "My First Metrics",
+           "resource" => "/api/v1/dash/2552",
+           "id" => "2552",
+           "description" => "And they are marvelous."}
+        ]}]
     end
 
     it "returns dashboards from datadog" do
@@ -141,6 +141,30 @@ describe DashboardSynchronizer do
 
       synchronizer.run([template])
     end
+
+    context 'when there are no template_variables' do
+      let(:template) { File.join(fixtures, "dashboard_templates", "no_template_vars_dashboard.json.erb") }
+      let(:template_variables) { nil }
+
+      it "creates a new dashboard when one does not already exist" do
+        expect_any_instance_of(Dogapi::Client).to receive(:create_dashboard).with("prod Some Dashboard", "Some description", graphs, template_variables)
+
+        # no pre-existing dashboards
+        allow(synchronizer).to receive(:fetch_from_datadog).and_return({})
+
+        synchronizer.run([template])
+      end
+
+      it "updates dashboard that already exists" do
+        expect_any_instance_of(Dogapi::Client).to receive(:update_dashboard).with("123", "prod Some Dashboard", "Some description", graphs, template_variables)
+
+        # It already exists
+        allow(synchronizer).to receive(:fetch_from_datadog).and_return({"prod Some Dashboard" => "123"})
+
+        synchronizer.run([template])
+      end
+    end
+
   end
 
   describe "get_json_template" do
