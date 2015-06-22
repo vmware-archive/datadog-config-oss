@@ -1,0 +1,36 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Total Subscriptions"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_routes{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Total Routes"
+    }
+  ],
+  "description": "Dashboard for the Routing API",
+  "title": "<%= environment %> Routing API Metrics"
+}
