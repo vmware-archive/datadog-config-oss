@@ -13,7 +13,7 @@
 
         ]
       },
-      "title": "Total Subscriptions"
+      "title": "Total Subscriptions (Datadog Nozzle)"
     },
     {
       "definition": {
@@ -28,7 +28,37 @@
 
         ]
       },
-      "title": "Total Routes"
+      "title": "Total Routes (Datadog Nozzle)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.MetronAgent.forwarder.routing_api.total_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Total Subscriptions (Metron Agent Forwarder)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:cf.collector.MetronAgent.forwarder.routing_api.total_routes{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "Total Routes (Metron Agent Forwarder)"
     }
   ],
   "description": "Dashboard for the Routing API",
