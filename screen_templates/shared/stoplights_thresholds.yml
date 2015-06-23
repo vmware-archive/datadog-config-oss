@@ -572,3 +572,127 @@ prod:
 - query: avg:smoke.status{deployment:,loggregator_enabled:0}
   color: white_on_yellow
   value: 0.75
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60))
+    ) * 100 )/3"
+  color: white_on_red
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60))
+    ) * 100 )/3"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60))
+    ) *50"
+  color: white_on_green
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60))
+    ) * 100 )/3"
+  color: white_on_yellow
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
+    + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60))
+    ) * 100 )/3"
+  color: white_on_green
+  value: 100

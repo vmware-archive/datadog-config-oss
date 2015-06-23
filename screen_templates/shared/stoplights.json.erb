@@ -3014,7 +3014,7 @@
       ],
       "precision": 0,
       "title_text": "Diego Canaries - 15m avg",
-      "x": 100.85214451948802,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3779,6 +3779,561 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 120,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Access - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 94,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Brain - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 100,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Brain - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 100,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Access - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 94,
+      "calc_func": "raw"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Diego Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 6,
+      "width": 24,
+      "y": 88,
+      "x": 112,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "CC Bridge - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 106,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Cell - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 112,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Cell - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 112,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "CC bridge - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:cc_bridge_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 106,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "ETCD - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 118,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Route Emitter - 5m",
+      "x": 112,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 124,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2}.rollup(avg,60)) ) *50",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Route Emitter - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:route_emitter_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 124,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 4,
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 9,
+      "timeframe": "1d",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "ETCD - 24h",
+      "x": 126,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 118,
       "calc_func": "raw"
     }
   ],
