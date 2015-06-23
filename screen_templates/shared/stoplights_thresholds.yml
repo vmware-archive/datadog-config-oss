@@ -77,16 +77,16 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:stats_z1} *100
   color: white_on_green
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
     ) *25"
   color: white_on_red
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
     ) *25"
   color: white_on_green
@@ -131,16 +131,16 @@ prod:
     ) *50"
   color: white_on_green
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
     ) *25"
   color: white_on_yellow
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z1}.rollup(avg,60))
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_z2}.rollup(avg,60))
+    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:doppler_z2}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:loggregator_trafficcontroller_z2}.rollup(avg,60))
     ) *25"
   color: white_on_green
@@ -269,18 +269,6 @@ prod:
 - query: per_second(sum:cf.collector.router.requests{deployment:})
   color: green_on_white
   value: 100
-- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
-  color: white_on_red
-  value: 0.5
-- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
-  color: white_on_yellow
-  value: 1
-- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
-  color: white_on_green
-  value: 1
-- query: max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
-  color: white_on_red
-  value: 0.5
 - query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
     *100
   color: white_on_red
@@ -457,13 +445,22 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
+- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_red
   value: 10
-- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
+- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_yellow
   value: 5
-- query: (((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})
+- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
+    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
+    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}
