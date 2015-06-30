@@ -56,7 +56,7 @@ describe DashboardSynchronizer do
         "name" => "somename",
         "prefix" => "someprefix",
       }])
-      expect(dash['gobbledygook_events'][0]["q"]).to eq("tags:deployment:prod start_deploy")
+      expect(dash['gobbledygook_events'][0]["q"]).to eq("tags:deployment:prod start_deploy OR tags:deployment:prod end_deploy")
     end
   end
 
