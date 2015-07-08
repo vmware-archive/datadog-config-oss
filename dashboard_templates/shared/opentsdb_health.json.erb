@@ -1,0 +1,149 @@
+<%
+  opentsdb_deployment = "#{environment}-opentsdb"
+%>
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:hdfs}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:hdfs"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:opentsdb}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:opentsdb"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:secondaryhdfs}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:secondaryhdfs"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:slave}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:slave"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:yarn}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:yarn"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= opentsdb_deployment %>,job:zookeeper}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy with job:zookeeper"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= opentsdb_deployment %>,job:hdfs}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.disk.persistent.percent with job:hdfs"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= opentsdb_deployment %>,job:secondaryhdfs}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.disk.persistent.percent with job:secondaryhdfs"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.load.1m{deployment:<%= opentsdb_deployment %>,job:hdfs}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.load.1m with job:hdfs"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.load.1m{deployment:<%= opentsdb_deployment %>,job:opentsdb}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.load.1m with job:opentsdb"
+    }
+  ],
+  "description": "created by cfaccounts+datadog-cloudops-<%= environment %>@pivotallabs.com",
+  "title": "<%= environment %> OpenTSDB health"
+}
