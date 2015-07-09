@@ -34,12 +34,9 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:cfapps.io} by {host}",
+            "q": "sum:cloudops_tools.app_instance_monitor.router.dial.errors{!domain:run.pivotal.io} by {host}",
             "type": "area"
           }
-        ],
-        "events": [
-
         ]
       },
       "title": "Non-CF router dial errors (per 5 minutes)"
@@ -49,7 +46,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{domain:cfapps.io} by {host}, 10, 'max', 'desc')",
+            "q": "top(max:cloudops_tools.app_instance_monitor.router.dial.errors{!domain:run.pivotal.io} by {host}, 10, 'max', 'desc')",
             "style": {
               "palette": "dog_classic"
             },
