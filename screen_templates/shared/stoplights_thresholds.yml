@@ -224,15 +224,6 @@ prod:
     ) / 0.000001024"
   color: white_on_green
   value: 22
-- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
-  color: white_on_red
-  value: 0.005
-- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
-  color: white_on_yellow
-  value: 0.01
-- query: "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})"
-  color: white_on_green
-  value: 0.01
 - query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
   color: red_on_white
   value: 7

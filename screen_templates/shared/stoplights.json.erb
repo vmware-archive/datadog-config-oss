@@ -1166,53 +1166,6 @@
       "legend": false
     },
     {
-      "metric": "",
-      "height": 6,
-      "query": "(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>})",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 13,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 21,
-      "timeframe": "1w",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 2,
-      "title_text": "Running Tasks - 1w avg",
-      "x": 125.83333672086398,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": "<=",
-          "value": <%= threshold_value('(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": ">",
-          "value": <%= threshold_value('(avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:})', 'white_on_green') %>
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 76,
-      "calc_func": "raw"
-    },
-    {
       "title_size": 16,
       "title": true,
       "color": "#4d4d4d",
