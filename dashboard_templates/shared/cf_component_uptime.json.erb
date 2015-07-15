@@ -5,30 +5,34 @@
         "viz": "timeseries",
         "requests": [
           {
-          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:cloudcontroller} by {ip}",
+            "q": "min:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:cloudcontroller}/3600",
             "stacked": false
           }
         ],
         "events": [
-          <%= default_events_json %>
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
         ]
       },
-      "title": "Cloud Controller Uptime (seconds)"
+      "title": "Cloud Controller Uptime (hours)"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-          "q": "avg:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}",
+            "q": "min:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} / 3600",
             "stacked": false
           }
         ],
         "events": [
-          <%= default_events_json %>
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
         ]
       },
-      "title": "DEA Uptime (seconds)"
+      "title": "DEA Uptime (hours)"
     },
     {
       "definition": {
