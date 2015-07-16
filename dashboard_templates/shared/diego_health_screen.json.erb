@@ -11,19 +11,19 @@
       "definition":{
         "requests":[
           {
-            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksPending{deployment:<%= deployment %>}"
+            "q":"avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= deployment %>}"
           },
           {
-            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
+            "q":"avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
           },
           {
-            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}"
+            "q":"avg:datadog.nozzle.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}"
           },
           {
-            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
+            "q":"avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
           },
           {
-            "q":"avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>}"
+            "q":"avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -53,19 +53,19 @@
       "definition":{
         "requests": [
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%=deployment %>}"
+            "q": "datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>}"
+            "q": "datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
+            "q": "datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>}"
+            "q": "datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>}"
           },
           {
-            "q": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>} + cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
+            "q": "datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%=deployment %>} + datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%=deployment %>} + datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%=deployment %>}"
           }
         ],
         "events":[
@@ -95,7 +95,7 @@
       "definition":{
         "requests": [
           {
-            "q": "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment: <%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment: <%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment: <%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment: <%= deployment %>})",
+            "q": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment: <%= deployment %>} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%= deployment %>}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%= deployment %>}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%= deployment %>})",
             "type": "line"
           }
         ],
@@ -126,7 +126,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
             "type": "bars"
           }
         ],
@@ -157,7 +157,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingDisk{deployment:<%= deployment %>} by {ip}) / 0.000001048576",
             "type": "bars"
           }
         ],
@@ -219,7 +219,7 @@
       "definition":{
         "requests":[
           {
-            "q":"max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
+            "q":"max:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
             "type": "line"
           }
         ],
@@ -250,7 +250,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -281,7 +281,7 @@
       "title":"NSYNC: Received Desired Apps (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(cf.collector.MetronAgent.forwarder.nsync_listener.LRPsDesired{deployment:<%= deployment %>})" }
+          { "q": "per_minute(datadog.nozzle.nsync_listener.LRPsDesired{deployment:<%= deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -311,11 +311,11 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestSucceededDuration{deployment: <%= deployment %>} / 1000000000",
+            "q": "max:datadog.nozzle.stager.StagingRequestSucceededDuration{deployment: <%= deployment %>} / 1000000000",
             "type": "line"
           },
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.stager.StagingRequestFailedDuration{deployment: <%= deployment %>} / 1000000000",
+            "q": "max:datadog.nozzle.stager.StagingRequestFailedDuration{deployment: <%= deployment %>} / 1000000000",
             "type": "line"
           }
         ],
@@ -346,9 +346,9 @@
       "title":"Stager: Staging Messages (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsReceived{deployment: <%= deployment %>})" },
-          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsSucceeded{deployment: <%= deployment %>})" },
-          { "q": "per_minute(cf.collector.MetronAgent.forwarder.stager.StagingRequestsFailed{deployment: <%= deployment %>})" }
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsReceived{deployment: <%= deployment %>})" },
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsSucceeded{deployment: <%= deployment %>})" },
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsFailed{deployment: <%= deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -377,20 +377,20 @@
       "title":"Converger: LRP Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPRuns{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsDeleted{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsKicked{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPsStopped{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionRuns{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionsKicked{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionRuns{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsDeleted{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsStopped{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -419,9 +419,9 @@
       "title":"Converger: Task Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskRuns{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksKicked{deployment:<%= deployment %>})" },
-          { "q": "per_minute(sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTasksPruned{deployment:<%= deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTaskRuns{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTasksKicked{deployment:<%= deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTasksPruned{deployment:<%= deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -451,19 +451,19 @@
       "definition":{
         "requests": [
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -505,7 +505,7 @@
     ].each do |metric|
       requests = group[:processes].map { |process|
         {
-          "q" => "cf.collector.MetronAgent.forwarder.#{process}.#{metric[:metric]}{deployment:#{deployment}} by {component,index,ip}",
+          "q" => "datadog.nozzle.#{process}.#{metric[:metric]}{deployment:#{deployment}} by {component,index,ip}",
           "type" => "line",
         }
       }
@@ -543,7 +543,7 @@
       "definition":{
         "requests":[
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -573,7 +573,7 @@
       "definition":{
         "requests":[
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDWatchers{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDWatchers{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -603,10 +603,10 @@
       "definition":{
         "requests":[
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDReceivedBandwidthRate{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDReceivedBandwidthRate{deployment:<%= deployment %>}"
           },
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDSentBandwidthRate{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDSentBandwidthRate{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -636,10 +636,10 @@
       "definition":{
         "requests":[
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDReceivedRequestRate{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDReceivedRequestRate{deployment:<%= deployment %>}"
           },
           {
-            "q":"cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDSentRequestRate{deployment:<%= deployment %>}"
+            "q":"datadog.nozzle.runtime_metrics_server.ETCDSentRequestRate{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -972,7 +972,7 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>}"
           }
         ],
         "events":[
@@ -1003,10 +1003,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesRegistered{deployment:<%= deployment %>})"
+            "q": "rate(datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= deployment %>})"
           },
           {
-            "q": "-rate(cf.collector.MetronAgent.forwarder.route_emitter.RoutesUnregistered{deployment:<%= deployment %>})"
+            "q": "-rate(datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= deployment %>})"
           }
         ],
         "events":[
@@ -1036,7 +1036,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1068,7 +1068,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.rep.RepBulkSyncDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1101,23 +1101,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount1XX{deployment:<%= deployment %>})",
+            "q": "per_minute(datadog.nozzle.tps_listener.responseCount1XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount2XX{deployment:<%= deployment %>})",
+            "q": "per_minute(datadog.nozzle.tps_listener.responseCount2XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount3XX{deployment:<%= deployment %>})",
+            "q": "per_minute(datadog.nozzle.tps_listener.responseCount3XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount4XX{deployment:<%= deployment %>})",
+            "q": "per_minute(datadog.nozzle.tps_listener.responseCount4XX{deployment:<%= deployment %>})",
             "type": "line"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.tps_listener.responseCount5XX{deployment:<%= deployment %>})",
+            "q": "per_minute(datadog.nozzle.tps_listener.responseCount5XX{deployment:<%= deployment %>})",
             "type": "line"
           }
         ],
@@ -1149,10 +1149,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})"
           }
         ],
         "events":[
@@ -1183,10 +1183,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerTaskAuctionsStarted{deployment:<%= deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsStarted{deployment:<%= deployment %>})"
           },
           {
-            "q": "per_minute(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerTaskAuctionsFailed{deployment:<%= deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsFailed{deployment:<%= deployment %>})"
           }
         ],
         "events":[
@@ -1216,7 +1216,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1248,7 +1248,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:cf.collector.MetronAgent.forwarder.runtime_metrics_server.MetricsReportingDuration{deployment:<%= deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.runtime_metrics_server.MetricsReportingDuration{deployment:<%= deployment %>}/1000000000",
             "type": "line"
           }
         ],
