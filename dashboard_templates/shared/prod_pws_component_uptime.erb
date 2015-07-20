@@ -1,0 +1,835 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "DEA (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "DEA (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Router (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Router (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "UAA (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "UAA (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Cloud Controller (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Cloud Controller (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "NATS (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "NATS (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "ETCD (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "ETCD (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "HM9000 (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:hm9000_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "HM9000 (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:consul_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Consul (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:consul_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Consul (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Doppler (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Doppler (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:consoleapi_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Consoleapi (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:consoleapi_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Consoleapi (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Loggregator_Trafficcontroller (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Loggregator_Trafficcontroller (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:stats_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Collector (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:clock_global} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ]
+      },
+      "title": "Clock Global"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Cell (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Cell (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Brain (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Brain (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego CC-Bridge (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego CC-Bridge (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Route-Emitter (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Route-Emitter (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Database (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z2} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Database (z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Access (z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "extra_col": "present",
+            "change_type": "absolute",
+            "order_dir": "desc",
+            "compare_to": "hour_before",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1} by {index}",
+            "increase_good": true,
+            "order_by": "change",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ]
+      },
+      "title": "Diego Access (z2)"
+    }
+  ],
+  "description": "The uptime of all the jobs in cf-release and diego-release",
+  "id": 10598,
+  "title": "Prod PWS Component Uptime"
+}
