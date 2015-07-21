@@ -1,0 +1,9 @@
+{
+  "notify_audit": true,
+  "silenced": false,
+  "query": "max(last_5m):max:aws.ec2.cloudops.instance_count{!region:us-east-1} by {region} > 0",
+  "message": "{{region.name}}  should have no instances, any instances that exist are possibly fraudulent. @cloudops-robots@pivotal.io",
+  "name": "<%= environment %> CF: AWS has instance on  {{region.name}}",
+  "no_data_timeframe": 3000,
+  "notify_no_data": true
+}

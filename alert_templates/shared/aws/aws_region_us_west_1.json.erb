@@ -1,9 +1,0 @@
-{
-  "notify_no_data": true,
-  "no_data_timeframe": 1500,
-  "name": "<%= environment %> CF: AWS has instance on  us-west-1",
-  "silenced": false,
-  "query": "max(last_5m):max:aws.ec2.cloudops.instance_count{region:us-west-1} > 0",
-  "message": "us-west-1 should have no instances, any instances that exist are possibly fraudulent. <%= cloudops_email %>"
-}
-
