@@ -1104,24 +1104,24 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}-diego"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego} + avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego} + avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>}"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= environment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= environment %>"
           }
         ]
       },
@@ -1141,13 +1141,12 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "( ( ( avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego} - avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>-diego} ) - avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego} ) - avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego} )",
-            "type": "line"
+            "q": "( ( ( avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>} - avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>} )", "type": "line"
           }
                   ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= environment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= environment %>"
           }
         ]
       },
@@ -1167,13 +1166,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>-diego} / 1000000000",
+            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>} / 1000000000",
             "type": "line"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= environment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= environment %>"
           }
         ]
       },
@@ -1193,13 +1192,13 @@
         "viz": "timeseries",
         "requests": [
         {
-        "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-diego} by {index}",
+        "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= diego_deployment %>} by {index}",
           "type": "line"
         }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= environment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= environment %>"
           }
         ]
       },
