@@ -1128,7 +1128,7 @@
       "width": 66,
       "timeframe": "4h",
       "y": 98,
-      "x": 0,
+      "x": 132,
       "type": "timeseries"
     },
     {
@@ -1154,7 +1154,7 @@
       "width": 66,
       "timeframe": "4h",
       "y": 98,
-      "x": 66,
+      "x": 198,
       "type": "timeseries"
     },
     {
@@ -1180,42 +1180,22 @@
       "width": 66,
       "timeframe": "4h",
       "y": 98,
-      "x": 132,
+      "x": 0,
       "type": "timeseries"
     },
     {
       "title_size": "16",
       "title": true,
       "title_align": "left",
-      "title_text": "DIEGO CC Bridge Go: # Mallocs",
+      "title_text": "DIEGO Cell: Memory Use %",
       "height": 21,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
-          {
-            "q": "avg:datadog.nozzle.file_server.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.nsync_bulker.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.nsync_listener.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.stager.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tps_listener.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tps_watcher.memoryStats.numMallocs{deployment:<%= deployment %>-diego} by {component,index,ip}",
-            "type": "line"
-          }
+        {
+        "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-diego} by {index}",
+          "type": "line"
+        }
         ],
         "events": [
           {
@@ -1226,7 +1206,7 @@
       "width": 66,
       "timeframe": "4h",
       "y": 98,
-      "x": 198,
+      "x": 66,
       "type": "timeseries"
     }
   ],
