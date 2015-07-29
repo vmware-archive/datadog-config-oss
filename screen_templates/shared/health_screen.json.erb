@@ -1186,15 +1186,15 @@
       "title_size": "16",
       "title": true,
       "title_align": "left",
-      "title_text": "DIEGO Cell: Memory Use %",
+      "title_text": "DIEGO Cell: Available Memory",
       "height": 21,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
-        {
-        "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= diego_deployment %>} by {index}",
-          "type": "line"
-        }
+          {
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>}by{ip})/0.000001024",
+            "type": "bars"
+          }
         ],
         "events": [
           {
