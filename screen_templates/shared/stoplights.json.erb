@@ -3631,7 +3631,7 @@
       ],
       "precision": 2,
       "title_text": "Loggregator smoke test",
-      "x": 8,
+      "x": 2,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3662,7 +3662,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 120,
+      "y": 117,
       "calc_func": "raw"
     },
     {
@@ -3675,8 +3675,8 @@
       "title_text": "",
       "height": 5,
       "width": 24,
-      "y": 115,
-      "x": 11,
+      "y": 112,
+      "x": 2,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -3700,7 +3700,7 @@
       ],
       "precision": 2,
       "title_text": "Runtime smoke test",
-      "x": 23,
+      "x": 17,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3731,7 +3731,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 120,
+      "y": 117,
       "calc_func": "raw"
     },
     {
@@ -4287,6 +4287,51 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 118,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "cloudops_tools.etcd_leader_health",
+      "height": 4,
+      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= environment %>}",
+      "text_size": "auto",
+      "unit": "hrs",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 15,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= environment %>"
+      ],
+      "precision": 0,
+      "title_text": "ETCD Leader Uptime",
+      "x": 35,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 74,
       "calc_func": "raw"
     }
   ],

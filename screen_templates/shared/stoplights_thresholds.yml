@@ -687,3 +687,9 @@ prod:
     ) * 100 )/3"
   color: white_on_green
   value: 100
+- query: avg:cloudops_tools.etcd_leader_health{deployment:}
+  color: white_on_green
+  value: 1
+- query: avg:cloudops_tools.etcd_leader_health{deployment:}
+  color: white_on_yellow
+  value: 1
