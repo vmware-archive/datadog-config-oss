@@ -6,7 +6,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.dea_logging_agent.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.numGoRoutines{deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -17,7 +17,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.dea_logging_agent.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                        "q": "cf.collector.MetronAgent.forwarder.dea_logging_agent.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
                     }
                 ]
             },
@@ -28,7 +28,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -39,7 +39,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -50,7 +50,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -62,7 +62,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
+                        "q": "rate(cf.collector.MetronAgent.forwarder.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
                     }
                 ]
             },
@@ -74,7 +74,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -85,7 +85,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.numGoRoutines{deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -96,7 +96,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000 "
+                        "q": "cf.collector.MetronAgent.forwarder.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000 "
                     }
                 ]
             },
@@ -123,7 +123,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.LoggregatorTrafficController.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                        "q": "cf.collector.MetronAgent.forwarder.LoggregatorTrafficController.numGoRoutines{deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -134,7 +134,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                        "q": "cf.collector.MetronAgent.forwarder.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
                     }
                 ]
             },
@@ -144,7 +144,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))"
+                        "q": "ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:cf.collector.MetronAgent.forwarder.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))"
                     }
                 ],
                 "events": [],
@@ -157,7 +157,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * (ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))) / ewma_10((rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })))"
+                        "q": "100 * (ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:cf.collector.MetronAgent.forwarder.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))) / ewma_10((rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })))"
                     }
                 ],
                 "events": []
