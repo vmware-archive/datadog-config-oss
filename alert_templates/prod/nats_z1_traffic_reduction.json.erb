@@ -1,0 +1,17 @@
+{
+  "event_object": "6a039c144e28dc6f7dc7557ec7e720a9",
+  "notify_audit": false,
+  "timeout_h": 0,
+  "silenced": false,
+  "query": "pct_change(avg(last_30m),last_4h):avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1} < -70",
+  "message": "NATS in Zone1 has 70% traffic reduction in the last 5min as compared to last 4 hour average.\n @pagerduty-datadog-cloudops-non-critical",
+  "id": 242539,
+  "name": "NATS_Z1 traffic reduction alert",
+  "no_data_timeframe": 60,
+  "creator": 58975,
+  "notify_no_data": true,
+  "renotify_interval": 0,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}
