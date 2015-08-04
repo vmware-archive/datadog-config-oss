@@ -1,7 +1,7 @@
 {
   "notify_no_data": false,
-  "name": "<%= environment %> CF: Not enough reservable stagers for lucid64 stack",
+  "name": "<%= environment %> CF: Not enough reservable stagers for cflinuxfs2 stack",
   "silenced": false,
-  "query": "avg(last_10m):sum:cf.collector.reservable_stagers{deployment:<%= deployment %>,stack:lucid64}  < <%= params.fetch('min_reservable_stagers') %>",
-  "message": "There are fewer than <%= params.fetch('min_reservable_stagers') %> reservable stagers for the lucid64 stack.  <%= backend_pagerduty %>"
+  "query": "avg(last_10m):sum:cf.collector.reservable_stagers{deployment:<%= deployment %>,stack:cflinuxfs2}  < <%= params.fetch('min_reservable_stagers') %>",
+  "message": "There are fewer than <%= params.fetch('min_reservable_stagers') %> reservable stagers for the cflinuxfs2 stack.  <%= backend_pagerduty %>"
 }
