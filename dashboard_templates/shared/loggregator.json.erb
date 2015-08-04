@@ -150,7 +150,7 @@
                 "events": [],
                 "viz": "timeseries"
             },
-            "title": "<%= environment %>: Sum (moving-avg) lost msg/s Metron → Doppler"
+            "title": "<%= environment %>: Sum (moving-avg) lost msg/s Metron-Received → Doppler-Received"
         },
         {
             "definition": {
@@ -162,7 +162,32 @@
                 ],
                 "events": []
             },
-            "title": "<%= environment %>: % (moving-avg) lost msg/s Metron → Doppler"
+            "title": "<%= environment %>: % (moving-avg) lost msg/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:cf-walnut})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:cf-walnut}))",
+                        "type": "line"
+                    }
+                ],
+                "events": [],
+                "viz": "timeseries"
+            },
+            "title": "<%= environment %>: Sum (moving-avg) lost msg/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:cf-walnut})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:cf-walnut})) ) / ewma_10( ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:cf-walnut}) ) )"
+                    }
+                ],
+                "events": []
+            },
+            "title": "<%= environment %>: % (moving-avg) lost msg/s Metron-Sent → Doppler-Received"
         }
     ],
     "title": "<%= environment %> Loggregator Information"
