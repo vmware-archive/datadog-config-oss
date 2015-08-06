@@ -1,8 +1,0 @@
-{
-  "silenced": false,
-  "query": "avg(last_15m):avg:bosh.healthmonitor.system.cpu.wait{*} by {deployment,job,index} > 80",
-  "message": "the IO wait has spiked above 80% for the last 15 minutes on {{deployment.name}} {{job.name}}  {{index.name}}  @pagerduty-datadog-cloudops-non-critical",
-  "name": "high IO wait",
-  "no_data_timeframe": 30,
-  "notify_no_data": true
-}
