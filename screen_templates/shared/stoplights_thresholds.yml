@@ -693,3 +693,15 @@ prod:
 - query: avg:cloudops_tools.etcd_leader_health{deployment:}
   color: white_on_yellow
   value: 1
+- query: avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800))
+  color: white_on_yellow
+  value: -101000
+- query: avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800))
+  color: white_on_green
+  value: -100000
+- query: avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800))
+  color: white_on_yellow
+  value: -101000
+- query: avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800))
+  color: white_on_green
+  value: -100000
