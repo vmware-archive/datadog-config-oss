@@ -1,7 +1,8 @@
 {
   "board_title": "dea-monitor",
   "board_bgtype": "board_graph",
-  "height": 80,
+  "original_title": "dea-monitor",
+  "height": 103,
   "width": "100%",
   "template_variables": [
 
@@ -419,7 +420,31 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Current Distribution of Containers by IP",
+      "height": 25,
+      "tile_def": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:cloudops_tools.app_instance_monitor.container_count{*} by {ip}"
+          }
+        ]
+      },
+      "width": 89,
+      "timeframe": "1h",
+      "y": 76,
+      "x": 1,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
-  "id": 13996
+  "shared": false,
+  "id": 13996,
+  "title_edited": false
 }
