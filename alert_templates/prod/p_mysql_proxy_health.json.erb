@@ -4,14 +4,14 @@
   "timeout_h": 0,
   "silenced": false,
   "query": "avg(last_30m):avg:cloudops_tools.p_mysql_proxy_health{deployment:<%= environment %>} < 1",
-  "message": "P-MySQL Proxy health is below threshold \n@pagerduty-datadog-cloudops-non-critical",
+  "message": "P-MySQL Proxy health is below threshold for last 30min\n @pagerduty-datadog-cloudops-<%= environment %>",
   "id": 242505,
   "name": "P-MySQL-Proxy-Health",
   "no_data_timeframe": 90,
   "creator": 58975,
   "notify_no_data": true,
   "renotify_interval": 0,
-  "state": "No Data",
+  "state": "OK",
   "escalation_message": null,
   "silenced_timeout_ts": null
 }
