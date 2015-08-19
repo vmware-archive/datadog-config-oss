@@ -1,0 +1,12 @@
+{
+  "notify_audit": true,
+  "silenced": false,
+  "query": "min(last_30m):min:diego.smoke.status{deployment:<%= deployment %>-diego} < 0.5",
+  "message": "<%= cloudops_email %> <%= diego_email %>",
+  "name": "PWS Prod Diego: smoke tests failed",
+  "no_data_timeframe": 60,
+  "creator": 12842,
+  "notify_no_data": false,
+  "renotify_interval": 0,
+  "state": "OK",
+}
