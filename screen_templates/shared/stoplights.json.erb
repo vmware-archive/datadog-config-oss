@@ -1497,9 +1497,6 @@
             "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}"
-          },
-          {
             "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
           },
           {
@@ -1765,7 +1762,7 @@
             "type": "line"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} + avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksRunning{deployment:<%= deployment %>}",
+            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>}",
             "type": "line"
           }
         ],
