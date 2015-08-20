@@ -4,7 +4,7 @@
   "timeout_h": null,
   "silenced": false,
   "query": "avg(last_5m):avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-jarvice} by {job,index} > 90",
-  "message": "Healthmonitor reports a Jarvice VM ({{job.name}} {{index.name}})  has used more than 90% of its RAM. \n@pagerduty-datadog-monitoringAndMetrics-<%= environment %>",
+  "message": "Healthmonitor reports a Jarvice VM ({{job.name}} {{index.name}})  has used more than 90% of its RAM. \n<%= jarvice_pagerduty %>",
   "id": 145379,
   "name": "<%= environment %> Jarvice: Experiencing very high memory utilization",
   "no_data_timeframe": 2,
