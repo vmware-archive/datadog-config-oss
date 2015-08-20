@@ -1343,7 +1343,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024"
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}) / 0.000001024"
           }
         ],
         "events": [
@@ -1378,7 +1378,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
+      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1431,7 +1431,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024",
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} ) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1491,16 +1491,16 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [
@@ -1754,15 +1754,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= deployment %>-diego}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= deployment %>-diego}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego}",
             "type": "line"
           }
         ],
@@ -3235,7 +3235,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>})",
+      "query": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3341,7 +3341,7 @@
     {
       "metric": "datadog.nozzle.runtime_metrics_server.Domain.cf_apps",
       "height": 6,
-      "query": "avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+      "query": "avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>-diego}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3394,7 +3394,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -3454,11 +3454,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= diego_deployment %>} / 1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= deployment %>-diego} / 1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= diego_deployment %>} / 1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= deployment %>-diego} / 1000000000",
             "type": "line"
           }
         ],
@@ -3486,7 +3486,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [
@@ -3506,7 +3506,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -3559,7 +3559,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})",
+      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>-diego})",
       "text_size": "auto",
       "unit": "/m",
       "title_size": 13,
@@ -3612,7 +3612,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})",
+      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>-diego})",
       "text_size": "auto",
       "unit": "/Hr",
       "title_size": 13,
@@ -3649,7 +3649,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
+      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>-diego}/1000000000",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -4060,7 +4060,7 @@
       ],
       "precision": 0,
       "title_text": "Access - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4105,7 +4105,7 @@
       ],
       "precision": 0,
       "title_text": "Brain - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4150,7 +4150,7 @@
       ],
       "precision": 0,
       "title_text": "Brain - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4195,7 +4195,7 @@
       ],
       "precision": 0,
       "title_text": "Access - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4232,7 +4232,7 @@
       "height": 6,
       "width": 24,
       "y": 88,
-      "x": 112,
+      "x": 101,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -4255,7 +4255,7 @@
       ],
       "precision": 0,
       "title_text": "CC Bridge - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4300,7 +4300,7 @@
       ],
       "precision": 0,
       "title_text": "Cell - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4345,7 +4345,7 @@
       ],
       "precision": 0,
       "title_text": "Cell - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4390,7 +4390,7 @@
       ],
       "precision": 0,
       "title_text": "CC bridge - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4435,7 +4435,7 @@
       ],
       "precision": 0,
       "title_text": "ETCD - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4480,7 +4480,7 @@
       ],
       "precision": 0,
       "title_text": "Route Emitter - 5m",
-      "x": 112,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4525,7 +4525,7 @@
       ],
       "precision": 0,
       "title_text": "Route Emitter - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4570,7 +4570,7 @@
       ],
       "precision": 0,
       "title_text": "ETCD - 24h",
-      "x": 126,
+      "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4745,6 +4745,59 @@
       "x": 24,
       "font_size": "auto",
       "type": "free_text"
+    },
+    {
+      "metric": "cloudops_tools.p_redis.dedicated_instances_used",
+      "height": 6,
+      "query": "avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 15,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>"
+      ],
+      "precision": 0,
+      "title_text": "Redis used nodes",
+      "x": 127,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 94,
+      "calc_func": "raw"
     }
   ],
   "shared": false,

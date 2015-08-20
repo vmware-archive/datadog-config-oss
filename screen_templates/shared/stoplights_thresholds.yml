@@ -200,28 +200,25 @@ prod:
 - query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_green
   value: 24
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024"
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) /
+    0.000001024"
   color: white_on_red
   value: 6
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024"
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) /
+    0.000001024"
   color: white_on_yellow
   value: 7.2
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    by {ip}) / 0.000001024"
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) /
+    0.000001024"
   color: white_on_green
   value: 7.2
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024"
   color: white_on_red
   value: 18
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024"
   color: white_on_yellow
   value: 22
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
-    ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024"
   color: white_on_green
   value: 22
 - query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
@@ -436,22 +433,16 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
-    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
-    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_red
   value: 10
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
-    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
-    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_yellow
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
-    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
-    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}
@@ -705,3 +696,12 @@ prod:
 - query: avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800))
   color: white_on_green
   value: -100000
+- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
+  color: white_on_red
+  value: 9
+- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
+  color: white_on_yellow
+  value: 7
+- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
+  color: white_on_green
+  value: 7
