@@ -200,27 +200,27 @@ prod:
 - query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
   color: white_on_green
   value: 24
-- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_red
   value: 6
-- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_yellow
   value: 7.2
-- query: "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     by {ip}) / 0.000001024"
   color: white_on_green
   value: 7.2
-- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_red
   value: 18
-- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_yellow
   value: 22
-- query: "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:}
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:}
     ) / 0.000001024"
   color: white_on_green
   value: 22
@@ -436,22 +436,22 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
+    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
+    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_red
   value: 10
-- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
+    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
+    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_yellow
   value: 5
-- query: "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:}
-    - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:})
-    -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:}
+    - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
+    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:})
+    -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}
@@ -463,55 +463,55 @@ prod:
 - query: sum:diego.canary.app.instance{deployment:}
   color: white_on_green
   value: 20
-- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
   color: white_on_red
   value: 0.8
-- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
   color: white_on_yellow
   value: 0.9
-- query: avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
   color: white_on_green
   value: 0.9
-- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
   color: white_on_red
   value: 15
-- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
   color: white_on_yellow
   value: 5
-- query: max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
   color: white_on_green
   value: 5
-- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+- query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_red
   value: 5
-- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+- query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_yellow
   value: 3
-- query: avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
+- query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
+    - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_green
   value: 3
-- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
   color: white_on_red
   value: 1
-- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
   color: white_on_yellow
   value: 0.5
-- query: per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
   color: white_on_green
   value: 0.5
-- query: per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})
+- query: per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})
   color: white_on_green
   value: 0
-- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_red
   value: 1
-- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_yellow
   value: 0.5
-- query: max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_green
   value: 0.5
 - query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}

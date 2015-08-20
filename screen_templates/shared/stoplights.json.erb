@@ -1343,7 +1343,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024"
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024"
           }
         ],
         "events": [
@@ -1378,7 +1378,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
+      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>} by {ip}) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1401,7 +1401,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1409,7 +1409,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1417,7 +1417,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(min:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) / 0.000001024', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1431,7 +1431,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:<%= deployment %>} ) / 0.000001024",
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>} ) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1454,7 +1454,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1462,7 +1462,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1470,7 +1470,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(sum:cf.collector.MetronAgent.forwarder.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1491,16 +1491,16 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksPending{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= deployment %>}"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>}"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>}"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>}"
           }
         ],
         "events": [
@@ -1754,15 +1754,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.rep.ContainersExpected{deployment:<%= deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.rep.ContainersActual{deployment:<%= deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>}",
+            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>}",
             "type": "line"
           }
         ],
@@ -3235,7 +3235,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>})",
+      "query": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3258,7 +3258,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3266,7 +3266,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3274,7 +3274,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsDesired{deployment:} - cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsRunning{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.LRPsStarting{deployment:}) -cf.collector.MetronAgent.forwarder.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3339,9 +3339,9 @@
       "calc_func": "raw"
     },
     {
-      "metric": "cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps",
+      "metric": "datadog.nozzle.runtime_metrics_server.Domain.cf_apps",
       "height": 6,
-      "query": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
+      "query": "avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3364,7 +3364,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3372,7 +3372,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3380,7 +3380,7 @@
           "comparator": ">=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3394,7 +3394,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -3417,7 +3417,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3425,7 +3425,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3433,7 +3433,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3454,11 +3454,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceLRPDuration{deployment:<%= deployment %>} / 1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= deployment %>} / 1000000000",
             "type": "line"
           },
           {
-            "q": "sum:cf.collector.MetronAgent.forwarder.converger.ConvergenceTaskDuration{deployment:<%= deployment %>} / 1000000000",
+            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= deployment %>} / 1000000000",
             "type": "line"
           }
         ],
@@ -3486,7 +3486,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.MetronAgent.forwarder.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>}"
           }
         ],
         "events": [
@@ -3506,7 +3506,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -3529,7 +3529,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3537,7 +3537,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3545,7 +3545,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.MetronAgent.forwarder.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3559,7 +3559,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
+      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/m",
       "title_size": 13,
@@ -3582,7 +3582,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_red') %>,
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3590,7 +3590,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_yellow') %>,
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3598,7 +3598,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_minute(avg:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_green') %>,
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3612,7 +3612,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
+      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/Hr",
       "title_size": 13,
@@ -3635,7 +3635,7 @@
           "comparator": ">=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_hour(cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})', 'white_on_green') %>,
+          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3649,7 +3649,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
+      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>}/1000000000",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -3672,7 +3672,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3680,7 +3680,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3688,7 +3688,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.MetronAgent.forwarder.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
