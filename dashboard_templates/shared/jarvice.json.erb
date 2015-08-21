@@ -1,0 +1,30 @@
+{
+    "description": "Information about Jarvice",
+    "graphs": [
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "avg:bosh.healthmonitor.system.cpu.user{ deployment: <%= deployment %> } by {job,index}",
+                        "stacked": false
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Jarvice CPU (%)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "avg:bosh.healthmonitor.system.mem.percent{ deployment: <%= deployment %> } by {job,index}",
+                        "type": "line"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Jarvice Memory (%)"
+        }
+    ],
+    "title": "<%= environment %> Jarvice Information"
+}
