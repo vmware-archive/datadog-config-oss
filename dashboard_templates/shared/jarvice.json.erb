@@ -6,7 +6,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "avg:bosh.healthmonitor.system.cpu.user{ deployment: <%= deployment %> } by {job,index}",
+                        "q": "avg:bosh.healthmonitor.system.cpu.user{ deployment: <%= jarvice_deployment %> } by {job,index}",
                         "stacked": false
                     }
                 ]
@@ -18,7 +18,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "avg:bosh.healthmonitor.system.mem.percent{ deployment: <%= deployment %> } by {job,index}",
+                        "q": "avg:bosh.healthmonitor.system.mem.percent{ deployment: <%= jarvice_deployment %> } by {job,index}",
                         "type": "line"
                     }
                 ]
