@@ -1,0 +1,209 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "(avg:bosh.healthmonitor.system.mem.kb{$job_z1,$deployment} by {index,job}) * 1024 , (avg:bosh.healthmonitor.system.mem.kb{$job_z2,$deployment} by {index,job}) * 1024"
+          }
+        ]
+      },
+      "title": "Memory used in bytes"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "(avg:bosh.healthmonitor.system.mem.kb{$job_z1,$deployment}by{index,job})*1024,(avg:bosh.healthmonitor.system.mem.kb{$job_z2,$deployment}by{index,job})*1024"
+          }
+        ]
+      },
+      "title": "Memory used in bytes"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.mem.percent{$job_z2,$deployment} by {index,job}"
+          }
+        ]
+      },
+      "title": "Memory used in percents"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.mem.percent{$job_z2,$deployment} by {index,job}"
+          }
+        ]
+      },
+      "title": "Memory used in percents"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job_z1,$deployment} by {index,job}) * 1024 , (avg:bosh.healthmonitor.system.swap.kb{$job_z2,$deployment} by {index,job}) * 1024",
+            "style": {
+              "palette": "warm"
+            }
+          }
+        ]
+      },
+      "title": "Swap used in bytes"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job_z1,$deployment}by{index,job})*1024,(avg:bosh.healthmonitor.system.swap.kb{$job_z2,$deployment}by{index,job})*1024",
+            "style": {
+              "palette": "warm"
+            }
+          }
+        ]
+      },
+      "title": "Swap used in bytes"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.wait{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "area"
+          }
+        ]
+      },
+      "title": "CPU wait in percent"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.wait{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "warm"
+            }
+          }
+        ]
+      },
+      "title": "CPU wait in percent"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.sys{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "cool"
+            }
+          }
+        ]
+      },
+      "title": "CPU system in percents"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.sys{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "cool"
+            }
+          }
+        ]
+      },
+      "title": "CPU system in percents"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.user{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "cool"
+            }
+          }
+        ]
+      },
+      "title": "CPU user in percent"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.user{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "cool"
+            }
+          }
+        ]
+      },
+      "title": "CPU user in percent"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.load.1m{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.load.1m{$job_z2,$deployment} by {index,job}",
+            "style": {
+              "palette": "purple"
+            }
+          }
+        ]
+      },
+      "title": "Unix Load 1min"
+    },
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.load.1m{$job_z1,$deployment} by {job,index} , avg:bosh.healthmonitor.system.load.1m{$job_z2,$deployment} by {job,index}",
+            "style": {
+              "palette": "purple"
+            }
+          }
+        ]
+      },
+      "title": "Unix Load 1m"
+    }
+  ],
+  "description": "created by spark@pivotal.io (cloned)",
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": "job",
+      "name": "job_z1"
+    },
+    {
+      "default": "job:_job",
+      "prefix": "job",
+      "name": "job_z2"
+    },
+    {
+      "default": "deployment:<%= deployment %>",
+      "prefix": "deployment",
+      "name": "deployment"
+    }
+  ],
+  "id": 61963,
+  "title": "System Metrics"
+}
