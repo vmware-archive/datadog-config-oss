@@ -4812,6 +4812,59 @@
       "x": 50,
       "font_size": "auto",
       "type": "free_text"
+    },
+    {
+      "metric": "diego.smoke.status",
+      "height": 6,
+      "query": "avg:diego.smoke.status{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 15,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": 2,
+      "title_text": "Diego smoke test",
+      "x": 32,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 117,
+      "calc_func": "raw"
     }
   ],
   "shared": false,
