@@ -1,5 +1,5 @@
 {
-  "query": "avg(last_4h):avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>} >= 8",
+  "query": "avg(last_4h):avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>} >= 10",
   "message": "Free redis nodes are low @pagerduty-datadog-cloudops-non-critical",
   "name": "Free redis nodes are low",
   "no_data_timeframe": 480,

@@ -1,4 +1,4 @@
----
+
 prod:
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
@@ -698,10 +698,10 @@ prod:
   value: -100000
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_red
-  value: 9
+  value: 11 
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_yellow
-  value: 7
+  value: 9 
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_green
   value: 7
