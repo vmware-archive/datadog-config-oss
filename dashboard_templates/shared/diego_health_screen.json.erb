@@ -377,20 +377,20 @@
       "title": "Converger: LRP Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsDeleted{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPsStopped{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionsKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionsKicked{deployment:<%= diego_deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPRuns{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsDeleted{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsKicked{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsStopped{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionRuns{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsKicked{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionRuns{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsKicked{deployment:<%= diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -419,9 +419,9 @@
       "title": "Converger: Task Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTaskRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTasksKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.converger.ConvergenceTasksPruned{deployment:<%= diego_deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTaskRuns{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksKicked{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksPruned{deployment:<%= diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -451,19 +451,19 @@
       "definition":{
         "requests": [
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPStopAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPStartAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceTaskDuration{deployment:<%= diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
