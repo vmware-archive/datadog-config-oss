@@ -11,19 +11,19 @@
       "definition":{
         "requests":[
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksRunning{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksRunning{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -53,19 +53,19 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%= diego_deployment %>} + datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%= diego_deployment %>} + datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>} + datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>} + datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -95,7 +95,7 @@
       "definition":{
         "requests": [
           {
-            "q": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment: <%= diego_deployment %>} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment: <%= diego_deployment %>}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment: <%= diego_deployment %>}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment: <%= diego_deployment %>})",
+            "q": "(((datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>})",
             "type": "line"
           }
         ],
@@ -184,6 +184,133 @@
       }
     },
     {
+      "title": "BBS: Master Elections",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "datadog.nozzle.bbs.BBSMasterElected{deployment:<%= diego_deployment %>}",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "BBS: Migration Duration (seconds)",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.bbs.MigrationDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "type": "bars"
+          }
+        ],
+        "events":[
+          {
+           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "BBS: Request Count",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "datadog.nozzle.bbs.RequestCount{deployment:<%= diego_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "BBS: Request Latency (seconds)",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>}/1000000000",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          }, {
+           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
       "title": "Canaries",
       "definition":{
         "requests":[
@@ -219,7 +346,7 @@
       "definition":{
         "requests":[
           {
-            "q": "max:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+            "q": "max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -493,7 +620,7 @@
     <%
     [
       {:prefix => "Bridge", :processes => ["file_server", "nsync_bulker", "nsync_listener", "stager", "tps_listener", "tps_watcher"]},
-      {:prefix => "Non-Bridge", :processes => ["auctioneer", "bbs", "converger", "garden_linux", "receptor", "rep", "route_emitter", "runtime_metrics_server", "ssh_proxy"]},
+      {:prefix => "Non-Bridge", :processes => ["auctioneer", "bbs", "converger", "garden_linux", "receptor", "rep", "route_emitter", "ssh_proxy"]},
     ].each do |group|
     [
       {:title => "Go: # Goroutines", :metric => "numGoRoutines"},
@@ -543,7 +670,7 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -573,7 +700,7 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDWatchers{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -603,10 +730,10 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDReceivedBandwidthRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDReceivedBandwidthRate{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDSentBandwidthRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDSentBandwidthRate{deployment:<%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -636,10 +763,10 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDReceivedRequestRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDReceivedRequestRate{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.runtime_metrics_server.ETCDSentRequestRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDSentRequestRate{deployment:<%= diego_deployment %>}"
           }
         ],
         "events":[
@@ -1096,54 +1223,6 @@
       }
     },
     {
-      "title": "TPS: HTTP Response Buckets",
-      "definition":{
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_minute(datadog.nozzle.tps_listener.responseCount1XX{deployment:<%= diego_deployment %>})",
-            "type": "line"
-          },
-          {
-            "q": "per_minute(datadog.nozzle.tps_listener.responseCount2XX{deployment:<%= diego_deployment %>})",
-            "type": "line"
-          },
-          {
-            "q": "per_minute(datadog.nozzle.tps_listener.responseCount3XX{deployment:<%= diego_deployment %>})",
-            "type": "line"
-          },
-          {
-            "q": "per_minute(datadog.nozzle.tps_listener.responseCount4XX{deployment:<%= diego_deployment %>})",
-            "type": "line"
-          },
-          {
-            "q": "per_minute(datadog.nozzle.tps_listener.responseCount5XX{deployment:<%= diego_deployment %>})",
-            "type": "line"
-          }
-        ],
-        "events":[
-          {
-           "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          },
-          {
-           "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-           "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
-          },
-          {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
-          },
-          {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
-          }
-        ]
-      }
-    },
-    {
       "title": "Auctioneer: LRP Auctions (per minute)",
       "definition":{
           "viz": "timeseries",
@@ -1248,7 +1327,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.runtime_metrics_server.MetricsReportingDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.bbs.MetricsReportingDuration{deployment:<%= diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
