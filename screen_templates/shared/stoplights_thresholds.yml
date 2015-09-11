@@ -1,4 +1,4 @@
-
+---
 prod:
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
@@ -433,16 +433,16 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_red
   value: 10
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_yellow
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}
@@ -454,13 +454,13 @@ prod:
 - query: sum:diego.canary.app.instance{deployment:}
   color: white_on_green
   value: 20
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_red
   value: 0.8
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_yellow
   value: 0.9
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_green
   value: 0.9
 - query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
@@ -503,12 +503,6 @@ prod:
   color: white_on_yellow
   value: 0.5
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
-  color: white_on_green
-  value: 0.5
-- query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
-  color: white_on_red
-  value: 0.5
-- query: avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
   color: white_on_green
   value: 0.5
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
@@ -698,13 +692,13 @@ prod:
   value: -100000
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_red
-  value: 11 
+  value: 17
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_yellow
-  value: 9 
+  value: 16
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_green
-  value: 7
+  value: 16
 - query: avg:diego.smoke.status{deployment:}
   color: white_on_green
   value: 1
@@ -714,3 +708,21 @@ prod:
 - query: avg:diego.smoke.status{deployment:}
   color: white_on_yellow
   value: 0.75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
+  color: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
+  color: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
+  color: white_on_green
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
+  color: white_on_red
+  value: 85
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
+  color: white_on_yellow
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
+  color: white_on_green
+  value: 75

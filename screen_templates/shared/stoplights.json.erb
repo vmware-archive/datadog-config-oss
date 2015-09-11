@@ -372,7 +372,7 @@
     ]
   },
   "original_title": "<%= deployment %> stoplights",
-  "height": 142,
+  "height": 148,
   "width": "100%",
   "template_variables": [
 
@@ -1460,16 +1460,16 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [
@@ -1731,7 +1731,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego}",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}",
             "type": "line"
           }
         ],
@@ -1880,7 +1880,7 @@
     },
     {
       "metric": "cloudops_tools.dea_monitor.additional_runners_needed",
-      "height": 12,
+      "height": 7,
       "query": "max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "auto",
@@ -1889,14 +1889,14 @@
       "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
-      "width": 21,
+      "width": 20,
       "timeframe": "30m",
       "type": "query_value",
       "tags": [
         "deployment:<%= deployment %>"
       ],
       "precision": 0,
-      "title_text": "Additional DEAs Needed",
+      "title_text": "Additional Runners Needed",
       "x": 50,
       "metric_type": "standard",
       "conditional_formats": [
@@ -1928,7 +1928,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 113,
+      "y": 53,
       "calc_func": "raw"
     },
     {
@@ -2421,7 +2421,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "Ephemeral Disk usage (%) - 1h",
-      "height": 12.000000158945717,
+      "height": 12,
       "tile_def": {
         "viz": "heatmap",
         "requests": [
@@ -2436,15 +2436,15 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 105,
-      "x": 71,
+      "y": 114,
+      "x": 46,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
     },
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
-      "height": 11.916666825612383,
+      "height": 7,
       "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "%",
@@ -2453,7 +2453,7 @@
       "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
-      "width": 20.916666666666668,
+      "width": 14,
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
@@ -2461,7 +2461,7 @@
       ],
       "precision": 0,
       "title_text": "Top Ephemeral Disk usage (%) past hour",
-      "x": 50,
+      "x": 47,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2497,7 +2497,7 @@
     },
     {
       "metric": "bosh.healthmonitor.system.disk.persistent.percent",
-      "height": 12.000000158945717,
+      "height": 7,
       "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "%",
@@ -2506,7 +2506,7 @@
       "aggregator": "max",
       "title_align": "left",
       "text_align": "center",
-      "width": 21,
+      "width": 13,
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
@@ -2514,7 +2514,7 @@
       ],
       "precision": 0,
       "title_text": "Top Persistent Disk usage (%) past hour",
-      "x": 50,
+      "x": 61,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2545,7 +2545,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 119,
+      "y": 105,
       "calc_func": "raw"
     },
     {
@@ -2969,8 +2969,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 119,
-      "x": 71,
+      "y": 128,
+      "x": 46,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -2980,7 +2980,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "CPU Utilization (%) - 1h",
-      "height": 13.000000158945717,
+      "height": 12,
       "tile_def": {
         "viz": "heatmap",
         "requests": [
@@ -2996,10 +2996,10 @@
 
         ]
       },
-      "width": 49.083333333333336,
+      "width": 28,
       "timeframe": "1h",
-      "y": 90,
-      "x": 50,
+      "y": 91,
+      "x": 46,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -3204,7 +3204,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3227,7 +3227,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3235,7 +3235,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3243,7 +3243,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3308,9 +3308,9 @@
       "calc_func": "raw"
     },
     {
-      "metric": "datadog.nozzle.runtime_metrics_server.Domain.cf_apps",
+      "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "height": 6,
-      "query": "avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>-diego}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>-diego}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3333,7 +3333,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3341,7 +3341,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3349,7 +3349,7 @@
           "comparator": ">=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3455,7 +3455,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [
@@ -3725,51 +3725,6 @@
       "legend": false
     },
     {
-      "metric": "cloudops_tools.dea_monitor.additional_runners_needed",
-      "height": 7,
-      "query": "avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 16,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "left",
-      "text_align": "left",
-      "width": 20,
-      "timeframe": "15m",
-      "type": "query_value",
-      "tags": [
-        "deployment:<%= deployment %>"
-      ],
-      "precision": 1,
-      "title_text": "DEA Runners Needed",
-      "x": 50,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "comparator": ">=",
-          "color": "white_on_red",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_red') %>,
-          "invert": false,
-          "custom_fg_color": null
-        },
-        {
-          "comparator": "<",
-          "color": "white_on_green",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('avg:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}', 'white_on_green') %>,
-          "invert": false,
-          "custom_fg_color": null
-        }
-      ],
-      "is_valid_query": true,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 53,
-      "calc_func": "raw"
-    },
-    {
       "metric": "",
       "height": 4,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
@@ -4009,7 +3964,7 @@
       ],
       "precision": 0,
       "title_text": "Access - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4054,7 +4009,7 @@
       ],
       "precision": 0,
       "title_text": "Brain - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4099,7 +4054,7 @@
       ],
       "precision": 0,
       "title_text": "Brain - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4144,7 +4099,7 @@
       ],
       "precision": 0,
       "title_text": "Access - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4181,7 +4136,7 @@
       "height": 6,
       "width": 24,
       "y": 88,
-      "x": 101,
+      "x": 102,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -4204,7 +4159,7 @@
       ],
       "precision": 0,
       "title_text": "CC Bridge - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4249,7 +4204,7 @@
       ],
       "precision": 0,
       "title_text": "Cell - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4294,7 +4249,7 @@
       ],
       "precision": 0,
       "title_text": "Cell - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4339,7 +4294,7 @@
       ],
       "precision": 0,
       "title_text": "CC bridge - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4384,7 +4339,7 @@
       ],
       "precision": 0,
       "title_text": "ETCD - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4429,7 +4384,7 @@
       ],
       "precision": 0,
       "title_text": "Route Emitter - 5m",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4474,7 +4429,7 @@
       ],
       "precision": 0,
       "title_text": "Route Emitter - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4519,7 +4474,7 @@
       ],
       "precision": 0,
       "title_text": "ETCD - 24h",
-      "x": 115,
+      "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4700,13 +4655,13 @@
       "height": 6,
       "query": "avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>}",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "of18",
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
       "title_align": "left",
       "text_align": "center",
-      "width": 15,
+      "width": 23,
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
@@ -4714,7 +4669,7 @@
       ],
       "precision": 0,
       "title_text": "Redis used nodes",
-      "x": 127,
+      "x": 126,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -4807,9 +4762,9 @@
       "text_align": "left",
       "title_text": "",
       "height": 6,
-      "width": 49,
-      "y": 84,
-      "x": 50,
+      "width": 28,
+      "y": 85,
+      "x": 47,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -4865,6 +4820,214 @@
       "aggr": "avg",
       "y": 117,
       "calc_func": "raw"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Redis",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 3,
+      "width": 23,
+      "y": 87,
+      "x": 126,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Used",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 3,
+      "width": 12,
+      "y": 90,
+      "x": 126,
+      "font_size": "24",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU Utilization (%) - 1h",
+      "height": 12,
+      "tile_def": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego} by {job,index}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "1h",
+      "y": 91,
+      "x": 74,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
+      "height": 7,
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 14,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": 0,
+      "title_text": "Top Ephemeral Disk usage (%) past hour",
+      "x": 74,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "max",
+      "y": 105,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "bosh.healthmonitor.system.disk.persistent.percent",
+      "height": 7,
+      "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 13,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": 0,
+      "title_text": "Top Persistent Disk usage (%) past hour",
+      "x": 88,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "max",
+      "y": 105,
+      "calc_func": "raw"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Ephemeral Disk usage (%) - 1h",
+      "height": 12,
+      "tile_def": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>-diego} by {job,index}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "1h",
+      "y": 114,
+      "x": 74,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Persistent Disk usage (%) - 1h",
+      "height": 12.000000158945717,
+      "tile_def": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>-diego} by {job,index}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "1h",
+      "y": 128,
+      "x": 74,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "shared": false,
