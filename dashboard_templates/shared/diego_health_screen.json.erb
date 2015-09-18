@@ -537,7 +537,8 @@
       "definition":{
         "requests": [
           { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingDesiredLRPsDeleted{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedSchedulingInfos{deployment:<%= diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedRunInfos{deployment:<%= diego_deployment %>})" },
           { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= diego_deployment %>})" },
           { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsDeleted{deployment:<%= diego_deployment %>})" },
           { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsKicked{deployment:<%= diego_deployment %>})" },
