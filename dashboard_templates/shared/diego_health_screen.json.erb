@@ -1256,6 +1256,38 @@
       }
     },
     {
+      "title": "Rep: Stalled Garden Duration",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
+    },
+    {
       "title": "Auctioneer: LRP Auctions (per minute)",
       "definition":{
           "viz": "timeseries",
