@@ -157,7 +157,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * (ewma_10(rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> }))) / ewma_10((rate(sum:cf.collector.MetronAgent.dropsondeAgentListener.receivedMessageCount{ deployment: <%= deployment %> })))"
+                        "q": "100 * ((ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>-diego})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>})))) / (ewma_10((rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>}))) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>-diego})))"
                     }
                 ],
                 "events": []
