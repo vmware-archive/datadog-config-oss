@@ -665,7 +665,7 @@
     ].each do |metric|
       requests = group[:processes].map { |process|
         {
-          "q" => "datadog.nozzle.#{process}.#{metric[:metric]}{deployment:#{diego_deployment}} by {component,index,ip}",
+          "q" => "datadog.nozzle.#{process}.#{metric[:metric]}{deployment:#{diego_deployment}} by {index,ip}",
           "type" => "line",
         }
       }
