@@ -1460,16 +1460,16 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksPending{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksClaimed{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksCompleted{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= deployment %>-diego}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.TasksResolving{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [
@@ -1731,7 +1731,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego}",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}",
             "type": "line"
           }
         ],
@@ -3204,7 +3204,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3227,7 +3227,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3235,7 +3235,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3243,7 +3243,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:}) -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:}) -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3308,9 +3308,9 @@
       "calc_func": "raw"
     },
     {
-      "metric": "datadog.nozzle.runtime_metrics_server.Domain.cf_apps",
+      "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "height": 6,
-      "query": "avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:<%= deployment %>-diego}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>-diego}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -3333,7 +3333,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3341,7 +3341,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -3349,7 +3349,7 @@
           "comparator": ">=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -3455,7 +3455,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
           }
         ],
         "events": [

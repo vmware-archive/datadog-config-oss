@@ -433,16 +433,16 @@ prod:
 - query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
   color: white_on_green
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_red
   value: 10
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_yellow
   value: 5
-- query: "(((datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:} - datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:})
-    -datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:}) -datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
+    -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:}
@@ -454,13 +454,13 @@ prod:
 - query: sum:diego.canary.app.instance{deployment:}
   color: white_on_green
   value: 20
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_red
   value: 0.8
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_yellow
   value: 0.9
-- query: avg:datadog.nozzle.runtime_metrics_server.Domain.cf_apps{deployment:}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:}
   color: white_on_green
   value: 0.9
 - query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:}/1000000000
