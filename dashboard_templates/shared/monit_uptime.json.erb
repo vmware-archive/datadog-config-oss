@@ -15,7 +15,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>-diego"
           }
         ],
         "yaxis": {
@@ -33,12 +33,12 @@
             "style": {
               "palette": "dog_classic"
             },
-            "type": "area"
+            "type": "line"
           }
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -62,7 +62,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -85,7 +85,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -109,7 +109,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -133,7 +133,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -156,7 +156,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -179,7 +179,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -202,7 +202,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -226,7 +226,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -250,7 +250,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -273,7 +273,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -297,7 +297,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -321,7 +321,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -345,7 +345,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -369,7 +369,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -393,7 +393,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -417,7 +417,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -441,7 +441,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -465,7 +465,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment"
+            "q": "begin update deployment <%= deployment %>"
           }
         ],
         "yaxis": {
@@ -473,6 +473,54 @@
         }
       },
       "title": "Monit Uptime - CF (UAA_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>,job:runner_z1} by {process,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - CF(runner_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>,job:runner_z2} by {process,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - CF (runner_z2)"
     }
   ],
   "description": "created by vkelkar@pivotal.io",
