@@ -29,6 +29,318 @@
         "viz": "timeseries",
         "requests": [
           {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Database_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Database_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z3} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Database_z3)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:brain_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Brain_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:brain_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Brain_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cc_bridge_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (CC_Bridge_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cc_bridge_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (CC_Bridge_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:access_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Access_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:access_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Access_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cell_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Cell_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cell_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Cell_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:route_emitter_z1} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Route-Emitter_z1)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:route_emitter_z2} by {job,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>-diego"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - Diego (Route-Emitter_z2)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
             "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>} by {job,index} / 3600",
             "style": {
               "palette": "dog_classic"
@@ -46,6 +358,30 @@
         }
       },
       "title": "Monit Uptime  (CF Deployment)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>,job:stats_z1} by {process,index} / 3600",
+            "style": {
+              "width": "normal",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "begin update deployment <%= deployment %>"
+          }
+        ],
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "title": "Monit Uptime - CF (stats_z1)"
     },
     {
       "definition": {
