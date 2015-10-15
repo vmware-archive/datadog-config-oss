@@ -3218,9 +3218,9 @@
       "tags": [
 
       ],
-      "precision": 0,
+      "precision": "*",
       "title_text": "Missing LRPs - 5m max",
-      "x": 101.00000338753064,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3304,7 +3304,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "sum",
-      "y": 78,
+      "y": 70,
       "calc_func": "raw"
     },
     {
@@ -3322,11 +3322,11 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>"
+        "deployment:<%= deployment %>-diego"
       ],
       "precision": "*",
       "title_text": "Domain 'cf-apps' Freshness - 5m avg",
-      "x": 101.00000338753064,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3423,11 +3423,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= deployment %>-diego} / 1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= deployment %>-diego} / 1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= deployment %>-diego} / 1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceTaskDuration{deployment:<%= deployment %>-diego} / 1000000000",
             "type": "line"
           }
         ],
@@ -3491,7 +3491,7 @@
       ],
       "precision": 0,
       "title_text": "Route Delta 1hr - 5m avg",
-      "x": 101.00000338753064,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3522,7 +3522,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 70,
+      "y": 62,
       "calc_func": "raw"
     },
     {
@@ -3537,13 +3537,13 @@
       "title_align": "center",
       "text_align": "center",
       "width": 21,
-      "timeframe": "30m",
+      "timeframe": "5m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 1,
-      "title_text": "LRP Auction Failures per Minute - 30m avg",
+      "title_text": "LRP Auction Failures per Minute - 5m avg",
       "x": 101.00000338753064,
       "metric_type": "standard",
       "conditional_formats": [
@@ -3579,44 +3579,7 @@
       "calc_func": "raw"
     },
     {
-      "metric": "system.load.1",
-      "height": 6,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>-diego})",
-      "text_size": "auto",
-      "unit": "/Hr",
-      "title_size": 13,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "center",
-      "text_align": "center",
-      "width": 21,
-      "timeframe": "30m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 2,
-      "title_text": "LRP Auctions per Hour - 30m avg",
-      "x": 100.85214451948802,
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "comparator": ">=",
-          "color": "white_on_green",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:})', 'white_on_green') %>,
-          "invert": false,
-          "custom_fg_color": null
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 54,
-      "calc_func": "raw"
-    },
-    {
-      "metric": "system.load.1",
+      "metric": "",
       "height": 6,
       "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>-diego}/1000000000",
       "text_size": "auto",
@@ -3627,14 +3590,14 @@
       "title_align": "center",
       "text_align": "left",
       "width": 21,
-      "timeframe": "30m",
+      "timeframe": "5m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 2,
-      "title_text": "Max. Fetch Cell State Times - 30m avg",
-      "x": 101.00000338753064,
+      "title_text": "Max. Fetch Cell State Times - 5m avg",
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3665,7 +3628,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 62,
+      "y": 54,
       "calc_func": "raw"
     },
     {
@@ -4383,7 +4346,7 @@
 
       ],
       "precision": 0,
-      "title_text": "ETCD - 5m",
+      "title_text": "Database - 5m",
       "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
@@ -4518,7 +4481,7 @@
 
       ],
       "precision": 0,
-      "title_text": "ETCD - 24h",
+      "title_text": "Database - 24h",
       "x": 115,
       "metric_type": "standard",
       "conditional_formats": [
