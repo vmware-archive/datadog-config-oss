@@ -1104,19 +1104,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>} + avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}"
           }
         ],
         "events": [
@@ -1141,7 +1141,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "( ( ( avg:datadog.nozzle.runtime_metrics_server.LRPsDesired{deployment:<%= diego_deployment %>} - avg:datadog.nozzle.runtime_metrics_server.LRPsRunning{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.runtime_metrics_server.LRPsStarting{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.runtime_metrics_server.CrashedActualLRPs{deployment:<%= diego_deployment %>} )", "type": "line"
+            "q": "( ( ( avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>} ) - avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>} )", "type": "line"
           }
                   ],
         "events": [
