@@ -736,3 +736,42 @@ prod:
 - query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))
   color: white_on_red
   value: -100
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:} / 1000000000
+  color: white_on_red
+  value: 10
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:} / 1000000000
+  color: white_on_yellow
+  value: 2
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:} / 1000000000
+  color: white_on_green
+  value: 2
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
+  color: white_on_red
+  value: 4
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
+  color: white_on_red
+  value: 2
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
+  color: white_on_yellow
+  value: 4
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
+  color: white_on_yellow
+  value: 2
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
+  color: white_on_green
+  value: 3
+- query: "(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} +
+    avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:,
+    job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2})*100"
+  color: white_on_red
+  value: 80
+- query: "(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} +
+    avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:,
+    job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2})*100"
+  color: white_on_yellow
+  value: 70
+- query: "(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} +
+    avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:,
+    job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2})*100"
+  color: white_on_green
+  value: 70
