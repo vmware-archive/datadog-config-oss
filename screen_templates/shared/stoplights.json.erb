@@ -2269,28 +2269,28 @@
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": false,
@@ -2322,28 +2322,28 @@
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "color": "white_on_yellow",
-          "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_green",
-          "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_green') %>
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
         },
         {
-          "color": "white_on_yellow",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>
-        },
-        {
-          "color": "white_on_red",
-          "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_red') %>
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800) - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
         }
       ],
       "is_valid_query": false,
@@ -2860,7 +2860,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "AWS Events",
-      "height": 18,
+      "height": 23,
       "width": 32,
       "query": "source:aws",
       "timeframe": "1d",
@@ -4338,7 +4338,7 @@
 
       ],
       "precision": 0,
-      "title_text": "ETCD - 5m",
+      "title_text": "Database - 5m",
       "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
@@ -4473,7 +4473,7 @@
 
       ],
       "precision": 0,
-      "title_text": "ETCD - 24h",
+      "title_text": "Database - 24h",
       "x": 116,
       "metric_type": "standard",
       "conditional_formats": [
@@ -5028,6 +5028,142 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Diego VM health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 6,
+      "width": 28,
+      "y": 85,
+      "x": 74,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Diego App Delta",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 7,
+      "width": 26,
+      "y": 105,
+      "x": 125,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "metric": "",
+      "height": 12,
+      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
+      "text_size": "auto",
+      "unit": "",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Running Instances Delta (hour)",
+      "x": 125,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 113,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 12,
+      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
+      "text_size": "auto",
+      "unit": "",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 24,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "Applications Delta (hour)",
+      "x": 125,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 127,
+      "calc_func": "raw"
     }
   ],
   "shared": false,

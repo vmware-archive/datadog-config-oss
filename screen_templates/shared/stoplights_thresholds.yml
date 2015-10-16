@@ -339,10 +339,6 @@ prod:
   value: -10
 - query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
     - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
-  color: white_on_yellow
-  value: 100
-- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
   color: white_on_red
   value: -100
 - query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
@@ -353,10 +349,6 @@ prod:
     - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
   color: white_on_green
   value: -10
-- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
-  color: white_on_yellow
-  value: 100
 - query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
     - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
   color: white_on_red
@@ -726,3 +718,21 @@ prod:
 - query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
   color: white_on_green
   value: 75
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))
+  color: white_on_green
+  value: -10
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:}.rollup(avg,1800))
+  color: white_on_red
+  value: -100
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))
+  color: white_on_yellow
+  value: 100
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))
+  color: white_on_green
+  value: -10
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:}.rollup(avg,1800))
+  color: white_on_red
+  value: -100
