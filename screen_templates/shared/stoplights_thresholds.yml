@@ -761,20 +761,14 @@ prod:
   color: white_on_green
   value: 3
 - query: |-
-    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +
-    avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}
-    )/3
+    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3
   color: white_on_red
   value: 80
 - query: |-
-    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +
-    avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}
-    )/3
+    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3
   color: white_on_yellow
   value: 70
 - query: |-
-    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +
-    avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}
-    )/3
+    (avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3
   color: white_on_green
   value: 70
