@@ -5256,7 +5256,7 @@
     {
       "metric": "",
       "height": 7,
-      "query": "(avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z3})/3",
+      "query": "((avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z2} +\navg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z3}\n)/3)",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -5270,16 +5270,16 @@
       "tags": [
 
       ],
-      "precision": 0,
+      "precision": 2,
       "title_text": "Database CPU",
       "x": 76,
       "metric_type": "standard",
       "conditional_formats": [
         {
-          "comparator": ">",
+          "comparator": ">=",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3', 'white_on_red') %>,
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +\navg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}\n)/3)', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -5287,7 +5287,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3', 'white_on_yellow') %>,
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +\navg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}\n)/3)', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -5295,7 +5295,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('(avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3})/3', 'white_on_green') %>,
+          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z1} + avg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z2} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z2} +\navg:bosh.healthmonitor.system.cpu.sys{deployment:, job: database_z3} + avg:bosh.healthmonitor.system.cpu.user{deployment:, job: database_z3}\n)/3)', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
