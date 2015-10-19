@@ -750,13 +750,10 @@ prod:
   value: 4
 - query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
   color: white_on_red
-  value: 2
+  value: 3
 - query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
   color: white_on_yellow
   value: 4
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
-  color: white_on_yellow
-  value: 2
 - query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:}
   color: white_on_green
   value: 3
