@@ -467,15 +467,15 @@ prod:
 - query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
     - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_red
-  value: 5
+  value: 15
 - query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
     - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_yellow
-  value: 3
+  value: 10
 - query: avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800)
     - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))
   color: white_on_green
-  value: 3
+  value: 10
 - query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:})
   color: white_on_red
   value: 1
