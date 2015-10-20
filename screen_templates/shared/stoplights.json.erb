@@ -372,7 +372,7 @@
     ]
   },
   "original_title": "<%= deployment %> stoplights",
-  "height": 148,
+  "height": 161,
   "width": "100%",
   "template_variables": [
 
@@ -1789,8 +1789,8 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 5.988137563069661,
-      "x": 173.88889785607657,
+      "y": 6,
+      "x": 174,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1819,8 +1819,8 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 40.90856806437174,
-      "x": 173.72107152144113,
+      "y": 65,
+      "x": 174,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1950,7 +1950,7 @@
       ],
       "precision": 0,
       "title_text": "CF dial Error",
-      "x": 151.9719361861547,
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -1975,7 +1975,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 40.90567398071289,
+      "y": 65,
       "calc_func": "raw"
     },
     {
@@ -2224,7 +2224,7 @@
       ],
       "precision": 0,
       "title_text": "Non-CF dial Error",
-      "x": 151.97049168745676,
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2243,7 +2243,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 47.98755772908529,
+      "y": 72,
       "calc_func": "raw"
     },
     {
@@ -2264,8 +2264,8 @@
 
       ],
       "precision": 0,
-      "title_text": "Running Instances Delta (hour)",
-      "x": 151.9719361861547,
+      "title_text": "DEA Running Instances Delta (hour)",
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2296,7 +2296,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 5.988137563069661,
+      "y": 6,
       "calc_func": "raw"
     },
     {
@@ -2317,8 +2317,8 @@
 
       ],
       "precision": 0,
-      "title_text": "Applications Delta (hour)",
-      "x": 151.9719361861547,
+      "title_text": "DEA Applications Delta (hour)",
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -2349,7 +2349,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 20.99247868855794,
+      "y": 20,
       "calc_func": "raw"
     },
     {
@@ -2567,8 +2567,8 @@
       },
       "width": 28,
       "timeframe": "4h",
-      "y": 20.99247868855794,
-      "x": 173.97135635217032,
+      "y": 20,
+      "x": 174,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -2585,12 +2585,12 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[Router Status](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>)",
-      "y": -0.0014470418294270833,
-      "x": 151.88802301883698,
+      "y": 0,
+      "x": 158,
       "font_size": "36",
       "tick": false,
       "type": "note",
-      "width": 50,
+      "width": 44,
       "auto_refresh": false
     },
     {
@@ -2645,8 +2645,8 @@
       "height": 5,
       "bgcolor": "white",
       "html": "[Router Dial Errors](/dash/dash/<%= lookup_note_asset('router dial error', :dashboard) %>)",
-      "y": 35.90856806437174,
-      "x": 151.80556452274323,
+      "y": 60,
+      "x": 152,
       "font_size": "24",
       "tick": false,
       "type": "note",
@@ -2864,7 +2864,7 @@
       "width": 32,
       "query": "source:aws",
       "timeframe": "1d",
-      "y": 84,
+      "y": 108,
       "x": 151,
       "type": "event_stream",
       "event_size": "s"
@@ -3046,7 +3046,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 85,
+      "y": 109,
       "calc_func": "raw"
     },
     {
@@ -3061,7 +3061,7 @@
       "height": 6,
       "bgcolor": "white",
       "html": "[AWS](/screen/board/<%= lookup_note_asset('AWS', :screenboard) %>)",
-      "y": 78,
+      "y": 102,
       "x": 151,
       "font_size": "24",
       "tick": false,
@@ -3614,7 +3614,7 @@
       "height": 5,
       "bgcolor": "white",
       "html": "Router CPU",
-      "y": 56,
+      "y": 80,
       "x": 152,
       "font_size": "24",
       "tick": false,
@@ -3652,7 +3652,7 @@
       },
       "width": 50,
       "timeframe": "1h",
-      "y": 61,
+      "y": 85,
       "x": 152,
       "legend_size": "0",
       "type": "timeseries",
@@ -4666,7 +4666,7 @@
       },
       "width": 49,
       "timeframe": "1h",
-      "y": 115,
+      "y": 139,
       "x": 151,
       "legend_size": "0",
       "type": "timeseries",
@@ -4682,7 +4682,7 @@
       "title_text": "",
       "height": 5,
       "width": 49,
-      "y": 109,
+      "y": 133,
       "x": 151,
       "font_size": "auto",
       "type": "free_text"
@@ -4979,23 +4979,8 @@
       "type": "free_text"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "Diego App Delta",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 7,
-      "width": 26,
-      "y": 105,
-      "x": 125,
-      "font_size": "auto",
-      "type": "free_text"
-    },
-    {
       "metric": "",
-      "height": 12,
+      "height": 9,
       "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "",
@@ -5004,15 +4989,15 @@
       "aggregator": "avg",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 22,
       "timeframe": "30m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 0,
-      "title_text": "Running Instances Delta (hour)",
-      "x": 125,
+      "title_text": "Diego Running Instances Delta (hour)",
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -5043,7 +5028,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 113,
+      "y": 34,
       "calc_func": "raw"
     },
     {
@@ -5057,15 +5042,15 @@
       "aggregator": "avg",
       "title_align": "center",
       "text_align": "center",
-      "width": 24,
+      "width": 22,
       "timeframe": "30m",
       "type": "query_value",
       "tags": [
 
       ],
       "precision": 0,
-      "title_text": "Applications Delta (hour)",
-      "x": 125,
+      "title_text": "Diego Applications Delta (hour)",
+      "x": 152,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -5096,7 +5081,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 127,
+      "y": 45,
       "calc_func": "raw"
     },
     {
@@ -5431,6 +5416,29 @@
       "aggr": "avg",
       "y": 48,
       "calc_func": "raw"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Diego App Instances - 4h",
+      "height": 12,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "4h",
+      "y": 45,
+      "x": 174,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "shared": false,
