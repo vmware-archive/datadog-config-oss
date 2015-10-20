@@ -2,7 +2,7 @@
   "silenced": false,
   "query": "min(last_15m):(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}) / 0.000001024 < 6",
   "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
-  "name": "<%= environment %> Diego: NSYNC bulker time too high",
+  "name": "<%= environment %> Diego: min memory available too low",
   "no_data_timeframe": 30,
   "notify_no_data": true
 }
