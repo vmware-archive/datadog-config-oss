@@ -1338,8 +1338,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 5.916667938232422,
-      "x": 121.83333672086398,
+      "y": 6,
+      "x": 122,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1480,8 +1480,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 62,
-      "x": 121.91667005419731,
+      "y": 72,
+      "x": 123,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1743,8 +1743,8 @@
       },
       "width": 28,
       "timeframe": "1h",
-      "y": 48,
-      "x": 121.91667005419731,
+      "y": 58,
+      "x": 123,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -3239,7 +3239,7 @@
       ],
       "precision": 0,
       "title_text": "Diego Canaries - 15m avg",
-      "x": 101,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3270,7 +3270,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "sum",
-      "y": 78,
+      "y": 91,
       "calc_func": "raw"
     },
     {
@@ -3345,7 +3345,7 @@
       ],
       "precision": 2,
       "title_text": "NSYNC Bulker Time - 5m max",
-      "x": 100.85214451948802,
+      "x": 101,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3376,40 +3376,8 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 38,
+      "y": 40,
       "calc_func": "raw"
-    },
-    {
-      "title_size": 13,
-      "title": true,
-      "title_align": "center",
-      "title_text": "Converger Times",
-      "height": 12,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "sum:datadog.nozzle.converger.ConvergenceLRPDuration{deployment:<%= deployment %>-diego} / 1000000000",
-            "type": "line"
-          },
-          {
-            "q": "sum:datadog.nozzle.converger.ConvergenceTaskDuration{deployment:<%= deployment %>-diego} / 1000000000",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
-          }
-        ]
-      },
-      "width": 28,
-      "timeframe": "1h",
-      "y": 34,
-      "x": 121.83333672086398,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
     },
     {
       "title_size": 13,
@@ -3433,7 +3401,7 @@
       "width": 28,
       "timeframe": "1h",
       "y": 20,
-      "x": 122.00000338753064,
+      "x": 122,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -3457,7 +3425,7 @@
       ],
       "precision": 0,
       "title_text": "Route Delta 1hr - 5m avg",
-      "x": 101.00000338753064,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3488,7 +3456,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 70,
+      "y": 83,
       "calc_func": "raw"
     },
     {
@@ -3510,7 +3478,7 @@
       ],
       "precision": 1,
       "title_text": "LRP Auction Failures per Minute - 30m avg",
-      "x": 101.00000338753064,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3541,7 +3509,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 46,
+      "y": 58,
       "calc_func": "raw"
     },
     {
@@ -3563,7 +3531,7 @@
       ],
       "precision": 2,
       "title_text": "LRP Auctions per Hour - 30m avg",
-      "x": 100.85214451948802,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3578,7 +3546,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 54,
+      "y": 67,
       "calc_func": "raw"
     },
     {
@@ -3600,7 +3568,7 @@
       ],
       "precision": 2,
       "title_text": "Max. Fetch Cell State Times - 30m avg",
-      "x": 101.00000338753064,
+      "x": 102,
       "metric_type": "standard",
       "conditional_formats": [
         {
@@ -3631,7 +3599,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 62,
+      "y": 75,
       "calc_func": "raw"
     },
     {
@@ -3953,7 +3921,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 94,
+      "y": 105,
       "calc_func": "raw"
     },
     {
@@ -3998,7 +3966,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 100,
+      "y": 111,
       "calc_func": "raw"
     },
     {
@@ -4043,7 +4011,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 100,
+      "y": 111,
       "calc_func": "raw"
     },
     {
@@ -4088,7 +4056,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 94,
+      "y": 105,
       "calc_func": "raw"
     },
     {
@@ -4101,7 +4069,7 @@
       "title_text": "",
       "height": 6,
       "width": 24,
-      "y": 88,
+      "y": 99,
       "x": 102,
       "font_size": "auto",
       "type": "free_text"
@@ -4148,7 +4116,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 106,
+      "y": 117,
       "calc_func": "raw"
     },
     {
@@ -4193,7 +4161,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 112,
+      "y": 123,
       "calc_func": "raw"
     },
     {
@@ -4238,7 +4206,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 112,
+      "y": 123,
       "calc_func": "raw"
     },
     {
@@ -4283,7 +4251,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 106,
+      "y": 117,
       "calc_func": "raw"
     },
     {
@@ -4328,7 +4296,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 118,
+      "y": 129,
       "calc_func": "raw"
     },
     {
@@ -4373,7 +4341,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 124,
+      "y": 135,
       "calc_func": "raw"
     },
     {
@@ -4418,7 +4386,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 124,
+      "y": 135,
       "calc_func": "raw"
     },
     {
@@ -4463,7 +4431,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 118,
+      "y": 129,
       "calc_func": "raw"
     },
     {
@@ -5304,6 +5272,165 @@
       "x": 49,
       "font_size": "36",
       "type": "free_text"
+    },
+    {
+      "metric": "",
+      "height": 6,
+      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "text_size": "auto",
+      "unit": "s",
+      "title_size": 13,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "Router Emitter Sync Duration - 5m max",
+      "x": 122,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 40,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 6,
+      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "text_size": "auto",
+      "unit": "s",
+      "title_size": 13,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "Convergence LRP Duration - 5m max",
+      "x": 122,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 48,
+      "calc_func": "raw"
+    },
+    {
+      "metric": "",
+      "height": 6,
+      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "text_size": "auto",
+      "unit": "s",
+      "title_size": 13,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 21,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 2,
+      "title_text": "Rep Bulk Sync Duration - 5m max",
+      "x": 101,
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:}/1000000000', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:}/1000000000', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:}/1000000000', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 48,
+      "calc_func": "raw"
     }
   ],
   "shared": false,
