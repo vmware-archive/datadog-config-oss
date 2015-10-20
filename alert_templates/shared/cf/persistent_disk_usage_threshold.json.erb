@@ -1,17 +1,8 @@
 {
-  "event_object": "b633e4574f5e83cf46437dbc4cdb8f90",
-  "notify_audit": false,
-  "timeout_h": null,
   "silenced": false,
-  "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.persistent.percent{*} by {deployment,job,index} > 90",
+  "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.persistent.percent{!deployment:cf-cfapps-io-logsearch-az1,!deployment:cf-cfapps-io-logsearch-az2,!deployment:cf-cfapps-io-logsearch-az3} by {deployment,index,job} > 90",
   "message": "Healthmonitor reports that the persistent disk usage is > 90% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}}, \n{{index.name}}\n@pagerduty-datadog-backend-<%= environment %>",
-  "id": 128681,
   "name": "<%= environment %>: Persistent disk usage greater than 90%",
   "no_data_timeframe": 120,
-  "creator": 67538,
-  "notify_no_data": false,
-  "renotify_interval": null,
-  "state": "OK",
-  "escalation_message": null,
-  "silenced_timeout_ts": null
+  "notify_no_data": false
 }
