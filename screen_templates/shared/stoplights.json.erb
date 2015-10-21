@@ -377,7 +377,7 @@
   "template_variables": [
 
   ],
-  "templated": false,
+  "templated": true,
   "widgets": [
     {
       "metric": "",
@@ -1768,27 +1768,25 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "Total Routes - 4h",
+      "title_text": "Total Routes - 2d",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
           {
             "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
-            "stacked": false
+            "stacked": false,
+            "type": "area"
           }
         ],
         "events": [
           {
             "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
           }
         ]
       },
       "width": 28,
-      "timeframe": "4h",
+      "timeframe": "2d",
       "y": 6,
       "x": 174,
       "legend_size": "0",
@@ -2546,27 +2544,25 @@
       "res_calc_func": "raw",
       "aggr": "max",
       "y": 105,
-      "calc_func": "raw"
+      "x": 61
     },
     {
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "App Instances - 4h",
+      "title_text": "App Instances - 2d",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}"
+            "q": "avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}",
+            "type": "line"
           }
-        ],
-        "events": [
-
         ]
       },
       "width": 28,
-      "timeframe": "4h",
+      "timeframe": "2d",
       "y": 20,
       "x": 174,
       "legend_size": "0",
@@ -5421,7 +5417,7 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "Diego App Instances - 4h",
+      "title_text": "Diego App Instances - 2d",
       "height": 12,
       "tile_def": {
         "viz": "timeseries",
@@ -5433,7 +5429,7 @@
         ]
       },
       "width": 28,
-      "timeframe": "4h",
+      "timeframe": "2d",
       "y": 45,
       "x": 174,
       "legend_size": "0",
