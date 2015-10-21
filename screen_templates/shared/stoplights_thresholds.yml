@@ -774,16 +774,16 @@ prod:
   value: 70
 - query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000
   color: white_on_red
-  value: 15
+  value: 20
 - query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000
   color: white_on_yellow
   value: 10
 - query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:}/1000000000
   color: white_on_green
-  value: 5
+  value: 10
 - query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:}/1000000000
   color: white_on_red
-  value: 15
+  value: 20
 - query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:}/1000000000
   color: white_on_yellow
   value: 10
@@ -792,7 +792,7 @@ prod:
   value: 10
 - query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:}/1000000000
   color: white_on_red
-  value: 15
+  value: 20
 - query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:}/1000000000
   color: white_on_yellow
   value: 10
