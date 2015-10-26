@@ -88,11 +88,15 @@
       }
     },
     {
-      "title": "Cell: Missing LRPs",
+      "title": "Cell: Missing and Extra LRPs",
       "definition":{
         "requests": [
           {
             "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "datadog.nozzle.bbs.LRPsExtra{deployment: <%= diego_deployment %>}",
             "type": "line"
           }
         ],
