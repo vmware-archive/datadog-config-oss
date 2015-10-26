@@ -4476,11 +4476,11 @@
       "x": 24
     },
     {
-      "metric": "system.load.1",
+      "metric": "",
       "height": 4,
-      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800))\n",
+      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)\n",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "B",
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -4492,8 +4492,8 @@
       "tags": [
 
       ],
-      "precision": 2,
-      "title_text": "NATS_Z1 Net Delta",
+      "precision": 0,
+      "title_text": "NATS_Z1 Net Bytes in",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
@@ -4501,7 +4501,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800)', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -4509,7 +4509,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800))', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z1}.rollup(avg,1800)', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -4523,9 +4523,9 @@
     {
       "metric": "",
       "height": 4,
-      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800))\n",
+      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "B",
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -4537,8 +4537,8 @@
       "tags": [
 
       ],
-      "precision": 2,
-      "title_text": "NATS_Z2 Net Delta",
+      "precision": 0,
+      "title_text": "NATS_Z2 Net Bytes In",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
@@ -4546,7 +4546,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800))', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800)', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -4554,7 +4554,7 @@
           "comparator": ">",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800) - hour_before(avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800))', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800)', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -4569,7 +4569,7 @@
       "title_size": 16,
       "title": true,
       "color": "#4d4d4d",
-      "text": "NATS Traffic Delta",
+      "text": "NATS Traffic in Bytes",
       "title_align": "left",
       "text_align": "left",
       "title_text": "",
@@ -5432,6 +5432,33 @@
       "timeframe": "2d",
       "y": 45,
       "x": 174,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1} by {index,job}",
+            "type": "line"
+          },
+          {
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2} by {index,job}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 28,
+      "timeframe": "1h",
+      "y": 45,
+      "x": 23,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
