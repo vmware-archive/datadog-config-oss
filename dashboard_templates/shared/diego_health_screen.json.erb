@@ -56,7 +56,7 @@
             "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsClaimed{deployment: <%= diego_deployment %>}"
           },
           {
             "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
@@ -64,9 +64,6 @@
           {
             "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
           },
-          {
-            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>} + datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>} + datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
-          }
         ],
         "events":[
           {
@@ -95,7 +92,7 @@
       "definition":{
         "requests": [
           {
-            "q": "(((datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment: <%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>})",
+            "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= diego_deployment %>}",
             "type": "line"
           }
         ],
