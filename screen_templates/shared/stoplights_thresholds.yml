@@ -490,13 +490,13 @@ prod:
   value: 0
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_red
-  value: 1
+  value: 10
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_yellow
-  value: 0.5
+  value: 5
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:}/1000000000
   color: white_on_green
-  value: 0.5
+  value: 5
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:etcd_z2}.rollup(avg,60))
     ) *50"
