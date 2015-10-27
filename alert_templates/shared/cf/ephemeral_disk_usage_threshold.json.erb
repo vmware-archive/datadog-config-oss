@@ -4,7 +4,7 @@
   "timeout_h": null,
   "silenced": false,
   "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {deployment,job,index} > 80",
-  "message": "Healthmonitor reports that the persistent disk usage is > 80% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}},\n{{index.name}}\n@pagerduty-datadog-backend-<%= environment %>",
+  "message": "Healthmonitor reports that the persistent disk usage is > 80% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}},\n{{index.name}}\n <%= cloudops_non_critical_pagerduty %>",
   "id": 128681,
   "name": "<%= environment %>: Ephemeral disk usage greater than 80%",
   "no_data_timeframe": 120,
