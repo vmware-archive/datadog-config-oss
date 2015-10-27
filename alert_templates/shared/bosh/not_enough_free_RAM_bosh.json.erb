@@ -3,5 +3,5 @@
               "name": "<%= environment %> Bosh: Low free RAM",
           "silenced": false,
              "query": "avg(last_10m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= bosh_deployment %>} by {job,index} > 90",
-           "message": "Healthmonitor reports system has used more than 90% of its RAM. <%= bosh_pagerduty %>"
+           "message": "Healthmonitor reports system has used more than 90% of its RAM. <%= cloudops_non_critical_pagerduty %>"
 }
