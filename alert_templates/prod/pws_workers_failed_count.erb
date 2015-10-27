@@ -1,0 +1,17 @@
+{
+  "event_object": "abb92af609d1ed91595c36c86542fd7a",
+  "notify_audit": false,
+  "timeout_h": 0,
+  "silenced": false,
+  "query": "max(last_5m):avg:pws.workers.critical.failed.count{host:<%= environment %>uction} > 5",
+  "message": "1. Check the PWS console dashboard - http://bit.ly/pws-console-dashboard\n1. If the problem is solvable by the playbook - http://bit.ly/pws-workers-failed , that's awesome\n1. Otherwise, escalate to Frontend First Responder - https://cfoundry.pagerduty.com/schedules#P69S0Q6 \n\n\n\n@pagerduty-pws-console  - pws.workers.critical.failed.count over 5\nCreated by: Tushar & Nolan",
+  "id": 124879,
+  "name": "PWS Production - pws.workers.critical.failed.count over 5 - @pagerduty",
+  "no_data_timeframe": 10,
+  "creator": 12842,
+  "notify_no_data": true,
+  "renotify_interval": 0,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}
