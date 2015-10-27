@@ -3,7 +3,7 @@
   "timeout_h": 0,
   "silenced": false,
   "query": "avg(last_5m):max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= environment %>-opentsdb,job:slave} > 85",
-  "message": "please purge the hbase data to release the disk or extend the persistent disk to large volume. @pagerduty-datadog-cloudops-non-critical <%= environment %>",
+  "message": "please purge the hbase data to release the disk or extend the persistent disk to large volume. <%= cloudops_non_critical_pagerduty %> <%= environment %>",
   "id": 232578,
   "name": "[<%= environment %> opentsdb] at least one hdfs slave node persistent disk usage is higher than 85%",
   "no_data_timeframe": 2,

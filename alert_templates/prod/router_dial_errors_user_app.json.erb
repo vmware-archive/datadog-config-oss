@@ -4,7 +4,7 @@
   "timeout_h": null,
   "silenced": false,
   "query": "max(last_15m):sum:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false} > 100",
-  "message": "There have been a lot of router dial errors for customer apps in the last 15 minutes <%= cloudops_email %> ",
+  "message": "There have been a lot of router dial errors for customer apps in the last 15 minutes <%= cloudops_non_critical_pagerduty %>",
   "id": 121431,
   "name": "CF Dial Error for customer apps",
   "no_data_timeframe": 60,

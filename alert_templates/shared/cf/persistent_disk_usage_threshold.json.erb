@@ -1,7 +1,7 @@
 {
   "silenced": false,
   "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.persistent.percent{!deployment:cf-cfapps-io-logsearch-az1,!deployment:cf-cfapps-io-logsearch-az2,!deployment:cf-cfapps-io-logsearch-az3} by {deployment,index,job} > 90",
-  "message": "Healthmonitor reports that the persistent disk usage is > 90% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}}, \n{{index.name}}\n@pagerduty-datadog-backend-<%= environment %>",
+  "message": "Healthmonitor reports that the persistent disk usage is > 90% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}}, \n{{index.name}}\n <%= cloudops_non_critical_pagerduty %> <%= environment %>",
   "name": "<%= environment %>: Persistent disk usage greater than 90%",
   "no_data_timeframe": 120,
   "notify_no_data": false

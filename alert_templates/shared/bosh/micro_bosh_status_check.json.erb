@@ -3,5 +3,5 @@
               "name": "<%= environment %> Micro: AWS status check failed",
           "silenced": false,
              "query": "avg(last_30m):avg:aws.ec2.status_check_failed{name:<%= micro_deployment %>} > 0",
-           "message": "One or more of the configured AWS status checks for Micro have failed. <%= bosh_pagerduty %>"
+           "message": "One or more of the configured AWS status checks for Micro have failed. <%= cloudops_non_critical_pagerduty %>"
 }
