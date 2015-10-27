@@ -4433,7 +4433,7 @@
     {
       "metric": "cloudops_tools.etcd_leader_health",
       "height": 4,
-      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= environment %>}",
+      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "hrs",
       "title_size": 16,
@@ -4445,7 +4445,7 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= environment %>"
+        "deployment:<%= deployment %>"
       ],
       "precision": 0,
       "title_text": "ETCD Leader Uptime",
