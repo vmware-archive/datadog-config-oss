@@ -3266,7 +3266,7 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "sum",
-      "y": 91,
+      "y": 83,
       "x": 102
     },
     {
@@ -3401,59 +3401,6 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
-    },
-    {
-      "metric": "system.load.1",
-      "height": 6,
-      "query": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 13,
-      "title": true,
-      "aggregator": "avg",
-      "title_align": "center",
-      "text_align": "center",
-      "width": 21,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 0,
-      "title_text": "Route Delta 1hr - 5m avg",
-      "calc_func": "raw",
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "comparator": ">",
-          "color": "white_on_red",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_red') %>,
-          "invert": false,
-          "custom_fg_color": null
-        },
-        {
-          "comparator": ">=",
-          "color": "white_on_yellow",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_yellow') %>,
-          "invert": false,
-          "custom_fg_color": null
-        },
-        {
-          "comparator": "<",
-          "color": "white_on_green",
-          "custom_bg_color": null,
-          "value": <%= threshold_value('avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:}.rollup(avg,1800))', 'white_on_green') %>,
-          "invert": false,
-          "custom_fg_color": null
-        }
-      ],
-      "is_valid_query": false,
-      "res_calc_func": "raw",
-      "aggr": "avg",
-      "y": 83,
-      "x": 102
     },
     {
       "metric": "",
