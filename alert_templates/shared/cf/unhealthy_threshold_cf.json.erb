@@ -3,5 +3,5 @@
               "name": "<%= environment %> CF: BOSH Agent reporting as unhealthy below threshold",
           "silenced": false,
              "query": "avg(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>} by {deployment,job} < 0.8",
-           "message": "One or more of the BOSH agents are reporting either that the VM that they are running on or the job that they are running is unhealthy. <%= cloudops_non_critical_pagerduty %>"
+           "message": "One or more of the BOSH agents are reporting either that the VM that they are running on or the job that they are running is unhealthy. <%= cloudops_non_critical_pagerduty %>. \nEscalation Path: It depends on the job."
 }

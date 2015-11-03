@@ -4,5 +4,5 @@
   "name": "<%= environment %> CF: Number of routes in the router's routing table is too low",
   "silenced": false,
   "query": "avg(last_10m):min:cf.collector.router.total_routes{deployment:<%= deployment %>} < <%= params.fetch('expected_routes') %>",
-  "message": "The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= backend_pagerduty %>"
+  "message": "The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= backend_pagerduty %>. \nEscalation Path: Router Team."
 }

@@ -1,7 +1,7 @@
 {
   "silenced": false,
   "query": "avg(last_15m):max:aws.ebs.volume_queue_length{*} by {deployment,job,index} > 50",
-  "message": "the EBS queue length has spiked above 50 for the last 15 minutes on {{deployment.name}} {{job.name}}  {{index.name}}  @pagerduty-datadog-cloudops-non-critical",
+  "message": "the EBS queue length has spiked above 50 for the last 15 minutes on {{deployment.name}} {{job.name}}  {{index.name}}  <%= cloudops_pagerduty %>. Escalation Path: CloudOps. Notes: This is sometimes caused by bad hardware at AWS. Talk with Jim P. ",
   "name": "ebs queue length too high",
   "notify_no_data": false
 }

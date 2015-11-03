@@ -4,7 +4,7 @@
   "timeout_h": 1,
   "silenced": false,
   "query": "max(last_30m):avg:natbox.pingout.health{*} < 1",
-  "message": "nat-box unhealthy <%= cloudops_pagerduty %>",
+  "message": "nat-box unhealthy <%= cloudops_pagerduty %>\nEscalation Path: CloudOps Team.",
   "id": 81184,
   "name": "nat-box-monitor",
   "no_data_timeframe": 60,

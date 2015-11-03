@@ -5,6 +5,6 @@
     "notify_audit": false,
     "silenced": false,
     "query": "avg(last_30m): 100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>-diego})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>})) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>-diego})) )  > 3.0",
-    "message": "Over the last 15 minutes, the average message loss from Metron to Doppler was greater than the max threshold.\n\n<%= monitoringAndMetrics_pagerduty %>",
+    "message": "Over the last 15 minutes, the average message loss from Metron to Doppler was greater than the max threshold.\n\n<%= monitoringAndMetrics_pagerduty %>\nEscalation Path: LAMBDA Team.",
     "type": "metric alert"
 }

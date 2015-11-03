@@ -1,5 +1,5 @@
 {
   "query": "min(last_30m):min:diego.smoke.status{deployment:<%= deployment %>-diego} < 0.5",
-  "message": "Diego smoke test fail <%= cloudops_email %> <%= diego_email %>",
+  "message": "Diego smoke test fail <%= cloudops_email %> <%= diego_email %>. \nEscalation Path: DIEGO Team.",
   "name": "PWS Prod Diego: smoke tests failed"
 }

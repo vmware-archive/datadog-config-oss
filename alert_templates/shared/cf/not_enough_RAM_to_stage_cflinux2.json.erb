@@ -3,5 +3,5 @@
               "name": "<%= environment %> CF: Cflinuxfs2: Not enough free RAM to stage",
           "silenced": false,
              "query": "avg(last_5m):max:cf.collector.mem_free_bytes{deployment:<%= deployment %>,job:dea,stack:cflinuxfs2} < 1073741824",
-           "message": "Cannot stage for the cflinuxfs2 stack because there is not enough free RAM (min 1G) on any DEAs. <%= backend_pagerduty %>"
+           "message": "Cannot stage for the cflinuxfs2 stack because there is not enough free RAM (min 1G) on any DEAs. <%= backend_pagerduty %"
 }

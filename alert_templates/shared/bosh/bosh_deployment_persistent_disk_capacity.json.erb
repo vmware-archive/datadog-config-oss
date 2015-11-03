@@ -1,7 +1,7 @@
 {
-    "notify_no_data": true,
+    "notify_no_data": false,
               "name": "<%= environment %> Bosh: A job is running out of persistent disk",
           "silenced": false,
              "query": "avg(last_10m):avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= bosh_deployment %>} by {job,index} > 90",
-           "message": "EBS volume is > 90% full. <%= cloudops_pagerduty %>"
+           "message": "EBS volume is > 90% full. <%= cloudops_pagerduty %> \nEscalation Paths depend on the job:\n  router: router team\n  cell: Diego\n  uaa: UAA\n  etc. "
 }

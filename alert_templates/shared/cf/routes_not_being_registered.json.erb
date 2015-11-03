@@ -3,5 +3,5 @@
   "name": "<%= environment %> CF: routes not being registered",
   "silenced": false,
   "query": "max(last_5m):avg:cf.collector.router.ms_since_last_registry_update{deployment:<%= deployment %>} by {ip}  > 30000",
-  "message": "It's been at least 30 seconds since a router received a \"router.register\" message from an app. <%= backend_pagerduty %>"
+  "message": "It's been at least 30 seconds since a router received a \"router.register\" message from an app. <%= backend_pagerduty %>. \nEscalation Path: DIEGO Team."
 }

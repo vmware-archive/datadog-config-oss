@@ -1,8 +1,0 @@
-{
-  "silenced": false,
-  "query": "min(last_15m):max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>-diego}/1000000000 > 1",
-  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
-  "name": "<%= environment %> Diego: Auctioneer fetch duration too high",
-  "no_data_timeframe": 30,
-  "notify_no_data": true
-}
