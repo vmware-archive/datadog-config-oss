@@ -1,8 +1,8 @@
 {
   "silenced": false,
   "query": "avg(last_15m):max:datadog.nozzle.bbs.RequestLatency{deployment:<%= deployment %>-diego} / 1000000000 > 10",
-  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
-  "name": "<%= environment %> Diego: BBS request latency is too high. \n Escalation Path: DIEGO Team",
+  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>\n Escalation Path: DIEGO Team",
+  "name": "<%= environment %> Diego: BBS request latency is too high.",
   "no_data_timeframe": 30,
   "notify_no_data": true
 }
