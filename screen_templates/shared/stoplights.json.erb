@@ -5409,6 +5409,301 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "metric": "",
+      "height": 5,
+      "query": "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "CPU Usage",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 132,
+      "x": 2
+    },
+    {
+      "metric": "",
+      "height": 5,
+      "query": "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "min",
+      "title_align": "center",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "5m",
+      "type": "query_value",
+      "tags": [
+
+      ],
+      "precision": 0,
+      "title_text": "CPU Usage",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('(max:bosh.healthmonitor.system.cpu.user{deployment:}.rollup(avg,60))', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": false,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 132,
+      "x": 22
+    },
+    {
+      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
+      "height": 5,
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:concourse"
+      ],
+      "precision": 0,
+      "title_text": "Top Ephemeral Disk usage (%) past hour",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "max",
+      "y": 139,
+      "x": 2
+    },
+    {
+      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
+      "height": 5,
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:concourse-prod-worker"
+      ],
+      "precision": 0,
+      "title_text": "Top Ephemeral Disk usage (%) past hour",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "max",
+      "y": 139,
+      "x": 22
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Concourse Vitals",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 6,
+      "width": 19,
+      "y": 126,
+      "x": 2,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Concourse Worker Vitals",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 6,
+      "width": 24,
+      "y": 126,
+      "x": 22,
+      "font_size": "auto",
+      "type": "free_text"
+    },
+    {
+      "metric": "bosh.healthmonitor.system.disk.persistent.percent",
+      "height": 5,
+      "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:concourse}",
+      "text_size": "auto",
+      "unit": "%",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "max",
+      "title_align": "left",
+      "text_align": "center",
+      "width": 19,
+      "timeframe": "1h",
+      "type": "query_value",
+      "tags": [
+        "deployment:concourse"
+      ],
+      "precision": 0,
+      "title_text": "Top Persistent Disk usage (%) past hour",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "max",
+      "y": 146,
+      "x": 2
     }
   ],
   "shared": false,
