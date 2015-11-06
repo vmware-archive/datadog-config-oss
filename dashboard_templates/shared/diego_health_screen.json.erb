@@ -1415,6 +1415,18 @@
           }
         ]
       }
+    },
+    {
+      "title": "Cell: Garden Container Creation Duration (seconds)",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000",
+            "type": "line"
+          }
+        ]
+      }
     }
   ]
 }
