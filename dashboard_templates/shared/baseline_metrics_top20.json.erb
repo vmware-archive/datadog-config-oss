@@ -1,0 +1,308 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.cpu.sys{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "cpu.sys"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.cpu.user{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "cpu.user"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.cpu.wait{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "cpu.wait"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.load.1m{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "system.load.1m"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.disk_read_bytes{*} by {job,index,deployment,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.disk_read_bytes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.disk_write_bytes{*} by {job,index,deployment,instance_id})",
+            "style": {
+              "width": "thin",
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.disk_write_bytes"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.disk_read_ops{*} by {job,index,deployment,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.disk_read_ops"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.disk_write_ops{*} by {job,index,deployment,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.disk_write_ops"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.ephemeral.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.persistent.percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.persistent.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.system.percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.system.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.ephemeral.inode_percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.ephemeral.inode_percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.persistent.inode_percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.persistent.inode_percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.disk.system.inode_percent{*} by {job,index,deployment})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "disk.system.inode_percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.network_in{*} by {job,deployment,index,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.network_in"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:aws.ec2.network_out{*} by {job,deployment,index,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "ec2.network_out"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.swap.kb{*} by {job,deployment,index,availability-zone,instance_id})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "swap.kb"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.swap.percent{*} by {job,deployment,index})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "swap.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.mem.kb{*} by {job,deployment,index})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "mem.kb"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "top20_max(max:bosh.healthmonitor.system.mem.percent{*} by {job,deployment,index})",
+            "style": {
+              "width": "thin"
+            },
+            "type": "line"
+          }
+        ]
+      },
+      "title": "mem.percent"
+    }
+  ],
+  "description": "created by crichardson@pivotal.io",
+  "id": 79245,
+  "title": "Baseline Metrics Top 20"
+}
