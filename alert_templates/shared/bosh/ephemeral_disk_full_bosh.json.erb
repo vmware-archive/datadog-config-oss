@@ -1,0 +1,6 @@
+{
+    "notify_no_data": false,
+              "name": "<%= environment %> Bosh: A job is running out of ephemeral disk",
+             "query": "avg(last_30m):avg:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {job,index,deployment} > 90",
+           "message": "ephemeral disk > 90% full. <%= cloudops_non_critical_pagerduty %> \nEscalation Paths depend on the job:\n  router: router team\n  cell: Diego\n  uaa: UAA\n  etc. "
+}

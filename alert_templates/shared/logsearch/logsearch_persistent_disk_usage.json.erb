@@ -1,8 +1,0 @@
-{
-  "silenced": false,
-  "query": "avg(last_1h):max:bosh.healthmonitor.system.disk.persistent.percent{deployment:cf-elk-3az} by {deployment,index,job} > 90",
-  "message": "Healthmonitor reports that the persistent disk usage is > 90% in the past 60 minutes on: \n{{deployment.name}},\n{{job.name}}, \n{{index.name}}\n <%= cloudops_non_critical_pagerduty %>\nEscalation Path: CloudOps BJ Team.",
-  "name": "<%= environment %> logsearch-3AZ: Persistent disk usage greater than 90%",
-  "no_data_timeframe": 120,
-  "notify_no_data": false
-}
