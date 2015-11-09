@@ -1,8 +1,0 @@
-{
-  "notify_no_data": true,
-  "name": "<%= environment %> CF: Loggregator smoke is not reporting health",
-  "silenced": false,
-  "query": "min(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1} < 0",
-  "message": "This alert should only be triggered when the loggregator smoke test has stopped reporting its health to DataDog. <%= monitoringAndMetrics_pagerduty %>\nEscalation Path: LAMBDA Team."
-}
-

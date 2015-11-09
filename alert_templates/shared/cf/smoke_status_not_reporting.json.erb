@@ -1,8 +1,0 @@
-{
-  "notify_no_data": true,
-  "name": "<%= environment %> CF: Smoke Tests not reporting status",
-  "silenced": false,
-  "query": "min(last_15m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0} < 0",
-  "message": "This alert should only be triggered when the Smoke Tests have stopped reporting status to DataDog. <%= backend_pagerduty %>. \nEscalation Path: CloudOps"
-}
-

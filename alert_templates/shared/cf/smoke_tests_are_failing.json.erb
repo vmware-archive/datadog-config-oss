@@ -1,7 +1,8 @@
 {
-  "notify_no_data": false,
+  "no_data_timeframe": 60,
+  "notify_no_data": true,
   "name": "<%= environment %> CF: Smoke Tests are failing",
   "silenced": false,
-  "query": "avg(last_15m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0} < 0.66",
-  "message": "The Smoke Tests have been unable to stage and run an application recently. <%= backend_pagerduty %>. \nEscalation Path: CAPI and or Diego"
+  "query": "avg(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0} < 0.66",
+  "message": "The Smoke Tests have been unable to stage and run an application recently. <%= backend_pagerduty %>. \nEscalation Path: CAPI, Diego"
 }

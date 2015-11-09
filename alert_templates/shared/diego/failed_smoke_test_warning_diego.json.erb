@@ -1,5 +1,7 @@
 {
-  "query": "min(last_30m):min:diego.smoke.status{deployment:<%= deployment %>-diego} < 0.5",
-  "message": "Diego smoke test fail <%= cloudops_email %> <%= diego_email %>. \nEscalation Path: DIEGO Team.",
+  "query": "min(last_30m):min:diego.smoke.status{deployment:<%= deployment %>-diego} < 0.66",
+  "message": "Diego smoke test fail <%= cloudops_pagerduty %> <%= diego_email %>. \nEscalation Path: DIEGO Team.",
+  "no_data_timeframe": 60,
+  "notify_no_data": true,
   "name": "PWS Prod Diego: smoke tests failed"
 }

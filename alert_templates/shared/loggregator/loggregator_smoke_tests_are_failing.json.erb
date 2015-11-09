@@ -1,7 +1,8 @@
 {
-    "notify_no_data": false,
+      "no_data_timeframe": 60,
+      "notify_no_data": true,
               "name": "<%= environment %> CF: Loggregator smoke tests are failing",
           "silenced": false,
-           "query": "max(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1} < 1",
-           "message": "The smoke tests have been unable to read logs recently. <%= monitoringAndMetrics_pagerduty %>\nEscalation Path: LAMBDA Team."
+           "query": "max(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1} < 0.66",
+           "message": "The smoke tests have been unable to read logs recently. <%= monitoringAndMetrics_pagerduty %>\nEscalation Path: CAPI, DIEGO or LAMBD Team."
 }
