@@ -14,7 +14,6 @@ cf_deployment:
   cloudops_pagerduty: "@pagerduty-cloudops"
   monitoringAndMetrics_pagerduty: "@pagerduty-monitoringAndMetrics"
 
-  services_email: "@<your services email>"  # services_email: @services@example.com
   backend_email: "@<your backend email>"
   cloudops_email: "@<your cloudops email>"
   monitoringAndMetrics_email: "@<your monitoring and metrics email>"
