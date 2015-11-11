@@ -1,8 +1,8 @@
 {
-  "query": "avg(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1",
-  "message": "A job in Bosh is being reported as unhealthy. <%= cloudops_non_critical_pagerduty %>. Escalation Path: It depends on the job.",
-  "silenced": false,
-  "name": "<%= environment %> Bosh: System health",
-  "no_data_timeframe": 10,
-  "notify_no_data": true
+  "name": "<%= environment %> Bosh: System health", 
+  "silenced": false, 
+  "no_data_timeframe": 10, 
+  "notify_no_data": true, 
+  "query": "avg(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1", 
+  "message": "## Description:\n A job in Bosh is being reported as unhealthy. <%= cloudops_non_critical_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:"
 }

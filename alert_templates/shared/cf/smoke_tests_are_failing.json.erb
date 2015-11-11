@@ -1,8 +1,8 @@
 {
-  "no_data_timeframe": 60,
-  "notify_no_data": true,
-  "name": "<%= environment %> CF: Runtime Smoke Tests are failing",
-  "silenced": false,
-  "query": "avg(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0} < 0.66",
-  "message": "The Smoke Tests have been unable to stage and run an application recently. <%= backend_pagerduty %>. \nEscalation Path: CAPI, Diego"
+  "name": "<%= environment %> CF: Runtime Smoke Tests are failing", 
+  "silenced": false, 
+  "no_data_timeframe": 60, 
+  "notify_no_data": true, 
+  "query": "avg(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0} < 0.66", 
+  "message": "## Description:\n The Smoke Tests have been unable to stage and run an application recently. <%= backend_pagerduty %>.  \n\n## Escalation Path:\n  CAPI, Diego \n\n## Possible Causes:\n## Potential Solutions:"
 }

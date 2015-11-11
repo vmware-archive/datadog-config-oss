@@ -1,8 +1,8 @@
 {
-  "silenced": false,
-  "query": "avg(last_30m):min:bosh.healthmonitor.system.healthy{!job:acceptance_test_z1,!job:acceptance_test_z2,!job:api_z1,!job:api_z2,!job:api_z3,!job:curator_z1,!job:curator_z2,!job:curator_z3,!job:elasticsearch_autoscale_z1,!job:elasticsearch_autoscale_z2,!job:elasticsearch_autoscale_z3,!job:elasticsearch_persistent_z1,!job:elasticsearch_persistent_z2,!job:elasticsearch_persistent_z3,!job:elb_log_to_logstash_z2,!job:log_parser_z1,!job:log_parser_z2,!job:log_parser_z3,!job:metrics_collector_z1,!job:metrics_collector_z2,!job:metrics_collector_z3,!job:queue_z1,!job:queue_z2,!job:queue_z3,deployment:cf-elk-3az} < 0.8",
-  "message": "One or more of the logstash BOSH agents are reporting either that the VM that they are running on or the  logstash job that they are running is unhealthy for over 30 minutes. <%= cloudops_non_critical_pagerduty %>\nEscalation Path: CloudOps BJ Team.",
-  "name": "<%= environment %> logsearch 3AZs: Longlasting unhealthy state below threshold for logstash",
-  "no_data_timeframe": 20,
-  "notify_no_data": true
+  "name": "<%= environment %> logsearch 3AZs: Longlasting unhealthy state below threshold for logstash", 
+  "silenced": false, 
+  "no_data_timeframe": 20, 
+  "notify_no_data": true, 
+  "query": "avg(last_30m):min:bosh.healthmonitor.system.healthy{!job:acceptance_test_z1,!job:acceptance_test_z2,!job:api_z1,!job:api_z2,!job:api_z3,!job:curator_z1,!job:curator_z2,!job:curator_z3,!job:elasticsearch_autoscale_z1,!job:elasticsearch_autoscale_z2,!job:elasticsearch_autoscale_z3,!job:elasticsearch_persistent_z1,!job:elasticsearch_persistent_z2,!job:elasticsearch_persistent_z3,!job:elb_log_to_logstash_z2,!job:log_parser_z1,!job:log_parser_z2,!job:log_parser_z3,!job:metrics_collector_z1,!job:metrics_collector_z2,!job:metrics_collector_z3,!job:queue_z1,!job:queue_z2,!job:queue_z3,deployment:cf-elk-3az} < 0.8", 
+  "message": "## Description:\n One or more of the logstash BOSH agents are reporting either that the VM that they are running on or the  logstash job that they are running is unhealthy for over 30 minutes. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:"
 }

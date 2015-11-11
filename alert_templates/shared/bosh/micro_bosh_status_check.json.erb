@@ -1,7 +1,7 @@
 {
-    "notify_no_data": false,
-              "name": "<%= environment %> Micro: AWS status check failed",
-          "silenced": false,
-             "query": "avg(last_30m):avg:aws.ec2.status_check_failed{name:<%= micro_deployment %>} > 0",
-           "message": "One or more of the configured AWS status checks for Micro have failed. <%= cloudops_non_critical_pagerduty %>. Escalation Path: CloudOps"
+  "notify_no_data": false, 
+  "query": "avg(last_30m):avg:aws.ec2.status_check_failed{name:<%= micro_deployment %>} > 0", 
+  "message": "## Description:\n One or more of the configured AWS status checks for Micro have failed. <%= cloudops_non_critical_pagerduty %>.  \n\n## Escalation Path:\n  CloudOps \n\n## Possible Causes:\n## Potential Solutions:", 
+  "name": "<%= environment %> Micro: AWS status check failed", 
+  "silenced": false
 }

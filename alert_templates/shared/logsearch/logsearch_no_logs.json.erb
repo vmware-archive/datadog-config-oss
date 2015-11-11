@@ -1,8 +1,8 @@
 {
-  "silenced": false,
-  "query": "max(last_15m):max:logstash.messages.rate{deployment:cf-elk-3az} < 1",
-  "message": "None of logstash instances have received any messages in the last 15 min <%= cloudops_pagerduty %> \nEscalation Path: CloudOps BJ Team.",
-  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min",
-  "no_data_timeframe": 20,
-  "notify_no_data": true
+  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min", 
+  "silenced": false, 
+  "no_data_timeframe": 20, 
+  "notify_no_data": true, 
+  "query": "max(last_15m):max:logstash.messages.rate{deployment:cf-elk-3az} < 1", 
+  "message": "## Description:\n None of logstash instances have received any messages in the last 15 min <%= cloudops_pagerduty %>  \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:"
 }

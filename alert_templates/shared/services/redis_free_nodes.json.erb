@@ -1,7 +1,7 @@
 {
-  "query": "avg(last_4h):avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>} >= 10",
-  "message": "Free redis nodes are low <%= cloudops_non_critical_pagerduty %>\nEscalation Path: Redis Team.",
-  "name": "Free redis nodes are low",
-  "no_data_timeframe": 480,
-  "notify_no_data": true
+  "notify_no_data": true, 
+  "query": "avg(last_4h):avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:<%= deployment %>} >= 10", 
+  "message": "## Description:\n ##  \n\n## Escalation Path:\n \n  Redis Team. \n\n## Possible Causes:\n## Potential Solutions: \n\n## Possible Causes:\n## Potential Solutions:", 
+  "no_data_timeframe": 480, 
+  "name": "Free redis nodes are low"
 }

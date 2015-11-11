@@ -1,7 +1,7 @@
 {
-    "notify_no_data": false,
-              "name": "<%= environment %> CF: A job has low free RAM",
-          "silenced": false,
-             "query": "avg(last_5m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job,index} > 90",
-           "message": "Healthmonitor reports a component has used more than 90% of its RAM. <%= backend_pagerduty %>. \nEscalation Path: It depends on the job."
+  "notify_no_data": false, 
+  "query": "avg(last_5m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job,index} > 90", 
+  "message": "## Description:\n Healthmonitor reports a component has used more than 90% of its RAM. <%= backend_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:", 
+  "name": "<%= environment %> CF: A job has low free RAM", 
+  "silenced": false
 }

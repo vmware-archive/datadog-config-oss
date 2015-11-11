@@ -1,8 +1,8 @@
 {
-  "silenced": false,
-  "query": "max(last_30m):min:elasticsearch.docs.incomingRatePerSecond{deployment:cf-elk-3az} < 1",
-  "message": "In the last thirty minutes, the ElasticSearch document count did not grow on at least one instance or we did not receive any data. <%= cloudops_non_critical_pagerduty %>\nEscalation Path: CloudOps BJ Team",
-  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min",
-  "no_data_timeframe": 20,
-  "notify_no_data": true
+  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min", 
+  "silenced": false, 
+  "no_data_timeframe": 20, 
+  "notify_no_data": true, 
+  "query": "max(last_30m):min:elasticsearch.docs.incomingRatePerSecond{deployment:cf-elk-3az} < 1", 
+  "message": "## Description:\n In the last thirty minutes, the ElasticSearch document count did not grow on at least one instance or we did not receive any data. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team \n\n## Possible Causes:\n## Potential Solutions:"
 }
