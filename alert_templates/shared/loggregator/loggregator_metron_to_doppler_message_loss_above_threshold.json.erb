@@ -5,6 +5,6 @@
   "no_data_timeframe": 30, 
   "notify_no_data": true, 
   "query": "avg(last_30m): 100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>-diego})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>})) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= deployment %>-diego})) )  > 3.0", 
-  "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  LAMBDA Team. \n\n## Possible Causes:\n## Potential Solutions:", 
+  "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  LAMBDA Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
   "type": "metric alert"
 }

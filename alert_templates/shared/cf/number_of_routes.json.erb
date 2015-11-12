@@ -4,5 +4,5 @@
   "no_data_timeframe": 10, 
   "notify_no_data": true, 
   "query": "avg(last_10m):min:cf.collector.router.total_routes{deployment:<%= deployment %>} < <%= params.fetch('expected_routes') %>", 
-  "message": "## Description:\n The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= backend_pagerduty %>.  \n\n## Escalation Path:\n  Router Team. \n\n## Possible Causes:\n## Potential Solutions:"
+  "message": "## Description:\n The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= backend_pagerduty %>.  \n\n## Escalation Path:\n  Router Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }

@@ -1,7 +1,7 @@
 {
   "notify_no_data": true, 
   "query": "min(last_1h):avg:aws.ec2.host_ok{deployment:<%= deployment %>} < 0", 
-  "message": "## Description:\n This alert should only be triggered when AWS has stopped reporting data to DataDog. <%= cloudops_pagerduty %> \n\n## Escalation Path:\n  None. \n\n## Possible Causes:\n## Potential Solutions:", 
+  "message": "## Description:\n This alert should only be triggered when AWS has stopped reporting data to DataDog. <%= cloudops_pagerduty %> \n\n## Escalation Path:\n  None. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
   "name": "<%= environment %> CF: AWS is not reporting", 
   "silenced": false
 }

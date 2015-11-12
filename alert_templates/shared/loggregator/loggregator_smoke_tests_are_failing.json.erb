@@ -4,5 +4,5 @@
   "no_data_timeframe": 60, 
   "notify_no_data": true, 
   "query": "max(last_30m):avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1} < 0.66", 
-  "message": "## Description:\n The smoke tests have been unable to read logs recently. <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  CAPI, DIEGO or LAMBD Team. \n\n## Possible Causes:\n## Potential Solutions:"
+  "message": "## Description:\n The smoke tests have been unable to read logs recently. <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  CAPI, DIEGO or LAMBD Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }

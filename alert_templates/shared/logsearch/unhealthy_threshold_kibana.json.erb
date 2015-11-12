@@ -4,5 +4,5 @@
   "no_data_timeframe": 20, 
   "notify_no_data": true, 
   "query": "avg(last_5m):min:bosh.healthmonitor.system.healthy{!job:acceptance_test_z1,!job:acceptance_test_z2,!job:curator_z1,!job:curator_z2,!job:curator_z3,!job:elb_log_to_logstash_z2,!job:ingestor_z1,!job:ingestor_z2,!job:ingestor_z3,!job:log_parser_z1,!job:log_parser_z2,!job:log_parser_z3,!job:metrics_collector_z1,!job:metrics_collector_z2,!job:metrics_collector_z3,!job:queue_z1,!job:queue_z2,!job:queue_z3,deployment:cf-elk-3az} < 0.8", 
-  "message": "## Description:\n One or more of the kibana BOSH agents are reporting either that the VM that they are running on or the kibana job that they are running is unhealthy. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:"
+  "message": "## Description:\n One or more of the kibana BOSH agents are reporting either that the VM that they are running on or the kibana job that they are running is unhealthy. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }

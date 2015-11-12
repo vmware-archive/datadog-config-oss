@@ -4,5 +4,5 @@
   "no_data_timeframe": 20, 
   "notify_no_data": true, 
   "query": "max(last_30m):min:elasticsearch.docs.incomingRatePerSecond{deployment:cf-elk-3az} < 1", 
-  "message": "## Description:\n In the last thirty minutes, the ElasticSearch document count did not grow on at least one instance or we did not receive any data. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team \n\n## Possible Causes:\n## Potential Solutions:"
+  "message": "## Description:\n In the last thirty minutes, the ElasticSearch document count did not grow on at least one instance or we did not receive any data. <%= cloudops_non_critical_pagerduty %> \n\n## Escalation Path:\n  CloudOps BJ Team \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }
