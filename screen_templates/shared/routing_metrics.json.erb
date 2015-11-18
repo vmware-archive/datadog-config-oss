@@ -1,0 +1,1367 @@
+{
+  "board_title": "<%= environment %> Routing Metrics",
+  "board_bgtype": "board_graph",
+  "original_title": "<%= environment %> Routing Metrics",
+  "height": 109,
+  "width": "100%",
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": null,
+      "name": "scope"
+    }
+  ],
+  "templated": false,
+  "widgets": [
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Routing API",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 34,
+      "y": 0,
+      "x": 0,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Route Emitter",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 39,
+      "y": 0,
+      "x": 35,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App request roundtrip (ns) (Week)",
+      "height": 20,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:app_benchmarking.rest_of_time{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_gorouter{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_app{deployment:<%= deployment %>} by {status}",
+            "type": "bars"
+          },
+          {
+            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= deployment %>} by {status})",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          }
+        ],
+        "outliers": "1%",
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "type": "error dashed",
+            "value": "",
+            "label": "x"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1w",
+      "y": 72,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total HTTP Subscriptions",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total HTTP Routes",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_routes{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total TCP Subscriptions",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total TCP Routes",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 49,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Routes Synced Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesSynced{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 35,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Routes",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 35,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Routes Registered Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 35,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Routes Unregistered Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 49,
+      "x": 35,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Route Emitter Bulk Duration (seconds)",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 35,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Process Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 39,
+      "y": 0,
+      "x": 154,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "GoRouter",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 39,
+      "y": 0,
+      "x": 75,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Requests Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "DEA App Requests Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.routed_app_requests{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 49,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Responses Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Seconds since Routing Table update",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= deployment %>} by {ip} / 1000",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Average Latency for Responses (milliseconds)",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.latency{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Bad Gateways Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})",
+            "style": {
+              "palette": "orange"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Responses with 2xx Status Code Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses.2xx{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 49,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App Responses with 4xx Status Code Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "App Responses with 5xx Status Code Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Rejected Requests Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.gorouter.rejected_requests{deployment:<%= deployment %>})",
+            "style": {
+              "palette": "orange"
+            },
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "# of GoRoutines",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.numGoRoutines{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.numGoRoutines{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "# of Bytes Allocated on Heap",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedHeap{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "# of Bytes Allocated on Stack",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedStack{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 19,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total # of Bytes Allocated",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocated{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocated{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "# of Mallocs Per Second",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numMallocs{deployment:<%= deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "per_second(avg:datadog.nozzle.route_emitter.memoryStats.numMallocs{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 34,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Last GC Pause Time (milliseconds)",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= deployment %>} by {ip} / 1000000",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= deployment %>} by {ip} / 1000000",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= diego_deployment %>} by {ip} / 1000000",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 4,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "# of CPUs",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.numCPUS{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.route_emitter.numCPUS{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 49,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "Thoth - Request Tracing",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 2,
+      "width": 34,
+      "y": 68,
+      "x": 0,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "color": "#4d4d4d",
+      "text": "System Health",
+      "title_align": "left",
+      "text_align": "left",
+      "title_text": "",
+      "height": 3,
+      "width": 34,
+      "y": 60,
+      "x": 195,
+      "font_size": "36",
+      "type": "free_text"
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU System",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "max": null,
+            "min": 80,
+            "type": "error bold",
+            "value": "y > 80",
+            "dim": "y"
+          },
+          {
+            "max": 80,
+            "min": null,
+            "type": "ok dashed",
+            "value": "y < 80",
+            "dim": "y"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU User",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "max": null,
+            "min": 80,
+            "type": "error bold",
+            "value": "y > 80",
+            "dim": "y"
+          },
+          {
+            "max": 80,
+            "min": null,
+            "type": "ok dashed",
+            "value": "y < 80",
+            "dim": "y"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 79,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CPU Wait",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "max": null,
+            "min": 80,
+            "type": "error bold",
+            "value": "y > 80",
+            "dim": "y"
+          },
+          {
+            "max": 80,
+            "min": null,
+            "type": "ok dashed",
+            "value": "y < 80",
+            "dim": "y"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 94,
+      "x": 193,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "System Memory Percent",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "max": null,
+            "min": 80,
+            "type": "error bold",
+            "value": "y > 80",
+            "dim": "y"
+          },
+          {
+            "max": 80,
+            "min": null,
+            "type": "ok dashed",
+            "value": "y < 80",
+            "dim": "y"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Ephemeral Disk Percent",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z1,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z2,deployment:<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "markers": [
+          {
+            "max": null,
+            "min": 80,
+            "type": "error bold",
+            "value": "y > 80",
+            "dim": "y"
+          },
+          {
+            "max": 80,
+            "min": null,
+            "type": "ok dashed",
+            "value": "y < 80",
+            "dim": "y"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 79,
+      "x": 154,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Requests (Uptime)",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1w",
+      "y": 79,
+      "x": 75,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    }
+  ],
+  "shared": false,
+  "id": 42337,
+  "title_edited": false
+}
