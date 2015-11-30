@@ -1,0 +1,246 @@
+<%
+  cf_deployment = "#{deployment}-cf"
+  diego_deployment = "#{deployment}-diego"
+  deploy_events = %([
+          {
+            "q": "tags:deployment:#{diego_deployment} started deploying diego to #{deployment}"
+          },
+          {
+            "q": "tags:deployment:#{diego_deployment} finished deploying diego to #{deployment}"
+          },
+          {
+            "q": "tags:deployment:#{diego_deployment} failed deploying diego to #{deployment}"
+          },
+          {
+            "q": "tags:deployment:#{cf_deployment} started deploying cf to #{deployment}"
+          },
+          {
+            "q": "tags:deployment:#{cf_deployment} finished deploying cf to #{deployment}"
+          },
+          {
+            "q": "tags:deployment:#{cf_deployment} failed deploying cf to #{deployment}"
+          }
+        ])
+%>
+{
+  "title": "<%= environment %> Garden Health",
+  "description": "<%= environment %> Garden Health",
+  "graphs":[
+    {
+      "title": "Cell: Tasks",
+      "definition":{
+        "requests":[
+          {
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.TasksRunning{deployment:<%= diego_deployment %>}"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Cell: LRPs",
+      "definition":{
+        "requests": [
+          {
+            "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
+          },
+          {
+            "q": "datadog.nozzle.bbs.LRPsClaimed{deployment: <%= diego_deployment %>}"
+          },
+          {
+            "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
+          },
+          {
+            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Cell: Missing LRPs",
+      "definition":{
+        "requests": [
+          {
+            "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= diego_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Cell: Garden Container Creation Duration (seconds)",
+      "definition":{
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Cell: Available Memory",
+      "definition":{
+        "requests":[
+          {
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
+            "type": "bars"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Rep: Stalled Garden Duration (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "events":<%= deploy_events %>
+      }
+    },
+    {
+      "title": "Garden: Loop Devices / Backing Stores / Depot Directories",
+      "definition":{
+        "requests":[
+          {
+            "q": "(max:datadog.nozzle.garden_linux.LoopDevices{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "(max:datadog.nozzle.garden_linux.BackingStores{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "(max:datadog.nozzle.garden_linux.DepotDirs{deployment:<%= diego_deployment %>} by {ip})",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>
+      }
+    },
+    <%
+    [
+      {:title => "Go: # Goroutines", :metric => "numGoRoutines"},
+      {:title => "Go: # CPUs", :metric => "numCPUS"},
+      {:title => "Go: # Mallocs", :metric => "memoryStats.numMallocs"},
+      {:title => "Go: GC Pause Time (NS)", :metric => "memoryStats.lastGCPauseTimeNS"},
+      {:title => "Go: Heap (bytes)", :metric => "memoryStats.numBytesAllocatedHeap"},
+      {:title => "Go: Stack (bytes)", :metric => "memoryStats.numBytesAllocatedStack"},
+    ].each do |metric|
+      requests = [{
+        "q" => "datadog.nozzle.garden_linux.#{metric[:metric]}{deployment:#{diego_deployment}} by {index,ip}",
+        "type" => "line",
+      }]
+    %>
+    {
+      "title": "Garden: <%= metric[:title] %>",
+      "definition":{
+        "requests": <%= requests.to_json %>,
+        "events":<%= deploy_events %>
+      }
+    },
+    <% end %>
+    {
+      "title": "CPU System",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>,
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title": "CPU User",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>,
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    },
+    {
+      "title": "CPU Wait",
+      "definition":{
+          "viz": "timeseries",
+          "requests": [
+          {
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          },
+          {
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events":<%= deploy_events %>,
+        "markers": [
+          {
+            "value": "y > 80",
+            "type": "error bold"
+          },
+          {
+            "value": "y < 80",
+            "type": "ok dashed"
+          }
+        ]
+      }
+    }
+  ]
+}
