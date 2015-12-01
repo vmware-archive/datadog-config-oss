@@ -1,0 +1,81 @@
+<%
+  garden_deployment = "#{deployment}-garden"
+%>
+{
+  "title": "<%= environment %> Garden-Only",
+  "description": "<%= environment %> Garden-Only",
+  "graphs":[
+    {
+      "title": "Perf: Container Creation Time (seconds)",
+      "definition":{
+        "requests": [
+          {
+            "q": "max:garden.container_creation_time{deployment:<%= garden_deployment %>} / 1000000000",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries"
+      }
+    },
+    {
+      "title": "Garden: Loop Devices / Backing Stores / Depot Directories",
+      "definition":{
+        "requests":[
+          {
+            "q": "(max:loopDevices{garden.linux.<%= deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "(max:backingStores{garden.linux.<%= deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "(max:depotDirs{garden.linux.<%= deployment %>} by {ip})",
+            "type": "line"
+          }
+        ]
+      }
+    },
+    <%
+    [
+      {:title => "Go: # Goroutines", :metric => "numGoRoutines"},
+      {:title => "Go: # CPUs", :metric => "numCPUS"},
+      {:title => "Go: GC Pause Time (NS)", :metric => "memstats.LastGC"},
+      {:title => "Go: Heap allocated (bytes)", :metric => "memstats.HeapAlloc"},
+      {:title => "Go: Total allocated (bytes)", :metric => "memstats.TotalAlloc"},
+    ].each do |metric|
+      requests = [{
+        "q" => "#{metric[:metric]}{garden.linux.#{deployment}} by {index,ip}",
+        "type" => "line",
+      }]
+    %>
+    {
+      "title": "Garden: <%= metric[:title] %>",
+      "definition":{
+        "requests": <%= requests.to_json %>
+      }
+    },
+    <% end %>
+    {
+      "title": "Malloc / Free operation counts overlay",
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:memstats.Frees{garden.linux.<%= deployment %>}",
+            "type": "line"
+          },
+          {
+            "q": "avg:memstats.Mallocs{garden.linux.<%= deployment %>}",
+            "style": {
+              "palette": "warm",
+              "type": "dashed",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -261,3 +261,27 @@ namespace :garden do
     deployments.each { |k| Rake::Task["garden:#{k}:push"].execute }
   end
 end
+
+GARDEN_BLACKBOX_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "garden_blackbox_screen.json.erb"))
+GARDEN_BLACKBOX_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["garden_blackbox"] }.keys
+
+namespace :garden_blackbox do
+  deployments.each do |d|
+    namespace d do
+      desc "Push #{d} Datadog Config"
+      task :push do
+        if GARDEN_BLACKBOX_ENVIRONMENTS.include?(d)
+          puts "[INFO] Synchronizing Garden dashboard for '#{d}' environment"
+          DashboardSynchronizer.new(CONFIG_PATH, d).run(GARDEN_BLACKBOX_DASHBOARD_TEMPLATES)
+        else
+          puts "[WARN] The environment '#{d}' does not have the Garden you're looking for..."
+        end
+      end
+    end
+  end
+
+  desc "Push all Garden Datadog Configs"
+  task :push do
+    deployments.each { |k| Rake::Task["garden:#{k}:push"].execute }
+  end
+end
