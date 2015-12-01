@@ -679,13 +679,13 @@ prod:
 - query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
   color: white_on_green
   value: 16
-- query: avg:diego.smoke.status{deployment:}
+- query: avg:rabbitmq.smoke.status{*}
   color: white_on_green
   value: 1
-- query: avg:diego.smoke.status{deployment:}
+- query: avg:rabbitmq.smoke.status{*}
   color: white_on_red
   value: 0.75
-- query: avg:diego.smoke.status{deployment:}
+- query: avg:rabbitmq.smoke.status{*}
   color: white_on_yellow
   value: 0.75
 - query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
@@ -832,3 +832,12 @@ prod:
 - query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:}
   color: white_on_green
   value: 75
+- query: avg:diego.smoke.status{deployment:}
+  color: white_on_green
+  value: 1
+- query: avg:diego.smoke.status{deployment:}
+  color: white_on_red
+  value: 0.75
+- query: avg:diego.smoke.status{deployment:}
+  color: white_on_yellow
+  value: 0.75

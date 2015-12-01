@@ -2109,7 +2109,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 93,
-      "x": 2
+      "x": 0
     },
     {
       "metric": "new_relic.errors.all.errors_per_minute",
@@ -2154,7 +2154,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 93,
-      "x": 13
+      "x": 11
     },
     {
       "metric": "cloudops_tools.ssh_abuse_monitor.ssh.attempts",
@@ -2688,7 +2688,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 99,
-      "x": 2
+      "x": 0
     },
     {
       "metric": "pws.circuit.cloud_controller_get",
@@ -2729,7 +2729,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 105,
-      "x": 2
+      "x": 0
     },
     {
       "title_size": 16,
@@ -2744,7 +2744,7 @@
       "bgcolor": "white",
       "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
       "y": 87,
-      "x": 2,
+      "x": 0,
       "font_size": "24",
       "tick": false,
       "type": "note",
@@ -2802,7 +2802,7 @@
       "res_calc_func": "raw",
       "aggr": "max",
       "y": 93,
-      "x": 24
+      "x": 22
     },
     {
       "metric": "",
@@ -2849,7 +2849,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 105,
-      "x": 24
+      "x": 22
     },
     {
       "title_size": 13,
@@ -3751,7 +3751,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 117,
-      "x": 2
+      "x": 0
     },
     {
       "title_size": 16,
@@ -3764,7 +3764,7 @@
       "height": 5,
       "width": 24,
       "y": 112,
-      "x": 2,
+      "x": 0,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -3820,7 +3820,7 @@
       "res_calc_func": "raw",
       "aggr": "avg",
       "y": 117,
-      "x": 17
+      "x": 15
     },
     {
       "metric": "",
@@ -4646,9 +4646,9 @@
       "type": "free_text"
     },
     {
-      "metric": "diego.smoke.status",
+      "metric": "rabbitmq.smoke.status",
       "height": 6,
-      "query": "avg:diego.smoke.status{deployment:<%= deployment %>-diego}",
+      "query": "avg:rabbitmq.smoke.status{*}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -4660,10 +4660,10 @@
       "timeframe": "30m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+
       ],
       "precision": 2,
-      "title_text": "Diego smoke test",
+      "title_text": "RabbitMQ Service smoke test",
       "calc_func": "raw",
       "metric_type": "standard",
       "conditional_formats": [
@@ -4671,7 +4671,7 @@
           "comparator": ">=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -4679,7 +4679,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -4687,7 +4687,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -4695,8 +4695,8 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 117,
-      "x": 32
+      "y": 125,
+      "x": 15
     },
     {
       "title_size": 16,
@@ -5460,8 +5460,8 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 132,
-      "x": 2
+      "y": 140,
+      "x": 0
     },
     {
       "metric": "",
@@ -5513,8 +5513,8 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 132,
-      "x": 22
+      "y": 140,
+      "x": 20
     },
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
@@ -5566,8 +5566,8 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 139,
-      "x": 2
+      "y": 147,
+      "x": 0
     },
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
@@ -5619,8 +5619,8 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 139,
-      "x": 22
+      "y": 147,
+      "x": 20
     },
     {
       "title_size": 16,
@@ -5632,8 +5632,8 @@
       "title_text": "",
       "height": 6,
       "width": 19,
-      "y": 126,
-      "x": 2,
+      "y": 134,
+      "x": 0,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -5647,8 +5647,8 @@
       "title_text": "",
       "height": 6,
       "width": 24,
-      "y": 126,
-      "x": 22,
+      "y": 134,
+      "x": 20,
       "font_size": "auto",
       "type": "free_text"
     },
@@ -5702,8 +5702,61 @@
       "is_valid_query": true,
       "res_calc_func": "raw",
       "aggr": "max",
-      "y": 146,
-      "x": 2
+      "y": 154,
+      "x": 0
+    },
+    {
+      "metric": "diego.smoke.status",
+      "height": 6,
+      "query": "avg:diego.smoke.status{deployment:<%= deployment %>-diego}",
+      "text_size": "auto",
+      "unit": "auto",
+      "title_size": 16,
+      "title": true,
+      "aggregator": "avg",
+      "title_align": "left",
+      "text_align": "left",
+      "width": 15,
+      "timeframe": "30m",
+      "type": "query_value",
+      "tags": [
+        "deployment:<%= deployment %>-diego"
+      ],
+      "precision": 2,
+      "title_text": "Diego smoke test",
+      "calc_func": "raw",
+      "metric_type": "standard",
+      "conditional_formats": [
+        {
+          "comparator": ">=",
+          "color": "white_on_green",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_green') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": "<",
+          "color": "white_on_red",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_red') %>,
+          "invert": false,
+          "custom_fg_color": null
+        },
+        {
+          "comparator": ">=",
+          "color": "white_on_yellow",
+          "custom_bg_color": null,
+          "value": <%= threshold_value('avg:diego.smoke.status{deployment:}', 'white_on_yellow') %>,
+          "invert": false,
+          "custom_fg_color": null
+        }
+      ],
+      "is_valid_query": true,
+      "res_calc_func": "raw",
+      "aggr": "avg",
+      "y": 125,
+      "x": 0
     }
   ],
   "shared": false,
