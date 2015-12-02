@@ -12,6 +12,13 @@
           {
             "q": "max:garden.container_creation_time{deployment:<%= garden_deployment %>} / 1000000000",
             "type": "bars"
+          },
+          {
+            "q": "ewma_20(max:garden.container_creation_time{deployment:<%= garden_deployment %>} / 1000000000)",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
           }
         ],
         "viz": "timeseries"

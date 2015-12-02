@@ -89,6 +89,13 @@
           {
             "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000",
             "type": "line"
+          },
+          {
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000)",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
           }
         ],
         "events":<%= deploy_events %>
