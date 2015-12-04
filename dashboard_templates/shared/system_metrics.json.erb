@@ -5,7 +5,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(avg:bosh.healthmonitor.system.mem.kb{$job_z1,$deployment,$index}by{index,job})*1024,(avg:bosh.healthmonitor.system.mem.kb{$job_z2,$deployment,$index}by{index,job})*1024"
+            "q": "(avg:bosh.healthmonitor.system.mem.kb{$job,$deployment,$index}by{index,job})*1024"
           }
         ]
       },
@@ -16,7 +16,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "top(avg:bosh.healthmonitor.system.mem.kb{$job_z1,$deployment,$index} by {job,index}, 10, 'mean', 'desc'),top(avg:bosh.healthmonitor.system.mem.kb{$job_z2,$deployment,$index} by {job,index}, 10, 'mean', 'desc')",
+            "q": "top(avg:bosh.healthmonitor.system.mem.kb{$job,$deployment,$index} by {job,index}, 10, 'mean', 'desc')",
             "style": {
               "palette": "dog_classic"
             },
@@ -33,7 +33,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{$job_z1,$deployment,$index} by {index,job}, avg:bosh.healthmonitor.system.mem.percent{$job_z2,$deployment,$index} by {index,job}"
+            "q": "avg:bosh.healthmonitor.system.mem.percent{$job,$deployment,$index} by {index,job}"
           }
         ]
       },
@@ -44,7 +44,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{$job_z1,$deployment,$index} by {index,job} , avg:bosh.healthmonitor.system.mem.percent{$job_z2,$deployment,$index} by {index,job}"
+            "q": "avg:bosh.healthmonitor.system.mem.percent{$job,$deployment,$index} by {index,job}"
           }
         ]
       },
@@ -55,7 +55,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job_z1,$deployment,$index}by{index,job})*1024,(avg:bosh.healthmonitor.system.swap.kb{$job_z2,$deployment}by{index,job,$index})*1024"
+            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job,$deployment,$index}by{index,job})*1024"
           }
         ]
       },
@@ -66,7 +66,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job_z1,$deployment}by{index,job})*1024,(avg:bosh.healthmonitor.system.swap.kb{$job_z2,$deployment}by{index,job})*1024",
+            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job,$deployment}by{index,job})*1024",
             "style": {
               "palette": "warm"
             }
@@ -80,7 +80,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job_z1,$deployment,$index} by {index,job}, avg:bosh.healthmonitor.system.cpu.wait{$job_z2,$deployment,$index} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job,$deployment,$index} by {index,job}",
             "style": {
               "palette": "warm"
             },
@@ -95,7 +95,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.wait{$job_z2,$deployment} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job,$deployment} by {index,job}",
             "style": {
               "palette": "warm"
             }
@@ -109,7 +109,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job_z1,$deployment,$index} by {index,job}, avg:bosh.healthmonitor.system.cpu.sys{$job_z2,$deployment,$index} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job,$deployment,$index} by {index,job}",
             "style": {
               "palette": "cool"
             }
@@ -123,7 +123,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.sys{$job_z2,$deployment} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job,$deployment} by {index,job} ",
             "style": {
               "palette": "cool"
             }
@@ -137,7 +137,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{$job_z1,$deployment,$index} by {index,job}, avg:bosh.healthmonitor.system.cpu.user{$job_z2,$deployment,$index} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{$job,$deployment,$index} by {index,job}",
             "style": {
               "palette": "cool"
             }
@@ -151,7 +151,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{$job_z1,$deployment} by {index,job} , avg:bosh.healthmonitor.system.cpu.user{$job_z2,$deployment} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{$job,$deployment} by {index,job} ",
             "style": {
               "palette": "cool"
             }
@@ -165,7 +165,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.load.1m{$job_z1,$deployment,$index} by {index,job}, avg:bosh.healthmonitor.system.load.1m{$job_z2,$deployment,$index} by {index,job}",
+            "q": "avg:bosh.healthmonitor.system.load.1m{$job,$deployment,$index} by {index,job}",
             "style": {
               "palette": "purple"
             }
@@ -179,7 +179,7 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.load.1m{$job_z1,$deployment} by {job,index} , avg:bosh.healthmonitor.system.load.1m{$job_z2,$deployment} by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.load.1m{$job,$deployment} by {job,index} ",
             "style": {
               "palette": "purple"
             }
@@ -194,12 +194,7 @@
     {
       "default": "*",
       "prefix": "job",
-      "name": "job_z1"
-    },
-    {
-      "default": "job:_job",
-      "prefix": "job",
-      "name": "job_z2"
+      "name": "job"
     },
     {
       "default": "deployment:<%= deployment %>",
