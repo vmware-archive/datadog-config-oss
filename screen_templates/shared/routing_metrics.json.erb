@@ -2,7 +2,7 @@
   "board_title": "<%= environment %> Routing Metrics",
   "board_bgtype": "board_graph",
   "original_title": "<%= environment %> Routing Metrics",
-  "height": 109,
+  "height": 133,
   "width": "100%",
   "template_variables": [
     {
@@ -11,7 +11,7 @@
       "name": "scope"
     }
   ],
-  "templated": false,
+  "templated": true,
   "widgets": [
     {
       "title_size": 16,
@@ -659,7 +659,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "# of GoRoutines",
-      "height": 13,
+      "height": 17,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -673,6 +673,14 @@
           },
           {
             "q": "avg:datadog.nozzle.route_emitter.numGoRoutines{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.numGoRoutines{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.numGoRoutines{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -695,7 +703,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "# of Bytes Allocated on Heap",
-      "height": 13,
+      "height": 17,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -705,6 +713,14 @@
           },
           {
             "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= diego_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -716,7 +732,7 @@
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 19,
+      "y": 22,
       "x": 193,
       "legend_size": "0",
       "type": "timeseries",
@@ -727,7 +743,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "# of Bytes Allocated on Stack",
-      "height": 13,
+      "height": 15,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -742,6 +758,14 @@
           {
             "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
           }
         ],
         "events": [
@@ -752,7 +776,7 @@
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 19,
+      "y": 23,
       "x": 154,
       "legend_size": "0",
       "type": "timeseries",
@@ -763,7 +787,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "Total # of Bytes Allocated",
-      "height": 13,
+      "height": 17,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -778,6 +802,14 @@
           {
             "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocated{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
           }
         ],
         "events": [
@@ -788,7 +820,7 @@
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 34,
+      "y": 41,
       "x": 193,
       "legend_size": "0",
       "type": "timeseries",
@@ -799,7 +831,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "# of Mallocs Per Second",
-      "height": 13,
+      "height": 18,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -814,6 +846,14 @@
           {
             "q": "per_second(avg:datadog.nozzle.route_emitter.memoryStats.numMallocs{deployment:<%= diego_deployment %>} by {ip})",
             "type": "line"
+          },
+          {
+            "q": "per_second(avg:datadog.nozzle.tcp_emitter.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
+            "type": "line"
+          },
+          {
+            "q": "per_second(avg:datadog.nozzle.router_configurer.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
+            "type": "line"
           }
         ],
         "events": [
@@ -824,7 +864,7 @@
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 34,
+      "y": 40,
       "x": 154,
       "legend_size": "0",
       "type": "timeseries",
@@ -835,7 +875,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "Last GC Pause Time (milliseconds)",
-      "height": 13,
+      "height": 16,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -849,6 +889,14 @@
           },
           {
             "q": "avg:datadog.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= diego_deployment %>} by {ip} / 1000000",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
             "type": "line"
           }
         ],
@@ -871,7 +919,7 @@
       "title": true,
       "title_align": "left",
       "title_text": "# of CPUs",
-      "height": 13,
+      "height": 17,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
@@ -886,6 +934,14 @@
           {
             "q": "avg:datadog.nozzle.route_emitter.numCPUS{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.tcp_emitter.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.router_configurer.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
+            "type": "line"
           }
         ],
         "events": [
@@ -896,8 +952,8 @@
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 49,
-      "x": 154,
+      "y": 60,
+      "x": 193,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -927,8 +983,8 @@
       "title_text": "",
       "height": 3,
       "width": 34,
-      "y": 60,
-      "x": 195,
+      "y": 78,
+      "x": 155,
       "font_size": "36",
       "type": "free_text"
     },
@@ -990,24 +1046,24 @@
         "markers": [
           {
             "max": null,
-            "min": 80,
+            "dim": "y",
             "type": "error bold",
             "value": "y > 80",
-            "dim": "y"
+            "min": 80
           },
           {
             "max": 80,
-            "min": null,
+            "dim": "y",
             "type": "ok dashed",
             "value": "y < 80",
-            "dim": "y"
+            "min": null
           }
         ]
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 64,
-      "x": 193,
+      "y": 82,
+      "x": 155,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1070,24 +1126,24 @@
         "markers": [
           {
             "max": null,
-            "min": 80,
+            "dim": "y",
             "type": "error bold",
             "value": "y > 80",
-            "dim": "y"
+            "min": 80
           },
           {
             "max": 80,
-            "min": null,
+            "dim": "y",
             "type": "ok dashed",
             "value": "y < 80",
-            "dim": "y"
+            "min": null
           }
         ]
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 79,
-      "x": 193,
+      "y": 82,
+      "x": 194,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1150,24 +1206,24 @@
         "markers": [
           {
             "max": null,
-            "min": 80,
+            "dim": "y",
             "type": "error bold",
             "value": "y > 80",
-            "dim": "y"
+            "min": 80
           },
           {
             "max": 80,
-            "min": null,
+            "dim": "y",
             "type": "ok dashed",
             "value": "y < 80",
-            "dim": "y"
+            "min": null
           }
         ]
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 94,
-      "x": 193,
+      "y": 97,
+      "x": 194,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1230,24 +1286,24 @@
         "markers": [
           {
             "max": null,
-            "min": 80,
+            "dim": "y",
             "type": "error bold",
             "value": "y > 80",
-            "dim": "y"
+            "min": 80
           },
           {
             "max": 80,
-            "min": null,
+            "dim": "y",
             "type": "ok dashed",
             "value": "y < 80",
-            "dim": "y"
+            "min": null
           }
         ]
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 64,
-      "x": 154,
+      "y": 97,
+      "x": 155,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -1310,24 +1366,24 @@
         "markers": [
           {
             "max": null,
-            "min": 80,
+            "dim": "y",
             "type": "error bold",
             "value": "y > 80",
-            "dim": "y"
+            "min": 80
           },
           {
             "max": 80,
-            "min": null,
+            "dim": "y",
             "type": "ok dashed",
             "value": "y < 80",
-            "dim": "y"
+            "min": null
           }
         ]
       },
       "width": 39,
       "timeframe": "1h",
-      "y": 79,
-      "x": 154,
+      "y": 112,
+      "x": 155,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
