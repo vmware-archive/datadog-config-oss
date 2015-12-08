@@ -1,15 +1,5 @@
 ---
 prod:
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_red
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_green
-  value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
   color: white_on_red
   value: 100
@@ -33,21 +23,6 @@ prod:
   value: 100
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:api_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_green
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_red
-  value: 50
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_yellow
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
     ) *50"
   color: white_on_green
   value: 100
@@ -91,15 +66,6 @@ prod:
     ) *25"
   color: white_on_green
   value: 100
-- query: sum:cf.collector.reservable_stagers{deployment:}
-  color: white_on_red
-  value: 150
-- query: sum:cf.collector.reservable_stagers{deployment:}
-  color: white_on_yellow
-  value: 250
-- query: sum:cf.collector.reservable_stagers{deployment:}
-  color: white_on_green
-  value: 250
 - query: avg:bosh.healthmonitor.system.healthy{deployment:,job:bosh} *100
   color: white_on_yellow
   value: 100
@@ -113,21 +79,6 @@ prod:
   value: 100
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z1}.rollup(avg,60))
     + (avg:bosh.healthmonitor.system.healthy{deployment:,job:uaa_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_green
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_red
-  value: 50
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_yellow
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:hm9000_z2}.rollup(avg,60))
     ) *50"
   color: white_on_green
   value: 100
@@ -181,25 +132,6 @@ prod:
     ) *50"
   color: white_on_green
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_yellow
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60))
-    + (avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60))
-    ) *50"
-  color: white_on_green
-  value: 100
-- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
-  color: white_on_red
-  value: 2
-- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
-  color: white_on_yellow
-  value: 24
-- query: "(min:cf.collector.uptime_in_seconds{deployment:,job:dea}) / 3600"
-  color: white_on_green
-  value: 24
 - query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} by {ip}) /
     0.000001024"
   color: white_on_red
@@ -239,15 +171,6 @@ prod:
 - query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
   color: green_on_white
   value: 2.5
-- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
-  color: red_on_white
-  value: 60
-- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
-  color: yellow_on_white
-  value: 80
-- query: per_second(sum:cf.collector.router.requests{component:app,deployment:})
-  color: green_on_white
-  value: 80
 - query: per_second(sum:cf.collector.router.requests{deployment:})
   color: red_on_white
   value: 80
@@ -257,27 +180,6 @@ prod:
 - query: per_second(sum:cf.collector.router.requests{deployment:})
   color: green_on_white
   value: 100
-- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
-    *100
-  color: white_on_red
-  value: 15
-- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
-    *100
-  color: white_on_yellow
-  value: 25
-- query: avg:cloudops_tools.dea_monitor.reservable_stagers_aggregate{deployment:}
-    *100
-  color: white_on_green
-  value: 25
-- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
-  color: white_on_red
-  value: 4
-- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
-  color: white_on_yellow
-  value: 2
-- query: max:cloudops_tools.dea_monitor.additional_runners_needed{deployment:}
-  color: white_on_green
-  value: 2
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}
   color: white_on_red
   value: 30
@@ -329,33 +231,6 @@ prod:
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
   color: white_on_green
   value: 30
-- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
-  color: white_on_yellow
-  value: 100
-- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
-  color: white_on_green
-  value: -10
-- query: avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:}.rollup(avg,1800))
-  color: white_on_red
-  value: -100
-- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
-  color: white_on_yellow
-  value: 100
-- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
-  color: white_on_green
-  value: -10
-- query: avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800)
-    - hour_before(avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:}.rollup(avg,1800))
-  color: white_on_red
-  value: -100
-- query: sum:cf.collector.mem_free_bytes{deployment:,job:dea}
-  color: white_on_green
-  value: 1
 - query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:}
   color: white_on_red
   value: 75
@@ -410,21 +285,6 @@ prod:
 - query: max:aws.ec2.status_check_failed{deployment:}
   color: white_on_green
   value: 0
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
-  color: white_on_green
-  value: 1
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
-  color: white_on_yellow
-  value: 1
-- query: avg:cloudops_tools.failed_stages.counts_per_5min{deployment:}
-  color: white_on_red
-  value: 5
-- query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
-  color: white_on_yellow
-  value: 5
-- query: avg:cloudops_tools.stages.counts_per_5min{deployment:}.rollup(sum,3600)
-  color: white_on_green
-  value: 5
 - query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:} - datadog.nozzle.bbs.LRPsRunning{deployment:})
     -datadog.nozzle.bbs.LRPsStarting{deployment:}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:})"
   color: white_on_red
@@ -670,15 +530,6 @@ prod:
 - query: avg:aws.ec2.network_in{deployment:,job:nats_z2}.rollup(avg,1800)
   color: white_on_green
   value: 16000000
-- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
-  color: white_on_red
-  value: 17
-- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
-  color: white_on_yellow
-  value: 16
-- query: avg:cloudops_tools.p_redis.dedicated_instances_used{deployment:}
-  color: white_on_green
-  value: 16
 - query: avg:rabbitmq.smoke.status{*}
   color: white_on_green
   value: 1
