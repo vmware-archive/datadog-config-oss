@@ -1,4 +1,4 @@
-# Datadog Sync
+# Datadog Config
 
 This is the authoritative definition of the dashboards and alerts in Datadog for production and staging.
 Do not modify the dashboards and alerts directly in Datadog; instead modify the template files here and run the sync process.
