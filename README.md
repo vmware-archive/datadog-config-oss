@@ -51,7 +51,7 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment name, su
 3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID.
 
         rake shoop:get_dashboard_json_erb[85864,./dashboard_templates/sh/red/shoop_da_whoop.json.erb]
-    
+
 4. Commit your changes to source control.
 
 _Note: the filename must end in ```.json.erb``` for the rake task to find and push the dashboard._
