@@ -1188,7 +1188,7 @@
       "height": 4,
       "query": "per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:<%= deployment %>})",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "/s",
       "title_size": 20,
       "title": true,
       "aggregator": "avg",
@@ -1200,7 +1200,7 @@
       "tags": [
 
       ],
-      "precision": 2,
+      "precision": 0,
       "title_text": "API Req/sec - 5min",
       "x": 36,
       "metric_type": "standard",
@@ -1241,7 +1241,7 @@
       "height": 4,
       "query": "per_second(sum:cf.collector.router.requests{component:uaa,deployment:<%= deployment %>})",
       "text_size": "auto",
-      "unit": "auto",
+      "unit": "/s",
       "title_size": 20,
       "title": true,
       "aggregator": "avg",
@@ -1253,7 +1253,7 @@
       "tags": [
 
       ],
-      "precision": 2,
+      "precision": 0,
       "title_text": "UAA Req/sec - 5min",
       "x": 36,
       "metric_type": "standard",
