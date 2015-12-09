@@ -11,8 +11,8 @@ Do not modify the dashboards and alerts directly in Datadog; instead modify the 
     # Fill in config.yml with your credentials and other details
     $ bundle install
 
-##### CAUTION: This takes a while and will push to  everything.
-    $ ./sync # does: git pull --rebase && git push origin master && bundle exec rake push
+##### CAUTION: This takes a while and will push to everything.
+    $ rake <your-env-name>:push
 
 ## Rake commands available
 
