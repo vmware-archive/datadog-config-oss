@@ -28,13 +28,57 @@ rake cf_deployment:get_dashboard_json_erb[dash_id,path]  # Make a json template 
 rake cf_deployment:get_screen_json_erb[screen_id,path]   # Make a json template for the specified screen at the given file path
 rake cf_deployment:list_unknown                          # List dashboards and alerts that are not represented in local templates for Cf_deployment
 rake cf_deployment:push                                  # Push Cf_deployment Datadog Config
-rake push                                                # Push all configs
+rake diego:cf_deployment:push                            # Push cf_deployment Datadog Config
+rake diego:push                                          # Push all Diego Datadog Configs
+rake garden:cf_deployment:push                           # Push cf_deployment Datadog Config
+rake garden:push                                         # Push all Garden Datadog Configs
+rake garden_blackbox:cf_deployment:push                  # Push cf_deployment Datadog Config
+rake garden_blackbox:push                                # Push all Garden Datadog Configs
 rake spec                                                # Run RSpec code examples
 ```
 
-Note: By replacing staging in the rake command with e.g. 'prod', these commands will do the same thing but in the prod environment
+Note: 'cf_deployment', as used above, is a placeholder for a deployment name, such as 'prod'.
 
 # Workflow
+
+
+## Creating a new deployment
+1. Change config.yml to match your environment, see config.yml section for more information on the parameters used therein.
+
+## Creating a new dashboard
+1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
+2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
+3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID. ```rake shoop:get_dashboard_json_erb[85864,./dashboard_templates/shared/shoop_da_whoop.json.erb]```
+4. Commit your changes to source control.
+
+_Note: the filename must end in ```.json.erb``` for the rake task to find and push the dashboard._
+
+## Pushing dashboard to datadog
+1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
+2. Push changes to deployment ```rake prod:push```
+
+
+## config.yml
+Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
+
+* **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-diego`
+* **diego**:
+* **diego_deployment**:
+* **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest
+* **services_deployment**: Corresponding services name to the BOSH deployment
+* **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
+* **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
+* **router_elb_name**: The name given to the ELB for this deployment's router
+* **stoplights_screen_id**: The numeric ID that Datadog has assigned your screen
+* **params**: Used to inject configuration values into your ERB file ```<%= params.fetch('min_deas_that_can_stage') %>```
+* **credentials.api_key**: API key for the Datadog account where your dashboards will be created.
+* **credentials.api_key**: App key for the Datadog account where your dashboards will be created.
+* **jobs**: An enumeration of the various jobs associated with the deployment that you want to monitor, such as 'cloud_controller', 'nats', etc.
+
+There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
+
+Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
+You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place.
 
 ## Start in Datadog.
 - [ ] Create a [dashboard](dashboard_templates/README.md) / [alert](alert_templates/README.md) / [screenboard](screen_templates/README.md).
