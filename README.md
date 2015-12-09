@@ -50,7 +50,7 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment name, su
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
 3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID.
 
-    rake shoop:get_dashboard_json_erb[85864,./dashboard_templates/sh/red/shoop_da_whoop.json.erb]
+        rake shoop:get_dashboard_json_erb[85864,./dashboard_templates/sh/red/shoop_da_whoop.json.erb]
     
 4. Commit your changes to source control.
 
