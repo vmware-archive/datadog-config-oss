@@ -1292,7 +1292,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.gorouter.total_requests{*})",
       "text_size": "auto",
       "unit": "/s",
       "title_size": 20,
@@ -1306,16 +1306,16 @@
       "tags": [
 
       ],
-      "precision": 1,
+      "precision": 0,
       "title_text": "Router Req/sec - 5min",
-      "x": 35.90856643517812,
+      "x": 36,
       "metric_type": "standard",
       "conditional_formats": [
         {
           "comparator": "<",
           "color": "red_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{deployment:})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'red_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1323,7 +1323,7 @@
           "comparator": "<=",
           "color": "yellow_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{deployment:})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'yellow_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1331,7 +1331,7 @@
           "comparator": ">",
           "color": "green_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{deployment:})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'green_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1339,7 +1339,7 @@
       "is_valid_query": false,
       "res_calc_func": "raw",
       "aggr": "avg",
-      "y": 6.9921875,
+      "y": 7,
       "calc_func": "raw"
     },
     {
