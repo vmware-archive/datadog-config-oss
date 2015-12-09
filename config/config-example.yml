@@ -1,4 +1,6 @@
 ---
+# Copy this file to config.yml and fill in your credentials and other details
+
 cf_deployment:
   deployment: "cf-deployment-example"
   bosh_deployment: "cf-deployment-example"

@@ -5,12 +5,18 @@ Do not modify the dashboards and alerts directly in Datadog; instead modify the 
 
 # Usage
 
-##### CAUTION: This takes a while and will push to  everything. 
-    $ ./sync # does: git pull --rebase && git push origin master && bundle exec rake push
-    
-## Rake commands available 
+## Setup
 
-``` 
+    $ cp config/config-example.yml config/config.yml
+    # Fill in config.yml with your credentials and other details
+    $ bundle install
+
+##### CAUTION: This takes a while and will push to  everything.
+    $ ./sync # does: git pull --rebase && git push origin master && bundle exec rake push
+
+## Rake commands available
+
+```
 rake cf_deployment:console                               # A console with some useful variables
 rake cf_deployment:delete_unknown                        # Delete dashboards and alerts that are not represented in local templates for Cf_deployment
 rake cf_deployment:emit[metric]                          # emit data to datadog for testing purposes (note this WILL affect graphs and alerts)
@@ -25,13 +31,13 @@ rake cf_deployment:push                                  # Push Cf_deployment Da
 rake push                                                # Push all configs
 rake spec                                                # Run RSpec code examples
 ```
-    
+
 Note: By replacing staging in the rake command with e.g. 'prod', these commands will do the same thing but in the prod environment
 
 # Workflow
 
-## Start in Datadog. 
-- [ ] Create a [dashboard](dashboard_templates/README.md) / [alert](alert_templates/README.md) / [screenboard](screen_templates/README.md). 
+## Start in Datadog.
+- [ ] Create a [dashboard](dashboard_templates/README.md) / [alert](alert_templates/README.md) / [screenboard](screen_templates/README.md).
 
 ### Metric naming conventions
 
@@ -43,23 +49,23 @@ Note: By replacing staging in the rake command with e.g. 'prod', these commands 
 Your teammates will thank you.
 
 ### Using Notes in screenboards
-Notes are a fantastic way of creating titles (see [staging](https://app.datadoghq.com/screen/board/15084) or [prod](https://app.datadoghq.com/screen/board/14530)) for your various sections. You can use markdown, meaning that you can have your titles serve the dual purpose of displaying a title and being clickable to allow for deeper inspection. 
+Notes are a fantastic way of creating titles (see [staging](https://app.datadoghq.com/screen/board/15084) or [prod](https://app.datadoghq.com/screen/board/14530)) for your various sections. You can use markdown, meaning that you can have your titles serve the dual purpose of displaying a title and being clickable to allow for deeper inspection.
 
-We have implemented import code that will detect such links and translate them between environments. However, the code relies on certain semantics to function. When generating the links, use the following format: 
+We have implemented import code that will detect such links and translate them between environments. However, the code relies on certain semantics to function. When generating the links, use the following format:
 
 ```
 [Title](/dash/dash/12345) # for dashboards
 [Title](/screen/board/12345) # for screenboards
 ```
-Anything else will be left as is. 
+Anything else will be left as is.
 
 
-## Import screenboards from DataDog. 
+## Import screenboards from DataDog.
 After you've created your screenboard, import it into datadog.
 
 - [ ] `rake <environment>:get_screen_json_erb[<id number>,path/to/template.json.erb]`
-- make sure `environment` matches the environment of where the screenboard is presently. In other words, if you used the staging credentials to log in, you should use `rake staging:get_screen_json_erb`.    
-  _note: do not add a space between the id number and the path. Rake is weird._  
+- make sure `environment` matches the environment of where the screenboard is presently. In other words, if you used the staging credentials to log in, you should use `rake staging:get_screen_json_erb`.
+  _note: do not add a space between the id number and the path. Rake is weird._
 
 This will pull down the screenboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
 
@@ -72,22 +78,22 @@ screen_templates/
 ```
 
 
-The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the 'shared' folder are pushed to all of the environemnts, while templates in e.g. the 'prod' folder will only be pushed to the prod data dog.  Move the template json/erb file to the 
+The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the 'shared' folder are pushed to all of the environemnts, while templates in e.g. the 'prod' folder will only be pushed to the prod data dog.  Move the template json/erb file to the
 appropriate folder and move the thresholds yaml to the same folder so that the two files are siblings.
 
-Edit the resultant file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48). 
+Edit the resultant file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
 
-*Known issues:*  
-- Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.  
-- If there are no thresholds defined, it will break again. Just remove the thresholds file. 
+*Known issues:*
+- Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.
+- If there are no thresholds defined, it will break again. Just remove the thresholds file.
 
 
-## Import dashboards/alerts from DataDog. 
-Fundamentally the same process as above. 
+## Import dashboards/alerts from DataDog.
+Fundamentally the same process as above.
 
 - [ ] `rake <environment:get_alert_json_erb[<id number>,path/to/template.json.erb]`
-- make sure `environment` matches the environment of where the alert or timeboard is presently.  
--   _note: do not add a space between the id number and the path. Rake is weird._  
+- make sure `environment` matches the environment of where the alert or timeboard is presently.
+-   _note: do not add a space between the id number and the path. Rake is weird._
 
 Simply add an erb file to `alert_templates` or `dashboard_templates`.
 
@@ -112,13 +118,13 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 * **credentials.api_key**: API key for the Datadog account where your dashboards will be created.
 * **credentials.api_key**: App key for the Datadog account where your dashboards will be created.
 
-* **jobs**: #TODO: where does this come from, what is it used for? 
+* **jobs**: #TODO: where does this come from, what is it used for?
 
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS. #TODO: document these parameters better.
 
-Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog. 
-You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place. 
- 
+Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
+You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place.
+
 ## Generating fake data to test metrics
 
 Use the rake <env>:emit[some.metric.name] and follow the command line prompts.
@@ -126,11 +132,11 @@ Be careful, as this data may trigger false alarms, so be mindful of what you
 are doing.
 
 ## Now PUSH!...
-...to a staging environment with `RUBY_ENVIRONMENT=staging rake push`. 
+...to a staging environment with `RUBY_ENVIRONMENT=staging rake push`.
 To deploy to a1, for example: `RUBY_ENVIRONMENT=a1 rake push`.
 
-- [ ] Make sure nothing is broken and your changes look good. 
+- [ ] Make sure nothing is broken and your changes look good.
 
 ## Now PUSH AGAIN!...
-...to Github. CI will deploy your changes to all the other environments. 
+...to Github. CI will deploy your changes to all the other environments.
 
