@@ -42,10 +42,10 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment named in
 ## Workflow
 ### Dashboards / Screenboards
 #### Creating a new deployment
-1. Copy `config-example.yml` to `config.yml` and update it to match your environment, see config.yml section below for more information on the parameters used therein.
+1. Copy `config-example.yml` to `config.yml` and update it to match your environment, see [config.yml](#configyml) section below for more information on the parameters used therein.
 
 #### Creating a new dashboard by importing from DataDog
-1. Make sure your `config.yml` file is populated with necessary values. See config.yml section below for more information.
+1. Make sure your `config.yml` file is populated with necessary values. See [config.yml](#configyml) section below for more information.
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
 3. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
 
@@ -58,7 +58,7 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment named in
 4. Commit your changes to source control.
 
 #### Pushing dashboard to datadog
-1. Make sure your `config.yml` file is populated with necessary values. See config.yml section for more information.
+1. Make sure your `config.yml` file is populated with necessary values. See [config.yml](#configyml) section for more information.
 2. Push changes to deployment
 
         bundle exec rake prod:push
@@ -140,15 +140,12 @@ We have implemented import code that will detect such links and translate them b
 ```
 Anything else will be left as is.
 
-
-*Known issues:*
-- Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.
-- If there are no thresholds defined, it will break again. Just remove the thresholds file.
-
-
 ## Generating fake data to test metrics
 
 Use `rake <env>:emit[some.metric.name]` and follow the command line prompts.
 Be careful, as this data may trigger false alarms, so be mindful of what you
 are doing.
 
+## Known issues
+- Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.
+- If there are no thresholds defined, it will break again. Just remove the thresholds file.
