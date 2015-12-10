@@ -39,34 +39,55 @@ rake spec                                                # Run RSpec code exampl
 
 Note: 'cf_deployment', as used above, is a placeholder for a deployment name, such as 'prod'.
 
-# Workflow
+## Workflow
 
 
-## Creating a new deployment
-1. Change config.yml to match your environment, see config.yml section for more information on the parameters used therein.
 
-## Creating a new dashboard
-1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
+### Creating a new deployment
+1. Copy config-example.yml to config.yml and update it to match your environment, see config.yml section below for more information on the parameters used therein.
+
+### Creating a new dashboard by importing from DataDog
+1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section below for more information.
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
 3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID.
 
-        rake shoop:get_dashboard_json_erb[85864,./dashboard_templates/sh/red/shoop_da_whoop.json.erb]
+        bundle install
+        bundle exec rake <environment>:get_dashboard_json_erb[<id number>,<path/to/template.json.erb>]
+
+    - Note: do not add a space between the id number and the path. Rake is weird.
+    - Note: the filename must end in ```.json.erb``` for the rake task to find and push the dashboard.
+    - Note: this will pull down the screenboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
 
 4. Commit your changes to source control.
 
-_Note: the filename must end in ```.json.erb``` for the rake task to find and push the dashboard._
-
-## Pushing dashboard to datadog
+### Pushing dashboard to datadog
 1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
 2. Push changes to deployment ```rake prod:push```
+
+## Alerts
+
+### Creating a new alert from DataDog
+Basically the same workflow as dashboards, but with different commands.
+
+        bundle install
+        bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
+
+### Per-job alerts
+If you need an alert such that you have one unique alert per job (job being DEA, router, etc.), add to the `per_job_alert_templates` folder.
+
+The name/title is used as a unique key; alerts/dashboards with the same name/title will be overwritten.
+
+### Pushing alerts to DataDog
+Basically the same workflow as dashboards, but with different commands.
+
+        bundle install
+        rake prod:push
 
 
 ## config.yml
 Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
 
 * **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-diego`
-* **diego**:
-* **diego_deployment**:
 * **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest
 * **services_deployment**: Corresponding services name to the BOSH deployment
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
@@ -83,8 +104,26 @@ There are also several email addresses and PagerDuty account names, primarily fo
 Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
 You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place.
 
-## Start in Datadog.
-- [ ] Create a [dashboard](dashboard_templates/README.md) / [alert](alert_templates/README.md) / [screenboard](screen_templates/README.md).
+## Folder structure
+
+```
+screen_templates/
+├── images
+├── prod
+├── shared
+└── staging
+```
+
+The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the 'shared' folder are pushed to all of the environemnts, while templates in e.g. the 'prod' folder will only be pushed to the prod DataDog.  Move the template json/erb file to the
+appropriate folder and move the thresholds yaml to the same folder so that the two files are siblings.
+
+Edit the resultant file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
+
+## Useful notes
+Terminology
+* [dashboard](dashboard_templates/README.md)
+* [alert](alert_templates/README.md)
+* [screenboard](screen_templates/README.md).
 
 ### Metric naming conventions
 
@@ -96,7 +135,7 @@ You should also know that these use default values from 'prod'. So, while 'prod'
 Your teammates will thank you.
 
 ### Using Notes in screenboards
-Notes are a fantastic way of creating titles (see [staging](https://app.datadoghq.com/screen/board/15084) or [prod](https://app.datadoghq.com/screen/board/14530)) for your various sections. You can use markdown, meaning that you can have your titles serve the dual purpose of displaying a title and being clickable to allow for deeper inspection.
+Notes are a fantastic way of creating titles for your various sections. You can use markdown, meaning that you can have your titles serve the dual purpose of displaying a title and being clickable to allow for deeper inspection.
 
 We have implemented import code that will detect such links and translate them between environments. However, the code relies on certain semantics to function. When generating the links, use the following format:
 
@@ -107,83 +146,14 @@ We have implemented import code that will detect such links and translate them b
 Anything else will be left as is.
 
 
-## Import screenboards from DataDog.
-After you've created your screenboard, import it into datadog.
-
-- [ ] `rake <environment>:get_screen_json_erb[<id number>,path/to/template.json.erb]`
-- make sure `environment` matches the environment of where the screenboard is presently. In other words, if you used the staging credentials to log in, you should use `rake staging:get_screen_json_erb`.
-  _note: do not add a space between the id number and the path. Rake is weird._
-
-This will pull down the screenboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
-
-```
-screen_templates/
-├── images
-├── prod
-├── shared
-└── staging
-```
-
-
-The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the 'shared' folder are pushed to all of the environemnts, while templates in e.g. the 'prod' folder will only be pushed to the prod data dog.  Move the template json/erb file to the
-appropriate folder and move the thresholds yaml to the same folder so that the two files are siblings.
-
-Edit the resultant file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
-
 *Known issues:*
 - Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.
 - If there are no thresholds defined, it will break again. Just remove the thresholds file.
 
-
-## Import dashboards/alerts from DataDog.
-Fundamentally the same process as above.
-
-- [ ] `rake <environment:get_alert_json_erb[<id number>,path/to/template.json.erb]`
-- make sure `environment` matches the environment of where the alert or timeboard is presently.
--   _note: do not add a space between the id number and the path. Rake is weird._
-
-Simply add an erb file to `alert_templates` or `dashboard_templates`.
-
-If you need an alert such that you have one unique alert per job (job being DEA, router, etc.), add to the `per_job_alert_templates` folder.
-
-The name/title is used as a unique key; alerts/dashboards with the same name/title will be overwritten.
-
-## ERB Template data
-
-Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
-
-* **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-deigo`
-* **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest.
-* **services_deployment**: #TODO: where does this come from, what is it used for?
-* **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
-* **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI.
-* **router_elb_name**: #TODO: where does this come from, what is it used for?
-* **stoplights_screen_id**: #TODO: where does this come from, what is it used for?
-
-* **params**: #TODO: where does this come from, what is it used for?
-
-* **credentials.api_key**: API key for the Datadog account where your dashboards will be created.
-* **credentials.api_key**: App key for the Datadog account where your dashboards will be created.
-
-* **jobs**: #TODO: where does this come from, what is it used for?
-
-There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS. #TODO: document these parameters better.
-
-Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
-You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place.
 
 ## Generating fake data to test metrics
 
 Use the rake <env>:emit[some.metric.name] and follow the command line prompts.
 Be careful, as this data may trigger false alarms, so be mindful of what you
 are doing.
-
-## Now PUSH!...
-...to a staging environment with `RUBY_ENVIRONMENT=staging rake push`.
-To deploy to a1, for example: `RUBY_ENVIRONMENT=a1 rake push`.
-
-- [ ] Make sure nothing is broken and your changes look good.
-
-## Now PUSH AGAIN!...
-...to Github. CI will deploy your changes to all the other environments.
 
