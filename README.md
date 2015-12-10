@@ -3,18 +3,18 @@
 This is the authoritative definition of the dashboards and alerts in Datadog for production and staging.
 Do not modify the dashboards and alerts directly in Datadog; instead modify the template files here and run the sync process.
 
-# Usage
+## Usage
 
-## Setup
+### Setup
 
     $ cp config/config-example.yml config/config.yml
     # Fill in config.yml with your credentials and other details
     $ bundle install
 
-##### CAUTION: This takes a while and will push to everything.
+**CAUTION:** This takes a while and will push to everything.
     $ rake <your-env-name>:push
 
-## Rake commands available
+### Rake commands available
 
 ```
 rake cf_deployment:console                               # A console with some useful variables
@@ -40,13 +40,11 @@ rake spec                                                # Run RSpec code exampl
 Note: 'cf_deployment', as used above, is a placeholder for a deployment name, such as 'prod'.
 
 ## Workflow
+### Dashboards / Screenboards
+#### Creating a new deployment
+1. Copy `config-example.yml` to `config.yml` and update it to match your environment, see config.yml section below for more information on the parameters used therein.
 
-
-
-### Creating a new deployment
-1. Copy config-example.yml to config.yml and update it to match your environment, see config.yml section below for more information on the parameters used therein.
-
-### Creating a new dashboard by importing from DataDog
+#### Creating a new dashboard by importing from DataDog
 1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section below for more information.
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
 3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID.
@@ -60,29 +58,28 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment name, su
 
 4. Commit your changes to source control.
 
-### Pushing dashboard to datadog
+#### Pushing dashboard to datadog
 1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
-2. Push changes to deployment ```rake prod:push```
+2. Push changes to deployment
+        rake prod:push
 
-## Alerts
+### Alerts
 
-### Creating a new alert from DataDog
+#### Creating a new alert from DataDog
 Basically the same workflow as dashboards, but with different commands.
 
         bundle install
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
 
-### Per-job alerts
+#### Per-job alerts
 If you need an alert such that you have one unique alert per job (job being DEA, router, etc.), add to the `per_job_alert_templates` folder.
 
 The name/title is used as a unique key; alerts/dashboards with the same name/title will be overwritten.
 
-### Pushing alerts to DataDog
-Basically the same workflow as dashboards, but with different commands.
+#### Pushing alerts to DataDog
 
         bundle install
         rake prod:push
-
 
 ## config.yml
 Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
@@ -129,7 +126,7 @@ Terminology
 
 **PLEASE make sure your units are obvious just from reading the metric name.**
 
-* **Good:** `uptime_in_seconds` and `free_memory_in_kilobytes`
+* **Good:** `uptime_seconds` and `free_memory_kilobytes`
 * **Bad:** `uptime` and `free_memory`
 
 Your teammates will thank you.
@@ -153,7 +150,7 @@ Anything else will be left as is.
 
 ## Generating fake data to test metrics
 
-Use the rake <env>:emit[some.metric.name] and follow the command line prompts.
+Use `rake <env>:emit[some.metric.name]` and follow the command line prompts.
 Be careful, as this data may trigger false alarms, so be mindful of what you
 are doing.
 
