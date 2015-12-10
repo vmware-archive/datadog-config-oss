@@ -1,7 +1,6 @@
 # Datadog Config
 
-This is the authoritative definition of the dashboards and alerts in Datadog for production and staging.
-Do not modify the dashboards and alerts directly in Datadog; instead modify the template files here and run the sync process.
+Persist your DataDog configuration in versioned text files which can be edited locally. Pull down existing config and push changes at will.
 
 ## Usage
 
@@ -12,6 +11,7 @@ Do not modify the dashboards and alerts directly in Datadog; instead modify the 
     $ bundle install
 
 **CAUTION:** This takes a while and will push to everything.
+
     $ rake <your-env-name>:push
 
 ### Rake commands available
@@ -37,7 +37,7 @@ rake garden_blackbox:push                                # Push all Garden Datad
 rake spec                                                # Run RSpec code examples
 ```
 
-Note: 'cf_deployment', as used above, is a placeholder for a deployment name, such as 'prod'.
+Note: 'cf_deployment', as used above, is a placeholder for a deployment named in your `config.yml`, such as 'prod'.
 
 ## Workflow
 ### Dashboards / Screenboards
@@ -45,30 +45,29 @@ Note: 'cf_deployment', as used above, is a placeholder for a deployment name, su
 1. Copy `config-example.yml` to `config.yml` and update it to match your environment, see config.yml section below for more information on the parameters used therein.
 
 #### Creating a new dashboard by importing from DataDog
-1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section below for more information.
+1. Make sure your `config.yml` file is populated with necessary values. See config.yml section below for more information.
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
-3. Import the dashboard by ID, ```https://app.datadoghq.com/dash/85829``` where 85829 is the dashboard ID.
+3. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
 
-        bundle install
         bundle exec rake <environment>:get_dashboard_json_erb[<id number>,<path/to/template.json.erb>]
 
     - Note: do not add a space between the id number and the path. Rake is weird.
-    - Note: the filename must end in ```.json.erb``` for the rake task to find and push the dashboard.
+    - Note: the filename must end in `.json.erb` for the rake task to find and push the dashboard.
     - Note: this will pull down the screenboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
 
 4. Commit your changes to source control.
 
 #### Pushing dashboard to datadog
-1. Make sure your ```config.yml``` file is populated with necessary values. See config.yml section for more information.
+1. Make sure your `config.yml` file is populated with necessary values. See config.yml section for more information.
 2. Push changes to deployment
-        rake prod:push
+
+        bundle exec rake prod:push
 
 ### Alerts
 
 #### Creating a new alert from DataDog
 Basically the same workflow as dashboards, but with different commands.
 
-        bundle install
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
 
 #### Per-job alerts
@@ -78,8 +77,7 @@ The name/title is used as a unique key; alerts/dashboards with the same name/tit
 
 #### Pushing alerts to DataDog
 
-        bundle install
-        rake prod:push
+        bundle exec rake prod:push
 
 ## config.yml
 Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
@@ -91,7 +89,7 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 * **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
 * **router_elb_name**: The name given to the ELB for this deployment's router
 * **stoplights_screen_id**: The numeric ID that Datadog has assigned your screen
-* **params**: Used to inject configuration values into your ERB file ```<%= params.fetch('min_deas_that_can_stage') %>```
+* **params**: Used to inject configuration values into your ERB file `<%= params.fetch('min_deas_that_can_stage') %>`
 * **credentials.api_key**: API key for the Datadog account where your dashboards will be created.
 * **credentials.api_key**: App key for the Datadog account where your dashboards will be created.
 * **jobs**: An enumeration of the various jobs associated with the deployment that you want to monitor, such as 'cloud_controller', 'nats', etc.
