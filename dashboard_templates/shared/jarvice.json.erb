@@ -4,7 +4,7 @@
       "definition": {
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{ deployment: <%= deployment %>-jarvice } by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{ deployment: <%= jarvice_deployment %> } by {job,index}",
             "stacked": false
           }
         ],
@@ -18,7 +18,7 @@
       "definition": {
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{ deployment: <%= deployment %>-jarvice } by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{ deployment: <%= jarvice_deployment %> } by {job,index}",
             "type": "line"
           }
         ],
@@ -33,7 +33,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-jarvice, job:ingestor} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>, job:ingestor} by {index}",
             "stacked": false
           }
         ]
@@ -45,7 +45,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-jarvice, job:ingestor} by {index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:ingestor} by {index}",
             "type": "line"
           }
         ]
@@ -57,7 +57,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-jarvice, job:kafka} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>, job:kafka} by {index}",
             "stacked": false
           }
         ]
@@ -69,43 +69,45 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-jarvice, job:kafka} by {index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:kafka} by {index}",
             "type": "line"
           }
         ]
       },
       "title": "<%= environment %>: Kafka Memory (%)"
     },
+<% %w{ Network Container AppEvent }.each do |metric| %>
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-jarvice, job:imds} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>, job:<%= metric.downcase %>imds} by {index}",
             "stacked": false
           }
         ]
       },
-      "title": "<%= environment %>: IMDS CPU (%)"
+      "title": "<%= environment %>: <%= metric %> IMDS CPU (%)"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-jarvice, job:imds} by {index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:<%= metric.downcase %>imds} by {index}",
             "type": "line"
           }
         ]
       },
-      "title": "<%= environment %>: IMDS Memory (%)"
+      "title": "<%= environment %>: <%= metric %> IMDS Memory (%)"
     },
+<% end %>
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-jarvice,job:proxy} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>,job:proxy} by {index}",
             "stacked": false
           }
         ]
@@ -117,7 +119,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>-jarvice, job:proxy} by {index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:proxy} by {index}",
             "type": "line"
           }
         ]
