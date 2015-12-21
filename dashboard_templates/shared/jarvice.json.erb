@@ -125,6 +125,18 @@
         ]
       },
       "title": "<%= environment %>: Proxy Memory (%)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= jarvice_deployment %>, job:kafka} by {index}",
+            "type": "line"
+          }
+        ]
+      },
+      "title": "<%= environment %>: Kafka Ephemeral Disk (%)"
     }
   ],
   "description": "Information about Jarvice",

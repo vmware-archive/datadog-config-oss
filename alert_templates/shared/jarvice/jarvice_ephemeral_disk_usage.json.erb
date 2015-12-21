@@ -7,8 +7,8 @@
   "renotify_interval": null,
   "state": "OK",
   "escalation_message": null,
-  "query": "avg(last_5m):avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>} by {index,job} > 95",
+  "query": "avg(last_5m):avg:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= jarvice_deployment %>} by {index,job} > 90",
   "message": "## Description:\n <%= jarvice_pagerduty %>.  \n\n## Escalation Path:\n  Jarvice Team \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
   "silenced_timeout_ts": null,
-  "name": "<%= environment %> Jarvice: High CPU utilization"
+  "name": "<%= environment %> Jarvice: High ephemeral disk utilization"
 }
