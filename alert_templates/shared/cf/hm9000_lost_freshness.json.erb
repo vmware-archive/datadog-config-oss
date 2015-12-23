@@ -1,7 +1,0 @@
-{
-  "notify_no_data": false,
-  "name": "<%= environment %> HM9000 lost freshness",
-  "silenced": false,
-  "query": "avg(last_5m):avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}  < 0",
-  "message": "HM9000 has not been able to update its actual/desired state in the last five minutes. <%= backend_pagerduty if deployment == "cf-a1" %>.\nEscalation Path: Mega Team"
-}
