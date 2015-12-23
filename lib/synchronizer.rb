@@ -145,6 +145,14 @@ class Synchronizer
     raise NotImplementedError
   end
 
+  def derender(str)
+    string_attribues = @env.select {|k,v| v.class == String }
+    sorted_string_attribues = string_attribues.sort_by {|k, v| v.size * -1 }
+    sorted_string_attribues.each { |k,v| str.gsub!(v, "<%= #{k} %>" ) }
+
+    str
+  end
+
   protected
 
   def symbolize_keys(hash)
@@ -170,6 +178,7 @@ class Synchronizer
       key_of(processed_template)
     end
   end
+
 
   private
 

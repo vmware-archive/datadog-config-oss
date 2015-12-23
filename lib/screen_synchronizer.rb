@@ -73,12 +73,11 @@ class ScreenSynchronizer < Synchronizer
     logger.info  "current threshold values written to #{yaml_file_name}, put sibling with template to use"
 
     generalize_note_link_for_template(screen)
-    JSON.pretty_generate(screen).
+    str = JSON.pretty_generate(screen).
       gsub('"<%=', '<%=').
-        gsub('%>"', '%>').
-          gsub(@env.fetch('bosh_deployment'), "<%= bosh_deployment %>").
-            gsub(@env.fetch('deployment'), "<%= deployment %>").
-              gsub(/#{@env.fetch('environment')}(?!uction|-)/, "<%= environment %>")
+        gsub('%>"', '%>')
+    str = derender(str)
+    str.gsub(/#{@env.fetch('environment')}(?!uction|-)/, "<%= environment %>")
   end
 
   def fetch_by_id(id)
