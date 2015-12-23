@@ -119,7 +119,8 @@ def build_tasks_for(env_name)
 
     desc "Delete dashboards and alerts that are not represented in local templates for #{fancy_env_name}"
     task :delete_unknown do
-      delete_unknown_datadog_objects(env_name.to_s)
+      puts "This does not work. Last time we ran it, it deleted a lot of things."
+      #delete_unknown_datadog_objects(env_name.to_s)
     end
 
     desc "Evaluate the alert at path under the #{fancy_env_name} config and print to stdout"
