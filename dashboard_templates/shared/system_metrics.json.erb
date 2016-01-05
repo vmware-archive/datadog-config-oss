@@ -1,4 +1,8 @@
 {
+  "description": "created by spark@pivotal.io (cloned)",
+  "created": "2015-08-05T23:16:02.948736+00:00",
+  "title": "System Metrics",
+  "modified": "2016-01-05T19:56:35.868381+00:00",
   "graphs": [
     {
       "definition": {
@@ -13,35 +17,7 @@
     },
     {
       "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "top(avg:bosh.healthmonitor.system.mem.kb{$job,$deployment,$index} by {job,index}, 10, 'mean', 'desc')",
-            "style": {
-              "palette": "dog_classic"
-            },
-            "conditional_formats": [
-
-            ]
-          }
-        ]
-      },
-      "title": "Memory used in bytes"
-    },
-    {
-      "definition": {
         "viz": "heatmap",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{$job,$deployment,$index} by {index,job}"
-          }
-        ]
-      },
-      "title": "Memory used in percents"
-    },
-    {
-      "definition": {
-        "viz": "toplist",
         "requests": [
           {
             "q": "avg:bosh.healthmonitor.system.mem.percent{$job,$deployment,$index} by {index,job}"
@@ -56,20 +32,6 @@
         "requests": [
           {
             "q": "(avg:bosh.healthmonitor.system.swap.kb{$job,$deployment,$index}by{index,job})*1024"
-          }
-        ]
-      },
-      "title": "Swap used in bytes"
-    },
-    {
-      "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "(avg:bosh.healthmonitor.system.swap.kb{$job,$deployment}by{index,job})*1024",
-            "style": {
-              "palette": "warm"
-            }
           }
         ]
       },
@@ -92,20 +54,6 @@
     },
     {
       "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{$job,$deployment} by {index,job}",
-            "style": {
-              "palette": "warm"
-            }
-          }
-        ]
-      },
-      "title": "CPU wait in percent"
-    },
-    {
-      "definition": {
         "viz": "heatmap",
         "requests": [
           {
@@ -120,38 +68,10 @@
     },
     {
       "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{$job,$deployment} by {index,job} ",
-            "style": {
-              "palette": "cool"
-            }
-          }
-        ]
-      },
-      "title": "CPU system in percents"
-    },
-    {
-      "definition": {
         "viz": "heatmap",
         "requests": [
           {
             "q": "avg:bosh.healthmonitor.system.cpu.user{$job,$deployment,$index} by {index,job}",
-            "style": {
-              "palette": "cool"
-            }
-          }
-        ]
-      },
-      "title": "CPU user in percent"
-    },
-    {
-      "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{$job,$deployment} by {index,job} ",
             "style": {
               "palette": "cool"
             }
@@ -179,17 +99,19 @@
         "viz": "toplist",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.load.1m{$job,$deployment} by {job,index} ",
+            "q": "top(avg:cloudops_tools.monit_status_collector.uptime_in_seconds{$job,$deployment,$index} by {process} / 3600, 50, 'mean', 'asc')",
             "style": {
-              "palette": "purple"
-            }
+              "palette": "dog_classic"
+            },
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
-      "title": "Unix Load 1m"
+      "title": "Monit Status Uptime by process in hours"
     }
   ],
-  "description": "created by spark@pivotal.io (cloned)",
   "template_variables": [
     {
       "default": "*",
@@ -207,6 +129,5 @@
       "name": "index"
     }
   ],
-  "id": 61963,
-  "title": "System Metrics"
+  "id": 61963
 }
