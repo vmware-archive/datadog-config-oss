@@ -1,7 +1,0 @@
-{
-  "notify_no_data": true, 
-  "query": "min(last_10m):avg:cf.collector.cpu_load_avg{deployment:<%= deployment %>}  < 0", 
-  "message": "## Description:\n This alert should only be triggered when the collector has stopped reporting data to DataDog. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  LAMBDA Team \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
-  "name": "<%= environment %> CF: Collector is not reporting", 
-  "silenced": false
-}

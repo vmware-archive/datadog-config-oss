@@ -136,34 +136,6 @@
       "title_size": "16",
       "title": true,
       "title_align": "left",
-      "title_text": "Reservable Stagers",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 4,
-      "x": 66,
-      "type": "timeseries"
-    },
-    {
-      "title_size": "16",
-      "title": true,
-      "title_align": "left",
       "title_text": "User CPU",
       "height": 21,
       "tile_def": {
@@ -275,165 +247,6 @@
       "type": "free_text"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Apps w/ All Inst. Reporting (blue), Running Instances (purple), Desired Apps (yellow), Desired Instances (black)",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredApps{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>} + sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredAppsPendingStaging{deployment:<%= deployment %>}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 4,
-      "x": 132,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Crashed Indices (blue) & Crashed Instances (purple)",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedIndices{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedInstances{deployment:<%= deployment %>}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 27,
-      "x": 132,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Apps with Missing Instances (blue), Missing Indices (purple) & Undesired Apps (yellow)",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithMissingInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfMissingIndices{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfUndesiredRunningApps{deployment:<%= deployment %>}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 50,
-      "x": 132,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "HM9000 Messages Sent per Minute",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartCrashed{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartEvacuating{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartMissing{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopDuplicate{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopExtra{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopEvacuationComplete{deployment:<%= deployment %>})"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 73,
-      "x": 132,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
       "title_size": "16",
       "title": true,
       "title_align": "left",
@@ -494,45 +307,6 @@
       "aggr": "avg"
     },
     {
-      "metric": "",
-      "height": 9,
-      "query": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:runner_z2}.rollup(avg,60)) ) * 0.5",
-      "text_size": "auto",
-      "unit": "auto",
-      "title_size": 20,
-      "title": true,
-      "aggregator": "min",
-      "title_align": "center",
-      "text_align": "center",
-      "width": 28,
-      "timeframe": "5m",
-      "type": "query_value",
-      "tags": [
-
-      ],
-      "precision": 3,
-      "title_text": "DEA",
-      "calc_func": "raw",
-      "metric_type": "standard",
-      "conditional_formats": [
-        {
-          "color": "white_on_red",
-          "invert": false,
-          "comparator": "<",
-          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) * 0.5', 'white_on_red') %>
-        },
-        {
-          "color": "white_on_green",
-          "invert": false,
-          "comparator": ">=",
-          "value": <%= threshold_value('((avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z1}.rollup(avg,60)) +(avg:bosh.healthmonitor.system.healthy{deployment:,job:runner_z2}.rollup(avg,60)) ) * 0.5', 'white_on_green') %>
-        }
-      ],
-      "aggr": "avg",
-      "y": 4,
-      "x": 226
-    },
-    {
       "metric": "cf.collector.total_users",
       "height": 12,
       "query": "avg:cf.collector.total_users{deployment:<%= deployment %>}",
@@ -572,30 +346,6 @@
       "y": 13,
       "x": 226,
       "type": "image"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "aggregator": "max",
-      "conditional_formats": [
-
-      ],
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "Running Apps",
-      "precision": "*",
-      "width": 28,
-      "metric_type": "standard",
-      "calc_func": "raw",
-      "x": 198,
-      "y": 27,
-      "query": "avg:cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}",
-      "text_size": "auto",
-      "height": 12,
-      "type": "query_value",
-      "timeframe": "5m",
-      "unit": "",
-      "aggr": "avg"
     },
     {
       "metric": "bosh.healthmonitor.system.healthy",

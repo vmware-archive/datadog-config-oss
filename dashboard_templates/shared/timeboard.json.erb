@@ -49,20 +49,6 @@
       }
     },
     {
-      "title": "<%= environment %> Reservable Stagers",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "q": "sum:cf.collector.reservable_stagers{deployment:<%= deployment %>} by {ip}"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
       "title": "<%= environment %> User CPU",
       "definition": {
         "events": [
@@ -110,101 +96,6 @@
           {
             "stacked": false,
             "q": "sum:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
-      "title": "<%= environment %> Apps w/ All Inst. Reporting (blue), Running Instances (purple), Desired Apps (y...",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithAllInstancesReporting{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfRunningInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredApps{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "sum:cf.collector.dea_registry_running{deployment:<%= deployment %>} + sum:cf.collector.dea_registry_starting{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfDesiredAppsPendingStaging{deployment:<%= deployment %>}"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
-      "title": "<%= environment %> Crashed Instances (blue) & Crashed Indices (purple)",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfCrashedIndices{deployment:<%= deployment %>}"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
-      "title": "<%= environment %> HM9000 Messages Sent per Minute",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartCrashed{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartEvacuating{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StartMissing{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopDuplicate{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopExtra{deployment:<%= deployment %>})"
-          },
-          {
-            "q": "per_minute(cf.collector.HM9000.HM9000.StopEvacuationComplete{deployment:<%= deployment %>})"
-          }
-        ],
-        "viz": "timeseries"
-      }
-    },
-    {
-      "title": "<%= environment %> Apps with Missing Instances (blue), Missing Indices (purple) & Undesired Apps (...",
-      "definition": {
-        "events": [
-          <%= default_events_json %>
-        ],
-        "requests": [
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfAppsWithMissingInstances{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfMissingIndices{deployment:<%= deployment %>}"
-          },
-          {
-            "q": "cf.collector.HM9000.HM9000.NumberOfUndesiredRunningApps{deployment:<%= deployment %>}"
           }
         ],
         "viz": "timeseries"
