@@ -5,52 +5,26 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.responses{deployment:<%= deployment %>,status:4xx})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]
       },
-      "title": "4xx errors"
+      "title": "4xx errors per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.responses{deployment:<%= deployment %>,status:5xx})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]
       },
-      "title": "5xx errors"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:cf.collector.router.responses{component:app,deployment:<%= deployment %>,status:4xx} by {dea_index})",
-            "stacked": false
-          }
-        ],
-        "events": [<%= default_events_json %>]
-      },
-      "title": "4xx errors per DEA"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:cf.collector.router.responses{component:app,deployment:<%= deployment %>,status:5xx} by {dea_index})",
-            "stacked": false
-          }
-        ],
-        "events": [<%= default_events_json %>]
-      },
-      "title": "5xx errors per DEA"
+      "title": "5xx errors per second"
     }
   ],
   "title": "<%= environment %> 400/500 responses",
-  "description": "Cumulative number of 4xx and 5xx responses served through the router"
+  "description": "Rate of 4xx and 5xx responses served through the router"
 }

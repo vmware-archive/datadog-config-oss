@@ -1186,7 +1186,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/s",
       "title_size": 20,
@@ -1239,7 +1239,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "per_second(sum:cf.collector.router.requests{component:uaa,deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})",
       "text_size": "auto",
       "unit": "/s",
       "title_size": 20,
@@ -1403,7 +1403,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
             "type": "area",
             "stacked": false
           }
@@ -1432,7 +1432,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -2062,9 +2062,9 @@
       "auto_refresh": false
     },
     {
-      "metric": "cf.collector.cc.requests.outstanding",
+      "metric": "datadog.nozzle.cc.requests.outstanding",
       "height": 10,
-      "query": "max:cf.collector.cc.requests.outstanding{*}",
+      "query": "max:datadog.nozzle.cc.requests.outstanding{*}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,

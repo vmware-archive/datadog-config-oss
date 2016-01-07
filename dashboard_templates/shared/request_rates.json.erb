@@ -21,7 +21,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -31,27 +31,13 @@
       "title": "Cloud Controller req/sec"
     },
 
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(sum:cf.collector.router.requests{component:login,deployment:<%= deployment %>})"
-          }
-        ],
-        "events": [
-          <%= default_events_json %>
-        ]
-      },
-      "title": "Login component req/sec"
-    },
 
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:cf.collector.router.requests{component:uaa,deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -61,42 +47,13 @@
       "title": "UAA req/sec"
     },
 
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(sum:cf.collector.router.requests{component:app,deployment:<%= deployment %>} by {dea})",
-            "stacked": false
-          }
-        ],
-        "events": [
-          <%= default_events_json %>
-        ]
-      },
-      "title": "DEA req/sec"
-    },
 
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip} - min:cf.collector.router.total_routes{deployment:<%= deployment %>}",
-            "stacked": false
-          }
-        ],
-        "events": [<%= default_events_json %>]
-      },
-      "title": "Delta between each Router and min"
-    },
-
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
             "stacked": false
           }
         ],

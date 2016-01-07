@@ -159,7 +159,7 @@
       "definition": {
         "requests": [
           {
-            "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>} by {job,index})",
             "stacked": false
           }
         ],
@@ -179,7 +179,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -189,14 +189,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.total_routes"
+      "title": "Total routes by router"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -210,11 +210,11 @@
     },
     {
       "definition": {
-        "viz": "timeseries",
+        "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cf.collector.router.latency.1m{deployment:<%= deployment %>} by {ip}",
-            "type": "line"
+           "q": "avg:datadog.nozzle.gorouter.latency{deployment:<%= deployment %>} by {job,index}",
+            "conditional_formats": []
           }
         ],
         "events": [
@@ -223,14 +223,14 @@
           }
         ]
       },
-      "title": "cf.collector.router.latency.1m"
+      "title": "Router Latency"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.rejected_requests{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -247,7 +247,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.requests{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -264,7 +264,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.responses{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.gorouter.responses{deployment:<%= deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -275,40 +275,6 @@
         ]
       },
       "title": "router.responses per second"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:cf.collector.router.routed_app_requests{deployment:<%= deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "router.routed_app_requests per second"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:cf.collector.router.total_requests{deployment:<%= deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "router.total_requests per second"
     }
   ],
   "description": "Health statistics from the routers and their ELBs",

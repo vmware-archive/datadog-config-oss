@@ -31,16 +31,16 @@
       "title_size": "16",
       "title": true,
       "title_align": "left",
-      "title_text": "Unknown Route (blue) and Bad Gateway (purple) requests",
+      "title_text": "Rejected requests (blue) and Bad Gateway (purple) requests",
       "height": 21,
       "tile_def": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:cf.collector.router.bad_requests{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= deployment %>})"
           },
           {
-            "q": "per_second(avg:cf.collector.router.bad_gateways{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -68,7 +68,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:cf.collector.router.requests{deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -96,7 +96,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:cf.collector.router.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
             "stacked": false
           }
         ],
@@ -203,37 +203,6 @@
     {
       "title_size": 16,
       "title": true,
-      "title_align": "left",
-      "title_text": "DEA Uptime (24h)",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "sum:cf.collector.uptime_in_seconds{deployment:<%= deployment %>,job:dea} by {ip}",
-            "stacked": false
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "1d",
-      "y": 73,
-      "x": 66,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
       "color": "#4d4d4d",
       "text": "App Health",
       "title_align": "left",
@@ -256,11 +225,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "cf.collector.cc.failed_job_count.total{deployment:<%= deployment %>}",
+            "q": "datadog.nozzle.cc.failed_job_count.total{deployment:<%= deployment %>}",
             "style": { "palette": "warm" }
           },
           {
-            "q": "cf.collector.cc.job_queue_length.total{deployment:<%= deployment %>}",
+            "q": "datadog.nozzle.cc.job_queue_length.total{deployment:<%= deployment %>}",
             "style": {
               "palette": "cool",
               "width": "thick"
@@ -298,7 +267,7 @@
       "calc_func": "raw",
       "x": 198,
       "y": 4,
-      "query": "avg:cf.collector.router.total_routes{deployment:<%= deployment %>}",
+      "query": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>}",
       "text_size": "auto",
       "height": 7,
       "type": "query_value",
@@ -307,9 +276,9 @@
       "aggr": "avg"
     },
     {
-      "metric": "cf.collector.total_users",
+      "metric": "datadog.nozzle.cc.total_users",
       "height": 12,
-      "query": "avg:cf.collector.total_users{deployment:<%= deployment %>}",
+      "query": "avg:datadog.nozzle.cc.total_users{deployment:<%= deployment %>}",
       "text_size": "auto",
       "unit": "",
       "title_size": 16,
