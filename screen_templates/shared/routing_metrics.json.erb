@@ -1,7 +1,9 @@
 {
   "board_title": "<%= environment %> Routing Metrics",
   "board_bgtype": "board_graph",
+  "created": "2016-01-08T01:40:12.535608+00:00",
   "original_title": "<%= environment %> Routing Metrics",
+  "modified": "2016-01-08T21:42:19.423483+00:00",
   "height": 133,
   "width": "100%",
   "template_variables": [
@@ -72,16 +74,17 @@
         ],
         "markers": [
           {
+            "dim": "y",
             "type": "error dashed",
-            "value": "",
-            "label": "x"
+            "value": "y = 0",
+            "val": 0
           }
         ]
       },
       "width": 34,
       "timeframe": "1w",
-      "y": 72,
-      "x": 0,
+      "y": 85,
+      "x": 37,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
@@ -968,8 +971,8 @@
       "title_text": "",
       "height": 2,
       "width": 34,
-      "y": 68,
-      "x": 0,
+      "y": 81,
+      "x": 37,
       "font_size": "36",
       "type": "free_text"
     },
@@ -1046,17 +1049,17 @@
         "markers": [
           {
             "max": null,
-            "dim": "y",
+            "min": 80,
             "type": "error bold",
             "value": "y > 80",
-            "min": 80
+            "dim": "y"
           },
           {
             "max": 80,
-            "dim": "y",
+            "min": null,
             "type": "ok dashed",
             "value": "y < 80",
-            "min": null
+            "dim": "y"
           }
         ]
       },
@@ -1126,17 +1129,17 @@
         "markers": [
           {
             "max": null,
-            "dim": "y",
+            "min": 80,
             "type": "error bold",
             "value": "y > 80",
-            "min": 80
+            "dim": "y"
           },
           {
             "max": 80,
-            "dim": "y",
+            "min": null,
             "type": "ok dashed",
             "value": "y < 80",
-            "min": null
+            "dim": "y"
           }
         ]
       },
@@ -1206,17 +1209,17 @@
         "markers": [
           {
             "max": null,
-            "dim": "y",
+            "min": 80,
             "type": "error bold",
             "value": "y > 80",
-            "min": 80
+            "dim": "y"
           },
           {
             "max": 80,
-            "dim": "y",
+            "min": null,
             "type": "ok dashed",
             "value": "y < 80",
-            "min": null
+            "dim": "y"
           }
         ]
       },
@@ -1286,17 +1289,17 @@
         "markers": [
           {
             "max": null,
-            "dim": "y",
+            "min": 80,
             "type": "error bold",
             "value": "y > 80",
-            "min": 80
+            "dim": "y"
           },
           {
             "max": 80,
-            "dim": "y",
+            "min": null,
             "type": "ok dashed",
             "value": "y < 80",
-            "min": null
+            "dim": "y"
           }
         ]
       },
@@ -1366,17 +1369,17 @@
         "markers": [
           {
             "max": null,
-            "dim": "y",
+            "min": 80,
             "type": "error bold",
             "value": "y > 80",
-            "min": 80
+            "dim": "y"
           },
           {
             "max": 80,
-            "dim": "y",
+            "min": null,
             "type": "ok dashed",
             "value": "y < 80",
-            "min": null
+            "dim": "y"
           }
         ]
       },
@@ -1415,9 +1418,71 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Total Token Errors",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= deployment %>} by {ip}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 64,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Key Refresh Events",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= deployment %>} by {ip}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 34,
+      "timeframe": "1h",
+      "y": 79,
+      "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "shared": false,
-  "id": 42337,
-  "title_edited": false
+  "id": 51784,
+  "title_edited": true
 }
