@@ -33,5 +33,13 @@ describe Synchronizer do
          "<%= deployment %> <%= diego_deployment %>")
          # not "<%= deployment %> <%= deployment%>-diego"
     end
+
+    context 'when a config property has an empty value' do
+      let(:synchronizer) { Synchronizer.new(File.join(fixtures, "config_with_empty.yml"), "prod", logger) }
+      it "ignores keys with empty values" do
+         expect(synchronizer.derender("some-deployment")).to eq(
+           "<%= deployment %>")
+      end
+    end
   end
 end

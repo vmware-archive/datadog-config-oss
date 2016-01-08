@@ -146,7 +146,7 @@ class Synchronizer
   end
 
   def derender(str)
-    string_attribues = @env.select {|k,v| v.class == String }
+    string_attribues = @env.select {|k,v| v.class == String && !v.strip.empty? }
     sorted_string_attribues = string_attribues.sort_by {|k, v| v.size * -1 }
     sorted_string_attribues.each { |k,v| str.gsub!(v, "<%= #{k} %>" ) }
 
