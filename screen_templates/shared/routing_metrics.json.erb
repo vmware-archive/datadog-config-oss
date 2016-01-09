@@ -3,7 +3,7 @@
   "board_bgtype": "board_graph",
   "created": "2016-01-08T01:40:12.535608+00:00",
   "original_title": "<%= environment %> Routing Metrics",
-  "modified": "2016-01-08T21:42:19.423483+00:00",
+  "modified": "2016-01-09T00:17:57.878266+00:00",
   "height": 133,
   "width": "100%",
   "template_variables": [
@@ -1477,6 +1477,68 @@
       "timeframe": "1h",
       "y": 79,
       "x": 0,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Token Fetch Errors",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.token_fetch_errors{deployment:<%= deployment %>} by {ip}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 79,
+      "x": 114,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Subscribe Event Errors",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.subscribe_events_errors{deployment:<%= deployment %>} by {ip}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "width": 39,
+      "timeframe": "1h",
+      "y": 94,
+      "x": 75,
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
