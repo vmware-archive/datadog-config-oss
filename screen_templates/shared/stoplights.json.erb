@@ -373,7 +373,7 @@
     ]
   },
   "original_title": "<%= deployment %> stoplights",
-  "modified": "2016-01-16T02:59:00.789839+00:00",
+  "modified": "2016-01-16T18:11:13.041513+00:00",
   "height": 161,
   "width": "100%",
   "template_variables": [
@@ -5128,13 +5128,13 @@
       "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "",
+      "title_text": "Pings to 4.2.2.1 in milliseconds",
       "height": 21,
       "tile_def": {
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cloudops_tools.ping_status{*} by {dest_ip,dest_port,src_ip,application_name,cf_instance_guid,cf_instance_addr,cf_instance_index}",
+            "q": "avg:cloudops_tools.ping_status{*} by {dest_ip,dest_port,src_ip,application_name,cf_instance_guid,cf_instance_addr,cf_instance_index} * 1000",
             "conditional_formats": [
 
             ],
