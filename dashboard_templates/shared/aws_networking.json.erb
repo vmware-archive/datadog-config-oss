@@ -1,0 +1,68 @@
+{
+  "description": "created by galiu@pivotal.io",
+  "created": "2016-01-15T01:38:56.980032+00:00",
+  "title": "AWS Networking",
+  "modified": "2016-01-15T22:58:11.787636+00:00",
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.network_in{$name,$instance_id,$deployment} by {instance_id,name,deployment}",
+            "conditional_formats": [
+
+            ],
+            "type": "line",
+            "style": {
+              "palette": "cool"
+            }
+          },
+          {
+            "q": "avg:aws.ec2.network_out{$name,$instance_id,$deployment} by {instance_id,name,deployment}",
+            "conditional_formats": [
+
+            ],
+            "type": "line",
+            "style": {
+              "palette": "warm"
+            }
+          }
+        ]
+      },
+      "title": "ec2.network in(blue), out(red)"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:cloudops_tools.ping_status{*} by {host,dest_port,dest_ip} * 1000",
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "CloudOps Ping times to 4.2.2.1 in ms"
+    }
+  ],
+  "template_variables": [
+    {
+      "default": "*",
+      "prefix": "name",
+      "name": "name"
+    },
+    {
+      "default": "*",
+      "prefix": "instance_id",
+      "name": "instance_id"
+    },
+    {
+      "default": "*",
+      "prefix": "deployment",
+      "name": "deployment"
+    }
+  ],
+  "id": 91997
+}
