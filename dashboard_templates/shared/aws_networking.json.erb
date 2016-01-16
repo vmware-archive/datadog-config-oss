@@ -2,7 +2,7 @@
   "description": "created by galiu@pivotal.io",
   "created": "2016-01-15T01:38:56.980032+00:00",
   "title": "AWS Networking",
-  "modified": "2016-01-15T22:58:11.787636+00:00",
+  "modified": "2016-01-16T02:57:37.086553+00:00",
   "graphs": [
     {
       "definition": {
@@ -37,7 +37,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cloudops_tools.ping_status{*} by {host,dest_port,dest_ip} * 1000",
+            "q": "avg:cloudops_tools.ping_status{*} by {dest_port,dest_ip,cf_instance_addr,cf_instance_guid,cf_instance_index,application_name} * 1000",
             "conditional_formats": [
 
             ]
