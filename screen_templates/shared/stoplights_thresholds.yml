@@ -153,22 +153,22 @@ prod:
 - query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:} ) / 0.000001024"
   color: white_on_green
   value: 22
-- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})
   color: red_on_white
   value: 7
-- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})
   color: yellow_on_white
   value: 10
-- query: per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})
   color: green_on_white
   value: 10
-- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})
   color: red_on_white
   value: 1
-- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})
   color: yellow_on_white
   value: 2.5
-- query: per_second(sum:cf.collector.router.requests{component:uaa,deployment:})
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})
   color: green_on_white
   value: 2.5
 - query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
@@ -261,13 +261,13 @@ prod:
 - query: avg:pws.circuit.cloud_controller_get{host:production}
   color: white_on_green
   value: 1
-- query: max:cf.collector.cc.requests.outstanding{*}
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
   color: white_on_red
   value: 5
-- query: max:cf.collector.cc.requests.outstanding{*}
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
   color: white_on_yellow
   value: 3
-- query: max:cf.collector.cc.requests.outstanding{*}
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
   color: white_on_green
   value: 3
 - query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"

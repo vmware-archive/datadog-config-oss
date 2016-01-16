@@ -1,6 +1,7 @@
 {
   "board_title": "<%= deployment %> stoplights",
   "board_bgtype": "board_graph",
+  "created": "2014-12-22T23:35:17.205158+00:00",
   "canonical_units": {
     "cents": [
       {
@@ -372,6 +373,7 @@
     ]
   },
   "original_title": "<%= deployment %> stoplights",
+  "modified": "2016-01-16T01:15:22.995579+00:00",
   "height": 161,
   "width": "100%",
   "template_variables": [
@@ -994,18 +996,18 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}) / 0.000001024"
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= deployment %>-diego finished deploying diego to <%= deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= deployment %>-diego failed deploying diego to <%= deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
           },
           {
             "q": "tags:deployment:<%= deployment %>-cf started deploying cf to <%= deployment %>"
@@ -1029,7 +1031,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}) / 0.000001024",
+      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1082,7 +1084,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} ) / 0.000001024",
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -1142,21 +1144,21 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           }
         ]
       },
@@ -1209,7 +1211,7 @@
           "comparator": "<",
           "color": "red_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})', 'red_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1217,7 +1219,7 @@
           "comparator": "<=",
           "color": "yellow_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})', 'yellow_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1225,7 +1227,7 @@
           "comparator": ">",
           "color": "green_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:cloudcontroller,deployment:})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:})', 'green_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1262,7 +1264,7 @@
           "comparator": "<",
           "color": "red_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:uaa,deployment:})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})', 'red_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1270,7 +1272,7 @@
           "comparator": "<=",
           "color": "yellow_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:uaa,deployment:})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})', 'yellow_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1278,7 +1280,7 @@
           "comparator": ">",
           "color": "green_on_white",
           "custom_bg_color": null,
-          "value": <%= threshold_value('per_second(sum:cf.collector.router.requests{component:uaa,deployment:})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:})', 'green_on_white') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1352,15 +1354,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= deployment %>-diego}",
+            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= deployment %>-diego}",
+            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -1455,7 +1457,7 @@
     {
       "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
       "height": 5,
-      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}",
+      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -1467,7 +1469,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "domain:run.pivotal.io"
+        "domain:<%= domain_url %>"
       ],
       "precision": 0,
       "title_text": "CF dial Error",
@@ -1478,19 +1480,19 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}', 'white_on_red') %>
         },
         {
           "color": "white_on_yellow",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}', 'white_on_yellow') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:run.pivotal.io}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}', 'white_on_green') %>
         }
       ],
       "is_valid_query": true,
@@ -1584,7 +1586,7 @@
     {
       "metric": "new_relic.apdex.score",
       "height": 4,
-      "query": "avg:new_relic.apdex.score{application:webconsole_production}",
+      "query": "avg:new_relic.apdex.score{application:webconsole_<%= environment %>uction}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -1596,7 +1598,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "application:webconsole_production"
+        "application:webconsole_<%= environment %>uction"
       ],
       "precision": 2,
       "title_text": "Apdex - 15m",
@@ -1607,7 +1609,7 @@
           "comparator": "<",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_<%= environment %>uction}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1615,7 +1617,7 @@
           "comparator": "<=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_<%= environment %>uction}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1623,7 +1625,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_<%= environment %>uction}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1637,7 +1639,7 @@
     {
       "metric": "new_relic.errors.all.errors_per_minute",
       "height": 4,
-      "query": "avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}",
+      "query": "avg:new_relic.errors.all.errors_per_minute{application:webconsole_<%= environment %>uction}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -1649,7 +1651,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "application:webconsole_production"
+        "application:webconsole_<%= environment %>uction"
       ],
       "precision": 2,
       "title_text": "Error Rate - 15m",
@@ -1660,7 +1662,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_<%= environment %>uction}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -1668,7 +1670,7 @@
           "comparator": "<=",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_<%= environment %>uction}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -1962,7 +1964,7 @@
     {
       "metric": "pws.circuit.loggregator",
       "height": 4,
-      "query": "avg:pws.circuit.loggregator{host:production}",
+      "query": "avg:pws.circuit.loggregator{host:<%= environment %>uction}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -1974,7 +1976,7 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "host:production"
+        "host:<%= environment %>uction"
       ],
       "precision": 2,
       "title_text": "Console Loggregator Circuit",
@@ -1985,13 +1987,13 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:production}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:<%= environment %>uction}', 'white_on_red') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:production}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:<%= environment %>uction}', 'white_on_green') %>
         }
       ],
       "is_valid_query": true,
@@ -2003,7 +2005,7 @@
     {
       "metric": "pws.circuit.cloud_controller_get",
       "height": 4,
-      "query": "avg:pws.circuit.cloud_controller_get{host:production}",
+      "query": "avg:pws.circuit.cloud_controller_get{host:<%= environment %>uction}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -2015,7 +2017,7 @@
       "timeframe": "5m",
       "type": "query_value",
       "tags": [
-        "host:production"
+        "host:<%= environment %>uction"
       ],
       "precision": 2,
       "title_text": "CC GET Circuit",
@@ -2026,13 +2028,13 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:production}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:<%= environment %>uction}', 'white_on_red') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:production}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:<%= environment %>uction}', 'white_on_green') %>
         }
       ],
       "is_valid_query": true,
@@ -2087,7 +2089,7 @@
           "comparator": ">",
           "color": "white_on_red",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.cc.requests.outstanding{*}', 'white_on_red') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -2095,7 +2097,7 @@
           "comparator": ">=",
           "color": "white_on_yellow",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.cc.requests.outstanding{*}', 'white_on_yellow') %>,
           "invert": false,
           "custom_fg_color": null
         },
@@ -2103,7 +2105,7 @@
           "comparator": "<",
           "color": "white_on_green",
           "custom_bg_color": null,
-          "value": <%= threshold_value('max:cf.collector.cc.requests.outstanding{*}', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.cc.requests.outstanding{*}', 'white_on_green') %>,
           "invert": false,
           "custom_fg_color": null
         }
@@ -2117,7 +2119,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000",
+      "query": "(avg:new_relic.application_summary.response_time{application:webconsole_<%= environment %>uction})/1000",
       "text_size": "auto",
       "unit": "s",
       "title_size": 16,
@@ -2140,19 +2142,19 @@
           "color": "white_on_red",
           "invert": false,
           "comparator": ">",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_red') %>
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_<%= environment %>uction})/1000', 'white_on_red') %>
         },
         {
           "color": "white_on_yellow",
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_yellow') %>
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_<%= environment %>uction})/1000', 'white_on_yellow') %>
         },
         {
           "color": "white_on_green",
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_green') %>
+          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_<%= environment %>uction})/1000', 'white_on_green') %>
         }
       ],
       "is_valid_query": false,
@@ -2358,7 +2360,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= deployment %>-diego}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= deployment %>-diego})",
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>})",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -2411,7 +2413,7 @@
     {
       "metric": "diego.canary.app.instance",
       "height": 6,
-      "query": "sum:diego.canary.app.instance{deployment:<%= deployment %>-diego}",
+      "query": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 13,
@@ -2423,7 +2425,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+        "deployment:<%= diego_deployment %>"
       ],
       "precision": 0,
       "title_text": "Diego Canaries - 15m avg",
@@ -2464,7 +2466,7 @@
     {
       "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "height": 6,
-      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>-diego}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "/5m",
       "title_size": 13,
@@ -2517,7 +2519,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -2577,12 +2579,12 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= deployment %>-diego}"
+            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %>-diego started deploying diego to <%= deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           }
         ]
       },
@@ -2597,7 +2599,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>-diego})",
+      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})",
       "text_size": "auto",
       "unit": "/m",
       "title_size": 13,
@@ -2650,7 +2652,7 @@
     {
       "metric": "system.load.1",
       "height": 6,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>-diego})",
+      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})",
       "text_size": "auto",
       "unit": "/Hr",
       "title_size": 13,
@@ -2687,7 +2689,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>-diego}/1000000000",
+      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -3017,7 +3019,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3062,7 +3064,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3107,7 +3109,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3152,7 +3154,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3212,7 +3214,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3257,7 +3259,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3302,7 +3304,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3347,7 +3349,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3392,7 +3394,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3437,7 +3439,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3482,7 +3484,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z2}.rollup(avg,60)) ) *50",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3527,7 +3529,7 @@
     {
       "metric": "",
       "height": 4,
-      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3847,7 +3849,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego} by {job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
             "style": {
               "palette": "warm"
             },
@@ -3866,7 +3868,7 @@
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
       "height": 7,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>-diego}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3878,7 +3880,7 @@
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+        "deployment:<%= diego_deployment %>"
       ],
       "precision": 0,
       "title_text": "Top Ephemeral Disk usage (%) past hour",
@@ -3919,7 +3921,7 @@
     {
       "metric": "bosh.healthmonitor.system.disk.persistent.percent",
       "height": 7,
-      "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>-diego}",
+      "query": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -3931,7 +3933,7 @@
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+        "deployment:<%= diego_deployment %>"
       ],
       "precision": 0,
       "title_text": "Top Persistent Disk usage (%) past hour",
@@ -3979,7 +3981,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>-diego} by {job,index}",
+            "q": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= diego_deployment %>} by {job,index}",
             "type": "line"
           }
         ]
@@ -4002,7 +4004,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>-diego} by {job,index}",
+            "q": "max:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= diego_deployment %>} by {job,index}",
             "type": "line"
           }
         ]
@@ -4033,7 +4035,7 @@
     {
       "metric": "",
       "height": 12,
-      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "",
       "title_size": 16,
@@ -4086,7 +4088,7 @@
     {
       "metric": "",
       "height": 12,
-      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>-diego}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "unit": "",
       "title_size": 16,
@@ -4139,7 +4141,7 @@
     {
       "metric": "",
       "height": 7,
-      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= deployment %>-diego} / 1000000000",
+      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>} / 1000000000",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -4192,7 +4194,7 @@
     {
       "metric": "datadog.nozzle.bbs.ETCDWatchers",
       "height": 7,
-      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= deployment %>-diego}",
+      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -4204,7 +4206,7 @@
       "timeframe": "15m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+        "deployment:<%= diego_deployment %>"
       ],
       "precision": 2,
       "title_text": "ETCD Watchers",
@@ -4245,7 +4247,7 @@
     {
       "metric": "",
       "height": 7,
-      "query": "((avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>-diego, job: database_z3})/3)",
+      "query": "((avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>, job: database_z3})/3)",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -4313,7 +4315,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -4366,7 +4368,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -4419,7 +4421,7 @@
     {
       "metric": "",
       "height": 6,
-      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= deployment %>-diego}/1000000000\n",
+      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "unit": "s",
       "title_size": 13,
@@ -4479,7 +4481,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>-diego}",
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}",
             "type": "line"
           }
         ]
@@ -4575,7 +4577,7 @@
     {
       "metric": "",
       "height": 5,
-      "query": "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))",
+      "query": "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-<%= environment %>-worker}.rollup(avg,60))",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -4681,7 +4683,7 @@
     {
       "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
       "height": 5,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-<%= environment %>-worker}",
       "text_size": "auto",
       "unit": "%",
       "title_size": 16,
@@ -4693,7 +4695,7 @@
       "timeframe": "1h",
       "type": "query_value",
       "tags": [
-        "deployment:concourse-prod-worker"
+        "deployment:concourse-<%= environment %>-worker"
       ],
       "precision": 0,
       "title_text": "Top Ephemeral Disk usage (%) past hour",
@@ -4817,7 +4819,7 @@
     {
       "metric": "diego.smoke.status",
       "height": 6,
-      "query": "avg:diego.smoke.status{deployment:<%= deployment %>-diego}",
+      "query": "avg:diego.smoke.status{deployment:<%= diego_deployment %>}",
       "text_size": "auto",
       "unit": "auto",
       "title_size": 16,
@@ -4829,7 +4831,7 @@
       "timeframe": "30m",
       "type": "query_value",
       "tags": [
-        "deployment:<%= deployment %>-diego"
+        "deployment:<%= diego_deployment %>"
       ],
       "precision": 2,
       "title_text": "Diego smoke test",
