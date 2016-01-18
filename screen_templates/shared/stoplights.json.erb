@@ -3789,10 +3789,12 @@
     },
     {
       "metric": "",
-      "custom_unit": "B",
+      "custom_unit": null,
+      "height": 4,
       "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)\n",
       "text_size": "auto",
       "title_size": 16,
+      "autoscale": true,
       "title": true,
       "aggregator": "avg",
       "title_align": "left",
@@ -3804,7 +3806,7 @@
       "tags": [
 
       ],
-      "precision": 0,
+      "precision": 2,
       "title_text": "NATS_Z1 Net Bytes in",
       "padding": 8,
       "calc_func": "raw",
@@ -3837,9 +3839,11 @@
     },
     {
       "metric": "",
-      "custom_unit": "B",
+      "height": 4,
+      "custom_unit": null,
       "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)",
       "text_size": "auto",
+      "autoscale": true,
       "title_size": 16,
       "title": true,
       "aggregator": "avg",
@@ -3852,7 +3856,7 @@
       "tags": [
 
       ],
-      "precision": 0,
+      "precision": 2,
       "title_text": "NATS_Z2 Net Bytes In",
       "padding": 8,
       "calc_func": "raw",
