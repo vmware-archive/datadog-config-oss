@@ -15,7 +15,7 @@ class ErbContext < OpenStruct
 
     threshold = thresholds.select do |threshold|
       threshold["query"] == widget_query &&
-        threshold["color"] == threshold_color
+        ( threshold["palette"] == threshold_color || threshold["color"] == threshold_color )
     end.first
 
     if threshold.nil?

@@ -56,11 +56,10 @@ class ScreenSynchronizer < Synchronizer
 
       widget_identifier = widget["query"].gsub(/deployment:(\w|-)*/, "deployment:").strip
       conditionals.each do |conditional|
-        color = conditional["color"]
+        palette = conditional["palette"]
         value = conditional["value"]
-
-        conditional["value"] = "<%= threshold_value('#{widget_identifier}', '#{color}') %>"
-        yaml_array << {"query" => widget_identifier, "color" => color, "value" => value}
+        conditional["value"] = "<%= threshold_value('#{widget_identifier}', '#{palette}') %>"
+        yaml_array << {"query" => widget_identifier, "palette" => palette, "value" => value}
       end
     end
 
