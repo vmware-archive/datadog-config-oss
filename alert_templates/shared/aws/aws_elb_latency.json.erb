@@ -1,17 +1,5 @@
 {
-  "event_object": "20f9df5440a6c87946af57c3b1e5963a",
-  "notify_audit": false,
-  "timeout_h": 0,
-  "silenced": false,
-  "query": "avg(last_5m):avg:aws.elb.latency{host:cf-router} > 1",
+  "query": "avg(last_30m):avg:aws.elb.latency{host:cf-router} > 10",
   "message": "## Description: \nThe router latency has spiked over 1 second for the last 5 minutes. This can cause a slowdown on all apps.\n\n## Escalation Path:\nGorouter, Diego\n\n## Possible Causes\n- NAT has degraded outbound Internet connection\n- gorouter performance\n- DDOS\n\n\n## Possible Solutions:\n- Recreate NAT box or failover to the standby one\n- add more gorouter\n- block the ddos\n\n\n##Feedback:\nHave feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-cloudops-service",
-  "id": 422505,
-  "name": "Router latency over 1 second",
-  "no_data_timeframe": 2,
-  "creator": 85236,
-  "notify_no_data": false,
-  "renotify_interval": 0,
-  "state": "No Data",
-  "escalation_message": null,
-  "silenced_timeout_ts": null
+  "name": "High Router latency"
 }
