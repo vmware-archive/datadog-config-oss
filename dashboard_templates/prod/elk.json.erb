@@ -1,6 +1,8 @@
 {
-  "title": "elk",
   "description": "elk",
+  "created": "2016-01-16T01:15:18.958533+00:00",
+  "title": "elk",
+  "modified": "2016-01-20T07:20:01.363723+00:00",
   "graphs": [
     {
       "definition": {
@@ -208,11 +210,17 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {job,index}",
+            "q": "avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index} / dt(avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index})",
+            "conditional_formats": [
+
+            ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {job,index}",
+            "q": "avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index} / dt(avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index})",
+            "conditional_formats": [
+
+            ],
             "type": "line"
           }
         ]
@@ -224,16 +232,22 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ebs.volume_total_read_time{deployment:cf-elk-3az} by {job,index}",
+            "q": "1000 * avg:aws.ebs.volume_total_read_time{deployment:cf-elk-3az} by {device,job,index} / avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index}",
+            "conditional_formats": [
+
+            ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ebs.volume_total_write_time{deployment:cf-elk-3az} by {job,index}",
+            "q": "1000 * avg:aws.ebs.volume_total_write_time{deployment:cf-elk-3az} by {device,job,index} / avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index}",
+            "conditional_formats": [
+
+            ],
             "type": "line"
           }
         ]
       },
-      "title": "io latency"
+      "title": "io latency (ms)"
     },
     {
       "definition": {
@@ -262,8 +276,8 @@
         "markers": [
           {
             "type": "error dashed",
-            "value": "y = 90",
-            "val": "90"
+            "val": "90",
+            "value": "y = 90"
           }
         ]
       },
