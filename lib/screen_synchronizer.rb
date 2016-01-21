@@ -54,7 +54,9 @@ class ScreenSynchronizer < Synchronizer
       conditionals = widget["conditional_formats"]
       next unless conditionals
 
-      widget_identifier = widget["query"].gsub(/deployment:(\w|-)*/, "deployment:").strip
+
+      # replace <%= key %> to key to avoid nested <%= %> issue
+      widget_identifier = derender(widget["query"]).gsub(/<%= (.*?) %>/, '\1').strip
       conditionals.each do |conditional|
         palette = conditional["palette"]
         value = conditional["value"]
