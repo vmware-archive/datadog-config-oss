@@ -69,7 +69,7 @@ class ScreenSynchronizer < Synchronizer
       File.dirname(template_output_file),
       File.basename(template_output_file).split('.').first + '_thresholds.yml'
     )
-    File.open(yaml_file_name, 'w') { |file| file.write(yaml_hash.to_yaml) }
+    File.open(yaml_file_name, 'w') { |file| file.write(yaml_hash.to_yaml(line_width: -1)) }
 
     logger.info  "current threshold values written to #{yaml_file_name}, put sibling with template to use"
 
