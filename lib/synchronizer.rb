@@ -146,11 +146,17 @@ class Synchronizer
     raise NotImplementedError
   end
 
-  def derender(str)
-    string_attribues = @env.select {|k,v| v.class == String && v.size > 5 }
-    sorted_string_attribues = string_attribues.sort_by {|k, v| v.size * -1 }
-    sorted_string_attribues.each { |k,v| str.gsub!(v, "<%= #{k} %>" ) }
-
+  def derender(string, option={erb_token: true})
+    str = string.clone
+    string_attributes = @env.select {|k,v| v.class == String && v.size > 5 }
+    sorted_string_attributes = string_attributes.sort_by {|k, v| v.size * -1 }
+    sorted_string_attributes.each do |k,v|
+      if option[:erb_token]
+        str.gsub!(v, "<%= #{k} %>" )
+      else
+        str.gsub!(v, k)
+      end
+    end
     str
   end
 

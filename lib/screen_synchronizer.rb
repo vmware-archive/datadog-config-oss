@@ -56,7 +56,7 @@ class ScreenSynchronizer < Synchronizer
 
 
       # replace <%= key %> to key to avoid nested <%= %> issue
-      widget_identifier = derender(widget["query"]).gsub(/<%= (.*?) %>/, '\1').strip
+      widget_identifier = derender(widget["query"], {erb_token: false}).strip
       conditionals.each do |conditional|
         palette = conditional["palette"]
         value = conditional["value"]
