@@ -1,8 +1,8 @@
 ---
 prod:
-- query: avg:some_metric{deployment:,another-tag:blah}
+- query: avg:some_metric{deployment:deployment,another-tag:blah}
   palette: white_on_red
   value: 100
-- query: avg:some_metric{deployment:,another-tag:blah}
+- query: avg:some_metric{deployment:deployment,another-tag:blah}
   palette: white_on_green
   value: 100
