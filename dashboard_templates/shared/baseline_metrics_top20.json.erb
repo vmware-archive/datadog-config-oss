@@ -1,5 +1,28 @@
 {
+  "description": "created by crichardson@pivotal.io",
+  "created": "2015-11-06T19:02:13.742199+00:00",
+  "title": "Baseline Metrics Top 20",
+  "modified": "2016-01-29T01:16:15.171845+00:00",
   "graphs": [
+    {
+      "definition": {
+        "viz": "toplist",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.cpu.wait{*} by {job,index,deployment} * max:bosh.healthmonitor.system.load.1m{*} by {job,index,deployment}",
+            "aggregator": "avg",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "type": "area",
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "high load and wait"
+    },
     {
       "definition": {
         "viz": "timeseries",
@@ -51,10 +74,14 @@
         "requests": [
           {
             "q": "top20_max(max:bosh.healthmonitor.system.load.1m{*} by {job,index,deployment})",
+            "aggregator": "avg",
             "style": {
               "width": "thin"
             },
-            "type": "line"
+            "type": "line",
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
@@ -302,7 +329,5 @@
       "title": "mem.percent"
     }
   ],
-  "description": "created by crichardson@pivotal.io",
-  "id": 79245,
-  "title": "Baseline Metrics Top 20"
+  "id": 79245
 }
