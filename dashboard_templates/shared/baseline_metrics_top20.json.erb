@@ -2,7 +2,7 @@
   "description": "created by crichardson@pivotal.io",
   "created": "2015-11-06T19:02:13.742199+00:00",
   "title": "Baseline Metrics Top 20",
-  "modified": "2016-01-29T01:16:15.171845+00:00",
+  "modified": "2016-02-01T18:36:30.897247+00:00",
   "graphs": [
     {
       "definition": {
@@ -123,30 +123,37 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "top20_max(max:aws.ec2.disk_read_ops{*} by {job,index,deployment,availability-zone,instance_id})",
+            "q": "top20_max( max:aws.ec2.disk_read_ops{*} by {job,index,deployment,availability-zone,instance_id} / dt(max:aws.ec2.disk_read_ops{*} by {job,index,deployment,availability-zone,instance_id}) )",
+            "aggregator": "avg",
             "style": {
               "width": "thin"
             },
-            "type": "line"
+            "type": "line",
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
-      "title": "ec2.disk_read_ops"
+      "title": "ec2.ephemeral_disk.read_iops"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "top20_max(max:aws.ec2.disk_write_ops{*} by {job,index,deployment,availability-zone,instance_id})",
+            "q": "top20_max( max:aws.ec2.disk_write_ops{*} by {job,index,deployment,availability-zone,instance_id}/dt(max:aws.ec2.disk_write_ops{*} by {job,index,deployment,availability-zone,instance_id}))",
             "style": {
               "width": "thin"
             },
-            "type": "line"
+            "type": "line",
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
-      "title": "ec2.disk_write_ops"
+      "title": "ec2.ephemeral_disk.write_iops"
     },
     {
       "definition": {
@@ -243,30 +250,38 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "top20_max(max:aws.ec2.network_in{*} by {job,deployment,index,availability-zone,instance_id})",
+            "q": "top20_max( max:aws.ec2.network_in{*} by {job,deployment,index,availability-zone,instance_id} * 0.1333 )",
+            "aggregator": "avg",
             "style": {
               "width": "thin"
             },
-            "type": "line"
+            "type": "line",
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
-      "title": "ec2.network_in"
+      "title": "ec2.network_in (bps)"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "top20_max(max:aws.ec2.network_out{*} by {job,deployment,index,availability-zone,instance_id})",
+            "q": "top20_max( max:aws.ec2.network_out{*} by {job,deployment,index,availability-zone,instance_id} * 0.1333 )",
+            "aggregator": "avg",
             "style": {
               "width": "thin"
             },
-            "type": "line"
+            "type": "line",
+            "conditional_formats": [
+
+            ]
           }
         ]
       },
-      "title": "ec2.network_out"
+      "title": "ec2.network_out (bps)"
     },
     {
       "definition": {
