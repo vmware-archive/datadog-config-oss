@@ -1,0 +1,17 @@
+{
+  "event_object": "4bf749066ea875aa8dbee29604d6045b",
+  "notify_audit": false,
+  "timeout_h": 0,
+  "silenced": false,
+  "query": "avg(last_5m):avg:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>-diego} by {index,job} > 90",
+  "message": "The cell {{job.name}} {{index.name}} is currently experiencing high load.  This may be due to a zombie process.\n\nIf it is, drain the cell and restart it.\n\n```\nbosh ssh $CELL  \nsudo -i  \n/var/vcap/jobs/rep/bin/drain && monit stop rep  \nshutdown -r now  \n``` \n@oncall-Cloud_Ops_Primary",
+  "id": 445946,
+  "name": "Possible Zombie Process",
+  "no_data_timeframe": 2,
+  "creator": 160911,
+  "notify_no_data": false,
+  "renotify_interval": 60,
+  "state": "Alert",
+  "escalation_message": "The cell {{job.name}} {{index.name}} is still experiencing high load.  This may be due to a zombie process.\n\nThis message will repeat every hour until the monitor is resolved.\n\n\n@oncall-Cloud_Ops_Primary",
+  "silenced_timeout_ts": null
+}
