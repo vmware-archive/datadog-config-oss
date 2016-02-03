@@ -135,10 +135,15 @@
         "viz": "timeseries",
         "requests": [
           {
+            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z1}",
+            "type": "line"
+          },
+          {
             "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z2}",
-            "conditional_formats": [
-
-            ],
+            "type": "line"
+          },
+          {
+            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z3}",
             "type": "line"
           },
           {
@@ -151,10 +156,6 @@
           },
           {
             "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az,job:queue_z3}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:cf-elk-3az,job:queue_z3}",
             "type": "line"
           }
         ]
@@ -296,7 +297,7 @@
           }
         ],
         "yaxis": {
-          "max": 20000,
+          "max": 30000,
           "min": 1
         }
       },
