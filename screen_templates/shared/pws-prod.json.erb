@@ -454,6 +454,98 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": true
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "UAA User Total",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:pws.uaa_user_total{host:production}",
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "max:pws.uaa_user_total{host:smoketest}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 30,
+      "timeframe": "2d",
+      "y": 51,
+      "x": 108,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "CC Org Total",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:pws.cc_org_total{host:production}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "max:pws.cc_org_total{host:smoketest}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 30,
+      "timeframe": "2d",
+      "y": 67,
+      "x": 108,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Smoketest Critical & Non-Critical Failed Jobs",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "max:pws.workers.critical.failed.count{host:smoketest}",
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "max:pws.workers.non_critical.failed.count{host:smoketest}",
+            "type": "line"
+          }
+        ]
+      },
+      "width": 30,
+      "timeframe": "1d",
+      "y": 83,
+      "x": 108,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
     }
   ],
   "id": 15708
