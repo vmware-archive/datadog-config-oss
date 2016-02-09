@@ -7714,6 +7714,90 @@
       "legend_size": "0",
       "type": "timeseries",
       "legend": false
+    },
+    {
+      "x": 24,
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Unhealthy cells, 1hr",
+      "height": 4,
+      "tile_def": {
+        "viz": "query_value",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= diego_deployment %>}",
+            "aggregator": "max",
+            "conditional_formats": [
+              {
+                "palette": "white_on_red",
+                "comparator": ">",
+                "value": 0
+              },
+              {
+                "palette": "white_on_yellow",
+                "comparator": ">=",
+                "value": null
+              },
+              {
+                "palette": "white_on_green",
+                "comparator": "<=",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "precision": "0"
+      },
+      "width": 17,
+      "timeframe": "1h",
+      "y": 67,
+      "autoscale": true,
+      "legend_size": "0",
+      "type": "query_value",
+      "legend": false
+    },
+    {
+      "x": 24,
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Stalled Gardens, 1 hr",
+      "height": 4,
+      "tile_def": {
+        "viz": "query_value",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}",
+            "aggregator": "max",
+            "conditional_formats": [
+              {
+                "palette": "white_on_red",
+                "comparator": ">",
+                "value": 10
+              },
+              {
+                "palette": "white_on_yellow",
+                "comparator": ">",
+                "value": 0
+              },
+              {
+                "palette": "white_on_green",
+                "comparator": "<=",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "precision": "0"
+      },
+      "width": 17,
+      "timeframe": "1h",
+      "y": 73,
+      "autoscale": true,
+      "legend_size": "0",
+      "type": "query_value",
+      "legend": false
     }
   ],
   "shared": false,
