@@ -1,0 +1,17 @@
+{
+  "event_object": "761589daf80d1b7f08caab4fca231fad",
+  "notify_audit": false,
+  "timeout_h": 0,
+  "silenced": false,
+  "query": "avg(last_30m):avg:cloudops_tools.p_mysql_proxy_health{deployment:<%= environment %>} < 1",
+  "message": "# Description\n{{#is_no_data}}\n   The cloudops_tools.p_mysql_proxy_health app has not reported data for at least 90 minutes. The app may be down. The app is http://pmysqlhealth.cfapps.io/. The app is found in the cloudops org / cloudops space. It is called pmysqlhealth. \nrun: `cf app pmyqlhealth` to find out more. \n{{/is_no_data}} \n\n{{#is_alert}}\n P-MySQL Proxy health is below threshold for last 30min\n{{/is_alert}} \n\n# Escalation path\n{{#is_no_data}}\nNo escalation path, this is a CloudOps internal tool\n{{/is_no_data}} \n{{#is_alert}}\nEscalate to [Core Services team](https://cfoundry.pagerduty.com/escalation_policies#POOU122)\n{{/is_alert}} \n\n# Causes\n{{#is_no_data}}\nThe app may be suffering problems. \n{{/is_no_data}} \n{{#is_alert}}\nA MySQL may be down in the [p-mysql deployment](https://github.com/pivotal-cf/<%= environment %>-aws/blob/master/deployments/p-mysql.yml)\n{{/is_alert}} \n\n\n@pagerduty-datadog-cloudops-service <%= environment %>",
+  "id": 242505,
+  "name": "P-MySQL-Proxy-Health",
+  "no_data_timeframe": 90,
+  "creator": 58975,
+  "notify_no_data": true,
+  "renotify_interval": 0,
+  "state": "No Data",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}
