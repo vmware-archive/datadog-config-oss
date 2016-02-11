@@ -87,11 +87,7 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 * **services_deployment**: Corresponding services name to the BOSH deployment
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
 * **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
-* **router_elb_name**: The name given to the ELB for this deployment's router
-* **stoplights_screen_id**: The numeric ID that Datadog has assigned your screen
 * **params**: Used to inject configuration values into your ERB file `<%= params.fetch('min_deas_that_can_stage') %>`
-* **credentials.api_key**: API key for the Datadog account where your dashboards will be created.
-* **credentials.api_key**: App key for the Datadog account where your dashboards will be created.
 * **jobs**: An enumeration of the various jobs associated with the deployment that you want to monitor, such as 'cloud_controller', 'nats', etc.
 
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
