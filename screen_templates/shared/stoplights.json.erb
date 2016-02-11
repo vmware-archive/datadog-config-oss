@@ -3550,8 +3550,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>})",
-            "aggregator": "max",
+            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>}",            "aggregator": "max",
             "conditional_formats": [
               {
                 "palette": "white_on_red",
