@@ -373,7 +373,7 @@
     ]
   },
   "original_title": "<%= deployment %> stoplights",
-  "modified": "2016-02-11T00:31:17.048468+00:00",
+  "modified": "2016-02-16T18:28:01.828517+00:00",
   "height": 161,
   "width": "100%",
   "template_variables": [
@@ -905,6 +905,7 @@
       "width": 9,
       "timeframe": "1d",
       "wrapped": true,
+      "legend_size": "0",
       "type": "query_value",
       "tags": [
         "deployment:<%= bosh_deployment %>",
@@ -917,6 +918,7 @@
       "metric_type": "standard",
       "autoscale": false,
       "height": 4,
+      "legend": false,
       "conditional_formats": [
         {
           "invert": false,
@@ -940,20 +942,24 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
-            "aggregator": "min",
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} * 100",
+            "aggregator": "avg",
             "conditional_formats": [
               {
-                "invert": false,
+                "palette": "white_on_red",
                 "comparator": "<",
-                "value": 100,
-                "palette": "white_on_yellow"
+                "value": 96
               },
               {
                 "invert": false,
                 "comparator": ">=",
                 "value": 100,
                 "palette": "white_on_green"
+              },
+              {
+                "palette": "white_on_yellow",
+                "comparator": ">=",
+                "value": 96
               }
             ]
           }
@@ -3550,7 +3556,8 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>}",            "aggregator": "max",
+            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>}",
+            "aggregator": "max",
             "conditional_formats": [
               {
                 "palette": "white_on_red",
@@ -7664,13 +7671,13 @@
       "sizing": "fit",
       "title_size": 16,
       "title": true,
-      "url": "http://49.media.tumblr.com/7513cbbecc5aa87a85987073a084fa82/tumblr_nacvltygFN1tiwc9no2_r1_500.gif",
+      "url": "https://media.giphy.com/media/qPVzemjFi150Q/giphy.gif",
       "margin": "",
       "title_align": "left",
       "title_text": "",
-      "height": 27,
+      "height": 33,
       "width": 37,
-      "y": 14,
+      "y": 9,
       "x": 158,
       "type": "image"
     },
@@ -7682,7 +7689,7 @@
       "title_align": "left",
       "text_align": "left",
       "title_text": "",
-      "height": 14,
+      "height": 8,
       "width": 37,
       "y": 0,
       "x": 158,
