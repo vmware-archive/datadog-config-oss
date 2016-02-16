@@ -1,8 +1,17 @@
 {
-  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min", 
-  "silenced": false, 
-  "no_data_timeframe": 20, 
-  "notify_no_data": true, 
-  "query": "max(last_15m):max:logstash.messages.rate{deployment:cf-elk-3az} < 1", 
-  "message": "## Description:\n None of logstash instances have received any messages in the last 15 min <%= cloudops_pagerduty %>  \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
+  "event_object": "65040aa690512ed37865228357154bf4",
+  "notify_audit": true,
+  "timeout_h": null,
+  "silenced": false,
+  "query": "max(last_1h):max:logstash.messages.rate{deployment:cf-elk-3az} < 1",
+  "message": "## Description:\n None of logstash instances have received any messages in the last 1 hour @pagerduty-datadog-cloudops-non-critical \n\n## Escalation Path:\n  CloudOps BJ Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "id": 394592,
+  "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 1 hour",
+  "no_data_timeframe": 120,
+  "creator": 12842,
+  "notify_no_data": true,
+  "renotify_interval": null,
+  "state": "OK",
+  "escalation_message": "",
+  "silenced_timeout_ts": null
 }
