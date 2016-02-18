@@ -1521,6 +1521,37 @@
           }
         ]
       }
+    },
+    {
+      "title": "Converger: Orphaned RunInfos",
+      "definition":{
+        "requests": [
+          {
+            "q": "datadog.nozzle.bbs.ConvergenceLRPPreProcessingOrphanedRunInfos{deployment: <%= diego_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "events":[
+          {
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> started deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> finished deploying cf to <%= deployment %>"
+          },
+          {
+            "q": "tags:deployment:<%= cf_deployment %> failed deploying cf to <%= deployment %>"
+          }
+        ]
+      }
     }
   ]
 }
