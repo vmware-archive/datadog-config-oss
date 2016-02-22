@@ -99,7 +99,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_http_subscriptions{deployment:<%= deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -127,7 +127,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_http_routes{deployment:<%= deployment %>} by {ip}",
             "type": "line"
           }
         ],
