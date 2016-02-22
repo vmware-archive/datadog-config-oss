@@ -6,28 +6,28 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:stats_z1} *100
@@ -36,10 +36,10 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:stats_z1} *100
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
   palette: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100
@@ -48,22 +48,22 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
 - query: avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:stats_z1} *100
@@ -72,34 +72,34 @@ prod:
 - query: avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:stats_z1} *100
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: (min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
   palette: white_on_red
   value: 6
-- query: (min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
   palette: white_on_yellow
   value: 7.2
-- query: (min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
   palette: white_on_green
   value: 7.2
-- query: (sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024"
   palette: white_on_red
   value: 18
-- query: (sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024"
   palette: white_on_yellow
   value: 22
-- query: (sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024"
   palette: white_on_green
   value: 22
 - query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})
@@ -219,13 +219,13 @@ prod:
 - query: max:datadog.nozzle.cc.requests.outstanding{*}
   palette: white_on_green
   value: 3
-- query: (avg:new_relic.application_summary.response_time{application:webconsole_production})/1000
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
   palette: white_on_red
   value: 3
-- query: (avg:new_relic.application_summary.response_time{application:webconsole_production})/1000
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
   palette: white_on_yellow
   value: 1
-- query: (avg:new_relic.application_summary.response_time{application:webconsole_production})/1000
+- query: "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
   palette: white_on_green
   value: 1
 - query: max:aws.ec2.status_check_failed{deployment:deployment}
@@ -234,13 +234,13 @@ prod:
 - query: max:aws.ec2.status_check_failed{deployment:deployment}
   palette: white_on_green
   value: 0
-- query: (((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})"
   palette: white_on_red
   value: 10
-- query: (((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})"
   palette: white_on_yellow
   value: 5
-- query: (((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})"
   palette: white_on_green
   value: 5
 - query: sum:diego.canary.app.instance{deployment:diego_deployment}
@@ -291,19 +291,19 @@ prod:
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000
   palette: white_on_green
   value: 5
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 50
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
 - query: avg:smoke.status{deployment:deployment,loggregator_enabled:1}
@@ -324,76 +324,76 @@ prod:
 - query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_yellow
   value: 0.75
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: (( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
   palette: white_on_red
   value: 100
-- query: (( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
   palette: white_on_yellow
   value: 100
-- query: ( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: (( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
   palette: white_on_yellow
   value: 100
-- query: (( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
   palette: white_on_green
   value: 100
 - query: avg:cloudops_tools.etcd_leader_health{deployment:deployment}
@@ -477,13 +477,13 @@ prod:
 - query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:diego_deployment}
   palette: white_on_green
   value: 3
-- query: '((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)'
+- query: "((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)"
   palette: white_on_red
   value: 80
-- query: '((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)'
+- query: "((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)"
   palette: white_on_yellow
   value: 70
-- query: '((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)'
+- query: "((avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z1}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z2}+avg:bosh.healthmonitor.system.cpu.sys{deployment:diego_deployment, job: database_z3}+avg:bosh.healthmonitor.system.cpu.user{deployment:diego_deployment, job: database_z3})/3)"
   palette: white_on_green
   value: 70
 - query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000
@@ -513,22 +513,22 @@ prod:
 - query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000
   palette: white_on_green
   value: 10
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))"
   palette: white_on_red
   value: 70
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))"
   palette: white_on_yellow
   value: 40
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))"
   palette: white_on_green
   value: 40
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
   palette: white_on_red
   value: 70
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
   palette: white_on_yellow
   value: 40
-- query: (max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))
+- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
   palette: white_on_green
   value: 40
 - query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse}
