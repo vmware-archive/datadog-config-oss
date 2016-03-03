@@ -165,6 +165,11 @@ class Synchronizer
     str
   end
 
+  def filter_json(input)
+    "{}"
+
+  end
+
   protected
 
   def symbolize_keys(hash)

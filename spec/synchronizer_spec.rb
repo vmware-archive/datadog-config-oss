@@ -1,10 +1,16 @@
 require "spec_helper"
 
 describe Synchronizer do
-  let(:fixtures) { File.join(File.dirname(__FILE__), "fixtures") }
   let(:logger) { Logger.new("/dev/null") }
-  let(:synchronizer) { Synchronizer.new(File.join(fixtures, "config.yml"), "prod", logger) }
-  let(:template) { File.join(fixtures, "screen_templates", "prod_screen.json.erb") }
+  subject(:synchronizer) {
+    Synchronizer.new(
+      fixture_path('config.yml'),
+      "prod",
+      logger
+    )
+  }
+
+  let(:template) { fixture_path(File.join("screen_templates", "prod_screen.json.erb")) }
 
   describe "#derender" do
     let(:screenboards_response) do
@@ -32,6 +38,19 @@ describe Synchronizer do
        expect(synchronizer.derender("some-deployment some-deployment-diego")).to eq(
          "<%= deployment %> <%= diego_deployment %>")
          # not "<%= deployment %> <%= deployment%>-diego"
+    end
+  end
+
+  describe '#filter_json' do
+    let(:raw_json) { fixture_body('convert_json_to_template/full_output.json') }
+    let(:culled_output) { fixture_body('convert_json_to_template/culled_output.json') }
+    subject() { synchronizer.filter_json(raw_json) }
+    fit "produces filtered output" do
+      expect(subject).to eq(culled_output)
+    end
+
+    fit 'produces valid json' do
+      expect{JSON.parse(subject)}.to_not raise_error
     end
   end
 end
