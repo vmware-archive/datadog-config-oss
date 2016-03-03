@@ -116,6 +116,11 @@ class Synchronizer
     code = -1
     while code == -1
       code, val = yield
+      if val.fetch('errors')
+        err_message = "#{val.fetch('errors')}"
+        logger.error err_message
+        raise err_message
+      end
       logger.warn "Operation timed out: retrying..." if code == -1
     end
     val
