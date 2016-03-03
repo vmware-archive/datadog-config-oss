@@ -116,8 +116,8 @@ class Synchronizer
     code = -1
     while code == -1
       code, val = yield
-      if val.fetch('errors')
-        err_message = "#{val.fetch('errors')}"
+      err_message = "#{val.fetch('errors', nil)}"
+      unless err_message.empty?
         logger.error err_message
         raise err_message
       end
