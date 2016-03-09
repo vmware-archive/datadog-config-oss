@@ -84,15 +84,6 @@ prod:
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
-  palette: white_on_red
-  value: 6
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
-  palette: white_on_yellow
-  value: 7.2
-- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
-  palette: white_on_green
-  value: 7.2
 - query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024"
   palette: white_on_red
   value: 18
@@ -567,3 +558,12 @@ prod:
 - query: avg:diego.smoke.status{deployment:diego_deployment}
   palette: white_on_yellow
   value: 0.75
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
+  palette: white_on_red
+  value: 6
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
+  palette: white_on_yellow
+  value: 7.2
+- query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
+  palette: white_on_green
+  value: 7.2
