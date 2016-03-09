@@ -1,8 +1,17 @@
 {
+  "event_object": "9db0c82410523e517b9abfe961d27422",
+  "notify_audit": true,
+  "timeout_h": null,
   "silenced": false,
-  "query": "min(last_15m):(((datadog.nozzle.bbs.LRPsDesired{deployment:cf-cfapps-io2-diego} - datadog.nozzle.bbs.LRPsRunning{deployment:cf-cfapps-io2-diego}) -datadog.nozzle.bbs.LRPsStarting{deployment:cf-cfapps-io2-diego}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:cf-cfapps-io2-diego}) > 10 ",
-  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
+  "query": "min(last_1m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= deployment %>-diego} > 10",
+  "message": "@pagerduty-datadog-cloudops-service @oncall-Diego_Production_Primary",
+  "id": 394575,
   "name": "<%= environment %> Diego: Missing LRPs are too high",
-  "no_data_timeframe": 30,
-  "notify_no_data": true
+  "no_data_timeframe": 2,
+  "creator": 12842,
+  "notify_no_data": true,
+  "renotify_interval": null,
+  "state": "OK",
+  "escalation_message": "",
+  "silenced_timeout_ts": null
 }
