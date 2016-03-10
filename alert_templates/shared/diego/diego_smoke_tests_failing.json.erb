@@ -1,6 +1,0 @@
-{
-  "notify_no_data": true,
-  "query": "avg(last_30m):avg:diego.smoke.status{deployment:<%= deployment %>-diego} < 0.66",
-  "message": "Diego smoke test failing <%= cloudops_pagerduty %>. \nEscalation Path: DIEGO Team.",
-  "name": "<%= environment %> Diego: Smoke tests failing"
-}
