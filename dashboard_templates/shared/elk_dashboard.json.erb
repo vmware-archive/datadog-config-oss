@@ -1,15 +1,16 @@
 {
+  "read_only": false,
   "description": "elk",
   "created": "2016-01-16T01:15:18.958533+00:00",
   "title": "elk",
-  "modified": "2016-01-20T07:20:01.363723+00:00",
+  "modified": "2016-03-15T03:07:45.861264+00:00",
   "graphs": [
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az} by {index,job} * 0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>} by {index,job} * 0.1333",
             "conditional_formats": [
 
             ],
@@ -24,7 +25,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_out{deployment:cf-elk-3az} by {index,job} *0.1333",
+            "q": "avg:aws.ec2.network_out{deployment:<%= elk_deployment %>} by {index,job} *0.1333",
             "conditional_formats": [
 
             ],
@@ -39,22 +40,22 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:ingestor_z1} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:ingestor_z1} by {index} *0.1333",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:ingestor_z2} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:ingestor_z2} by {index} *0.1333",
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:ingestor_z3} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:ingestor_z3} by {index} *0.1333",
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,name:elb_log_to_logstash_z2/0} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,name:elb_log_to_logstash_z2/0} by {index} *0.1333",
             "type": "line"
           }
         ]
@@ -66,18 +67,18 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:queue_z1} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:queue_z1} by {index} *0.1333",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:queue_z2} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:queue_z2} by {index} *0.1333",
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:cf-elk-3az,job:queue_z3} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_in{deployment:<%= elk_deployment %>,job:queue_z3} by {index} *0.1333",
             "type": "line"
           }
         ]
@@ -89,18 +90,18 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_out{deployment:cf-elk-3az,job:queue_z1} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:queue_z1} by {index} *0.1333",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_out{deployment:cf-elk-3az,job:queue_z2} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:queue_z2} by {index} *0.1333",
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_out{deployment:cf-elk-3az,job:queue_z3} by {index} *0.1333",
+            "q": "avg:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:queue_z3} by {index} *0.1333",
             "type": "line"
           }
         ]
@@ -112,18 +113,18 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:aws.ec2.network_out{deployment:cf-elk-3az,job:log_parser_z1} *0.1333",
+            "q": "sum:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:log_parser_z1} *0.1333",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "sum:aws.ec2.network_out{deployment:cf-elk-3az,job:log_parser_z2} *0.1333",
+            "q": "sum:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:log_parser_z2} *0.1333",
             "type": "line"
           },
           {
-            "q": "sum:aws.ec2.network_out{deployment:cf-elk-3az,job:log_parser_z3} *0.1333",
+            "q": "sum:aws.ec2.network_out{deployment:<%= elk_deployment %>,job:log_parser_z3} *0.1333",
             "type": "line"
           }
         ]
@@ -135,27 +136,27 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z1}",
+            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:<%= elk_deployment %>,job:queue_z1}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z2}",
+            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:<%= elk_deployment %>,job:queue_z2}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:cf-elk-3az,job:queue_z3}",
+            "q": "avg:bosh.healthmonitor.system.swap.percent{deployment:<%= elk_deployment %>,job:queue_z3}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az,job:queue_z1}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= elk_deployment %>,job:queue_z1}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az,job:queue_z2}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= elk_deployment %>,job:queue_z2}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az,job:queue_z3}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= elk_deployment %>,job:queue_z3}",
             "type": "line"
           }
         ]
@@ -167,7 +168,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{!job:log_parser_z1,!job:log_parser_z2,!job:log_parser_z3,deployment:cf-elk-3az} by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{!job:log_parser_z1,!job:log_parser_z2,!job:log_parser_z3,deployment:<%= elk_deployment %>} by {job,index}",
             "type": "line"
           }
         ]
@@ -179,15 +180,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:cf-elk-3az,job:log_parser_z2} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= elk_deployment %>,job:log_parser_z2} by {index}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:cf-elk-3az,job:log_parser_z1} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= elk_deployment %>,job:log_parser_z1} by {index}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:cf-elk-3az,job:log_parser_z3} by {index}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= elk_deployment %>,job:log_parser_z3} by {index}",
             "type": "line"
           }
         ]
@@ -211,14 +212,14 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index} / dt(avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index})",
+            "q": "avg:aws.ebs.volume_read_ops{deployment:<%= elk_deployment %>} by {device,job,index} / dt(avg:aws.ebs.volume_read_ops{deployment:<%= elk_deployment %>} by {device,job,index})",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index} / dt(avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index})",
+            "q": "avg:aws.ebs.volume_write_ops{deployment:<%= elk_deployment %>} by {device,job,index} / dt(avg:aws.ebs.volume_write_ops{deployment:<%= elk_deployment %>} by {device,job,index})",
             "conditional_formats": [
 
             ],
@@ -233,14 +234,14 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "1000 * avg:aws.ebs.volume_total_read_time{deployment:cf-elk-3az} by {device,job,index} / avg:aws.ebs.volume_read_ops{deployment:cf-elk-3az} by {device,job,index}",
+            "q": "1000 * avg:aws.ebs.volume_total_read_time{deployment:<%= elk_deployment %>} by {device,job,index} / avg:aws.ebs.volume_read_ops{deployment:<%= elk_deployment %>} by {device,job,index}",
             "conditional_formats": [
 
             ],
             "type": "line"
           },
           {
-            "q": "1000 * avg:aws.ebs.volume_total_write_time{deployment:cf-elk-3az} by {device,job,index} / avg:aws.ebs.volume_write_ops{deployment:cf-elk-3az} by {device,job,index}",
+            "q": "1000 * avg:aws.ebs.volume_total_write_time{deployment:<%= elk_deployment %>} by {device,job,index} / avg:aws.ebs.volume_write_ops{deployment:<%= elk_deployment %>} by {device,job,index}",
             "conditional_formats": [
 
             ],
@@ -255,7 +256,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az} by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= elk_deployment %>} by {job,index}",
             "type": "line"
           }
         ]
@@ -267,7 +268,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:cf-elk-3az} by {job,index}",
+            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= elk_deployment %>} by {job,index}",
             "conditional_formats": [
 
             ],
@@ -277,8 +278,8 @@
         "markers": [
           {
             "type": "error dashed",
-            "val": "90",
-            "value": "y = 90"
+            "value": "y = 90",
+            "val": "90"
           }
         ]
       },
@@ -289,7 +290,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "ewma_5(avg:elasticsearch.docs.incomingRatePerSecond{deployment:cf-elk-3az})",
+            "q": "ewma_5(avg:elasticsearch.docs.incomingRatePerSecond{deployment:<%= elk_deployment %>})",
             "conditional_formats": [
 
             ],
@@ -303,5 +304,6 @@
       },
       "title": "es in coming log/s"
     }
-  ]
+  ],
+  "id": 92214
 }
