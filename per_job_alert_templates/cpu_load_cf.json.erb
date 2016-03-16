@@ -1,9 +1,0 @@
-<% skip_services %>
-<% throw(:skip) if %w(dea dea_next runner_z1 runner_z2).include?(job) %>
-{
-  "notify_no_data": false,
-  "name": "<%= environment %> CF: <%= job %> job is reporting a high CPU load average",
-  "silenced": false,
-  "query": "avg(last_10m):avg:bosh.healthmonitor.system.load.1m{deployment:<%= deployment %>,job:<%= job %>} by {index} > 10",
-  "message": "Healthmonitor reports CPU load (1m) for <%= job %> above 5. <%= backend_pagerduty %>"
-}
