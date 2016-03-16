@@ -33,7 +33,7 @@ class Synchronizer
     pool = Thread.pool(8)
 
     templates.each do |path|
-      puts "Template path: #{path}..."
+      logger.info "Template path: #{path}..."
       dashboard_or_alert = symbolize_keys(process_template(path))
       id = found[key_of(dashboard_or_alert)]
 
