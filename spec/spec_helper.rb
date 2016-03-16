@@ -7,3 +7,5 @@ require 'dashboard_synchronizer'
 require 'alert_synchronizer'
 require 'screen_synchronizer'
 require 'template_helper'
+
+require 'pry'

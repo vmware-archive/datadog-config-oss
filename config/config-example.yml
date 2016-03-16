@@ -2,6 +2,7 @@
 # Copy this file to config.yml and fill in your credentials and other details
 
 cf_deployment:
+  tags: []
   deployment: "cf-deployment-example"
   bosh_deployment: "cf-deployment-example"
   services_deployment: "cf-services-deployment-example"
