@@ -70,11 +70,6 @@ Basically the same workflow as dashboards, but with different commands.
 
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
 
-#### Per-job alerts
-If you need an alert such that you have one unique alert per job (job being DEA, router, etc.), add to the `per_job_alert_templates` folder.
-
-The name/title is used as a unique key; alerts/dashboards with the same name/title will be overwritten.
-
 #### Pushing alerts to DataDog
 
         bundle exec rake prod:push
@@ -88,7 +83,6 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
 * **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
 * **params**: Used to inject configuration values into your ERB file `<%= params.fetch('min_deas_that_can_stage') %>`
-* **jobs**: An enumeration of the various jobs associated with the deployment that you want to monitor, such as 'cloud_controller', 'nats', etc.
 
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
 
