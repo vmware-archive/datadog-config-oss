@@ -2,6 +2,27 @@
 
 Persist your DataDog configuration in versioned text files which can be edited locally. Pull down existing config and push changes at will.
 
+## Notice! We're branching!
+
+We added tags, it's a breaking change because in order to use it, you'll have to specify the tags that you want associated with your deployment (see below for details). We're calling this `version 2.x`, and moving forward development will be incorporated into this branch. 
+
+Please use `version 1.x` if you do not want to change your config.yml. 
+
+### Updating to version 2.x
+[ ]  Add a key to your environment name called 'tags'  
+[ ]  Populate an array of tags in this key.   
+
+```
+mydeployment:
+  tags:
+  - aws
+  - p-mysql
+  deployment: mydeployment-cf
+```
+
+
+
+
 ## Usage
 
 ### Setup
@@ -37,7 +58,7 @@ rake garden_blackbox:push                                # Push all Garden Datad
 rake spec                                                # Run RSpec code examples
 ```
 
-Note: 'cf_deployment', as used above, is a placeholder for a deployment named in your `config.yml`, such as 'prod'.
+Note: `cf_deployment`, as used above, is a placeholder for a deployment named in your `config.yml`, such as `prod`.
 
 ## Workflow
 ### Dashboards / Screenboards
@@ -87,7 +108,7 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
 
 Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
-You should also know that these use default values from 'prod'. So, while 'prod' environment must have every threshold defined, the other environments only need definitions where overrides are in place.
+You should also know that these use default values from `prod`. So, while `prod` environment must have every threshold defined, the other environments only need definitions where overrides are in place.
 
 ## Folder structure
 
@@ -96,13 +117,15 @@ screen_templates/
 ├── images
 ├── prod
 ├── shared
-└── staging
+├── staging
+└── tags
 ```
 
-The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the 'shared' folder are pushed to all of the environemnts, while templates in e.g. the 'prod' folder will only be pushed to the prod DataDog.  Move the template json/erb file to the
+The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the `shared` folder are pushed to all of the environments, while templates in e.g. the `prod` folder will only be pushed to the prod DataDog.  Move the template json/erb file to the
 appropriate folder and move the thresholds yaml to the same folder so that the two files are siblings.
+`tags` will contain folders, and if the tag is present in `config.yml`, json/erb files present will be included for that environment.
 
-Edit the resultant file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
+Edit the resultant json/erb file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
 
 ## Useful notes
 Terminology
