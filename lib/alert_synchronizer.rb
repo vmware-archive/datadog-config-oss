@@ -1,5 +1,4 @@
 require "synchronizer"
-require "per_job_template_context"
 
 class AlertSynchronizer < Synchronizer
   def key_of(alert)
@@ -48,36 +47,17 @@ class AlertSynchronizer < Synchronizer
     result
   end
 
-  def unknown_alert_names(templates, per_job_templates)
-    unknown_datadog_object_names(known_object_names(per_job_templates, templates))
+  def unknown_alert_names(templates)
+    unknown_datadog_object_names(known_object_names(templates))
   end
 
-  def unknown_alert_ids(templates, per_job_templates)
-    unknown_datadog_object_ids(known_object_names(per_job_templates, templates))
+  def unknown_alert_ids(templates)
+    unknown_datadog_object_ids(known_object_names(templates))
   end
 
-  def delete_unknown_alerts(templates, per_job_templates)
-    unknown_alert_ids(templates, per_job_templates).each do |alert_id|
+  def delete_unknown_alerts(templates)
+    unknown_alert_ids(templates).each do |alert_id|
       @dog.delete_alert(alert_id)
-    end
-  end
-
-  def run_per_job(templates)
-    found = fetch_from_datadog
-
-    @env["jobs"].each do |job|
-      templates.each do |template_path|
-        catch(:skip) do
-          alert = symbolize_keys(process_job_template(job, template_path))
-          id = found[key_of(alert)]
-
-          if id
-            update(id, alert)
-          else
-            create(alert)
-          end
-        end
-      end
     end
   end
 
@@ -87,23 +67,9 @@ class AlertSynchronizer < Synchronizer
 
   private
 
-  def known_object_names(per_job_templates, templates)
-    known_object_names = local_object_names(templates)
-
-    @env["jobs"].each do |job|
-      per_job_templates.each do |template_path|
-        catch(:skip) do
-          known_object_names << key_of(symbolize_keys(process_job_template(job, template_path)))
-        end
-      end
-    end
-    known_object_names
+  def known_object_names(templates)
+    local_object_names(templates)
   end
 
-  def process_job_template(current_job, template_path)
-    context = PerJobTemplateContext.new(@env, current_job)
-    template = File.new(template_path).read
-    json = ERB.new(template).result(context.template_binding)
-    JSON.parse(json)
-  end
+
 end

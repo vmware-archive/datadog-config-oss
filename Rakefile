@@ -20,7 +20,6 @@ CONFIG_PATH = File.join(DIR, "config/config.yml")
 DASHBOARD_TEMPLATES = []
 ALERT_TEMPLATES = []
 SCREEN_TEMPLATES = []
-PER_JOB_ALERT_TEMPLATES = Dir.glob(File.join(DIR, "per_job_alert_templates", "**", "*.json.erb"))
 
 def deployments
   config_yml=YAML.load_file(CONFIG_PATH)
@@ -37,7 +36,6 @@ def push(env)
 
   alert = AlertSynchronizer.new(CONFIG_PATH, env)
   alert.run(ALERT_TEMPLATES)
-  alert.run_per_job(PER_JOB_ALERT_TEMPLATES)
 end
 
 def client_for_env(env_name)
@@ -63,7 +61,7 @@ end
 def show_unknown_datadog_objects(env)
   puts
   puts "Unknown Alerts:"
-  puts AlertSynchronizer.new(CONFIG_PATH, env).unknown_alert_names(ALERT_TEMPLATES, PER_JOB_ALERT_TEMPLATES)
+  puts AlertSynchronizer.new(CONFIG_PATH, env).unknown_alert_names(ALERT_TEMPLATES)
 
   puts
   puts "Unknown Dashboards:"
@@ -77,7 +75,7 @@ end
 def delete_unknown_datadog_objects(env)
   puts
   puts "Deleting Unknown Alerts"
-  AlertSynchronizer.new(CONFIG_PATH, env).delete_unknown_alerts(ALERT_TEMPLATES, PER_JOB_ALERT_TEMPLATES)
+  AlertSynchronizer.new(CONFIG_PATH, env).delete_unknown_alerts(ALERT_TEMPLATES)
 
   puts
   puts "Deleting Unknown Dashboards"

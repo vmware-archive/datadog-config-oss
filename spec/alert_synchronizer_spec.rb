@@ -86,20 +86,20 @@ describe AlertSynchronizer do
       it "returns an empty list of names" do
         allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123 })
 
-        expect(synchronizer.unknown_alert_names([template], [])).to eq([])
+        expect(synchronizer.unknown_alert_names([template])).to eq([])
       end
 
       it "returns an empty list of ids" do
         allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123 })
 
-        expect(synchronizer.unknown_alert_ids([template], [])).to eq([])
+        expect(synchronizer.unknown_alert_ids([template])).to eq([])
       end
 
       it "doesn't delete anything" do
         allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123 })
 
         expect_any_instance_of(Dogapi::Client).to_not receive(:delete_alert)
-        synchronizer.delete_unknown_alerts([template], [])
+        synchronizer.delete_unknown_alerts([template])
       end
 
     end
@@ -107,102 +107,26 @@ describe AlertSynchronizer do
     it "lists the alerts names that are present in datadog but not locally" do
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123, "prod alert world" => 234 })
 
-      expect(synchronizer.unknown_alert_names([template], [])).to eq(["prod alert world"])
+      expect(synchronizer.unknown_alert_names([template])).to eq(["prod alert world"])
     end
 
     it "lists the alerts ids that are present in datadog but not locally" do
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123, "prod alert world" => 234 })
 
-      expect(synchronizer.unknown_alert_ids([template], [])).to eq([234])
+      expect(synchronizer.unknown_alert_ids([template])).to eq([234])
     end
 
     it "deletes the unknown dashboards" do
       allow_any_instance_of(Dogapi::Client).to receive(:delete_alert).with(234)
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123, "prod alert world" => 234 })
 
-      synchronizer.delete_unknown_alerts([template], [])
+      synchronizer.delete_unknown_alerts([template])
     end
 
     it "doesn't list alerts for other environments" do
       allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert name" => 123, "a1 alert name" => 234 })
 
-      expect(synchronizer.unknown_alert_names([template], [])).to eq([])
-    end
-
-    let(:job_template) { File.join(fixtures, "job_alert_templates", "some_job_alert.json.erb") }
-
-    it "doesn't list valid per-job alerts" do
-      allow(synchronizer).to receive(:fetch_from_datadog).and_return({
-          "prod alert name" => 123,
-          "prod alert hello" => 234,
-          "prod alert world" => 345,
-      })
-
-      expect(synchronizer.unknown_alert_names([template], [job_template])).to eq([])
-    end
-  end
-
-  describe "#run_per_job" do
-    let(:template) { File.join(fixtures, "job_alert_templates", "some_job_alert.json.erb") }
-
-    it "creates an alert for each job given" do
-      allow(synchronizer).to receive(:fetch_from_datadog).and_return({})
-
-      allow_any_instance_of(Dogapi::Client).to receive(:alert).with(
-        "some query",
-        :name => "prod alert hello",
-        :message => "hello @pagerduty-backend",
-        :notify_no_data => false,
-        :silenced => false).and_return(['201'])
-
-      allow_any_instance_of(Dogapi::Client).to receive(:alert).with(
-        "some query",
-        :name => "prod alert world",
-        :message => "world @pagerduty-backend",
-        :notify_no_data => false,
-        :silenced => false).and_return(['201'])
-
-      synchronizer.run_per_job([template])
-    end
-
-    it "updates an alert for each job given" do
-      allow(synchronizer).to receive(:fetch_from_datadog).and_return({ "prod alert hello" => 123, "prod alert world" => 234 })
-
-      allow_any_instance_of(Dogapi::Client).to receive(:update_alert).with(
-        123,
-        "some query",
-        :name => "prod alert hello",
-        :message => "hello @pagerduty-backend",
-        :notify_no_data => false,
-        :silenced => false).and_return(['201'])
-      allow_any_instance_of(Dogapi::Client).to receive(:update_alert).with(
-        234,
-        "some query",
-        :name => "prod alert world",
-        :message => "world @pagerduty-backend",
-        :notify_no_data => false,
-        :silenced => false).and_return(['201'])
-
-      synchronizer.run_per_job([template])
-    end
-
-    describe "a template that throws :skip" do
-      let(:template) { File.join(fixtures, "job_alert_templates", "some_skip_job_alert.json.erb") }
-
-      it "is not processed" do
-        allow(synchronizer).to receive(:fetch_from_datadog).and_return({})
-
-        # does not receive alert with the 'hello' template
-
-        allow_any_instance_of(Dogapi::Client).to receive(:alert).with(
-          "some query",
-          :name => "prod alert world",
-          :message => "world @pagerduty-backend",
-          :notify_no_data => false,
-          :silenced => false).and_return(['201'])
-
-        synchronizer.run_per_job([template])
-      end
+      expect(synchronizer.unknown_alert_names([template])).to eq([])
     end
   end
 
