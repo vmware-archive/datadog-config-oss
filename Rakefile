@@ -27,9 +27,9 @@ def deployments
 end
 
 def push(env)
-  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env))
-  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env))
-  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env))
+  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env, DIR))
+  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env, DIR))
+  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env, DIR))
 
   DashboardSynchronizer.new(CONFIG_PATH, env).run(DASHBOARD_TEMPLATES)
   ScreenSynchronizer.new(CONFIG_PATH, env).run(SCREEN_TEMPLATES)
