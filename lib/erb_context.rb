@@ -29,9 +29,9 @@ class ErbContext < OpenStruct
   def lookup_note_asset(title, screen_or_dash)
     case screen_or_dash
     when :screenboard
-      all_things = dog.get_all_screenboards[1]["screenboards"]
+      all_things = dog.get_all_screenboards[1]["screenboards"] || []
     when :dashboard
-      all_things = dog.get_dashboards[1]["dashes"]
+      all_things = dog.get_dashboards[1]["dashes"] || []
     end
 
     lookup = all_things.find{ |v| v["title"] == title }

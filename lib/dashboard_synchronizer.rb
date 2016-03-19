@@ -5,7 +5,7 @@ class DashboardSynchronizer < Synchronizer
   # @return [Hash] dashboard title -> dashboard id
   def fetch_from_datadog
     dog_response = handle_datadog_errors { @dog.get_dashboards }
-    dashes = dog_response.fetch('dashes')
+    dashes = dog_response.fetch('dashes', [])
     logger.info "Found #{dashes.size} dashboards at Datadog"
 
     result = {}

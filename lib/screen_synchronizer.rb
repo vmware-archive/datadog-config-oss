@@ -4,7 +4,7 @@ class ScreenSynchronizer < Synchronizer
 
   def fetch_from_datadog
     dog_response = handle_datadog_errors { @dog.get_all_screenboards }
-    screens = dog_response.fetch('screenboards')
+    screens = dog_response.fetch('screenboards', [])
     logger.info "Found #{screens.size} screenboards at Datadog"
 
     screens.each_with_object({}) do |screen, screens|
