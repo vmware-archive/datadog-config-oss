@@ -8,7 +8,6 @@ We added tags, it's a breaking change because in order to use it, you'll have to
 
 Please start tracking branch `v1` if you do not want to change your config.yml. We recognize that most folks will be tracking `master`, and as such we will hold off on merging in version 2.x commits until Mar 24, 2016. 
 
-
 ### Updating to version 2.x
 [ ]  Add a key to your environment name called 'tags'  
 [ ]  Populate an array of tags in this key.   
