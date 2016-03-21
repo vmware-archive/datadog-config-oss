@@ -58,6 +58,10 @@ class DashboardSynchronizer < Synchronizer
     raise e
   end
 
+  def delete(id)
+    @dog.delete_dashboard(id)
+  end
+
   def unknown_dashboard_names(templates)
     unknown_datadog_object_names(local_object_names(templates))
   end

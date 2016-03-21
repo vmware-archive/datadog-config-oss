@@ -165,6 +165,12 @@ class Synchronizer
     str
   end
 
+  def delete_all
+    fetch_from_datadog.values.each do |id|
+      delete(id)
+    end
+  end
+
   protected
 
   def symbolize_keys(hash)

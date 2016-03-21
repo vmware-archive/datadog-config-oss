@@ -61,6 +61,11 @@ class AlertSynchronizer < Synchronizer
     end
   end
 
+  def delete(id)
+    @dog.delete_alert(id)
+  end
+
+
   def fetch_by_id(id)
     @dog.get_alert(id)
   end

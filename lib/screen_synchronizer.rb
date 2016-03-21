@@ -30,6 +30,10 @@ class ScreenSynchronizer < Synchronizer
     end
   end
 
+  def delete(id)
+    @dog.delete_screenboard(id)
+  end
+
   def unknown_screen_names(templates)
     unknown_datadog_object_names(local_object_names(templates))
   end

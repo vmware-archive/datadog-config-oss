@@ -72,6 +72,25 @@ def show_unknown_datadog_objects(env)
   puts ScreenSynchronizer.new(CONFIG_PATH, env).unknown_screen_names(SCREEN_TEMPLATES)
 end
 
+def delete_env(env)
+  puts "This will delete *all* alerts, dashboards, and screenboards for environment #{env}."
+  print "Are you sure? [y/N] "
+  choice = STDIN.gets.strip
+  return unless choice == "y"
+
+  puts
+  puts "Deleting All Alerts"
+  AlertSynchronizer.new(CONFIG_PATH, env).delete_all
+
+  puts
+  puts "Deleting All Dashboards"
+  DashboardSynchronizer.new(CONFIG_PATH, env).delete_all
+
+  puts
+  puts "Deleting All Screens"
+  ScreenSynchronizer.new(CONFIG_PATH, env).delete_all
+end
+
 def delete_unknown_datadog_objects(env)
   puts
   puts "Deleting Unknown Alerts"
@@ -204,6 +223,11 @@ def build_tasks_for(env_name)
 
       client = client_for_env(env_name)
       puts client.emit_point(*payload)
+    end
+
+    desc "Delete an environment's Datadog setup: alerts, dashboards, and screenboards"
+    task :delete_env do |t|
+      delete_env(env_name.to_s)
     end
   end
 end
