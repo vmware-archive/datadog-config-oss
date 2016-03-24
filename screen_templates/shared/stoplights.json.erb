@@ -2028,7 +2028,7 @@
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= environment %> start_deploy"
+            "q": "tags:deployment:<%= deployment %> started deploying."
           }
         ]
       },
@@ -2055,10 +2055,10 @@
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= environment %> start_deploy"
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= environment %> end_deploy"
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           }
         ]
       },

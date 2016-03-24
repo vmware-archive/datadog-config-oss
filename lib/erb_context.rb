@@ -4,7 +4,7 @@ class ErbContext < OpenStruct
   def default_events_json
     <<-JSON
       {
-        "q": "tags:deployment:#{environment} start_deploy OR tags:deployment:#{environment} end_deploy"
+        "q": "tags:deployment:#{environment} started deploying. OR tags:deployment:#{environment} finished deploying."
       }
     JSON
   end
