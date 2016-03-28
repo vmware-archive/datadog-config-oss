@@ -506,7 +506,7 @@
         "requests": [
           {
             "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
-            "aggregator": "min",
+            "aggregator": "avg",
             "conditional_formats": [
               {
                 "invert": false,
