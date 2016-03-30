@@ -1,0 +1,125 @@
+{
+  "read_only": false,
+  "description": "created by cfaccounts+datadog-<%= environment %>@pivotallabs.com",
+  "created": "2016-03-30T05:43:00.995918+00:00",
+  "title": "elasticsearch",
+  "modified": "2016-03-30T06:15:10.602576+00:00",
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "min:elasticsearch.cluster_status{job:elasticsearch_z1/1}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ]
+      },
+      "title": "Cluster status of Prod ( 2=green, 1=yellow,0=red)"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:elasticsearch.active_primary_shards{job:elasticsearch_z1/2}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "avg:elasticsearch.active_shards{job:elasticsearch_z1/2}",
+            "type": "line"
+          },
+          {
+            "q": "avg:elasticsearch.relocating_shards{job:elasticsearch_z1/2}",
+            "type": "line"
+          }
+        ]
+      },
+      "title": "Shard status of <%= environment %>"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:jvm.gc.collectors.old.count{job:elasticsearch_z1/3}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "avg:jvm.gc.collectors.young.count{job:elasticsearch_z1/3}",
+            "type": "line"
+          }
+        ]
+      },
+      "title": "Gc count of Job es_z1/3"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:jvm.gc.collectors.young.collection_time{job:elasticsearch_z1/3}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "avg:jvm.gc.collectors.old.collection_time{job:elasticsearch_z1/3}",
+            "type": "line"
+          }
+        ]
+      },
+      "title": "GC collection time of ES"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:elasticsearch.cache.filter.size{job:elasticsearch_z1/4}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ]
+      },
+      "title": "Avg of elasticsearch.cache.filter.size over job:elasticsearch_z1/4"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:jvm.mem.heap_used{job:elasticsearch_z1/3}",
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          },
+          {
+            "q": "avg:jvm.mem.heap_used{job:elasticsearch_z1/1}",
+            "type": "line"
+          },
+          {
+            "q": "avg:jvm.mem.heap_used{job:elasticsearch_z1/2}",
+            "type": "line"
+          }
+        ]
+      },
+      "title": "jvm heap used"
+    }
+  ],
+  "id": 113775
+}
