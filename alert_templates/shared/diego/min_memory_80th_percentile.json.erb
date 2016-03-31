@@ -3,7 +3,7 @@
   "notify_audit": true,
   "timeout_h": null,
   "silenced": false,
-  "query": "min(last_15m):top(top(avg:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}, 25, 'min', 'desc'), 1, 'min', 'asc') / 0.000001024 < 5500000000",
+  "query": "max(last_15m):top(top(avg:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>-diego} by {ip}, 20, 'min', 'desc'), 1, 'min', 'asc') / 0.000001024 < 4500000000",
   "message": "@pagerduty-datadog-cloudops-service @oncall-Diego_Production_Primary",
   "id": 394579,
   "name": "<%= environment %> Diego: min memory available too low",
@@ -11,7 +11,7 @@
   "creator": 12842,
   "notify_no_data": false,
   "renotify_interval": null,
-  "state": "OK",
+  "state": "No Data",
   "escalation_message": "",
   "silenced_timeout_ts": null
 }
