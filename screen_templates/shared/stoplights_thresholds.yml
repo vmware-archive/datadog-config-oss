@@ -171,24 +171,6 @@ prod:
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
   palette: white_on_green
   value: 30
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:deployment}
-  palette: white_on_red
-  value: 75
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:deployment}
-  palette: white_on_yellow
-  value: 65
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:deployment}
-  palette: white_on_green
-  value: 65
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:deployment}
-  palette: white_on_red
-  value: 85
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:deployment}
-  palette: white_on_yellow
-  value: 75
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:deployment}
-  palette: white_on_green
-  value: 75
 - query: avg:pws.circuit.loggregator{host:production}
   palette: white_on_red
   value: 1
@@ -414,24 +396,6 @@ prod:
 - query: avg:rabbitmq.smoke.status{*}
   palette: white_on_yellow
   value: 0.75
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:diego_deployment}
-  palette: white_on_red
-  value: 75
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:diego_deployment}
-  palette: white_on_yellow
-  value: 65
-- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:diego_deployment}
-  palette: white_on_green
-  value: 65
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:diego_deployment}
-  palette: white_on_red
-  value: 85
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:diego_deployment}
-  palette: white_on_yellow
-  value: 75
-- query: max:bosh.healthmonitor.system.disk.persistent.percent{deployment:diego_deployment}
-  palette: white_on_green
-  value: 75
 - query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800))
   palette: white_on_yellow
   value: 100
@@ -513,15 +477,6 @@ prod:
 - query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse}.rollup(avg,60))"
   palette: white_on_green
   value: 40
-- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
-  palette: white_on_red
-  value: 70
-- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
-  palette: white_on_yellow
-  value: 40
-- query: "(max:bosh.healthmonitor.system.cpu.user{deployment:concourse-prod-worker}.rollup(avg,60))"
-  palette: white_on_green
-  value: 40
 - query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse}
   palette: white_on_red
   value: 75
@@ -567,3 +522,21 @@ prod:
 - query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024"
   palette: white_on_green
   value: 7.2
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_green
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_green
+  value: 65
