@@ -12,7 +12,7 @@ class Hash
             item = item.sort_recursive
           end
         end
-        seed[key].sort! { |x,y| JSON.generate(x) <=> JSON.generate(y) }
+        seed[key].sort! { |x,y| x.to_s <=> y.to_s }
       end
       seed
     end
