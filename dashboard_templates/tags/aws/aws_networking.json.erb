@@ -1,8 +1,9 @@
 {
+  "read_only": false,
   "description": "created by galiu@pivotal.io",
   "created": "2016-01-15T01:38:56.980032+00:00",
   "title": "AWS Networking",
-  "modified": "2016-01-16T02:57:37.086553+00:00",
+  "modified": "2016-04-11T22:00:23.019586+00:00",
   "graphs": [
     {
       "definition": {
@@ -37,7 +38,8 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:cloudops_tools.ping_status{*} by {dest_port,dest_ip,cf_instance_addr,cf_instance_guid,cf_instance_index,application_name} * 1000",
+            "q": "avg:cloudops_tools.ping_status{dest_ip:4.2.2.1} by {cf_instance_addr,cf_instance_index} * 1000",
+            "aggregator": "avg",
             "conditional_formats": [
 
             ]
@@ -45,6 +47,21 @@
         ]
       },
       "title": "CloudOps Ping times to 4.2.2.1 in ms"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+            "q": "avg:cloudops_tools.ping_status{dest_ip:8.8.8.8} by {cf_instance_index,cf_instance_addr} * 1000",
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ]
+          }
+        ]
+      },
+      "title": "Avg of cloudops_tools.ping_status over dest_ip:8.8.8.8 by cf_instance_index,c..."
     }
   ],
   "template_variables": [
