@@ -17,7 +17,6 @@ mydeployment:
   tags:
   - aws
   - p-mysql
-  deployment: mydeployment-cf
 ```
 
 
