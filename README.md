@@ -4,10 +4,10 @@ Persist your DataDog configuration in versioned text files which can be edited l
 
 ## Notice! We're branching!
 
-We added tags, it's a breaking change because in order to use it, you'll have to specify the tags that you want associated with your deployment (see below for details). We're calling this `version 2.x`, and moving forward development will be incorporated into this branch. 
+~~We added tags, it's a breaking change because in order to use it, you'll have to specify the tags that you want associated with your deployment (see below for details). We're calling this `version 2.x`, and moving forward development will be incorporated into this branch.~~
+~~Please start tracking branch `v1` if you do not want to change your config.yml. We recognize that most folks will be tracking `master`, and as such we will hold off on merging in version 2.x commits until Mar 24, 2016.~~
 
-Please start tracking branch `v1` if you do not want to change your config.yml. We recognize that most folks will be tracking `master`, and as such we will hold off on merging in version 2.x commits until Mar 24, 2016. 
-
+**we've merged `v2.x.x` into `master`**
 
 ### Updating to version 2.x
 [ ]  Add a key to your environment name called 'tags'  
@@ -18,7 +18,6 @@ mydeployment:
   tags:
   - aws
   - p-mysql
-  deployment: mydeployment-cf
 ```
 
 

@@ -27,9 +27,11 @@ def deployments
 end
 
 def push(env)
-  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env))
-  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env))
-  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env))
+  config_for_env = YAML.load_file(CONFIG_PATH).fetch(env.to_s)
+
+  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env, DIR, config_for_env))
+  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env, DIR, config_for_env))
+  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env, DIR, config_for_env))
 
   DashboardSynchronizer.new(CONFIG_PATH, env).run(DASHBOARD_TEMPLATES)
   ScreenSynchronizer.new(CONFIG_PATH, env).run(SCREEN_TEMPLATES)
@@ -72,23 +74,42 @@ def show_unknown_datadog_objects(env)
   puts ScreenSynchronizer.new(CONFIG_PATH, env).unknown_screen_names(SCREEN_TEMPLATES)
 end
 
-def delete_env(env)
-  puts "This will delete *all* alerts, dashboards, and screenboards for environment #{env}."
-  print "Are you sure? [y/N] "
-  choice = STDIN.gets.strip
-  return unless choice == "y"
-
-  puts
-  puts "Deleting All Alerts"
+def delete_alerts(env)
+  puts "Deleting All Alerts..."
   AlertSynchronizer.new(CONFIG_PATH, env).delete_all
+end
 
-  puts
-  puts "Deleting All Dashboards"
+def delete_dashboards(env)
+  puts "Deleting All Dashboards..."
   DashboardSynchronizer.new(CONFIG_PATH, env).delete_all
+end
 
-  puts
-  puts "Deleting All Screens"
+def delete_screenboards(env)
+  puts "Deleting All Screenboards..."
   ScreenSynchronizer.new(CONFIG_PATH, env).delete_all
+end
+
+def delete_env(env, items)
+  case items
+  when "all"
+    puts "This will delete *all* alerts, dashboards, and screenboards for environment #{env}."
+    print "Are you sure? [y/N] "
+    choice = STDIN.gets.strip
+    return unless choice == "y"
+
+    delete_alerts(env)
+    delete_dashboards(env)
+    delete_screenboards(env)
+  when "alerts"
+    delete_alerts(env)
+  when "dashes"
+    delete_dashboards(env)
+  when "screens"
+    delete_screenboards(env)
+  else
+    puts "unknown option \"#{items}\""
+    puts "usable options: alerts, dashes, screens, all"
+  end
 end
 
 def delete_unknown_datadog_objects(env)
@@ -225,9 +246,11 @@ def build_tasks_for(env_name)
       puts client.emit_point(*payload)
     end
 
-    desc "Delete an environment's Datadog setup: alerts, dashboards, and screenboards"
-    task :delete_env do |t|
-      delete_env(env_name.to_s)
+    desc "Delete an environment's Datadog setup: item_options => [alerts, dashes, screens, all (default)]"
+    task :delete_env, :items do |t, args|
+      items = args[:items] || "all"
+
+      delete_env(env_name.to_s, items)
     end
   end
 end
