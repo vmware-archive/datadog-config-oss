@@ -2,6 +2,6 @@
   "notify_no_data": false,
   "name": "<%= environment %> Diego: Extended downtime for BOSH Agent reporting as unhealthy",
   "silenced": false,
-  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego} by {job,index} < 1",
+  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>} by {job,index} < 1",
   "message": "For an extended period of time, one or more of the BOSH agents in diego deployment are reporting either that the VM that they are running on or the job that they are running is unhealthy. <%= cloudops_pagerduty %>. \nEscalation Path: DIEGO Team."
 }

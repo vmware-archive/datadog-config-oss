@@ -561,7 +561,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -569,7 +569,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -584,7 +584,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cell_z2} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z2} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -592,7 +592,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -607,7 +607,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -615,7 +615,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -630,7 +630,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:brain_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -638,7 +638,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -653,7 +653,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -661,7 +661,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -676,7 +676,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:cc_bridge_z2} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z2} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -684,7 +684,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -699,7 +699,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -707,7 +707,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -722,7 +722,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:route_emitter_z2} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:route_emitter_z2} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -730,7 +730,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -745,7 +745,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -753,7 +753,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -768,7 +768,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:database_z2} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -776,7 +776,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -791,7 +791,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -799,7 +799,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },
@@ -814,7 +814,7 @@
             "change_type": "absolute",
             "order_dir": "desc",
             "compare_to": "hour_before",
-            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego,job:access_z1} by {index}",
+            "q": "min:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1} by {index}",
             "increase_good": true,
             "order_by": "change",
             "type": "line"
@@ -822,7 +822,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ]
       },

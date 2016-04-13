@@ -3,7 +3,7 @@
   "notify_audit": true,
   "timeout_h": null,
   "silenced": false,
-  "query": "max(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>-diego} by {index,job} < 1",
+  "query": "max(last_5m):avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>} by {index,job} < 1",
   "message": "One or more of the BOSH agents in Diego deployment are reporting either that the VM that they are running on or the job that they are running is unhealthy.  @pagerduty-datadog-cloudops-non-critical. \nEscalation Path: DIEGO Team.",
   "id": 164974,
   "name": "Prod Diego: BOSH Agent reporting as unhealthy",

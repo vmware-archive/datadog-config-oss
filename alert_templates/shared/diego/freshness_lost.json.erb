@@ -3,7 +3,7 @@
   "notify_audit": false,
   "timeout_h": 1,
   "silenced": false,
-  "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>-diego} < 1",
+  "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>} < 1",
   "message": "Cf-apps is used to translate cloud controller wishes into Diego implementation. Without freshness, changes will not propagate through the system. \n\n{{#is_alert}}\n  Freshness lost. \n  Please escalate to Diego On-call.\n  Potential things to look at are: \n{{/is_alert}} \n\n{{#is_recovery}}\n  Recovered. \n  Please follow up on this, this should not triggered in the first place. \n{{/is_recovery}} \n\n{{#is_no_data}}\n  Metric not available. \n  Please follow up on this during normal business hours, as this should not happen. \n{{/is_no_data}} @pagerduty-datadog-cloudops-<%= environment %>",
   "id": 297884,
   "name": "Cf-apps freshness lost",

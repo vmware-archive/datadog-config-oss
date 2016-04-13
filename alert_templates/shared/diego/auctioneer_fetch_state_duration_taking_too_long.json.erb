@@ -3,7 +3,7 @@
   "notify_audit": false,
   "timeout_h": 0,
   "silenced": false,
-  "query": "max(last_1m):max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= deployment %>-diego} > 10000000000",
+  "query": "max(last_1m):max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>} > 10000000000",
   "message": "{{#is_alert}}\n\n## App stage requests for Diego may be failing.\n\n# Actions\n\n## Who to escalate to: \n\n\\@oncall-Diego_Production_Primary  \n\n## Statuspage update:\nSet \"Application Execution Pool\" to degraded in [statuspage.io](https://manage.statuspage.io/pages/w03xnc15g1nv#)\n \n## How to confirm a false positive:\n\n## How to confirm a true positive:  \n\n- NoCompatibleCell errors in logsearch. \n- Logs indicating [\"use of closed network connection\" error](https://stackoverflow.com/questions/31385487/golang-http-having-use-of-closed-network-connection-error)\n\n\n{{/is_alert}}\n\n## Background:\nWhen Diego wants to add more apps, the converger will send a request to the auctioneer to spin up additional Long Running Processes(LRPs). \n\nThe auctioneer then starts an auction where Cells will bid on hosting the LRP. The AuctioneerFetchCellStateDuration indicates how long an auction must run before [all cells report](https://github.com/cloudfoundry-incubator/auction/blob/40cdefc19ec38a38e8ad1e8b3de476d7ab9a24f9/auctionrunner/zone_builder.go#L11).",
   "id": 315494,
   "name": "Auctioneer fetch state duration taking too long",

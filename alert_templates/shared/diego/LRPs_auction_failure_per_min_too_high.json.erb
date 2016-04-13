@@ -1,6 +1,6 @@
 {
   "silenced": false,
-  "query": "min(last_15m):per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>-diego}) > 1",
+  "query": "min(last_15m):per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>}) > 1",
   "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
   "name": "<%= environment %> Diego: LRP Auction Failure per min is too high",
   "no_data_timeframe": 30,

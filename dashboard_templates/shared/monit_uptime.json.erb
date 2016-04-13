@@ -5,7 +5,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -15,7 +15,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -29,7 +29,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:database_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -39,7 +39,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -53,7 +53,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:database_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -63,7 +63,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -77,7 +77,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:database_z3} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:database_z3} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -87,7 +87,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -101,7 +101,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:brain_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:brain_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -111,7 +111,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -125,7 +125,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:brain_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:brain_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -135,7 +135,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -149,7 +149,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cc_bridge_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:cc_bridge_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -159,7 +159,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -173,7 +173,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cc_bridge_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:cc_bridge_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -183,7 +183,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -197,7 +197,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:access_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:access_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -207,7 +207,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -221,7 +221,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:access_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:access_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -231,7 +231,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -245,7 +245,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cell_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:cell_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -255,7 +255,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -269,7 +269,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:cell_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:cell_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -279,7 +279,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -293,7 +293,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:route_emitter_z1} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:route_emitter_z1} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -303,7 +303,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
@@ -317,7 +317,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= deployment %>-diego,job:route_emitter_z2} by {job,index} / 3600",
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{deployment:<%= diego_deployment %>,job:route_emitter_z2} by {job,index} / 3600",
             "style": {
               "width": "normal",
               "palette": "dog_classic"
@@ -327,7 +327,7 @@
         ],
         "events": [
           {
-            "q": "begin update deployment <%= deployment %>-diego"
+            "q": "begin update deployment <%= diego_deployment %>"
           }
         ],
         "yaxis": {
