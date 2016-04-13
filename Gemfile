@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "dogapi", "~> 1.14.0"
+gem "dogapi", "> 1.14.0"
 gem "thread"
 gem "rake"
 gem "awesome_print"
