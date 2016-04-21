@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "2.2.4"
+
 gem "dogapi", "> 1.14.0"
 gem "thread"
 gem "rake"
