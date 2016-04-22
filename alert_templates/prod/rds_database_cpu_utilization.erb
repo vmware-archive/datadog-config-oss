@@ -1,0 +1,17 @@
+{
+  "event_object": "9f01bcede1912fd2e8fd2fe3d46529ce",
+  "notify_audit": false,
+  "timeout_h": 0,
+  "silenced": false,
+  "query": "avg(last_5m):avg:aws.rds.cpuutilization{!host:bosh-replica,!host:ccdb-replica1,!host:uaadb-replica} by {host} > 75",
+  "message": "## Description:\nHigh CPU utilization for the last 5 minutes on \nHost: {{host.dbname}} \nDB: {{host.dbname}} \n\n## Escalation Path:\nDepends on the DB. \n\n## Possible Causes:\nTraffic has increased substantially\nSlow queries overwhelming database\nRDS Migrations\n\n## Potential Solutions:\nIncrease RDS instance type (This WILL cause downtime of about 30 seconds)\nIn extreme cases we have tracked down a user who posts consistently long running queries and suspended their apps.  Do this with extreme caution.\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-cloudops-service",
+  "id": 584648,
+  "name": "High database CPU utilization on {{host.name}}",
+  "no_data_timeframe": 2,
+  "creator": 160911,
+  "notify_no_data": false,
+  "renotify_interval": 0,
+  "state": "OK",
+  "escalation_message": null,
+  "silenced_timeout_ts": null
+}
