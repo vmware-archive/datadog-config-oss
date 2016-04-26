@@ -7,7 +7,6 @@
   "id": 128681, 
   "notify_no_data": false, 
   "renotify_interval": null, 
-  "state": "OK", 
   "escalation_message": null, 
   "query": "change(last_30m):max:bosh.healthmonitor.system.disk.ephemeral.percent{*} by {deployment,job,index} > 10", 
   "message": "## Description:\n \tA deploy is running.(This alert triggers when machines are compiling stuff) <%= cloudops_non_critical_pagerduty %>. \n\n## Escalation Path:\n  It depends on the job \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
