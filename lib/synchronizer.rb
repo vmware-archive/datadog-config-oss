@@ -134,7 +134,7 @@ class Synchronizer
       @logger.info "Failed to locate #{@environment} object (#{id}), skipping update"
       return
     end
-
+    hash_cleanup(obj)
     template = convert_json_to_template(template_output_file, obj.sort_recursive)
 
     File.open(template_output_file, 'w') { |file| file.write(template) }
@@ -210,5 +210,10 @@ class Synchronizer
     pool.process do
       handle_datadog_errors { yield }
     end
+  end
+
+  def hash_cleanup(hash)
+    useless_keys= %W(id created creator modified)
+    useless_keys.each { |key| hash.delete(key)}
   end
 end
