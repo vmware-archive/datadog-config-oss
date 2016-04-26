@@ -176,18 +176,18 @@ describe AlertSynchronizer do
     it "makes an erb template with deployment and bosh-deployment replaced by erb, and threshold values replaced with the threshold_value helper" do
       expected_template = <<JSON_ERB_TEMPLATE.strip
 {
+  "creator": 35324,
+  "escalation_message": "",
   "event_object": 54321,
-  "notify_audit": true,
-  "silenced": false,
-  "query": "avg(last_10m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %> by {job,index} < 1",
-  "message": "A job in Bosh is being reported as unhealthy.",
   "id": 53395,
+  "message": "A job in Bosh is being reported as unhealthy.",
   "name": "<%= environment %> Bosh: System health",
   "no_data_timeframe": false,
-  "creator": 35324,
+  "notify_audit": true,
   "notify_no_data": true,
-  "state": "OK",
-  "escalation_message": ""
+  "query": "avg(last_10m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %> by {job,index} < 1",
+  "silenced": false,
+  "state": "OK"
 }
 JSON_ERB_TEMPLATE
       expect(written_files[:template]).to eq(expected_template)

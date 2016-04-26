@@ -219,7 +219,6 @@ describe DashboardSynchronizer do
     it "makes an erb template with deployment and bosh-deployment replaced by erb, and threshold values replaced with the threshold_value helper" do
       expect(written_files[:template]).to eq(<<JSON_ERB_TEMPLATE.strip)
 {
-  "title": "<%= deployment %> Health",
   "description": "some description",
   "graphs": [
     {
@@ -240,7 +239,8 @@ describe DashboardSynchronizer do
         ]
       }
     }
-  ]
+  ],
+  "title": "<%= deployment %> Health"
 }
 JSON_ERB_TEMPLATE
     end

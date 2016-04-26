@@ -4,6 +4,7 @@ require "erb_context"
 require "erb"
 require "thread/pool"
 require "logger"
+require "json_organizer"
 
 class Synchronizer
   attr_reader :logger
@@ -127,14 +128,14 @@ class Synchronizer
   end
 
   def get_json_template(id, template_output_file='/tmp/template.json.erb')
-    code, board = fetch_by_id(id)
+    code, obj = fetch_by_id(id)
 
     if code != "200"
-      @logger.info "Failed to locate #{@environment} board (#{id}), skipping update"
+      @logger.info "Failed to locate #{@environment} object (#{id}), skipping update"
       return
     end
 
-    template = convert_json_to_template(template_output_file, board)
+    template = convert_json_to_template(template_output_file, obj.sort_recursive)
 
     File.open(template_output_file, 'w') { |file| file.write(template) }
     logger.info "template .json.erb written to #{template_output_file}"
