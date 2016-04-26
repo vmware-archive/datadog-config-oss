@@ -141,11 +141,9 @@ class Synchronizer
     logger.info "template .json.erb written to #{template_output_file}"
   end
 
-  def convert_json_to_template(template_output_file, board)
-    JSON.pretty_generate(board).
-      gsub(@env.fetch('bosh_deployment'), "<%= bosh_deployment %>").
-      gsub(@env.fetch('deployment'), "<%= deployment %>").
-      gsub(@environment, "<%= environment %>")
+  def convert_json_to_template(template_output_file, obj)
+    derender(JSON.pretty_generate(obj) ).
+      gsub(@environment, "<%= environment %>") # this is ugly and not safe
   end
 
   def fetch_by_id(id)
