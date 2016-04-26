@@ -11,13 +11,9 @@ cf_deployment:
   router_elb_name: "cf-router"
   domain_url: "<your cf domain url>"
 
-  backend_pagerduty: "@pagerduty-backend"
-  bosh_pagerduty: "@pagerduty-bosh"
-  services_pagerduty: "@pagerduty-services"
   cloudops_pagerduty: "@pagerduty-cloudops"
   monitoringAndMetrics_pagerduty: "@pagerduty-monitoringAndMetrics"
 
-  backend_email: "@<your backend email>"
   cloudops_email: "@<your cloudops email>"
   monitoringAndMetrics_email: "@<your monitoring and metrics email>"
 

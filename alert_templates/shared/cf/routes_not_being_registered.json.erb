@@ -1,7 +1,7 @@
 {
   "notify_no_data": false, 
   "query": "max(last_5m):avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= deployment %>} by {ip}  > 30000", 
-  "message": "## Description:\n It's been at least 30 seconds since a router received a \"router.register\" message from an app. <%= backend_pagerduty %>.  \n\n## Escalation Path:\n  DIEGO Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
+  "message": "## Description:\n It's been at least 30 seconds since a router received a \"router.register\" message from an app. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  DIEGO Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
   "name": "<%= environment %> CF: routes not being registered", 
   "silenced": false
 }
