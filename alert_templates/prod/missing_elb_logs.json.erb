@@ -3,7 +3,6 @@
   "timeout_h": 0,
   "query": "avg(last_4h):rate(avg:cloudops_tools.logsearch.elblog.messages_in_1d{*}) < 10",
   "message": "ELB logs are missing in Logstash. Please check logstash for more information\n <%= cloudops_non_critical_pagerduty %>",
-  "id": 217928,
   "name": "Missing ELB logs from logstash",
   "no_data_timeframe": 480,
   "notify_no_data": true,

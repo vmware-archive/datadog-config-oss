@@ -3,7 +3,6 @@
   "timeout_h": null,
   "query": "max(last_5m):sum:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>} > 1000",
   "message": "Router Dial Error data has not been reported for the <%= domain_url %> domain for the last 10 minutes, investigate and report findings in https://www.pivotaltracker.com/story/show/86444868 <%= cloudops_non_critical_pagerduty %>",
-  "id": 123342,
   "name": "CF Dial Error Data is Missing",
   "no_data_timeframe": 10,
   "notify_no_data": true,

@@ -3,7 +3,6 @@
   "timeout_h": 0,
   "query": "avg(last_1m):avg:bosh.healthmonitor.system.mem.percent{deployment:cf-elk-3az,job:queue_z1} > 90",
   "message": "solutions: 1. please check log_parser or 2. redirect traffic to a new queue node.  @pagerduty-datadog-cloudops-non-critical",
-  "id": 512359,
   "name": "ELK queue node memory exceeds 90%.",
   "no_data_timeframe": 5,
   "notify_no_data": false,

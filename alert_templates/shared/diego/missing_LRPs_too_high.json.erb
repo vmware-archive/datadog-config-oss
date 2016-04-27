@@ -3,7 +3,6 @@
   "timeout_h": null,
   "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>} > 70",
   "message": "<%= cloudops_pagerduty %>",
-  "id": 394575,
   "name": "<%= environment %> Diego: Missing LRPs are too high",
   "no_data_timeframe": 5,
   "notify_no_data": true,
