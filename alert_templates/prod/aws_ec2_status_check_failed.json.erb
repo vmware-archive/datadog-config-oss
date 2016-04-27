@@ -1,7 +1,6 @@
 {
   "notify_audit": false,
   "timeout_h": 0,
-  "silenced": false,
   "query": "max(last_1h):max:aws.ec2.status_check_failed{*} by {deployment,index,instance_id,job} > 1",
   "message": "<%= cloudops_non_critical_pagerduty %>",
   "id": 161186,

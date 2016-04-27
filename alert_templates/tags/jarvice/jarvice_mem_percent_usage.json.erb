@@ -2,12 +2,10 @@
   "notify_audit": false,
   "timeout_h": null,
   "no_data_timeframe": 2,
-  "silenced": false,
   "notify_no_data": false,
   "renotify_interval": null,
   "escalation_message": null,
   "query": "avg(last_5m):avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>} by {job,index} > 90",
   "message": "## Description:\n <%= jarvice_pagerduty %>  \n\n## Escalation Path:\n  Jarvice Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
-  "silenced_timeout_ts": null,
   "name": "<%= environment %> Jarvice: High memory utilization"
 }

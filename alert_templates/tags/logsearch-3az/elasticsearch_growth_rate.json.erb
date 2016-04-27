@@ -1,6 +1,5 @@
 {
   "name": "<%= environment %> Logsearch: cf_logsearch logstash No Syslog Logs for 15 min", 
-  "silenced": false, 
   "no_data_timeframe": 20, 
   "notify_no_data": false, 
   "query": "max(last_30m):min:elasticsearch.docs.incomingRatePerSecond{deployment:cf-elk-3az} < 1", 

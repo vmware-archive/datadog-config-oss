@@ -1,7 +1,6 @@
 {
   "notify_audit": true,
   "timeout_h": null,
-  "silenced": false,
   "query": "max(last_15m):top(top(avg:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}, 10, 'min', 'desc'), 1, 'min', 'asc') / 0.000001024 < 4500000000",
   "message": "@pagerduty-datadog-cloudops-service @oncall-Diego_Production_Primary",
   "id": 394579,

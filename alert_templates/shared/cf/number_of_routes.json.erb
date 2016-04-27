@@ -1,6 +1,5 @@
 {
   "name": "<%= environment %> CF: Number of routes in the router's routing table is too low", 
-  "silenced": false, 
   "no_data_timeframe": 10, 
   "notify_no_data": true, 
   "query": "avg(last_10m):min:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} < <%= params.fetch('expected_routes') %>", 

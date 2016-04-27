@@ -3,13 +3,11 @@
   "timeout_h": null, 
   "creator": 12842, 
   "no_data_timeframe": 30, 
-  "silenced": false, 
   "id": 14452, 
   "notify_no_data": true, 
   "renotify_interval": null, 
   "escalation_message": "", 
   "query": "avg(last_1h):avg:aws.ec2.cpuutilization{name:<%= micro_deployment %>} > 80", 
   "message": "## Description:\n Micro has been using more than 80% of its available compute units on average over the last 30 minutes. <%= cloudops_non_critical_pagerduty %>.  \n\n## Escalation Path:\n  CloudOps \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
-  "silenced_timeout_ts": null, 
   "name": "<%= environment %> Micro: High usage of available EC2 Compute Units"
 }

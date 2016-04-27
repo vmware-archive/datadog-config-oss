@@ -1,6 +1,5 @@
 {
   "name": "<%= environment %> Bosh: Extended downtime for BOSH Agent reporting as unhealthy", 
-  "silenced": false, 
   "no_data_timeframe": 60, 
   "notify_no_data": false, 
   "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>} by {job,index} < 1", 

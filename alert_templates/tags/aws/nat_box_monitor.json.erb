@@ -3,13 +3,11 @@
   "timeout_h": 1, 
   "creator": 20852, 
   "no_data_timeframe": 60, 
-  "silenced": false, 
   "id": 81184, 
   "notify_no_data": true, 
   "renotify_interval": 0, 
   "escalation_message": null, 
   "query": "max(last_30m):avg:natbox.pingout.health{*} < 1", 
   "message": "## Description:\n nat-box unhealthy <%= cloudops_pagerduty %> \n\n## Escalation Path:\n  CloudOps Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
-  "silenced_timeout_ts": null, 
   "name": "nat-box-monitor"
 }

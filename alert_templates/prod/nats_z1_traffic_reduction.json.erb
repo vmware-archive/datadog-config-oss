@@ -1,7 +1,6 @@
 {
   "notify_audit": false,
   "timeout_h": 0,
-  "silenced": false,
   "query": "pct_change(avg(last_30m),last_4h):avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1} < -70",
   "message": "NATS in Zone1 has 70% traffic reduction in the last 5min as compared to last 4 hour average.\n @pagerduty-datadog-cloudops-non-critical",
   "id": 242539,
