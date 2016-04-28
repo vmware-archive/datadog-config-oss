@@ -62,7 +62,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
+                        "q": "rate(datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
                     }
                 ]
             },
@@ -74,7 +74,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
+                        "q": "datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
                     }
                 ]
             },
@@ -144,7 +144,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= diego_deployment %>})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>}))"
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= diego_deployment %>})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= deployment %>}))"
                     }
                 ],
                 "events": [],
@@ -157,7 +157,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * ((ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= diego_deployment %>})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>})))) / (ewma_10((rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>}))) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= diego_deployment %>})))"
+                        "q": "100 * ((ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= diego_deployment %>})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= deployment %>})))) / (ewma_10((rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>}))) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= diego_deployment %>})))"
                     }
                 ],
                 "events": []
@@ -168,7 +168,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} )))",
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} )))",
                         "type": "line"
                     }
                 ],
@@ -182,7 +182,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} ))) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) )"
+                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} ))) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= diego_deployment %>})) )"
                     }
                 ],
                 "events": []
