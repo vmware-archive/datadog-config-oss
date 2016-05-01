@@ -331,6 +331,24 @@
             },
             "events":[],
             "title":"<%= environment %>: HttpUnmatched Start and Stop Metron-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "avg:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= deployment %>}",
+                        "type": "line",
+                        "aggregator": "avg"
+                    },
+                    {
+                        "q": "avg:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= deployment %>}",
+                        "type": "line"
+                    }
+                  ]
+            },
+            "title":"<%= environment %>: Loggregator Open Connections"
+
         }
     ],
     "title": "<%= environment %> Loggregator Information"
