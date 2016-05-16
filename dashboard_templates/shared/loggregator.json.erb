@@ -239,18 +239,36 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "avg:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= deployment %>}",
+                        "q": "sum:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= deployment %>}",
                         "type": "line",
                         "aggregator": "avg"
                     },
                     {
-                        "q": "avg:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= deployment %>}",
+                        "q": "sum:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= deployment %>}",
                         "type": "line"
                     }
                   ]
             },
             "title":"<%= environment %>: Loggregator Open File Descriptors"
 
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "avg:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= deployment %>} by {job,ip}",
+                        "type": "line",
+                        "conditional_formats": [],
+                        "aggregator": "avg"
+                    },
+                    {
+                        "q": "avg:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= deployment %>} by {job,ip}",
+                        "type": "line"
+                    }
+                ]
+            },
+            "title":"<%= environment %>: Loggregator Open File Descriptors Per VM"
         }
     ],
     "title": "<%= environment %> Loggregator Information"
