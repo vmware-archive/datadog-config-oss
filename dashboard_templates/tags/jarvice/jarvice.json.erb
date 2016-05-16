@@ -33,30 +33,6 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>, job:ingestor} by {index}",
-            "stacked": false
-          }
-        ]
-      },
-      "title": "<%= environment %>: Ingestor CPU (%)"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:ingestor} by {index}",
-            "type": "line"
-          }
-        ]
-      },
-      "title": "<%= environment %>: Ingestor Memory (%)"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
             "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>, job:kafka} by {index}",
             "stacked": false
           }
@@ -102,30 +78,6 @@
       "title": "<%= environment %>: <%= metric %> IMDS Memory (%)"
     },
 <% end %>
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= jarvice_deployment %>,job:proxy} by {index}",
-            "stacked": false
-          }
-        ]
-      },
-      "title": "<%= environment %>: Proxy CPU (%)"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= jarvice_deployment %>, job:proxy} by {index}",
-            "type": "line"
-          }
-        ]
-      },
-      "title": "<%= environment %>: Proxy Memory (%)"
-    },
     {
       "definition": {
         "viz": "timeseries",
