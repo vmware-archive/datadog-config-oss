@@ -1,7 +1,3 @@
-<%
-  cf_deployment = "#{deployment}-cf"
-  diego_deployment = "#{deployment}-diego"
-%>
 {
   "title": "<%= environment %> Diego Health",
   "description": "<%= environment %> Diego Health",
@@ -37,13 +33,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -76,13 +72,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -107,13 +103,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -138,13 +134,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -169,13 +165,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -200,13 +196,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -232,13 +228,13 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -264,13 +260,13 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -296,13 +292,13 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -328,13 +324,13 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -360,12 +356,12 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           }, {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -391,13 +387,13 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -423,12 +419,12 @@
            "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> started deploying."
+           "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-           "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+           "q": "tags:deployment:<%= deployment %> finished deploying."
           }, {
-           "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+           "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -453,13 +449,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -484,13 +480,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -516,13 +512,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -545,13 +541,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -581,13 +577,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -612,13 +608,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -655,13 +651,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -686,13 +682,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -730,13 +726,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -776,13 +772,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -808,13 +804,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -838,13 +834,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -871,13 +867,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -904,13 +900,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -940,13 +936,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ],
         "markers": [
@@ -986,13 +982,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1022,13 +1018,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1058,13 +1054,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ],
         "markers": [
@@ -1104,13 +1100,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ],
         "markers": [
@@ -1150,13 +1146,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ],
         "markers": [
@@ -1196,13 +1192,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ],
         "markers": [
@@ -1237,13 +1233,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1271,13 +1267,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1303,13 +1299,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1335,13 +1331,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1367,13 +1363,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1401,13 +1397,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1435,13 +1431,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1467,13 +1463,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1499,13 +1495,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
@@ -1542,13 +1538,13 @@
             "q": "tags:deployment:<%= diego_deployment %> failed deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= cf_deployment %> failed deploying."
+            "q": "tags:deployment:<%= deployment %> failed deploying."
           }
         ]
       }
