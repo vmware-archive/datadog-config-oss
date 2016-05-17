@@ -6,7 +6,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:aws.elb.request_count{deployment:<%= deployment %>} by {availability-zone}"
+            "q": "sum:aws.elb.request_count{deployment:<%= metron_agent_deployment %>} by {availability-zone}"
           }
         ],
         "events": [
@@ -21,7 +21,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [
@@ -37,7 +37,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [
@@ -53,7 +53,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
             "stacked": false
           }
         ],

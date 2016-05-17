@@ -1,5 +1,5 @@
 {
-  "query": "avg(last_15m):max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n > 20",
+  "query": "avg(last_15m):max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n > 20",
   "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>\nEscalation Path: DIEGO Team",
   "name": "<%= environment %> Diego: Convergence LRP duration too high.",
   "no_data_timeframe": 30,

@@ -2628,7 +2628,7 @@
     {
       "metric": "",
       "custom_unit": "/5m",
-      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>})",
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= metron_agent_diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -2686,7 +2686,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>}",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -2725,7 +2725,7 @@
     {
       "metric": "",
       "custom_unit": "/m",
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})",
+      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -2781,7 +2781,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})",
+            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -2820,7 +2820,7 @@
     {
       "metric": "",
       "custom_unit": "/s",
-      "query": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= metron_agent_deployment %>})",
       "text_size": "auto",
       "title_size": 20,
       "title": true,
@@ -2846,7 +2846,7 @@
           "palette": "green_on_white",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})', 'green_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -2854,7 +2854,7 @@
           "palette": "red_on_white",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})', 'red_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -2862,7 +2862,7 @@
           "palette": "yellow_on_white",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})', 'yellow_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -2876,7 +2876,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= metron_agent_deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -2915,7 +2915,7 @@
     {
       "metric": "",
       "custom_unit": "/s",
-      "query": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= metron_agent_deployment %>})",
       "text_size": "auto",
       "title_size": 20,
       "title": true,
@@ -2941,7 +2941,7 @@
           "palette": "green_on_white",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})', 'green_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -2949,7 +2949,7 @@
           "palette": "red_on_white",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})', 'red_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -2957,7 +2957,7 @@
           "palette": "yellow_on_white",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})', 'yellow_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -2971,7 +2971,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= metron_agent_deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -3190,7 +3190,7 @@
     {
       "metric": "",
       "custom_unit": "s",
-      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
+      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3216,7 +3216,7 @@
           "palette": "white_on_green",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3224,7 +3224,7 @@
           "palette": "white_on_red",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3232,7 +3232,7 @@
           "palette": "white_on_yellow",
           "comparator": ">=",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3246,7 +3246,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -3285,7 +3285,7 @@
     {
       "metric": "",
       "custom_unit": "s",
-      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3311,7 +3311,7 @@
           "palette": "white_on_green",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3319,7 +3319,7 @@
           "palette": "white_on_red",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3327,7 +3327,7 @@
           "palette": "white_on_yellow",
           "comparator": ">=",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3341,7 +3341,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+            "q": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -3380,7 +3380,7 @@
     {
       "metric": "",
       "custom_unit": "s",
-      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3406,7 +3406,7 @@
           "palette": "white_on_green",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3414,7 +3414,7 @@
           "palette": "white_on_red",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3422,7 +3422,7 @@
           "palette": "white_on_yellow",
           "comparator": ">=",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3436,7 +3436,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -3475,7 +3475,7 @@
     {
       "metric": "",
       "custom_unit": "s",
-      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3501,7 +3501,7 @@
           "palette": "white_on_green",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3509,7 +3509,7 @@
           "palette": "white_on_red",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3517,7 +3517,7 @@
           "palette": "white_on_yellow",
           "comparator": ">=",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3531,7 +3531,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -3570,7 +3570,7 @@
     {
       "metric": "",
       "custom_unit": "s",
-      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3596,7 +3596,7 @@
           "palette": "white_on_green",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3604,7 +3604,7 @@
           "palette": "white_on_red",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3612,7 +3612,7 @@
           "palette": "white_on_yellow",
           "comparator": ">=",
           "invert": false,
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>,
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3626,7 +3626,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -3665,7 +3665,7 @@
     {
       "metric": "",
       "custom_unit": null,
-      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
+      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3693,7 +3693,7 @@
           "palette": "white_on_green",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3701,7 +3701,7 @@
           "palette": "white_on_red",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3709,7 +3709,7 @@
           "palette": "white_on_yellow",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3759,7 +3759,7 @@
     {
       "metric": "",
       "custom_unit": null,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024",
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -3785,7 +3785,7 @@
           "palette": "white_on_green",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_green') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3793,7 +3793,7 @@
           "palette": "white_on_red",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_red') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -3801,7 +3801,7 @@
           "palette": "white_on_yellow",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_yellow') %>,
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -3815,7 +3815,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024",
+            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -4012,7 +4012,7 @@
     {
       "metric": "",
       "custom_unit": null,
-      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>} / 1000000000",
+      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -4068,7 +4068,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>} / 1000000000",
+            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -4107,7 +4107,7 @@
     {
       "metric": "",
       "height": 12,
-      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -4160,7 +4160,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -4205,7 +4205,7 @@
     {
       "metric": "",
       "height": 12,
-      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -4258,7 +4258,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -5121,7 +5121,7 @@
     {
       "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "custom_unit": "/5m",
-      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -5177,7 +5177,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -5216,7 +5216,7 @@
     {
       "metric": "datadog.nozzle.bbs.ETCDWatchers",
       "custom_unit": null,
-      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -5272,7 +5272,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -6256,7 +6256,7 @@
     {
       "metric": "system.load.1",
       "custom_unit": "/Hr",
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})",
+      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})",
       "text_size": "auto",
       "title_size": 13,
       "title": true,
@@ -6296,7 +6296,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})",
+            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -6340,7 +6340,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events": [
@@ -6367,7 +6367,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024"
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024"
           }
         ],
         "events": [
@@ -6409,15 +6409,15 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -6445,16 +6445,16 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events": [
@@ -6948,7 +6948,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ]
@@ -7033,7 +7033,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
             "type": "area",
             "stacked": false
           }
@@ -7097,7 +7097,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [
@@ -7128,7 +7128,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>}",
             "aggregator": "max",
             "conditional_formats": [
               {
@@ -7170,7 +7170,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}",
             "aggregator": "max",
             "conditional_formats": [
               {

@@ -7,19 +7,19 @@
       "definition":{
         "requests":[
           {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksRunning{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksRunning{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -49,16 +49,16 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.LRPsClaimed{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsClaimed{deployment: <%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -88,7 +88,7 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= diego_deployment %>}",
+            "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -119,7 +119,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
             "type": "bars"
           }
         ],
@@ -150,7 +150,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingDisk{deployment:<%= diego_deployment %>} by {ip}) / 0.000001048576",
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingDisk{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001048576",
             "type": "bars"
           }
         ],
@@ -181,7 +181,7 @@
       "definition":{
         "requests":[
           {
-            "q": "sum:datadog.nozzle.rep.UnhealthyCell{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "sum:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>} by {job,index}",
             "type": "bars"
           }
         ],
@@ -213,7 +213,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.BBSMasterElected{deployment:<%= diego_deployment %>}",
+            "q": "datadog.nozzle.bbs.BBSMasterElected{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "bars"
           }
         ],
@@ -245,7 +245,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.MigrationDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.bbs.MigrationDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "bars"
           }
         ],
@@ -277,7 +277,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.EncryptionDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.bbs.EncryptionDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "bars"
           }
         ],
@@ -309,7 +309,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "datadog.nozzle.auctioneer.RequestCount{deployment:<%= diego_deployment %>}",
+            "q": "datadog.nozzle.auctioneer.RequestCount{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -341,7 +341,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:datadog.nozzle.auctioneer.RequestLatency{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.auctioneer.RequestLatency{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -372,7 +372,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.RequestCount{deployment:<%= diego_deployment %>}",
+            "q": "datadog.nozzle.bbs.RequestCount{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -404,7 +404,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -434,7 +434,7 @@
       "definition":{
         "requests":[
           {
-            "q": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}",
+            "q": "sum:diego.canary.app.instance{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -465,7 +465,7 @@
       "definition":{
         "requests":[
           {
-            "q": "max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+            "q": "max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -496,7 +496,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -527,7 +527,7 @@
       "title": "NSYNC: Received Desired Apps (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(datadog.nozzle.nsync_listener.LRPsDesired{deployment:<%= diego_deployment %>})" }
+          { "q": "per_minute(datadog.nozzle.nsync_listener.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -557,11 +557,11 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.stager.StagingRequestSucceededDuration{deployment: <%= diego_deployment %>} / 1000000000",
+            "q": "max:datadog.nozzle.stager.StagingRequestSucceededDuration{deployment: <%= metron_agent_diego_deployment %>} / 1000000000",
             "type": "line"
           },
           {
-            "q": "max:datadog.nozzle.stager.StagingRequestFailedDuration{deployment: <%= diego_deployment %>} / 1000000000",
+            "q": "max:datadog.nozzle.stager.StagingRequestFailedDuration{deployment: <%= metron_agent_diego_deployment %>} / 1000000000",
             "type": "line"
           }
         ],
@@ -592,9 +592,9 @@
       "title": "Stager: Staging Messages (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsReceived{deployment: <%= diego_deployment %>})" },
-          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsSucceeded{deployment: <%= diego_deployment %>})" },
-          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsFailed{deployment: <%= diego_deployment %>})" }
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsReceived{deployment: <%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsSucceeded{deployment: <%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(datadog.nozzle.stager.StagingRequestsFailed{deployment: <%= metron_agent_diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -623,21 +623,21 @@
       "title": "Converger: LRP Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedSchedulingInfos{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedRunInfos{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsDeleted{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsStopped{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsKicked{deployment:<%= diego_deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPRuns{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedSchedulingInfos{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingMalformedRunInfos{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPPreProcessingActualLRPsDeleted{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsDeleted{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsKicked{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPsStopped{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionRuns{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedInvalid{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsPrunedExpired{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionsKicked{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionRuns{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedInvalid{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsPrunedExpired{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionsKicked{deployment:<%= metron_agent_diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -666,9 +666,9 @@
       "title": "Converger: Task Actions Taken (per minute)",
       "definition":{
         "requests": [
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTaskRuns{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksKicked{deployment:<%= diego_deployment %>})" },
-          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksPruned{deployment:<%= diego_deployment %>})" }
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTaskRuns{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksKicked{deployment:<%= metron_agent_diego_deployment %>})" },
+          { "q": "per_minute(sum:datadog.nozzle.bbs.ConvergenceTasksPruned{deployment:<%= metron_agent_diego_deployment %>})" }
         ],
         "viz": "timeseries",
         "events":[
@@ -698,19 +698,19 @@
       "definition":{
         "requests": [
           {
-            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStopAuctionDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceLRPStartAuctionDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.bbs.ConvergenceTaskDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "sum:datadog.nozzle.bbs.ConvergenceTaskDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -752,7 +752,7 @@
     ].each do |metric|
       requests = group[:processes].map { |process|
         {
-          "q" => "datadog.nozzle.#{process}.#{metric[:metric]}{deployment:#{diego_deployment}} by {index,ip}",
+          "q" => "datadog.nozzle.#{process}.#{metric[:metric]}{deployment:#{metron_agent_diego_deployment}} by {index,ip}",
           "type" => "line",
         }
       }
@@ -790,7 +790,7 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -820,7 +820,7 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -850,10 +850,10 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.bbs.ETCDReceivedBandwidthRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDReceivedBandwidthRate{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.ETCDSentBandwidthRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDSentBandwidthRate{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -883,10 +883,10 @@
       "definition":{
         "requests":[
           {
-            "q": "datadog.nozzle.bbs.ETCDReceivedRequestRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDReceivedRequestRate{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.ETCDSentRequestRate{deployment:<%= diego_deployment %>}"
+            "q": "datadog.nozzle.bbs.ETCDSentRequestRate{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -1219,7 +1219,7 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":[
@@ -1250,10 +1250,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "rate(datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= diego_deployment %>})"
+            "q": "rate(datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= metron_agent_diego_deployment %>})"
           },
           {
-            "q": "-rate(datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= diego_deployment %>})"
+            "q": "-rate(datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>})"
           }
         ],
         "events":[
@@ -1283,7 +1283,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1315,7 +1315,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1347,7 +1347,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1380,10 +1380,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})"
           },
           {
-            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})"
           }
         ],
         "events":[
@@ -1414,10 +1414,10 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsStarted{deployment:<%= diego_deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})"
           },
           {
-            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsFailed{deployment:<%= diego_deployment %>})"
+            "q": "per_minute(datadog.nozzle.auctioneer.AuctioneerTaskAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})"
           }
         ],
         "events":[
@@ -1447,7 +1447,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1479,7 +1479,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.bbs.MetricsReportingDuration{deployment:<%= diego_deployment %>}/1000000000",
+            "q": "max:datadog.nozzle.bbs.MetricsReportingDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -1512,7 +1512,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= diego_deployment %>} by {ip} / 1000000000",
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
             "type": "line"
           }
         ]
@@ -1523,7 +1523,7 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.ConvergenceLRPPreProcessingOrphanedRunInfos{deployment: <%= diego_deployment %>}",
+            "q": "datadog.nozzle.bbs.ConvergenceLRPPreProcessingOrphanedRunInfos{deployment: <%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
