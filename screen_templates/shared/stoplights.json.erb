@@ -629,6 +629,48 @@
     },
     {
       "board_id": 14530,
+      "x": 146,
+      "title_size": 16,
+      "title": true,
+      "title_align": "left",
+      "title_text": "mysql backups, 24hr",
+      "height": 6,
+      "tile_def": {
+        "viz": "query_value",
+        "requests": [
+          {
+            "q": "avg:cloudops_tools.mysql_backup.success{environment:<%= environment %>}",
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "palette": "white_on_green",
+                "comparator": ">=",
+                "value": "1"
+              },
+              {
+                "palette": "white_on_red",
+                "comparator": "<",
+                "value": "0.5"
+              },
+              {
+                "palette": "white_on_yellow",
+                "comparator": "<",
+                "value": "1"
+              }
+            ]
+          }
+        ]
+      },
+      "width": 12,
+      "timeframe": "1d",
+      "y": 56,
+      "autoscale": true,
+      "legend_size": "0",
+      "type": "query_value",
+      "legend": false
+    },
+    {
+      "board_id": 14530,
       "x": 35,
       "title_size": 16,
       "title": true,
