@@ -1,0 +1,37 @@
+{
+  "description": "created by jayoung@pivotal.io",
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.cc.tasks_running.count{*}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ]
+      },
+      "title": "average tasks running"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.cc.tasks_running.memory_in_mb{*}",
+            "conditional_formats": [
+
+            ],
+            "type": "line"
+          }
+        ]
+      },
+      "title": "cf tasks total memory (MB)"
+    }
+  ],
+  "read_only": false,
+  "title": "cf tasks dashboard"
+}
