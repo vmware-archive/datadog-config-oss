@@ -1,0 +1,3 @@
+[submodule "diego-datadog-templates"]
+	path = diego-datadog-templates
+	url = https://github.com/cloudfoundry/diego-datadog-templates

@@ -20,9 +20,6 @@ mydeployment:
   - p-mysql
 ```
 
-
-
-
 ## Usage
 
 ### Setup
