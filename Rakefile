@@ -331,3 +331,27 @@ namespace :garden_blackbox do
     deployments.each { |k| Rake::Task["garden:#{k}:push"].execute }
   end
 end
+
+DIEGO_BENCHMARKS_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "benchmark_bbs_screen.json.erb"))
+DIEGO_BENCHMARKS_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["diego_benchmarks"] }.keys
+
+namespace :diego_benchmarks do
+  deployments.each do |d|
+    namespace d do
+      desc "Push #{d} Diego Benchmarks Datadog Config"
+      task :push do
+        if DIEGO_BENCHMARKS_ENVIRONMENTS.include?(d)
+          puts "[INFO] Synchronizing Diego Benchmarks dashboard for '#{d}' environment"
+          DashboardSynchronizer.new(CONFIG_PATH, d).run(DIEGO_BENCHMARKS_DASHBOARD_TEMPLATES)
+        else
+          puts "[WARN] The environment '#{d}' does not have the Diego you're looking for..."
+        end
+      end
+    end
+  end
+
+  desc "Push all Diego Benchmarks Datadog Configs"
+  task :push do
+    deployments.each { |k| Rake::Task["diego_benchmarks:#{k}:push"].execute }
+  end
+end
