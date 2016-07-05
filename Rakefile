@@ -284,6 +284,30 @@ namespace :diego do
   end
 end
 
+VOLMAN_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "volman_health_screen.json.erb"))
+VOLMAN_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["volman"] }.keys
+
+namespace :volman do
+  deployments.each do |d|
+    namespace d do
+      desc "Push #{d} Datadog Config"
+      task :push do
+        if VOLMAN_ENVIRONMENTS.include?(d)
+          puts "[INFO] Synchronizing Volman dashboard for '#{d}' environment"
+          DashboardSynchronizer.new(CONFIG_PATH, d).run(VOLMAN_DASHBOARD_TEMPLATES)
+        else
+          puts "[WARN] The environment '#{d}' does not have the volman you're looking for..."
+        end
+      end
+    end
+  end
+
+  desc "Push all Volman Datadog Configs"
+  task :push do
+    deployments.each { |k| Rake::Task["volman:#{k}:push"].execute }
+  end
+end
+
 GARDEN_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "garden_health_screen.json.erb"))
 GARDEN_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["garden"] }.keys
 
