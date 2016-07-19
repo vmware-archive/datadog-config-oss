@@ -7197,7 +7197,7 @@
         ],
         "events": [
           {
-            "q": "Begin update deployment for '<%= metron_agent_deployment %>' against Director"
+            "q": "tags:deployment:<%= metron_agent_deployment %> started deploying."
           }
         ]
       },
@@ -7259,10 +7259,10 @@
         ],
         "events": [
           {
-            "q": "Finish update deployment for '<%= metron_agent_deployment %>' against Director"
+            "q": "tags:deployment:<%= metron_agent_deployment %> finished deploying."
           },
           {
-            "q": "Begin update deployment for '<%= metron_agent_deployment %>' against Director"
+            "q": "tags:deployment:<%= metron_agent_deployment %> started deploying."
           }
         ]
       },
