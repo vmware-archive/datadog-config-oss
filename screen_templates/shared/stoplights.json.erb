@@ -1,7 +1,7 @@
 {
-  "board_title": "<%= metron_agent_deployment %> stoplights",
+  "board_title": "<%= deployment %> stoplights",
   "height": 161,
-  "original_title": "<%= metron_agent_deployment %> stoplights",
+  "original_title": "<%= deployment %> stoplights",
   "read_only": false,
   "shared": false,
   "template_variables": [
@@ -313,7 +313,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:diego_deployment})', 'white_on_green') %>
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -321,7 +321,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:diego_deployment})', 'white_on_red') %>
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -329,7 +329,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:diego_deployment})', 'white_on_yellow') %>
+          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "/m",
@@ -339,7 +339,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 1,
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})",
+      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})",
       "res_calc_func": "raw",
       "tags": [
 
@@ -379,7 +379,7 @@
                 "value": 0.5
               }
             ],
-            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= diego_deployment %>})"
+            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})"
           }
         ],
         "text_align": "center",
@@ -408,7 +408,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -416,7 +416,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -424,7 +424,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "s",
@@ -434,7 +434,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000",
+      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
       "res_calc_func": "raw",
       "tags": [
 
@@ -474,7 +474,7 @@
                 "value": 5
               }
             ],
-            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= diego_deployment %>}/1000000000"
+            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000"
           }
         ],
         "text_align": "left",
@@ -503,7 +503,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:diego_deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_red') %>
         },
         {
           "comparator": "<=",
@@ -511,7 +511,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:diego_deployment}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -519,7 +519,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:diego_deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_green') %>
         }
       ],
       "custom_unit": "/5m",
@@ -529,7 +529,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": "*",
-      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -569,7 +569,7 @@
                 "value": 0.9
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -598,7 +598,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:metron_agent_deployment}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:deployment}', 'white_on_yellow') %>
         },
         {
           "comparator": ">",
@@ -606,7 +606,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:metron_agent_deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:deployment}', 'white_on_green') %>
         }
       ],
       "custom_unit": "hrs",
@@ -618,7 +618,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= metron_agent_deployment %>}",
+      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -649,7 +649,7 @@
                 "value": 0.9999999
               }
             ],
-            "q": "avg:cloudops_tools.etcd_leader_health{deployment:<%= metron_agent_deployment %>}"
+            "q": "avg:cloudops_tools.etcd_leader_health{deployment:<%= deployment %>}"
           }
         ],
         "text_align": "left",
@@ -678,7 +678,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:diego_deployment})', 'white_on_green') %>
+          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
         }
       ],
       "custom_unit": "/Hr",
@@ -688,7 +688,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})",
+      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})",
       "res_calc_func": "raw",
       "tags": [
 
@@ -712,7 +712,7 @@
                 "value": 0
               }
             ],
-            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= diego_deployment %>})"
+            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})"
           }
         ],
         "text_align": "center",
@@ -836,7 +836,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:diego_deployment} / 1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -844,7 +844,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:diego_deployment} / 1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -852,7 +852,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:diego_deployment} / 1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": null,
@@ -862,7 +862,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>} / 1000000000",
+      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000",
       "res_calc_func": "raw",
       "tags": [
 
@@ -902,7 +902,7 @@
                 "value": 2
               }
             ],
-            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= diego_deployment %>} / 1000000000"
+            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000"
           }
         ],
         "text_align": "center",
@@ -931,7 +931,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
         },
         {
           "comparator": ">",
@@ -939,7 +939,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -947,7 +947,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
         }
       ],
       "height": 12,
@@ -958,7 +958,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
       "res_calc_func": "raw",
       "tags": [
 
@@ -1000,7 +1000,7 @@
                 "value": 1000
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800))"
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))"
           }
         ],
         "text_align": "center",
@@ -1029,7 +1029,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
         },
         {
           "comparator": ">",
@@ -1037,7 +1037,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -1045,7 +1045,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
         }
       ],
       "height": 12,
@@ -1056,7 +1056,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800))",
+      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
       "res_calc_func": "raw",
       "tags": [
 
@@ -1098,7 +1098,7 @@
                 "value": 1000
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800))"
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))"
           }
         ],
         "text_align": "center",
@@ -1127,7 +1127,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:0}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -1135,7 +1135,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:0}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -1143,7 +1143,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:0}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_yellow') %>
         }
       ],
       "custom_unit": null,
@@ -1153,7 +1153,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "avg:smoke.status{deployment:<%= metron_agent_deployment %>,loggregator_enabled:0}",
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}",
       "res_calc_func": "raw",
       "tags": [
         null,
@@ -1194,7 +1194,7 @@
                 "value": 0.75
               }
             ],
-            "q": "avg:smoke.status{deployment:<%= metron_agent_deployment %>,loggregator_enabled:0}"
+            "q": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}"
           }
         ],
         "text_align": "left",
@@ -1223,7 +1223,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:1}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -1231,7 +1231,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:1}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -1239,7 +1239,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:smoke.status{deployment:metron_agent_deployment,loggregator_enabled:1}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_yellow') %>
         }
       ],
       "custom_unit": null,
@@ -1249,7 +1249,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "avg:smoke.status{deployment:<%= metron_agent_deployment %>,loggregator_enabled:1}",
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}",
       "res_calc_func": "raw",
       "tags": [
         null,
@@ -1290,7 +1290,7 @@
                 "value": 0.75
               }
             ],
-            "q": "avg:smoke.status{deployment:<%= metron_agent_deployment %>,loggregator_enabled:1}"
+            "q": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}"
           }
         ],
         "text_align": "left",
@@ -1414,7 +1414,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_red') %>
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
         },
         {
           "comparator": "<=",
@@ -1422,7 +1422,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
         },
         {
           "comparator": ">",
@@ -1430,7 +1430,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024', 'white_on_green') %>
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
         }
       ],
       "custom_unit": null,
@@ -1440,7 +1440,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024",
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "res_calc_func": "raw",
       "tags": [
 
@@ -1480,7 +1480,7 @@
                 "value": 22
               }
             ],
-            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} ) / 0.000001024"
+            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024"
           }
         ],
         "text_align": "center",
@@ -1965,7 +1965,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_yellow') %>
         },
         {
           "comparator": ">",
@@ -1973,7 +1973,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_green') %>
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_green') %>
         }
       ],
       "custom_unit": null,
@@ -1985,7 +1985,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z1}.rollup(avg,1800)\n",
+      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)\n",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2015,7 +2015,7 @@
                 "value": 4000000
               }
             ],
-            "q": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z1}.rollup(avg,1800)"
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)"
           }
         ],
         "text_align": "left",
@@ -2044,7 +2044,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_yellow') %>
         },
         {
           "comparator": ">",
@@ -2052,7 +2052,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_green') %>
+          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_green') %>
         }
       ],
       "custom_unit": null,
@@ -2064,7 +2064,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z2}.rollup(avg,1800)",
+      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2094,7 +2094,7 @@
                 "value": 4000000
               }
             ],
-            "q": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z2}.rollup(avg,1800)"
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)"
           }
         ],
         "text_align": "left",
@@ -2194,7 +2194,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:diego_deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2202,7 +2202,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:diego_deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -2210,7 +2210,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:diego_deployment}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_yellow') %>
         }
       ],
       "custom_unit": null,
@@ -2220,7 +2220,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -2260,7 +2260,7 @@
                 "value": 4
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -2289,7 +2289,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -2297,7 +2297,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2305,7 +2305,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "s",
@@ -2315,7 +2315,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2355,7 +2355,7 @@
                 "value": 10
               }
             ],
-            "q": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= diego_deployment %>}/1000000000\n"
+            "q": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
           }
         ],
         "text_align": "center",
@@ -2384,7 +2384,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -2392,7 +2392,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2400,7 +2400,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "s",
@@ -2410,7 +2410,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2450,7 +2450,7 @@
                 "value": 10
               }
             ],
-            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n"
+            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
           }
         ],
         "text_align": "center",
@@ -2479,7 +2479,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -2487,7 +2487,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2495,7 +2495,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "s",
@@ -2505,7 +2505,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2545,7 +2545,7 @@
                 "value": 10
               }
             ],
-            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n"
+            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
           }
         ],
         "text_align": "center",
@@ -2574,7 +2574,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_green') %>
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -2582,7 +2582,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_red') %>
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2590,7 +2590,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:diego_deployment}/1000000000', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "s",
@@ -2600,7 +2600,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n",
+      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2640,7 +2640,7 @@
                 "value": 10
               }
             ],
-            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= diego_deployment %>}/1000000000\n"
+            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
           }
         ],
         "text_align": "center",
@@ -2669,7 +2669,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})', 'white_on_green') %>
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -2677,7 +2677,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})', 'white_on_red') %>
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -2685,7 +2685,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:diego_deployment})', 'white_on_yellow') %>
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "/5m",
@@ -2697,7 +2697,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= diego_deployment %>})",
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})",
       "res_calc_func": "raw",
       "tags": [
 
@@ -2737,7 +2737,7 @@
                 "value": 5
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -3335,7 +3335,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -3343,7 +3343,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -3353,7 +3353,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
       "res_calc_func": "raw",
       "tags": [
 
@@ -3385,7 +3385,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
           }
         ],
         "text_align": "center",
@@ -3414,7 +3414,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": "<",
@@ -3422,7 +3422,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -3430,7 +3430,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -3442,7 +3442,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -3482,7 +3482,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z2}.rollup(avg,60)))*50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)))*50"
           }
         ],
         "text_align": "center",
@@ -3511,7 +3511,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -3519,7 +3519,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -3531,7 +3531,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
       "res_calc_func": "raw",
       "tags": [
 
@@ -3571,7 +3571,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:doppler_z2})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:loggregator_trafficcontroller_z2}))*25"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}))*25"
           }
         ],
         "text_align": "center",
@@ -3948,7 +3948,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -3956,7 +3956,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -3966,7 +3966,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -3998,7 +3998,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50"
           }
         ],
         "text_align": "center",
@@ -4183,13 +4183,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4199,7 +4199,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4227,7 +4227,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z2}.rollup(avg,60)) ) *50"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50"
           }
         ],
         "text_align": "center",
@@ -4254,13 +4254,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4270,7 +4270,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4298,7 +4298,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z2}.rollup(avg,60)) ) *50"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50"
           }
         ],
         "text_align": "center",
@@ -4325,13 +4325,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4341,7 +4341,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4369,7 +4369,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z2}.rollup(avg,60)) ) *50"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60)) ) *50"
           }
         ],
         "text_align": "center",
@@ -4396,13 +4396,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4412,7 +4412,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4440,7 +4440,7 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50"
+            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50"
           }
         ],
         "text_align": "center",
@@ -4539,13 +4539,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4557,7 +4557,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4597,7 +4597,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:api_z2}))*50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}))*50"
           }
         ],
         "text_align": "center",
@@ -4624,13 +4624,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4642,7 +4642,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4682,7 +4682,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:nats_z2}))*50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}))*50"
           }
         ],
         "text_align": "center",
@@ -4709,13 +4709,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4727,7 +4727,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4767,7 +4767,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:router_z2}))*50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}))*50"
           }
         ],
         "text_align": "center",
@@ -4794,13 +4794,13 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:metron_agent_deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
@@ -4812,7 +4812,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -4852,7 +4852,7 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= metron_agent_deployment %>,job:uaa_z2}))*50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1})+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}))*50"
           }
         ],
         "text_align": "center",
@@ -4959,7 +4959,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_red') %>
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_red') %>
         },
         {
           "comparator": "<=",
@@ -4967,7 +4967,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_yellow') %>
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_yellow') %>
         },
         {
           "comparator": ">",
@@ -4975,7 +4975,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} by {ip}) / 0.000001024', 'white_on_green') %>
+          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_green') %>
         }
       ],
       "custom_unit": null,
@@ -4987,7 +4987,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024",
+      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
       "res_calc_func": "raw",
       "tags": [
 
@@ -5500,7 +5500,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:metron_agent_deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:deployment}', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -5508,7 +5508,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:metron_agent_deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:deployment}', 'white_on_red') %>
         }
       ],
       "custom_unit": "fail",
@@ -5520,7 +5520,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "max:aws.ec2.status_check_failed{deployment:<%= metron_agent_deployment %>}",
+      "query": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -5552,7 +5552,7 @@
                 "value": 0
               }
             ],
-            "q": "max:aws.ec2.status_check_failed{deployment:<%= metron_agent_deployment %>}"
+            "q": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}"
           }
         ],
         "text_align": "center",
@@ -6304,7 +6304,7 @@
                 "value": null
               }
             ],
-            "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "viz": "query_value"
@@ -6346,7 +6346,7 @@
                 "value": 0
               }
             ],
-            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "viz": "query_value"
@@ -6622,7 +6622,7 @@
         ],
         "requests": [
           {
-            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= metron_agent_deployment %>} by {job,index}",
+            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
             "style": {
               "palette": "warm"
             },
@@ -6648,10 +6648,10 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %> finished deploying."
+            "q": "tags:deployment:<%= deployment %> finished deploying."
           },
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           }
         ],
         "requests": [
@@ -6678,20 +6678,20 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %> started deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= deployment %> started deploying diego to <%= deployment %>"
           }
         ],
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= diego_deployment %>}",
+            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -6714,7 +6714,7 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %> started deploying."
+            "q": "tags:deployment:<%= deployment %> started deploying."
           }
         ],
         "requests": [
@@ -6743,27 +6743,27 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %>-cf failed deploying cf to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= deployment %>-cf failed deploying cf to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %>-cf finished deploying cf to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= deployment %>-cf finished deploying cf to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= metron_agent_deployment %>-cf started deploying cf to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= deployment %>-cf started deploying cf to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
           },
           {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           }
         ],
         "requests": [
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>} by {ip}) / 0.000001024"
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024"
           }
         ],
         "viz": "heatmap"
@@ -6785,12 +6785,12 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           }
         ],
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "viz": "timeseries"
@@ -6812,21 +6812,21 @@
       "tile_def": {
         "events": [
           {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= metron_agent_deployment %>"
+            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
           }
         ],
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= diego_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "viz": "timeseries"
@@ -6848,7 +6848,7 @@
       "tile_def": {
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}",
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -6972,11 +6972,11 @@
       "tile_def": {
         "requests": [
           {
-            "q": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z1} by {index,job}",
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1} by {index,job}",
             "type": "line"
           },
           {
-            "q": "avg:aws.ec2.network_in{deployment:<%= metron_agent_deployment %>,job:nats_z2} by {index,job}",
+            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2} by {index,job}",
             "type": "line"
           }
         ],
@@ -7002,14 +7002,14 @@
         ],
         "requests": [
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= metron_agent_deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.sys{deployment:<%= metron_agent_deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.wait{deployment:<%= metron_agent_deployment %>,job:router_z1} by {index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z1} by {index}",
             "style": {
               "palette": "dog_classic"
             },
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= metron_agent_deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.sys{deployment:<%= metron_agent_deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.wait{deployment:<%= metron_agent_deployment %>,job:router_z2} by {index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z2} by {index}",
             "style": {
               "palette": "dog_classic"
             },
