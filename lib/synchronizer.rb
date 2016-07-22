@@ -153,12 +153,11 @@ class Synchronizer
   def derender(string, option={erb_token: true})
     str = string.clone
     string_attributes = @env.select {|k,v| v.class == String && v.size > 5 }
-    sorted_string_attributes = string_attributes.sort_by {|k, v| v.size * -1 }
-    sorted_string_attributes.each do |k,v|
+    string_attributes.each do |k,v|
       if option[:erb_token]
-        str.gsub!(v, "<%= #{k} %>" )
+        str.gsub!(Regexp.new(v), "<%= #{k} %>" )
       else
-        str.gsub!(v, k)
+        str.gsub!(Regexp.new(v), k)
       end
     end
     str

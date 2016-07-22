@@ -4,9 +4,11 @@ prod:
     api_key: "my_api_key"
     app_key: "my_app_key"
 
-  deployment: "some-deployment"
+  metron_agent_deployment: 'datadog\.nozzle.+\K(some-deployment)'
   diego_deployment: "some-deployment-diego"
   bosh_deployment: "some-bosh-deployment"
+  deployment: "some-deployment"
+
   services_deployment: "services-deployment"
 
   backend_pagerduty: "@pagerduty-backend"
