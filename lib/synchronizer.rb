@@ -213,6 +213,7 @@ class Synchronizer
   def hash_cleanup(hash)
     useless_keys= %W(id created creator modified
        state event_object silenced silenced_timeout_ts
+       board_bgtype canonical_units
     )
     useless_keys.each { |key| hash.delete(key)}
   end
