@@ -222,8 +222,10 @@ describe DashboardSynchronizer do
   "description": "some description",
   "graphs": [
     {
-      "title": "<%= deployment %>: stuff per second",
       "definition": {
+        "events": [
+
+        ],
         "requests": [
           {
             "q": "this is the query for the environment: <%= environment %>",
@@ -233,11 +235,9 @@ describe DashboardSynchronizer do
             "q": "this is the second query for the deployment: <%= deployment %>",
             "stacked": false
           }
-        ],
-        "events": [
-
         ]
-      }
+      },
+      "title": "<%= deployment %>: stuff per second"
     }
   ],
   "title": "<%= deployment %> Health"

@@ -2,19 +2,19 @@
   "board_title": "<%= deployment %> Health",
   "widgets": [
     {
-      "query": "avg:some_metric{deployment:<%= deployment %>,another-tag:blah}",
       "conditional_formats": [
         {
-          "palette": "white_on_green",
           "comparator": "<=",
+          "palette": "white_on_green",
           "value": <%= threshold_value('avg:some_metric{deployment:deployment,another-tag:blah}', 'white_on_green') %>
         },
         {
-          "palette": "white_on_red",
           "comparator": ">",
+          "palette": "white_on_red",
           "value": <%= threshold_value('avg:some_metric{deployment:deployment,another-tag:blah}', 'white_on_red') %>
         }
-      ]
+      ],
+      "query": "avg:some_metric{deployment:<%= deployment %>,another-tag:blah}"
     },
     {
       "query": "avg:some_other_metric{deployment:<%= bosh_deployment %>}"
