@@ -7,7 +7,7 @@ class Hash
       if seed[key].is_a?(Hash)
         seed[key] = seed[key].sort_recursive(&block)
       elsif seed[key].is_a?(Array)
-        seed[key].each do |item|
+        seed[key] = seed[key].map do |item|
           if item.is_a?(Hash)
             item = item.sort_recursive
           end
