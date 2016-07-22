@@ -2,13 +2,6 @@
 
 Persist your DataDog configuration in versioned text files which can be edited locally. Pull down existing config and push changes at will.
 
-## Notice! We're branching!
-
-~~We added tags, it's a breaking change because in order to use it, you'll have to specify the tags that you want associated with your deployment (see below for details). We're calling this `version 2.x`, and moving forward development will be incorporated into this branch.~~
-~~Please start tracking branch `v1` if you do not want to change your config.yml. We recognize that most folks will be tracking `master`, and as such we will hold off on merging in version 2.x commits until Mar 24, 2016.~~
-
-**we've merged `v2.x.x` into `master`**
-
 ### Updating to version 2.x
 [ ]  Add a key to your environment name called 'tags'  
 [ ]  Populate an array of tags in this key.   
@@ -93,19 +86,27 @@ Basically the same workflow as dashboards, but with different commands.
         bundle exec rake prod:push
 
 ## config.yml
-Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have the following values defined:
+Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have any key values defined. These key value pairs are used for parsing downloaded templates. Any strings that match the values of these key value pairs will be replaced with ERB syntax.
 
+my_deployment_name: string or regex to search for
+For example: datadog.nozzle.mything: {deployment: <%= my_deployment_name %> }
+
+* **metron_agent_deployment_name**: This is the `name` value that is configured for metron_agent. This is sometimes different from the deployment name, namely in PCF deployments
 * **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-diego`
 * **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest
 * **services_deployment**: Corresponding services name to the BOSH deployment
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
+
+### Important: When adding 
+
+
 * **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
-* **params**: Used to inject configuration values into your ERB file `<%= params.fetch('min_deas_that_can_stage') %>`
 
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
 
 Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
 You should also know that these use default values from `prod`. So, while `prod` environment must have every threshold defined, the other environments only need definitions where overrides are in place.
+
 
 ## Folder structure
 

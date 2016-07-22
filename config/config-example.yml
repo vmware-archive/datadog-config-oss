@@ -1,10 +1,13 @@
 ---
 # Copy this file to config.yml and fill in your credentials and other details
+# the string search and replace functionality works top to bottom. If you have
+# strings that are more specific, put them higher than the less specific ones.
+# Ruby regex is supported. Do not include the bracketing /'s.
 
 cf_deployment:
   tags: []
   deployment: "cf-deployment-example"
-  bosh_deployment: "cf-deployment-example"
+  bosh_deployment: "bosh-deployment-example"
   services_deployment: "cf-services-deployment-example"
   micro_deployment: "cf-micro-deployment-example"
   health_screen_image: "http://<dashboard_img_url>"
