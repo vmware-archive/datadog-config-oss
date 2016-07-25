@@ -4,12 +4,47 @@ require "erb_context"
 class Template
   def initialize(params)
     @template_file = params.fetch(:template_file)
-    @search_and_replace = params.fetch(:search_and_replace)
+    #@search_and_replace = params.fetch(:search_and_replace)
+    @search_and_replace = build_search_and_replace(params.fetch(:search_and_replace))
+  end
+
+  def build_search_and_replace(original)
+    results = {}
+    original.each do |key, value|
+      results[key] = {
+        regex: regex_of_value(value),
+        replace_string: replace_string_of_value(value)
+      }
+    end
+    results
+  end
+
+  def regex_of_value(value)
+    string = case value
+      when String
+        value
+      when Hash
+        value[:regex]
+      else
+        raise "I Can't computer"
+    end
+    Regexp.new(string)
+  end
+
+  def replace_string_of_value(value)
+    case value
+      when String
+        value
+      when Hash
+        value[:replace_string]
+      else
+        raise "I Can't computer"
+    end
   end
 
   def to_erb_from_string(str)
     @search_and_replace.each do |k,v|
-      str.gsub!(Regexp.new(v), "<%= #{k} %>" )
+      str.gsub!(v[:regex], "<%= #{k} %>" )
     end
 
     str
@@ -27,7 +62,7 @@ class Template
 
     return output
 
-    #thresholds_file_path = thresholds_file(template_path)
+    # TODO: thresholds_file_path = thresholds_file(template_path)
     # if File.exists? thresholds_file_path
     #   context.thresholds = thresholds_for_yaml_file(thresholds_file_path)
     # end

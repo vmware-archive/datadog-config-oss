@@ -7,6 +7,10 @@ describe Template do
       key: 'value',
       diego_deployment: 'some-deployment-diego',
       deployment: 'some-deployment',
+      metron_agent_deployment: {
+        regex: 'datadog\.nozzle.+\K(some-deployment)',
+        replace_string: 'some-deployment'
+      },
       bosh_deployment: 'some-bosh-deployment',
     }
   }
@@ -21,17 +25,53 @@ describe Template do
   it { is_expected.to be_a Template }
 
   describe '#new' do
-    describe 'instance_variables' do
-      describe '@template_file' do
-        subject() { template.instance_variable_get(:@template_file) }
-        it { is_expected.to match template_file }
+    describe '@search_and_replace' do
+      context 'can be a string' do
+        let(:search_and_replace) {
+          {
+            deployment: 'some-deployment',
+          }
+        }
+
+        describe 'and it is stored as a regex / replace_string object' do
+          subject() { template.instance_variable_get(:@search_and_replace) }
+          it { is_expected.to match(
+              {
+                deployment: {
+                  regex: /some-deployment/,
+                  replace_string: 'some-deployment'
+                }
+              }
+            )
+          }
+
+        end
       end
 
-      describe '@search_and_replace' do
-        subject() { template.instance_variable_get(:@search_and_replace) }
-        it { is_expected.to match search_and_replace }
-      end
 
+      context 'or a hash' do
+        let(:search_and_replace) {
+          {
+            metron_agent_deployment: {
+              regex: 'datadog\.nozzle.+\K(some-deployment)',
+              replace_string: 'some-deployment'
+            }
+          }
+        }
+
+        describe 'and it is stored as a regex / replace_string object' do
+          subject() { template.instance_variable_get(:@search_and_replace) }
+          it { is_expected.to match(
+              {
+                metron_agent_deployment: {
+                  regex: /datadog\.nozzle.+\K(some-deployment)/,
+                  replace_string: 'some-deployment'
+                }
+              }
+            )
+          }
+        end
+      end
     end
   end
 
@@ -70,10 +110,10 @@ describe Template do
       xit 'supports regex strings' do
         expect(template.to_erb_from_string("some-deployment")).to eq("<%= deployment %>")
         expect(template.to_erb_from_string("datadog.nozzle.asdf: { deployment: some-deployment }")).to
-          eq("datadog.nozzle.asdf: { deployment: <%= metron_agent_deployment %> }")
+        eq("datadog.nozzle.asdf: { deployment: <%= metron_agent_deployment %> }")
       end
 
-      it "can handle value overlaps" do
+      it "can handle value overlaps though this is really a function of the order in which the keys appear" do
         expect(template.to_erb_from_string("some-deployment some-deployment-diego")).to eq(
             "<%= deployment %> <%= diego_deployment %>")
       end
