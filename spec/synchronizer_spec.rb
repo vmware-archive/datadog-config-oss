@@ -24,13 +24,9 @@ describe Synchronizer do
     end
 
     it "covert values back to erb vars" do
+
        expect(synchronizer.derender("some-deployment")).to eq("<%= deployment %>")
        expect(synchronizer.derender("some-bosh-deployment")).to eq("<%= bosh_deployment %>")
-    end
-
-    it 'supports regex strings' do
-       expect(synchronizer.derender("some-deployment")).to eq("<%= deployment %>")
-       expect(synchronizer.derender("datadog.nozzle.asdf: { deployment: some-deployment }")).to eq("datadog.nozzle.asdf: { deployment: <%= metron_agent_deployment %> }")
     end
 
     it "can handle value overlaps" do

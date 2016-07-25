@@ -48,6 +48,10 @@ class ScreenSynchronizer < Synchronizer
     end
   end
 
+  def widget_identifier(string)
+    Template.new(string: string, search_and_replace: search_and_replace).to_generic.strip
+  end
+
   def convert_json_to_template(template_output_file, screen)
     yaml_array = []
     yaml_hash = {
@@ -59,7 +63,7 @@ class ScreenSynchronizer < Synchronizer
 
 
       # replace <%= key %> to key to avoid nested <%= %> issue
-      widget_identifier = derender(widget["query"], {erb_token: false}).strip
+      widget_identifier =  widget_identifier widget["query"]
       conditionals.each do |conditional|
         palette = conditional["palette"]
         value = conditional["value"]
@@ -89,10 +93,7 @@ class ScreenSynchronizer < Synchronizer
   end
 
   def filter_environment_specifics(title)
-    text = title.gsub(@env.fetch('bosh_deployment'), " bosh_deployment + \'")
-    text.gsub!(@env.fetch('deployment'), " deployment + \'")
-    text.gsub!(/#{@env.fetch('environment')}(?!uction|-)/, "environment + \'")
-    text
+    Template.new(string: title, search_and_replace: search_and_replace).to_generic_ruby
   end
 
 
@@ -104,7 +105,7 @@ class ScreenSynchronizer < Synchronizer
       if title == filter_environment_specifics(title)
         return "/dash/dash/<%= lookup_note_asset('#{title}', :dashboard) %>"
       else
-        return "/dash/dash/<%= lookup_note_asset(#{filter_environment_specifics(title)}\', :dashboard) %>"
+        return "/dash/dash/<%= lookup_note_asset(#{filter_environment_specifics(title)}, :dashboard) %>"
       end
     when /\/screen/
       id = url.match(/.*\/screen\/(\w+\/)*(\d+).*/).captures.last
@@ -112,7 +113,7 @@ class ScreenSynchronizer < Synchronizer
       if title == filter_environment_specifics(title)
         return "/screen/board/<%= lookup_note_asset('#{title}', :screenboard) %>"
       else
-        return "/screen/board/<%= lookup_note_asset(#{filter_environment_specifics(title)}\', :screenboard) %>"
+        return "/screen/board/<%= lookup_note_asset(#{filter_environment_specifics(title)}, :screenboard) %>"
       end
     else
       url
