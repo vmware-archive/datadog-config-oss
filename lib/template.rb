@@ -1,5 +1,6 @@
 require "erb"
 require "erb_context"
+require 'active_support/core_ext/hash/indifferent_access'
 
 class Template
   def initialize(params)
@@ -8,12 +9,14 @@ class Template
     @string_value = params.fetch(:string, nil)
   end
 
-  def build_search_and_replace(original)
+  def build_search_and_replace(hash)
     @search = {}
     @replace = {}
-    original.each do |key, value|
-      @search[key] = regex_of_value(value)
-      @replace[key] = replace_string_of_value(value)
+
+    hash = hash.with_indifferent_access
+    hash.each do |key, value|
+      @search[key.to_sym] = regex_of_value(value)
+      @replace[key.to_sym] = replace_string_of_value(value)
     end
   end
 
