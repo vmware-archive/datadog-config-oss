@@ -6,8 +6,8 @@ prod:
 
   diego_deployment: some-deployment-diego
   metron_agent_deployment:
-    regex: 'datadog\.nozzle.+\K(some-deployment)'
-    replace_string: some-deployment
+    search: 'datadog\.nozzle.+\K(some-deployment)'
+    replace: 'some-deployment'
   deployment: "some-deployment"
   bosh_deployment: "some-bosh-deployment"
 

@@ -4,19 +4,16 @@ require "erb_context"
 class Template
   def initialize(params)
     @template_file = params.fetch(:template_file)
-    #@search_and_replace = params.fetch(:search_and_replace)
-    @search_and_replace = build_search_and_replace(params.fetch(:search_and_replace))
+    build_search_and_replace(params.fetch(:search_and_replace))
   end
 
   def build_search_and_replace(original)
-    results = {}
+    @search = {}
+    @replace = {}
     original.each do |key, value|
-      results[key] = {
-        regex: regex_of_value(value),
-        replace_string: replace_string_of_value(value)
-      }
+      @search[key] = regex_of_value(value)
+      @replace[key] = replace_string_of_value(value)
     end
-    results
   end
 
   def regex_of_value(value)
@@ -24,7 +21,7 @@ class Template
       when String
         value
       when Hash
-        value[:regex]
+        value[:search]
       else
         raise "I Can't computer"
     end
@@ -36,26 +33,26 @@ class Template
       when String
         value
       when Hash
-        value[:replace_string]
+        value[:replace]
       else
         raise "I Can't computer"
     end
   end
 
-  def to_erb_from_string(str)
-    @search_and_replace.each do |k,v|
-      str.gsub!(v[:regex], "<%= #{k} %>" )
+  def to_erb(str)
+    @search.each do |k,v|
+      str.gsub!(v, "<%= #{k} %>" )
     end
 
     str
   end
 
-  def to_string_from_erb(str)
+  def to_string(str)
     # this returns the binding as it exists from the context's perspective
     # so all of the properties set on the ErbContext instance are exposed as
     # variables in the binding and therefore the ERB
     # TL;DR Magic.
-    context = ErbContext.new(@search_and_replace)
+    context = ErbContext.new(@replace)
     context_binding = context.instance_eval { binding }
     erb = ERB.new(str)
     output = erb.result(context_binding)
