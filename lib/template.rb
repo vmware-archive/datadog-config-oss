@@ -29,6 +29,7 @@ class Template
       else
         raise "I Can't computer"
     end
+    require 'pry' && binding.pry unless shwing
     Regexp.new(shwing)
   end
 
@@ -55,6 +56,14 @@ class Template
     shtring
   end
 
+  def to_generic
+    shtring = string.dup
+    @search.each do |k,v|
+      shtring.gsub!(v, "#{k}" )
+    end
+    shtring
+  end
+
   def string
     @string_value ||= to_string
   end
@@ -71,4 +80,5 @@ class Template
     yerb = ERB.new(erb)
     return yerb.result(context_binding)
   end
+
 end
