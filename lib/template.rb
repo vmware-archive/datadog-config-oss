@@ -3,8 +3,9 @@ require "erb_context"
 
 class Template
   def initialize(params)
-    @template_file = params.fetch(:template_file)
     build_search_and_replace(params.fetch(:search_and_replace))
+    @erb_value = params.fetch(:erb, nil)
+    @string_value = params.fetch(:string, nil)
   end
 
   def build_search_and_replace(original)
@@ -39,23 +40,30 @@ class Template
     end
   end
 
-  def to_erb(str)
-    @search.each do |k,v|
-      str.gsub!(v, "<%= #{k} %>" )
-    end
-
-    str
+  def erb
+    @erb_value ||= to_erb
   end
 
-  def to_string(str)
+  def to_erb
+    @search.each do |k,v|
+      string.gsub!(v, "<%= #{k} %>" )
+    end
+    string
+  end
+
+  def string
+    @string_value ||= to_string
+  end
+
+  def to_string
     # this returns the binding as it exists from the context's perspective
     # so all of the properties set on the ErbContext instance are exposed as
     # variables in the binding and therefore the ERB
     # TL;DR Magic.
     context = ErbContext.new(@replace)
     context_binding = context.instance_eval { binding }
-    erb = ERB.new(str)
-    output = erb.result(context_binding)
+    yerb = ERB.new(erb)
+    output = yerb.result(context_binding)
 
     return output
 
