@@ -18,7 +18,7 @@ class Template
   end
 
   def regex_of_value(value)
-    string = case value
+    shwing = case value
       when String
         value
       when Hash
@@ -26,7 +26,7 @@ class Template
       else
         raise "I Can't computer"
     end
-    Regexp.new(string)
+    Regexp.new(shwing)
   end
 
   def replace_string_of_value(value)
@@ -45,10 +45,11 @@ class Template
   end
 
   def to_erb
+    shtring = string.dup
     @search.each do |k,v|
-      string.gsub!(v, "<%= #{k} %>" )
+      shtring.gsub!(v, "<%= #{k} %>" )
     end
-    string
+    shtring
   end
 
   def string
@@ -59,17 +60,12 @@ class Template
     # this returns the binding as it exists from the context's perspective
     # so all of the properties set on the ErbContext instance are exposed as
     # variables in the binding and therefore the ERB
+    # ErbContext is a subclass of OpenStruct
     # TL;DR Magic.
     context = ErbContext.new(@replace)
     context_binding = context.instance_eval { binding }
+
     yerb = ERB.new(erb)
-    output = yerb.result(context_binding)
-
-    return output
-
-    # TODO: thresholds_file_path = thresholds_file(template_path)
-    # if File.exists? thresholds_file_path
-    #   context.thresholds = thresholds_for_yaml_file(thresholds_file_path)
-    # end
+    return yerb.result(context_binding)
   end
 end
