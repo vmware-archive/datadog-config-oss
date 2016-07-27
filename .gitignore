@@ -3,3 +3,5 @@ vendor/*
 config/config.yml
 .idea/
 .rspec
+.ruby-gemset*
+.ruby-version*
