@@ -24,6 +24,7 @@ describe Synchronizer do
     end
 
     it "covert values back to erb vars" do
+
        expect(synchronizer.derender("some-deployment")).to eq("<%= deployment %>")
        expect(synchronizer.derender("some-bosh-deployment")).to eq("<%= bosh_deployment %>")
     end

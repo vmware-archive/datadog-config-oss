@@ -70,7 +70,6 @@ class Template
       stuff =  inflate_regex(v).match(shtring)
       next unless stuff
       shtring = %Q|#{"'" + stuff[1] + "' + " if (stuff[1] && ! stuff[1].empty?)}#{k}#{" + '"  + stuff[-1] + "'" if (stuff[-1] && ! stuff[-1].empty?)}|
-      puts shtring
     end
     shtring
   end

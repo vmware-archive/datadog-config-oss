@@ -183,7 +183,7 @@ describe ScreenSynchronizer do
         end
 
         it 'change the note link for screenboards' do
-          expect_screen = '/screen/board/<%= lookup_note_asset( deployment + \' DEA Radiator\', :screenboard) %>'
+          expect_screen = '/screen/board/<%= lookup_note_asset(deployment + \' DEA Radiator\', :screenboard) %>'
           expect(synchronizer.identify_target_link('/screen/board/1234')).to eq(expect_screen)
         end
 

@@ -4,16 +4,16 @@ prod:
     api_key: "my_api_key"
     app_key: "my_app_key"
 
-  diego_deployment: some-deployment-diego
-  metron_agent_deployment:
-    search: 'datadog\.nozzle.+\K(some-deployment)'
-    replace: 'some-deployment'
-  deployment: "some-deployment"
-  bosh_deployment: "some-bosh-deployment"
+  search_and_replace:
+    diego_deployment: some-deployment-diego
+    metron_agent_deployment:
+      search: 'datadog\.nozzle.+\K(some-deployment)'
+      replace: 'some-deployment'
+    deployment: "some-deployment"
+    bosh_deployment: "some-bosh-deployment"
 
-  services_deployment: "services-deployment"
-
-  backend_pagerduty: "@pagerduty-backend"
+    services_deployment: "services-deployment"
+    backend_pagerduty: "@pagerduty-backend"
 
   jobs:
     - hello

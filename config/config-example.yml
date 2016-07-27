@@ -5,20 +5,20 @@
 # Ruby regex is supported. Do not include the bracketing /'s.
 
 cf_deployment:
+  search_and_replace:
+    deployment: "cf-deployment-example"
+    bosh_deployment: "bosh-deployment-example"
+    services_deployment: "cf-services-deployment-example"
+    micro_deployment: "cf-micro-deployment-example"
+    health_screen_image: "http://<dashboard_img_url>"
+    router_elb_name: "cf-router"
+    domain_url: "<your cf domain url>"
+    cloudops_pagerduty: "@pagerduty-cloudops"
+    monitoringAndMetrics_pagerduty: "@pagerduty-monitoringAndMetrics"
+    cloudops_email: "@<your cloudops email>"
+    monitoringAndMetrics_email: "@<your monitoring and metrics email>"
   tags: []
-  deployment: "cf-deployment-example"
-  bosh_deployment: "bosh-deployment-example"
-  services_deployment: "cf-services-deployment-example"
-  micro_deployment: "cf-micro-deployment-example"
-  health_screen_image: "http://<dashboard_img_url>"
-  router_elb_name: "cf-router"
-  domain_url: "<your cf domain url>"
 
-  cloudops_pagerduty: "@pagerduty-cloudops"
-  monitoringAndMetrics_pagerduty: "@pagerduty-monitoringAndMetrics"
-
-  cloudops_email: "@<your cloudops email>"
-  monitoringAndMetrics_email: "@<your monitoring and metrics email>"
 
   params: &prod_params
     expected_routes: 100
