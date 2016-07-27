@@ -56,12 +56,19 @@ class Template
     shtring
   end
 
-  def to_generic
+  def to_generic_ruby
     shtring = string.dup
     @search.each do |k,v|
-      shtring.gsub!(v, "#{k}" )
+      stuff =  inflate_regex(v).match(shtring)
+      next unless stuff
+      shtring = %Q|#{"'" + stuff[1] + "' + " if (stuff[1] && ! stuff[1].empty?)}#{k}#{" + '"  + stuff[-1] + "'" if (stuff[-1] && ! stuff[-1].empty?)}|
+      puts shtring
     end
     shtring
+  end
+
+  def inflate_regex(regex)
+    Regexp.new( '(.*)' + regex.inspect.reverse.chomp('/').reverse.chomp('/') + '(.*)')
   end
 
   def string
