@@ -76,24 +76,22 @@ class Synchronizer
   # @param [String] template_path is a path to a single erb template
   # @return [Hash] the structure of the processed template
   def process_template(template_path)
-    context = ErbContext.new(search_and_replace)
-    context.dog = @dog
+    additional = {
+      dog: @dog
+    }
 
     thresholds_file_path = thresholds_file(template_path)
     if File.exists? thresholds_file_path
-      context.thresholds = thresholds_for_yaml_file(thresholds_file_path)
+      additional[:thresholds] = thresholds_for_yaml_file(thresholds_file_path)
     end
 
-    # this returns the binding as it exists from the context's perspective
-    # so all of the properties set on the ErbContext instance are exposed as
-    # variables in the binding and therefore the ERB
-    # TL;DR Magic.
-    context_binding = context.instance_eval { binding }
-
     begin
-      erbfile = ERB.new(File.read(template_path))
-      erb = erbfile.result(context_binding)
-      JSON.parse(erb)
+      template = Template.new(
+        erb: File.read(template_path),
+        search_and_replace: search_and_replace,
+        additional: additional
+      )
+      JSON.parse(template.to_string)
     rescue => e
       puts "process_template error, #{e.message}"
       raise e
