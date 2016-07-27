@@ -5,6 +5,7 @@ require "erb"
 require "thread/pool"
 require "logger"
 require "json_organizer"
+require 'template'
 
 class Synchronizer
   attr_reader :logger
@@ -23,6 +24,12 @@ class Synchronizer
     @app_key = @env.fetch('credentials').fetch('app_key')
     @dog = Dogapi::Client.new(@api_key, @app_key)
     @logger = logger
+  end
+
+  def search_and_replace
+    s_and_r = @env.fetch('search_and_replace')
+    s_and_r.merge!({ environment: @env['environment'] })
+    s_and_r
   end
 
   # Synchronize using the specified templates
@@ -69,24 +76,24 @@ class Synchronizer
   # @param [String] template_path is a path to a single erb template
   # @return [Hash] the structure of the processed template
   def process_template(template_path)
-    context = ErbContext.new(@env)
-    context.dog = @dog
+    additional = {
+      dog: @dog
+    }
+
+    additional.merge!(@env)
 
     thresholds_file_path = thresholds_file(template_path)
     if File.exists? thresholds_file_path
-      context.thresholds = thresholds_for_yaml_file(thresholds_file_path)
+      additional[:thresholds] = thresholds_for_yaml_file(thresholds_file_path)
     end
 
-    # this returns the binding as it exists from the context's perspective
-    # so all of the properties set on the ErbContext instance are exposed as
-    # variables in the binding and therefore the ERB
-    # TL;DR Magic.
-    context_binding = context.instance_eval { binding }
-
     begin
-      erbfile = ERB.new(File.read(template_path))
-      erb = erbfile.result(context_binding)
-      JSON.parse(erb)
+      template = Template.new(
+        erb: File.read(template_path),
+        search_and_replace: search_and_replace,
+        additional: additional
+      )
+      JSON.parse(template.to_string)
     rescue => e
       puts "process_template error, #{e.message}"
       raise e
@@ -150,17 +157,13 @@ class Synchronizer
     raise NotImplementedError
   end
 
-  def derender(string, option={erb_token: true})
-    str = string.clone
-    string_attributes = @env.select {|k,v| v.class == String }
-    string_attributes.each do |k,v|
-      if option[:erb_token]
-        str.gsub!(Regexp.new(v), "<%= #{k} %>" )
-      else
-        str.gsub!(Regexp.new(v), k)
-      end
-    end
-    str
+  def derender(str)
+    template = Template.new(
+      string: str,
+      search_and_replace: @env.fetch('search_and_replace'),
+      erb: nil
+    )
+    template.to_erb
   end
 
   def delete_all
