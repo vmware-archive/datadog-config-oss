@@ -91,7 +91,7 @@ describe Template do
         let(:search_and_replace) {
           {
             'metron_agent_deployment' => {
-              'search' => 'datadog\.nozzle.+\K(some-deployment)',
+              'search'  => 'datadog\.nozzle.+\K(some-deployment)',
               'replace' => 'some-deployment'
             }
           }
@@ -160,7 +160,27 @@ describe Template do
     end
   end
 
- describe '#to_generic_ruby' do
+  describe '#to_generic' do
+    subject() { template.to_generic }
+    context 'some-deployment' do
+      let(:string) { 'some-deployment' }
+      it { is_expected.to eq 'deployment' }
+    end
+    context 'some-bosh-deployment' do
+      let(:string) { 'some-bosh-deployment' }
+      it { is_expected.to eq 'bosh_deployment' }
+    end
+    context 'datadog.nozzle some-deployment' do
+      let(:string) { 'datadog.nozzle.asdf: { deployment: some-deployment }' }
+      it { is_expected.to eq 'datadog.nozzle.asdf: { deployment: metron_agent_deployment }' }
+    end
+    context 'some-deployment some-deployment-diego' do
+      let(:string) { 'some-deployment some-deployment-diego' }
+      it { is_expected.to eq 'deployment diego_deployment' }
+    end
+  end
+
+  describe '#to_generic_ruby' do
     subject() { template.to_generic_ruby }
     context 'some-deployment DEA Radiator' do
       let(:string) { 'some-deployment DEA Radiator' }
@@ -188,10 +208,10 @@ describe Template do
     end
 
     describe '#inflate_regex' do
-      subject() { template.inflate_regex(regex).inspect}
+      subject() { template.inflate_regex(regex).inspect }
 
       let(:regex) { /value/ }
-      it { is_expected.to eq '/(.*)value(.*)/'}
+      it { is_expected.to eq '/(.*)value(.*)/' }
 
     end
   end

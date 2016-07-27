@@ -56,6 +56,14 @@ class Template
     shtring
   end
 
+  def to_generic
+    shtring = string.dup
+    @search.each do |k,v|
+      shtring.gsub!(v, "#{k}" )
+    end
+    shtring
+  end
+
   def to_generic_ruby
     shtring = string.dup
     @search.each do |k,v|
