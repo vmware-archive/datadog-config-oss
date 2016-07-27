@@ -80,6 +80,8 @@ class Synchronizer
       dog: @dog
     }
 
+    additional.merge!(@env)
+
     thresholds_file_path = thresholds_file(template_path)
     if File.exists? thresholds_file_path
       additional[:thresholds] = thresholds_for_yaml_file(thresholds_file_path)
