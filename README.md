@@ -88,8 +88,21 @@ Basically the same workflow as dashboards, but with different commands.
 ## config.yml
 Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have any key values defined. These key value pairs are used for parsing downloaded templates. Any strings that match the values of these key value pairs will be replaced with ERB syntax.
 
-my_deployment_name: string or regex to search for
-For example: datadog.nozzle.mything: {deployment: <%= my_deployment_name %> }
+```
+search_and_replace:
+  my_deployment_name: gobbledygoop
+  # For example:
+  # datadog.nozzle.mything: {deployment: gobbledygoop } 
+  # turns into:
+  # datadog.nozzle.mything: {deployment: <%= my_deployment_name %> }
+  # 
+  # You can also specify distinct search (Regexp) and replace (String) patterns:
+  another_key_name:
+    search: 'datadog\.nozzle.*\K(gobbledygoop)'
+    replace: 'gobbledygoop'
+  # This would match the above, but not match:
+  # bosh.healthmonitor.mything: { deployment: gobbledygoop }
+```
 
 * **metron_agent_deployment_name**: This is the `name` value that is configured for metron_agent. This is sometimes different from the deployment name, namely in PCF deployments
 * **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-diego`
