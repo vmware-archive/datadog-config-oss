@@ -7,6 +7,7 @@ class Template
     build_search_and_replace(params.fetch(:search_and_replace))
     @erb_value = params.fetch(:erb, nil)
     @string_value = params.fetch(:string, nil)
+    @additional_value = params.fetch(:additional, nil)
   end
 
   def build_search_and_replace(hash)
@@ -29,7 +30,7 @@ class Template
       else
         raise "I Can't computer"
     end
-    require 'pry' && binding.pry unless shwing
+    raise "Problem parsing search_and_replace!" unless shwing
     Regexp.new(shwing)
   end
 
@@ -82,17 +83,25 @@ class Template
     @string_value ||= to_string
   end
 
+  def additional
+    @additional_value || {}
+  end
+
+  def context
+    @replace.merge(additional)
+  end
+
   def to_string
     # this returns the binding as it exists from the context's perspective
     # so all of the properties set on the ErbContext instance are exposed as
     # variables in the binding and therefore the ERB
     # ErbContext is a subclass of OpenStruct
     # TL;DR Magic.
-    context = ErbContext.new(@replace)
-    context_binding = context.instance_eval { binding }
+    erb_context = ErbContext.new(context)
+    erb_context_binding = erb_context.instance_eval { binding }
 
     yerb = ERB.new(erb)
-    return yerb.result(context_binding)
+    return yerb.result(erb_context_binding)
   end
 
 end

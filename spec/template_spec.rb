@@ -15,11 +15,13 @@ describe Template do
       bosh_deployment:         'some-bosh-deployment',
     }
   }
+  let(:additional) { nil }
 
   subject(:template) { described_class.new(
     string:             string,
     search_and_replace: search_and_replace,
     erb:                erb,
+    additional:         additional,
   ) }
 
   it { is_expected.to be_a Template }
@@ -46,6 +48,17 @@ describe Template do
         subject() { template.to_string }
         it { is_expected.to match("some-deployment") }
       end
+    end
+
+    describe 'additional' do
+      let(:string) { }
+      let(:erb) { "<%= heres_another_thing.call(3) %> bob"}
+      let(:thing) { Proc.new { |v|  "#{v * 2}" } }
+      let(:additional) { {heres_another_thing: thing} }
+      subject() { template.to_string}
+      it { is_expected.to eq('6 bob')}
+
+
     end
 
     describe 'search_and_replace' do
@@ -106,6 +119,7 @@ describe Template do
           it { is_expected.to match({ metron_agent_deployment: 'some-deployment' }) }
         end
       end
+
 
     end
   end
