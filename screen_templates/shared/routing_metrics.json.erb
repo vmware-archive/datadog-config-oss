@@ -97,7 +97,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_http_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.total_http_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -125,7 +125,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_http_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.total_http_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -153,7 +153,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -181,7 +181,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.total_tcp_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -209,7 +209,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesSynced{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.RoutesSynced{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           }
         ],
@@ -237,7 +237,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.RoutesTotal{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -265,7 +265,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.RoutesRegistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           }
         ],
@@ -293,7 +293,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -321,7 +321,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
             "type": "area"
           }
         ],
@@ -379,7 +379,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -407,7 +407,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.routed_app_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.routed_app_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -435,7 +435,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -463,7 +463,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip} / 1000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip} / 1000",
             "type": "line"
           }
         ],
@@ -491,7 +491,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -519,7 +519,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "orange"
             },
@@ -550,7 +550,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.2xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses.2xx{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -578,7 +578,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -606,7 +606,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses.5xx{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -634,7 +634,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "orange"
             },
@@ -665,23 +665,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.numGoRoutines{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.numGoRoutines{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -709,19 +709,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -749,23 +749,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -793,23 +793,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -837,23 +837,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.memoryStats.numMallocs{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.memoryStats.numMallocs{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.tcp_emitter.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.router_configurer.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
             "type": "line"
           }
         ],
@@ -881,23 +881,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
             "type": "line"
           }
         ],
@@ -925,23 +925,23 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.route_emitter.numCPUS{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.numCPUS{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.tcp_emitter.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.tcp_emitter.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.router_configurer.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -1399,7 +1399,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -1427,7 +1427,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.total_token_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1458,7 +1458,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.routing_api.key_refresh_events{deployment:<%= metron_agent_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1489,7 +1489,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.token_fetch_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.token_fetch_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1520,7 +1520,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.subscribe_events_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.subscribe_events_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1566,7 +1566,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router_configurer.TotalCurrentQueuedRequests{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.TotalCurrentQueuedRequests{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1597,7 +1597,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router_configurer.TotalBackendConnectionErrors{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.TotalBackendConnectionErrors{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1628,7 +1628,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router_configurer.AverageQueueTimeMs{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.AverageQueueTimeMs{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1659,7 +1659,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router_configurer.AverageConnectTimeMs{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.router_configurer.AverageConnectTimeMs{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1690,7 +1690,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.registry_message.route_emitter{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.registry_message.route_emitter{deployment:<%= metron_agent_deployment %>} by {ip})",
             "aggregator": "avg",
             "conditional_formats": [
 
@@ -1698,7 +1698,7 @@
             "type": "line"
           },
           {
-            "q": "per_minute(avg:datadog.nozzle.route_emitter.MessagesEmitted{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.route_emitter.MessagesEmitted{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "aggregator": "avg",
             "conditional_formats": [
 

@@ -1,5 +1,5 @@
 {
-  "query": "avg(last_15m):max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 0.8\n",
+  "query": "avg(last_15m):max:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 0.8\n",
   "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>\nEscalation Path: DIEGO Team",
   "name": "<%= environment %> Diego: Domain cf-apps freshness too low.", 
   "no_data_timeframe": 30,

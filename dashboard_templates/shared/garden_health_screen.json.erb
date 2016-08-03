@@ -31,19 +31,19 @@
       "definition":{
         "requests":[
           {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksRunning{deployment:<%= metron_agent_diego_deployment %>}"
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.TasksRunning{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "events":<%= deploy_events %>
@@ -54,16 +54,16 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
+            "q": "jmx.org.cloudfoundry.opentsdb.nozzle.bbs.LRPsDesired{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.LRPsClaimed{deployment: <%= diego_deployment %>}"
+            "q": "jmx.org.cloudfoundry.opentsdb.nozzle.bbs.LRPsClaimed{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
+            "q": "jmx.org.cloudfoundry.opentsdb.nozzle.bbs.LRPsRunning{deployment: <%= diego_deployment %>}"
           },
           {
-            "q": "datadog.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
+            "q": "jmx.org.cloudfoundry.opentsdb.nozzle.bbs.CrashedActualLRPs{deployment: <%= diego_deployment %>}"
           }
         ],
         "events":<%= deploy_events %>
@@ -74,7 +74,7 @@
       "definition":{
         "requests": [
           {
-            "q": "datadog.nozzle.bbs.LRPsMissing{deployment: <%= metron_agent_diego_deployment %>}",
+            "q": "jmx.org.cloudfoundry.opentsdb.nozzle.bbs.LRPsMissing{deployment: <%= metron_agent_diego_deployment %>}",
             "type": "line"
           }
         ],
@@ -87,11 +87,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.rep.GardenContainerCreationDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
             "type": "line"
           },
           {
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000)",
+            "q": "ewma_20(avg:jmx.org.cloudfoundry.opentsdb.nozzle.rep.GardenContainerCreationDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000)",
             "style": {
               "palette": "warm"
             },
@@ -106,7 +106,7 @@
       "definition":{
         "requests":[
           {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
+            "q": "(min:jmx.org.cloudfoundry.opentsdb.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
             "type": "bars"
           }
         ],
@@ -118,7 +118,7 @@
       "definition":{
         "requests": [
           {
-            "q": "max:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
+            "q": "max:jmx.org.cloudfoundry.opentsdb.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
             "type": "line"
           }
         ],
@@ -131,15 +131,15 @@
       "definition":{
         "requests":[
           {
-            "q": "(max:datadog.nozzle.garden_linux.LoopDevices{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "(max:jmx.org.cloudfoundry.opentsdb.nozzle.garden_linux.LoopDevices{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "(max:datadog.nozzle.garden_linux.BackingStores{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "(max:jmx.org.cloudfoundry.opentsdb.nozzle.garden_linux.BackingStores{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "(max:datadog.nozzle.garden_linux.DepotDirs{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
+            "q": "(max:jmx.org.cloudfoundry.opentsdb.nozzle.garden_linux.DepotDirs{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
             "type": "line"
           }
         ],
@@ -156,7 +156,7 @@
       {:title => "Go: Stack (bytes)", :metric => "memoryStats.numBytesAllocatedStack"},
     ].each do |metric|
       requests = [{
-        "q" => "datadog.nozzle.garden_linux.#{metric[:metric]}{deployment:#{metron_agent_diego_deployment}} by {index,ip}",
+        "q" => "jmx.org.cloudfoundry.opentsdb.nozzle.garden_linux.#{metric[:metric]}{deployment:#{metron_agent_diego_deployment}} by {index,ip}",
         "type" => "line",
       }]
     %>

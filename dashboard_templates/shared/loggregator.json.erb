@@ -6,7 +6,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -17,7 +17,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -28,7 +28,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -40,7 +40,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip})"
+                        "q": "rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip})"
                     }
                 ]
             },
@@ -52,7 +52,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -63,7 +63,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.numGoRoutines{deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.numGoRoutines{deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -74,7 +74,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= metron_agent_deployment %>} by {ip} / 1000000 "
+                        "q": "jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= metron_agent_deployment %>} by {ip} / 1000000 "
                     }
                 ]
             },
@@ -101,7 +101,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.LoggregatorTrafficController.numGoRoutines{deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "jmx.org.cloudfoundry.opentsdb.nozzle.LoggregatorTrafficController.numGoRoutines{deployment: <%= metron_agent_deployment %> } by {ip}"
                     }
                 ]
             },
@@ -112,7 +112,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS{deployment: <%= metron_agent_deployment %>} by {ip} / 1000000"
+                        "q": "jmx.org.cloudfoundry.opentsdb.nozzle.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS{deployment: <%= metron_agent_deployment %>} by {ip} / 1000000"
                     }
                 ]
             },
@@ -122,7 +122,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})))",
+                        "q": "ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})))",
                         "type": "line"
                     }
                 ],
@@ -136,7 +136,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} ))) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) )"
+                        "q": "100 * ( ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} ))) ) / ( ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) )"
                     }
                 ],
                 "events": []
@@ -147,7 +147,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -160,7 +160,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -173,7 +173,7 @@
             "definition":{
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.containerMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.containerMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -187,7 +187,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ]
@@ -200,7 +200,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ]
@@ -212,7 +212,7 @@
             "definition":{
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -226,7 +226,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStartReceived{deployment:<%= metron_agent_deployment %>})), ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStopReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStartReceived{deployment:<%= metron_agent_deployment %>})), ewma_10(per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStopReceived{deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ]
@@ -239,12 +239,12 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>}",
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>}",
                         "type": "line",
                         "aggregator": "avg"
                     },
                     {
-                        "q": "sum:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>}",
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>}",
                         "type": "line"
                     }
                   ]
@@ -256,13 +256,13 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "avg:datadog.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>} by {job,ip}",
+                        "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>} by {job,ip}",
                         "type": "line",
                         "conditional_formats": [],
                         "aggregator": "avg"
                     },
                     {
-                        "q": "avg:datadog.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>} by {job,ip}",
+                        "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.LoggregatorTrafficController.LinuxFileDescriptor{deployment:<%= metron_agent_deployment %>} by {job,ip}",
                         "type": "line"
                     }
                 ]
@@ -274,7 +274,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip})",
+                        "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip})",
                         "aggregator": "avg",
                         "conditional_formats": [],
                         "type": "area"
@@ -288,7 +288,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.datadog_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.opentsdb_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.metrix{deployment:<%= metron_agent_deployment %>})",
+                        "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.sentMessagesFirehose.datadog_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.sentMessagesFirehose.opentsdb_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.sentMessagesFirehose.metrix{deployment:<%= metron_agent_deployment %>})",
                         "aggregator": "avg",
                         "conditional_formats": [],
                         "type": "area"
@@ -302,7 +302,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment:<%= metron_agent_deployment %>}",
+                        "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment:<%= metron_agent_deployment %>}",
                         "conditional_formats": [],
                         "type": "line",
                         "aggregator": "avg"

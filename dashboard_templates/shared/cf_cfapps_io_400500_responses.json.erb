@@ -5,7 +5,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>})"
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]
@@ -17,7 +17,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= metron_agent_deployment %>})"
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses.5xx{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]

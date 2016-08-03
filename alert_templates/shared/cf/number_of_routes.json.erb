@@ -2,6 +2,6 @@
   "name": "<%= environment %> CF: Number of routes in the router's routing table is too low", 
   "no_data_timeframe": 10, 
   "notify_no_data": true, 
-  "query": "avg(last_10m):min:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} < <%= params.fetch('expected_routes') %>", 
+  "query": "avg(last_10m):min:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} < <%= params.fetch('expected_routes') %>", 
   "message": "## Description:\n The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  Router Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }

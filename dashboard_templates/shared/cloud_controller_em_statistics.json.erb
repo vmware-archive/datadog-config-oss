@@ -5,7 +5,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.job_queue_length.cc_generic{$name} by {ip}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.job_queue_length.cc_generic{$name} by {ip}",
             "type": "area"
           }
         ],
@@ -20,7 +20,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.event_machine.threadqueue.size{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.event_machine.threadqueue.size{$name} by {name}",
             "type": "area"
           }
         ],
@@ -35,7 +35,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.event_machine.resultqueue.size{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.event_machine.resultqueue.size{$name} by {name}",
             "type": "area"
           }
         ],
@@ -50,7 +50,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.event_machine.connection_count{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.event_machine.connection_count{$name} by {name}",
             "type": "area"
           }
         ],
@@ -65,7 +65,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.thread_count{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.thread_count{$name} by {name}",
             "type": "line"
           }
         ],
@@ -80,7 +80,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.event_machine.threadqueue.num_waiting{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.event_machine.threadqueue.num_waiting{$name} by {name}",
             "type": "area"
           }
         ],
@@ -95,7 +95,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.thread_info.event_machine.resultqueue.num_waiting{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.thread_info.event_machine.resultqueue.num_waiting{$name} by {name}",
             "type": "area"
           }
         ],
@@ -140,7 +140,7 @@
         "viz": "heatmap",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.requests.outstanding{$name} by {name}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.requests.outstanding{$name} by {name}",
             "type": "area"
           }
         ],
@@ -155,7 +155,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.cc.requests.completed{$name} by {name})"
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.cc.requests.completed{$name} by {name})"
           }
         ],
         "events": [

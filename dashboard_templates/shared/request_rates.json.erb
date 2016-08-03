@@ -21,7 +21,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= metron_agent_deployment %>})"
+            "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.requests.CloudController{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [
@@ -37,7 +37,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= metron_agent_deployment %>})"
+            "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.requests.uaa{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "events": [
@@ -53,7 +53,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
+            "q": "sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
             "stacked": false
           }
         ],

@@ -159,7 +159,7 @@
       "definition": {
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(sum:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
             "stacked": false
           }
         ],
@@ -179,7 +179,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
+            "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -196,7 +196,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -213,7 +213,7 @@
         "viz": "heatmap",
         "requests": [
           {
-           "q": "avg:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {job,index}",
+           "q": "avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {job,index}",
             "conditional_formats": []
           }
         ],
@@ -230,7 +230,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -247,7 +247,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -264,7 +264,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(avg:jmx.org.cloudfoundry.opentsdb.nozzle.gorouter.responses{deployment:<%= metron_agent_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
