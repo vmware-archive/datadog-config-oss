@@ -1,5 +1,5 @@
 ---
-gap-cfsandbox-openstack:
+prod:
 - query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})
   palette: red_on_white
   value: 0
