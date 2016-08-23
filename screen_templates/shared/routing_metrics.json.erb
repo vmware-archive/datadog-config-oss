@@ -97,13 +97,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_http_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_http_subscriptions{deployment:<%= routing_deployment %>} by {ip}",
             "type": "area"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
+            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
           }
         ]
       },
@@ -125,13 +125,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_http_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_http_routes{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
+            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
           }
         ]
       },
@@ -153,13 +153,13 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= routing_deployment %>} by {ip}",
             "type": "area"
           }
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
+            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
           }
         ]
       },
@@ -181,7 +181,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -669,7 +669,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -753,7 +753,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -797,7 +797,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -841,7 +841,7 @@
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
             "type": "line"
           },
           {
@@ -885,7 +885,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
@@ -929,7 +929,7 @@
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -1427,7 +1427,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1436,7 +1436,7 @@
         ],
         "events": [
           {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
+            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
           }
         ]
       },
@@ -1458,7 +1458,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= routing_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
