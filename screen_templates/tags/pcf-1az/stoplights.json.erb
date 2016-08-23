@@ -758,15 +758,15 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_red') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_red') %>
         },
         {
-          "comparator": ">",
+          "comparator": ">=",
           "custom_bg_color": null,
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_green') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -774,27 +774,30 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_yellow') %>
         }
       ],
-      "height": 12,
-      "is_valid_query": false,
+      "custom_unit": null,
+      "height": 5,
+      "is_valid_query": true,
       "legend": false,
       "legend_size": "0",
-      "metric": "",
+      "metric": "smoke.status",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "precision": 2,
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}",
       "res_calc_func": "raw",
       "tags": [
-
+        null,
+        null
       ],
-      "text_align": "center",
+      "text_align": "left",
       "text_size": "auto",
       "tile_def": {
         "autoscale": true,
-        "precision": 0,
+        "custom_unit": null,
+        "precision": 2,
         "requests": [
           {
             "aggregator": "avg",
@@ -803,46 +806,43 @@
                 "comparator": "<",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
-                "palette": "white_on_red",
-                "value": -1000
-              },
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 300
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_green",
-                "value": -10
+                "palette": "white_on_red",
+                "value": 0.75
               },
               {
                 "comparator": ">=",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
                 "palette": "white_on_yellow",
-                "value": 1000
+                "value": 0.75
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800))"
+            "q": "avg:smoke.status{deployment:p-mysql_<%= environment %>}"
           }
         ],
-        "text_align": "center",
+        "text_align": "left",
         "viz": "query_value"
       },
       "timeframe": "30m",
       "title": true,
-      "title_align": "center",
+      "title_align": "left",
       "title_size": 16,
-      "title_text": "App ∆ - 1h",
+      "title_text": "MySQL smoke test",
       "type": "query_value",
-      "width": 16,
+      "width": 12,
       "wrapped": true,
-      "x": 117,
-      "y": 49
+      "x": 103,
+      "y": 90
     },
     {
       "aggr": "avg",
@@ -856,15 +856,15 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_red') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_red') %>
         },
         {
-          "comparator": ">",
+          "comparator": ">=",
           "custom_bg_color": null,
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_green') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -872,27 +872,30 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_yellow') %>
         }
       ],
-      "height": 12,
-      "is_valid_query": false,
+      "custom_unit": null,
+      "height": 5,
+      "is_valid_query": true,
       "legend": false,
       "legend_size": "0",
-      "metric": "",
+      "metric": "smoke.status",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "precision": 2,
+      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}",
       "res_calc_func": "raw",
       "tags": [
-
+        null,
+        null
       ],
-      "text_align": "center",
+      "text_align": "left",
       "text_size": "auto",
       "tile_def": {
         "autoscale": true,
-        "precision": 0,
+        "custom_unit": null,
+        "precision": 2,
         "requests": [
           {
             "aggregator": "avg",
@@ -901,46 +904,43 @@
                 "comparator": "<",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
-                "palette": "white_on_red",
-                "value": -1000
-              },
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 1000
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_green",
-                "value": -10
+                "palette": "white_on_red",
+                "value": 0.75
               },
               {
                 "comparator": ">=",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
                 "palette": "white_on_yellow",
-                "value": 1000
+                "value": 0.75
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800))"
+            "q": "avg:smoke.status{deployment:p-redis_<%= environment %>}"
           }
         ],
-        "text_align": "center",
+        "text_align": "left",
         "viz": "query_value"
       },
       "timeframe": "30m",
       "title": true,
-      "title_align": "center",
+      "title_align": "left",
       "title_size": 16,
-      "title_text": "Instances ∆ - 1h",
+      "title_text": "Redis smoke test",
       "type": "query_value",
-      "width": 15,
+      "width": 12,
       "wrapped": true,
-      "x": 73,
-      "y": 49
+      "x": 115,
+      "y": 90
     },
     {
       "aggr": "avg",
@@ -1331,6 +1331,202 @@
       "calc_func": "raw",
       "conditional_formats": [
         {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_red') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_green') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+        }
+      ],
+      "height": 12,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": true,
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_red",
+                "value": -1000
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": 300
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": -10
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_yellow",
+                "value": 1000
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>}.rollup(avg,1800))"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "30m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "App ∆ - 1h",
+      "type": "query_value",
+      "width": 16,
+      "wrapped": true,
+      "x": 117,
+      "y": 49
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "avg",
+      "autoscale": true,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_red') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_green') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))', 'white_on_yellow') %>
+        }
+      ],
+      "height": 12,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800))",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": true,
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_red",
+                "value": -1000
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": 1000
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": -10
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_yellow",
+                "value": 1000
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}.rollup(avg,1800))"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "30m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "Instances ∆ - 1h",
+      "type": "query_value",
+      "width": 15,
+      "wrapped": true,
+      "x": 73,
+      "y": 49
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "avg",
+      "autoscale": true,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
           "comparator": ">",
           "custom_bg_color": null,
           "custom_fg_color": null,
@@ -1418,6 +1614,103 @@
       "wrapped": true,
       "x": 31,
       "y": 58
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "max",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_green') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_yellow') %>
+        }
+      ],
+      "custom_unit": "/5m",
+      "height": 6,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= deployment %>})",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "/5m",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "max",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 5
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 10
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 5
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= deployment %>}"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Missing LRPs - 5m max",
+      "type": "query_value",
+      "width": 21,
+      "wrapped": true,
+      "x": 52,
+      "y": 23
     },
     {
       "aggr": "avg",
@@ -1797,103 +2090,6 @@
       "width": 16,
       "wrapped": true,
       "x": 35,
-      "y": 23
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "/5m",
-      "height": 6,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= deployment %>})",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "/5m",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 5
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 5
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= deployment %>}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Missing LRPs - 5m max",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
       "y": 23
     },
     {
@@ -4295,7 +4491,7 @@
       "board_id": 14530,
       "font_size": "24",
       "height": 6,
-      "html": "[<%= deployment %> tasks](/dash/dash/<%= lookup_note_asset(deployment + ' tasks dashboard', :dashboard) %>)",
+      "html": "[<%= deployment %> tasks](/dash/dash/)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,
@@ -4335,7 +4531,7 @@
       "bgcolor": "white",
       "font_size": "24",
       "height": 5.916666666666667,
-      "html": "[UAA](/dash/dash/<%= lookup_note_asset(deployment + ' Router and ELB health metrics', :dashboard) %>)",
+      "html": "[UAA](/dash/dash/)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,
@@ -4395,7 +4591,7 @@
       "bgcolor": "white",
       "font_size": "24",
       "height": 6,
-      "html": "[Router](/dash/dash/<%= lookup_note_asset(deployment + ' Router and ELB health metrics', :dashboard) %>)",
+      "html": "[Router](/dash/dash/)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,
@@ -4415,7 +4611,7 @@
       "bgcolor": "white",
       "font_size": "36",
       "height": 6,
-      "html": "[Diego Status](/dash/dash/<%= lookup_note_asset(deployment + ' Diego Health', :dashboard) %>)",
+      "html": "[Diego Status](/dash/dash/)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,
@@ -4435,7 +4631,7 @@
       "bgcolor": "white",
       "font_size": "36",
       "height": 6,
-      "html": "[Router Status](/dash/dash/<%= lookup_note_asset(deployment + ' Router and ELB health metrics', :dashboard) %>)",
+      "html": "[Router Status](/dash/dash/)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,

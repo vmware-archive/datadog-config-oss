@@ -27,63 +27,63 @@ prod:
 - query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
   palette: green_on_white
   value: 100
-- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deploymentsandbox_rcc})
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})
   palette: white_on_green
-  value: 0.5
-- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deploymentsandbox_rcc})
+  value: 0
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})
   palette: white_on_red
+  value: 0
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+  palette: white_on_green
+  value: 0
+- query: per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:deployment})
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deployment} / 1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deployment} / 1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deployment} / 1000000000
+  palette: white_on_yellow
+  value: 0
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
+  palette: white_on_red
+  value: 0.75
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
+  palette: white_on_green
   value: 1
-- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deploymentsandbox_rcc})
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_yellow
-  value: 0.5
-- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_green
-  value: 0
-- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deploymentsandbox_rcc}/1000000000
+  value: 0.75
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_red
-  value: 0
-- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_yellow
-  value: 0
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deploymentsandbox_rcc}
-  palette: white_on_red
-  value: 0.8
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deploymentsandbox_rcc}
-  palette: white_on_yellow
-  value: 0.9
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deploymentsandbox_rcc}
+  value: 0.75
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_green
-  value: 0.9
-- query: per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:deploymentsandbox_rcc})
-  palette: white_on_green
-  value: 0
-- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deploymentsandbox_rcc} / 1000000000
-  palette: white_on_green
-  value: 2
-- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deploymentsandbox_rcc} / 1000000000
-  palette: white_on_red
-  value: 10
-- query: max:datadog.nozzle.bbs.RequestLatency{deployment:deploymentsandbox_rcc} / 1000000000
+  value: 1
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_yellow
-  value: 2
-- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_red
-  value: -100
-- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_green
-  value: -10
-- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_yellow
-  value: 100
-- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_red
-  value: -100
-- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_green
-  value: -10
-- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deploymentsandbox_rcc}.rollup(avg,1800))
-  palette: white_on_yellow
-  value: 100
+  value: 0.75
 - query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
   palette: white_on_red
   value: 0.75
@@ -111,69 +111,87 @@ prod:
 - query: avg:rabbitmq.smoke.status{*}
   palette: white_on_yellow
   value: 0.75
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deploymentsandbox_rcc} ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deployment} ) / 0.000001024"
   palette: white_on_red
   value: 0
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deploymentsandbox_rcc} ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deployment} ) / 0.000001024"
   palette: white_on_yellow
   value: 0
-- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deploymentsandbox_rcc} ) / 0.000001024"
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:deployment} ) / 0.000001024"
   palette: white_on_green
   value: 0
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deploymentsandbox_rcc}
-  palette: white_on_red
-  value: 4
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deploymentsandbox_rcc}
-  palette: white_on_green
-  value: 3
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deploymentsandbox_rcc}
-  palette: white_on_yellow
-  value: 4
-- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_green
-  value: 0
-- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))
   palette: white_on_red
   value: 0
-- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_yellow
-  value: 0
-- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))
   palette: white_on_green
   value: 0
-- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_red
-  value: 0
-- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800))
   palette: white_on_yellow
   value: 0
-- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))
   palette: white_on_green
   value: 0
-- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_red
-  value: 0
-- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800))
   palette: white_on_yellow
   value: 0
-- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deployment}
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deployment}
   palette: white_on_green
   value: 0
-- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
-  palette: white_on_red
-  value: 0
-- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deploymentsandbox_rcc}/1000000000
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:deployment}
   palette: white_on_yellow
   value: 0
-- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deploymentsandbox_rcc})"
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})"
   palette: white_on_green
-  value: 5
-- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deploymentsandbox_rcc})"
+  value: 0
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})"
   palette: white_on_red
-  value: 10
-- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deploymentsandbox_rcc})"
+  value: 0
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:deployment})"
   palette: white_on_yellow
-  value: 5
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
