@@ -527,11 +527,11 @@
       "custom_unit": "/5m",
       "height": 6,
       "is_valid_query": true,
-      "metric": "datadog.nozzle.bbs.Domain.<%= deployment %>_apps",
+      "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "metric_type": "standard",
       "padding": 8,
       "precision": "*",
-      "query": "avg:datadog.nozzle.bbs.Domain.<%= deployment %>_apps{deployment:<%= deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -571,7 +571,7 @@
                 "value": 0.9
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.Domain.<%= deployment %>_apps{deployment:<%= deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= deployment %>}"
           }
         ],
         "text_align": "center",
