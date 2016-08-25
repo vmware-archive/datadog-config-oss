@@ -315,7 +315,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})', 'white_on_green') %>
+          "value": <%= threshold_value('per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_failed{deployment:deployment})', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -323,7 +323,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})', 'white_on_red') %>
+          "value": <%= threshold_value('per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_failed{deployment:deployment})', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -331,7 +331,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:deployment})', 'white_on_yellow') %>
+          "value": <%= threshold_value('per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_failed{deployment:deployment})', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "/m",
@@ -341,7 +341,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 1,
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})",
+      "query": "per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_failed{deployment:<%= deployment %>})",
       "res_calc_func": "raw",
       "tags": [
 
@@ -381,7 +381,7 @@
                 "value": 0.5
               }
             ],
-            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= deployment %>})"
+            "q": "per_minute(avg:jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_failed{deployment:<%= deployment %>})"
           }
         ],
         "text_align": "center",
@@ -600,7 +600,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:deployment})', 'white_on_green') %>
+          "value": <%= threshold_value('per_hour(jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_started{deployment:deployment})', 'white_on_green') %>
         }
       ],
       "custom_unit": "/Hr",
@@ -610,7 +610,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 2,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})",
+      "query": "per_hour(jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_started{deployment:<%= deployment %>})",
       "res_calc_func": "raw",
       "tags": [
 
@@ -634,7 +634,7 @@
                 "value": 0
               }
             ],
-            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= deployment %>})"
+            "q": "per_hour(jmx.org.cloudfoundry.opentsdb.nozzle.auctioneer.auctioneer_lrp_auctions_started{deployment:<%= deployment %>})"
           }
         ],
         "text_align": "center",
