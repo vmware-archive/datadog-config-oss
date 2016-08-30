@@ -1,0 +1,52 @@
+<% graphs = %w[
+  numCPUS
+  numGoRoutines
+  memoryStats.numFrees
+  memoryStats.numMallocs
+  logSenderTotalMessagesRead
+  p_rabbitmq_haproxy_heartbeat
+  memoryStats.lastGCPauseTimeNS
+] %>
+{
+  "description": "created by spark@pivotal.io",
+  "graphs": [
+    <% graphs.each_with_index do |graph, index| %>
+    {
+      "definition": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.p_rabbitmq.<%= graph %>{$deployment,$job,$index}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "title": "Avg of <%= graph %> over $deployment,$job,$..."
+    }<% if index != (graphs.length - 1) %>,<% end %>
+  <% end %>
+
+  ],
+  "read_only": false,
+  "template_variables": [
+    {
+      "default": "*",
+      "name": "deployment",
+      "prefix": "deployment"
+    },
+    {
+      "default": "*",
+      "name": "index",
+      "prefix": "index"
+    },
+    {
+      "default": "*",
+      "name": "job",
+      "prefix": "job"
+    }
+  ],
+  "title": "RabbitMQ metrics"
+}
