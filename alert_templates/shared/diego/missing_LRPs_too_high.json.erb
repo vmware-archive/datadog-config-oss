@@ -4,7 +4,7 @@
   "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>} > 70",
   "message": "<%= cloudops_pagerduty %>",
   "name": "<%= environment %> Diego: Missing LRPs are too high",
-  "no_data_timeframe": 5,
+  "no_data_timeframe": 10,
   "notify_no_data": true,
   "renotify_interval": null,
   "escalation_message": ""
