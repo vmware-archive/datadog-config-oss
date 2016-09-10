@@ -4,10 +4,13 @@
       "definition": {
         "requests": [
             {
-                "q": "aws.ec2.network_in{name:cf_nat_box2}"
+                "q": "aws.ec2.network_in{job:nat-box-z1}"
             },
             {
-                "q": "aws.ec2.network_out{name:cf_nat_box2}"
+                "q": "aws.ec2.network_in{job:nat-box-z2}"
+            },
+            {
+                "q": "aws.ec2.network_in{job:nat-box-z3}"
             }        ],
         "events": [
           <%= default_events_json %>
@@ -18,22 +21,9 @@
     {
       "definition": {
         "requests": [
-          {
-            "q": "aws.ec2.host_ok{name:cf_nat_box2}"
-          }
-        ],
-        "events": [
-          <%= default_events_json %>
-        ]
-      },
-      "title": "Host OK"
-    },
-    {
-      "definition": {
-        "requests": [
-          {
-            "q": "aws.ec2.cpuutilization{name:cf_nat_box2}"
-          }
+          { "q": "aws.ec2.cpuutilization{job:nat-box-z1}" },
+          { "q": "aws.ec2.cpuutilization{job:nat-box-z2}" },
+          { "q": "aws.ec2.cpuutilization{job:nat-box-z3}" }
         ],
         "events": [
           <%= default_events_json %>
@@ -42,6 +32,5 @@
       "title": "CPU Utilization"
     }
   ],
-  "description": "System information about the cf_nat_box2.",
   "title": "<%= environment %> NAT"
 }
