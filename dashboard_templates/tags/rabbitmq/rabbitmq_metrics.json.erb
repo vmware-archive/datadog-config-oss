@@ -1,23 +1,26 @@
 <% graphs = %w[
-  numCPUS
-  numGoRoutines
-  memoryStats.numFrees
-  memoryStats.numMallocs
-  logSenderTotalMessagesRead
   p_rabbitmq_haproxy_heartbeat
-  memoryStats.lastGCPauseTimeNS
-  p_rabbitmq_rabbitmq_queues_count
+  p_rabbitmq_rabbitmq_heartbeat
+  p_rabbitmq_service_broker_heartbeat
   p_rabbitmq_rabbitmq_system_memory
+  p_rabbitmq_rabbitmq_system_file_descriptors
+  p_rabbitmq_rabbitmq_connnections_count
+  p_rabbitmq_rabbitmq_consumers_count
+  p_rabbitmq_rabbitmq_messages_delivered
+  p_rabbitmq_rabbitmq_messages_delivered_no_ack
+  p_rabbitmq_rabbitmq_messages_delivered_rate
+  p_rabbitmq_rabbitmq_messages_published
+  p_rabbitmq_rabbitmq_messages_published_rate
+  p_rabbitmq_rabbitmq_messages_redelivered
+  p_rabbitmq_rabbitmq_messages_redelivered_rate
+  p_rabbitmq_rabbitmq_messages_get_no_ack
+  p_rabbitmq_rabbitmq_messages_get_no_ack_rate
+  p_rabbitmq_rabbitmq_messages_pending
+
+  memoryStats.lastGCPauseTimeNS
   memoryStats.numBytesAllocatedHeap
   memoryStats.numBytesAllocatedStack
-  p_rabbitmq_rabbitmq_channels_count
-  p_rabbitmq_rabbitmq_exchange_count
-  p_rabbitmq_rabbitmq_exchanges_count
-  p_rabbitmq_rabbitmq_consumers_count
-  p_rabbitmq_service_broker_heartbeat
-  p_rabbitmq_rabbitmq_messages_pending
-  p_rabbitmq_rabbitmq_connections_count
-  p_rabbitmq_haproxy_health_connections
+
 ] %>
 {
   "description": "created by spark@pivotal.io",
