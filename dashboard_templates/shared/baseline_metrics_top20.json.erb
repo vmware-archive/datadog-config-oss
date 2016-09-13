@@ -4,25 +4,6 @@
   "graphs": [
     {
       "definition": {
-        "viz": "toplist",
-        "requests": [
-          {
-            "q": "max:bosh.healthmonitor.system.cpu.wait{*,!deployment:<%= elk_deployment %>,!deployment:<%= jarvice_deployment %>,!job:cell_z1,!job:cell_z2} by {job,index,deployment} * max:bosh.healthmonitor.system.load.1m{*} by {job,index,deployment}",
-            "aggregator": "avg",
-            "style": {
-              "palette": "dog_classic"
-            },
-            "type": "area",
-            "conditional_formats": [
-
-            ]
-          }
-        ]
-      },
-      "title": "high load and wait"
-    },
-    {
-      "definition": {
         "viz": "timeseries",
         "requests": [
           {
