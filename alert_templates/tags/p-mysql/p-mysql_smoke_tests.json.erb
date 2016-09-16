@@ -1,0 +1,11 @@
+{
+  "escalation_message": null,
+  "message": "## Description:\n The Smoke Tests have been unable to stage and run an application with MySQL recently. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  Core Services Team, GSS\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-<%= metron_agent_deployment %>/datadog-config/issues/new)",
+  "name": "<%= environment %>: MySQL Smoke tests failing",
+  "no_data_timeframe": 30,
+  "notify_audit": false,
+  "notify_no_data": false,
+  "query": "avg(last_15m):avg:smoke.status{deployment:<%= p-mysql_deployment || 'p-mysql' %>} < 0.66",
+  "renotify_interval": 0,
+  "timeout_h": 0
+}
