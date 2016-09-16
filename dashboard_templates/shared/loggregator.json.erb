@@ -274,7 +274,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip})",
+                        "q": "per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip})",
                         "aggregator": "avg",
                         "conditional_formats": [],
                         "type": "area"
