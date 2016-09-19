@@ -95,7 +95,7 @@ class Synchronizer
       )
       JSON.parse(template.to_string)
     rescue => e
-      puts "process_template error, #{e.message}"
+      puts "process_template error when processing #{template_path}"
       raise e
     end
   end
