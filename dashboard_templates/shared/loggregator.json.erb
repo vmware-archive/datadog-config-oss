@@ -275,7 +275,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.datadog_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.opentsdb_nozzle{deployment:<%= metron_agent_deployment %>}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose.metrix{deployment:<%= metron_agent_deployment %>})",
+                        "q": "per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:datadog-nozzle}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:opentsdb-nozzle}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:metrix})",
                         "aggregator": "avg",
                         "conditional_formats": [],
                         "type": "area"
