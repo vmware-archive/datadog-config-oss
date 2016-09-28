@@ -5,7 +5,7 @@
   "no_data_timeframe": 60,
   "notify_audit": false,
   "notify_no_data": true,
-  "query": "avg(last_15m):avg:rabbitmq.smoke.status{deployment:p-rabbitmq_<%= environment %>} < 0.66",
+  "query": "avg(last_30m):avg:rabbitmq.smoke.status{deployment:p-rabbitmq_<%= environment %>} < 0.66",
   "renotify_interval": 0,
   "timeout_h": 0
 }
