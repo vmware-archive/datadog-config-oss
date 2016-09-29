@@ -1,6 +1,6 @@
 {
   "notify_no_data": false,
   "query": "avg(last_10m):avg:bosh.healthmonitor.system.mem.percent{deployment:p-rabbitmq_<%= environment %>} by {job} > 40",
-  "message": "## Description:\n Healthmonitor reports {{job.name}}/{{index.name}} on deployment: {{deployment.name}} has used more than 40% of its RAM for the past ten minutes. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
+  "message": "<%= params.fetch('alert_header', "") %>## Description:\n Healthmonitor reports {{job.name}}/{{index.name}} on deployment: {{deployment.name}} has used more than 40% of its RAM for the past ten minutes. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
   "name": "<%= environment %> RabbitMQ: Low free RAM"
 }

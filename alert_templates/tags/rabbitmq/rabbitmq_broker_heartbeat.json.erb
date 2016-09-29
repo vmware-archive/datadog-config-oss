@@ -1,6 +1,6 @@
 {
   "escalation_message": null,
-  "message": "## Description:\nThe service broker heartbeat has failed for the rabbitmq deployment.\n\n\n## Escalation Path:\ngetrabbitnow@cfoundry.pagerduty.com\n\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) <%= cloudops_pagerduty %>",
+  "message": "<%= params.fetch('alert_header', "") %>## Description:\nThe service broker heartbeat has failed for the rabbitmq deployment.\n\n\n## Escalation Path:\ngetrabbitnow@cfoundry.pagerduty.com\n\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) <%= cloudops_pagerduty %>",
   "name": "<%= environment %>: Heartbeat fail on rabbitmq service broker",
   "no_data_timeframe": 15,
   "notify_audit": false,
