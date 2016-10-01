@@ -88,6 +88,7 @@ Basically the same workflow as dashboards, but with different commands.
 ## config.yml
 Parameters to the rake tasks and templates are defined in `config/config.yml`.  Each environment can have any key values defined. These key value pairs are used for parsing downloaded templates. Any strings that match the values of these key value pairs will be replaced with ERB syntax.
 
+### Search and replace:
 ```
 search_and_replace:
   my_deployment_name: gobbledygoop
@@ -109,16 +110,15 @@ search_and_replace:
 * **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest
 * **services_deployment**: Corresponding services name to the BOSH deployment
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
-
-### Important: When adding 
-
-
 * **health_screen_image**: Just for fun, this will show up on the main (Runtime) health screen for your environment in the Datadog UI
 
 There are also several email addresses and PagerDuty account names, primarily for monitoring and alerting on PWS.
 
 Threshold values to the templates are defined in `template_thresholds.yml`. These are auto-generated when importing from datadog.
 You should also know that these use default values from `prod`. So, while `prod` environment must have every threshold defined, the other environments only need definitions where overrides are in place.
+
+### Params
+* **alert_header**: This will add a header to each alert. This can be useful to link operator notes or a Github repo for the environment. Note, this is experimental, and using `get_alert_json_erb` will then include the `alert_header` as text.
 
 
 ## Folder structure
