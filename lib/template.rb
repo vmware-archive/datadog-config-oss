@@ -6,8 +6,17 @@ class Template
   def initialize(params)
     build_search_and_replace(params.fetch(:search_and_replace))
     @erb_value = params.fetch(:erb, nil)
+    add_alert_header(params)
     @string_value = params.fetch(:string, nil)
     @additional_value = params.fetch(:additional, nil)
+  end
+
+  def add_alert_header(params)
+    # only alerts have message field
+    # this inserts the header, which looks like:
+    #   <%= params.fetch("alert_header", "") %>\n\n
+    return if @erb_value.nil? || @erb_value =~ /alert_header/
+    @erb_value.sub!('"message": "', '"message": "<%= params.fetch("alert_header", "") + "\n\n" unless params.nil? %>')
   end
 
   def build_search_and_replace(hash)
