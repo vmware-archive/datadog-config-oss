@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.2.2"
+ruby "2.3.0"
 
 gem "dogapi", "> 1.14.0"
 gem "thread"
