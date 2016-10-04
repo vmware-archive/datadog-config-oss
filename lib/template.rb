@@ -16,7 +16,7 @@ class Template
     # this inserts the header, which looks like:
     #   <%= params.fetch("alert_header", "") %>\n\n
     return if @erb_value.nil? || @erb_value =~ /alert_header/
-    @erb_value.sub!('"message": "', '"message": "<%= params.fetch("alert_header", "") + \'\n\n\' unless params.nil? %>')
+    @erb_value.sub!('"message": "', '"message": "<%= params.fetch("alert_header", "") unless params.nil? %>')
   end
 
   def build_search_and_replace(hash)
