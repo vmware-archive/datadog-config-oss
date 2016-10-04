@@ -4623,6 +4623,34 @@
       "y": 72
     },
     {
+      "board_id": 117676,
+      "height": 17,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:cloudops_tools.ping_status{deployment:<%= deployment %>} by {cf_instance_index}",
+            "type": "line"
+          }
+        ],
+        "viz": "heatmap"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 44,
+      "x": 159,
+      "y": 61
+    },
+    {
       "color": "#4d4d4d",
       "font_size": "72",
       "height": 6,
