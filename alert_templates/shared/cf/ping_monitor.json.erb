@@ -5,7 +5,7 @@
   "no_data_timeframe": 5,
   "notify_audit": false,
   "notify_no_data": false,
-  "query": "avg(last_5m):avg:cloudops_tools.ping_status{*} by {application_name,dest_ip} > 0.015",
+  "query": "avg(last_5m):avg:cloudops_tools.ping_status{deployment:<%= deployment %>} by {application_name,dest_ip} > 0.030",
   "renotify_interval": 0,
   "timeout_h": 0
 }
