@@ -4634,7 +4634,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:cloudops_tools.ping_status{deployment:<%= deployment %>} by {cf_instance_index}",
+            "q": "avg:cloudops_tools.ping_status{deployment:<%= deployment %>} by {cf_instance_index} * 1000",
             "type": "line"
           }
         ],
@@ -4644,7 +4644,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "",
+      "title_text": "Pings to 4.2.2.1 in ms",
       "type": "timeseries",
       "width": 44,
       "x": 159,
