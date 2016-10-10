@@ -1,0 +1,11 @@
+{
+  "escalation_message": null,
+  "message": "# Monitoring has noted a loss of response from {{target.name}}.\n\n## Description:\n  Monitoring on uptime has noted a loss of connectivity for {{target.name}}. \n<%= cloudops_pagerduty %>.\n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n  Either cf apps are impacted, or our monitoring software has a bug.\n\n## Potential Solutions:\n  Check the monitoring software logs.\n  Restage the monitoring app.\n\n##Feedback:\n  Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "name": "<%= environment %> website slow response or down",
+  "no_data_timeframe": 30,
+  "notify_audit": false,
+  "notify_no_data": true,
+  "query": "avg(last_15m):avg:cloudops_tools.updog.status{deployment:<%= deployment %>} by {target} < 0.7",
+  "renotify_interval": 0,
+  "timeout_h": 0
+}
