@@ -505,7 +505,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:metron_agent_deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_deployment}', 'white_on_red') %>
         },
         {
           "comparator": "<=",
@@ -513,7 +513,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:metron_agent_deployment}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_deployment}', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -521,17 +521,17 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:metron_agent_deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_deployment}', 'white_on_green') %>
         }
       ],
       "custom_unit": "/5m",
       "height": 6,
       "is_valid_query": true,
-      "metric": "datadog.nozzle.bbs.Domain.<%= metron_agent_deployment %>_apps",
+      "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "metric_type": "standard",
       "padding": 8,
       "precision": "*",
-      "query": "avg:datadog.nozzle.bbs.Domain.<%= deployment %>_apps{deployment:<%= metron_agent_deployment %>}",
+      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_deployment %>}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -571,7 +571,7 @@
                 "value": 0.9
               }
             ],
-            "q": "avg:datadog.nozzle.bbs.Domain.<%= deployment %>_apps{deployment:<%= metron_agent_deployment %>}"
+            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -581,7 +581,7 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "Domain '<%= deployment %>-apps' Freshness - 5m avg",
+      "title_text": "Domain 'cf-apps' Freshness - 5m avg",
       "type": "query_value",
       "width": 21,
       "wrapped": true,
