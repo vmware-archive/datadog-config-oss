@@ -505,7 +505,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}', 'white_on_red') %>
         },
         {
           "comparator": "<=",
@@ -513,7 +513,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}', 'white_on_yellow') %>
         },
         {
           "comparator": ">=",
@@ -521,7 +521,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}', 'white_on_green') %>
         }
       ],
       "custom_unit": "/5m",

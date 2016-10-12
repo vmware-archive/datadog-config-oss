@@ -45,13 +45,13 @@ prod:
 - query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:deployment}/1000000000
   palette: white_on_yellow
   value: 0
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}
   palette: white_on_red
   value: 0
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}
   palette: white_on_yellow
   value: 0
-- query: avg:datadog.nozzle.bbs.Domain.deployment_apps{deployment:deployment}
+- query: avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:deployment}
   palette: white_on_green
   value: 0
 - query: per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:deployment})
