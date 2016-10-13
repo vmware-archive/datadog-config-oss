@@ -1613,7 +1613,7 @@
       "width": 11,
       "wrapped": true,
       "x": 31,
-      "y": 58
+      "y": 67
     },
     {
       "aggr": "avg",
@@ -4648,6 +4648,132 @@
     },
     {
       "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{deployment:<%= deployment %>,target:appsman}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "AppsMan",
+      "type": "query_value",
+      "width": 12,
+      "x": 27,
+      "y": 51
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{deployment:<%= deployment %>,target:autoscaling}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Autoscale",
+      "type": "query_value",
+      "width": 12,
+      "x": 27,
+      "y": 58
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{deployment:<%= deployment %>,target:opsman}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "OpsMan",
+      "type": "query_value",
+      "width": 12,
+      "x": 39,
+      "y": 51
+    },
+    {
+      "autoscale": true,
       "board_id": 14530,
       "height": 5,
       "legend": false,
@@ -4817,6 +4943,22 @@
       "width": 11,
       "x": 12,
       "y": 72
+    },
+    {
+      "board_id": 117666,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 3,
+      "text": "PCF built-in apps",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 27,
+      "y": 47
     },
     {
       "color": "#4d4d4d",
