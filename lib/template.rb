@@ -25,7 +25,7 @@ class Template
 
     hash = hash.with_indifferent_access
     hash.each do |key, value|
-      @search[key.to_sym] = regex_of_value(value)
+      @search[key.to_sym] = regex_of_value(value) if value.to_s.size > 0
       @replace[key.to_sym] = replace_string_of_value(value)
     end
   end
