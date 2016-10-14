@@ -5,7 +5,7 @@
   "no_data_timeframe": false,
   "notify_audit": true,
   "notify_no_data": false,
-  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{!deployment:,!deployment:<%= metron_agent_deployment %>-jarvice-playground-v2,!deployment:<%= jarvice_deployment %>,!deployment:p-gemfire,!deployment:<%= environment %>-opentsdb,!deployment:<%= elk_deployment %>,!deployment:<%= environment %>-logsearch} by {index,job} < 1",
+  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{!deployment:,!deployment:loggregator-staging,!deployment:<%= metron_agent_deployment %>-jarvice-playground-v2,!deployment:<%= jarvice_deployment %>,!deployment:p-gemfire,!deployment:<%= environment %>-opentsdb,!deployment:<%= elk_deployment %>,!deployment:<%= environment %>-logsearch} by {index,job} < 1",
   "renotify_interval": null,
   "timeout_h": null
 }
