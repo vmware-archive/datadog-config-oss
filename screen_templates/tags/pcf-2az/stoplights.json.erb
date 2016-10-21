@@ -839,8 +839,8 @@
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 115,
-      "y": 75
+      "x": 102,
+      "y": 73
     },
     {
       "aggr": "avg",
@@ -935,8 +935,8 @@
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 103,
-      "y": 75
+      "x": 90,
+      "y": 73
     },
     {
       "aggr": "avg",
@@ -1030,8 +1030,8 @@
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 103,
-      "y": 82
+      "x": 90,
+      "y": 80
     },
     {
       "aggr": "avg",
@@ -4286,8 +4286,8 @@
       "title_text": "",
       "type": "note",
       "width": 24,
-      "x": 103,
-      "y": 68
+      "x": 90,
+      "y": 66
     },
     {
       "auto_refresh": false,
@@ -4449,6 +4449,155 @@
       "width": 44,
       "x": 159,
       "y": 25
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{deployment:p-mysql_<%= environment %>}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "30m",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Mysql smoke tests",
+      "type": "query_value",
+      "width": 12,
+      "x": 90,
+      "y": 88
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{deployment:p-redis_<%= environment %>}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "30m",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Redis smoke tests",
+      "type": "query_value",
+      "width": 12,
+      "x": 102,
+      "y": 88
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "last",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:notifications.smoke.status{deployment:<%= deployment %>}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "15m",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Notifications smoke test",
+      "type": "query_value",
+      "width": 12,
+      "x": 90,
+      "y": 95
     },
     {
       "autoscale": true,
@@ -4703,8 +4852,8 @@
       "title_text": "mysql backups, 24hr",
       "type": "query_value",
       "width": 12,
-      "x": 115,
-      "y": 82
+      "x": 102,
+      "y": 80
     },
     {
       "autoscale": true,
