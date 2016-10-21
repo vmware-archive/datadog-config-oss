@@ -780,104 +780,6 @@
       "custom_unit": null,
       "height": 5,
       "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "smoke.status",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}",
-      "res_calc_func": "raw",
-      "tags": [
-        null,
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.75
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.75
-              }
-            ],
-            "q": "avg:smoke.status{deployment:p-redis_<%= environment %>}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Redis smoke test",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 102,
-      "y": 88
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:0}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 5,
-      "is_valid_query": true,
       "metric": "smoke.status",
       "metric_type": "standard",
       "padding": 8,
@@ -4601,6 +4503,61 @@
       "type": "query_value",
       "width": 12,
       "x": 90,
+      "y": 88
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{deployment:p-redis_<%= environment %>}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "30m",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Redis smoke tests",
+      "type": "query_value",
+      "width": 12,
+      "x": 102,
       "y": 88
     },
     {
