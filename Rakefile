@@ -15,8 +15,10 @@ task :default => :spec
 
 ENV['RUBY_ENVIRONMENT'] ||= "cf_deployment"
 task :push => [ENV['RUBY_ENVIRONMENT']+":push"]
+CONFIG_ROOT_DIR=ENV['CONFIG_ROOT_DIR'] || DIR
+CONFIG_PATH = File.join(CONFIG_ROOT_DIR, "config/config.yml")
+puts "Config path: #{CONFIG_ROOT_DIR}"
 
-CONFIG_PATH = File.join(DIR, "config/config.yml")
 DASHBOARD_TEMPLATES = []
 ALERT_TEMPLATES = []
 SCREEN_TEMPLATES = []
