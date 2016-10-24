@@ -18,6 +18,12 @@ task :push => [ENV['RUBY_ENVIRONMENT']+":push"]
 CONFIG_ROOT_DIR=ENV['CONFIG_ROOT_DIR'] || DIR
 CONFIG_PATH = File.join(CONFIG_ROOT_DIR, "config/config.yml")
 puts "Config path: #{CONFIG_ROOT_DIR}"
+DASHBOARD_TEMPLATES_PATH = ENV['DASHBOARD_TEMPLATES_PATH'] || CONFIG_ROOT_DIR || DIR
+puts "Dashboard path: #{DASHBOARD_TEMPLATES_PATH}"
+ALERT_TEMPLATES_PATH = ENV['ALERT_TEMPLATES_PATH'] || CONFIG_ROOT_DIR || DIR
+puts "Alert path: #{ALERT_TEMPLATES_PATH}"
+SCREEN_TEMPLATES_PATH = ENV['SCREEN_TEMPLATES_PATH'] || CONFIG_ROOT_DIR || DIR
+puts "Screen path: #{SCREEN_TEMPLATES_PATH}"
 
 DASHBOARD_TEMPLATES = []
 ALERT_TEMPLATES = []
@@ -30,10 +36,10 @@ end
 
 def push(env)
   config_for_env = YAML.load_file(CONFIG_PATH).fetch(env.to_s)
-
-  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env, DIR, config_for_env))
-  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env, DIR, config_for_env))
-  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env, DIR, config_for_env))
+  puts "Loading templates..."
+  DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env, DASHBOARD_TEMPLATES_PATH, config_for_env))
+  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env, SCREEN_TEMPLATES_PATH, config_for_env))
+  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env, ALERT_TEMPLATES_PATH, config_for_env))
 
   DashboardSynchronizer.new(CONFIG_PATH, env).run(DASHBOARD_TEMPLATES)
   ScreenSynchronizer.new(CONFIG_PATH, env).run(SCREEN_TEMPLATES)
