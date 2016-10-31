@@ -1,0 +1,598 @@
+{
+  "board_title": "<%= deployment %> simplelights",
+  "height": 161,
+  "original_title": "<%= deployment %> simplelights",
+  "read_only": false,
+  "shared": false,
+  "template_variables": [
+    {
+      "default": "deployment:<%= deployment %>",
+      "name": "deployment",
+      "prefix": "deployment"
+    },
+    {
+      "default": "deployment:p-mysql_<%= environment %>",
+      "name": "mysql_deployment",
+      "prefix": "deployment"
+    },
+    {
+      "default": "deployment:p-rabbitmq_<%= environment %>",
+      "name": "rabbit_deployment",
+      "prefix": "deployment"
+    },
+    {
+      "default": "deployment:p-redis_<%= environment %>",
+      "name": "redis_deployment",
+      "prefix": "deployment"
+    }
+  ],
+  "templated": true,
+  "title_edited": false,
+  "widgets": [
+    {
+      "auto_refresh": false,
+      "bgcolor": "white",
+      "board_id": 14530,
+      "font_size": "16",
+      "height": 9,
+      "html": "**Smoke Tests**\n[CF]() [RabbitMQ](<%= smoke_tests_rabbit %>) [Logregator]() [MySQL](<%= smoke_tests_mysql %>)",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 23,
+      "x": 58,
+      "y": 1
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{target:appsman,$deployment}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "AppsMan",
+      "type": "query_value",
+      "width": 12,
+      "x": 29,
+      "y": 7
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{target:autoscaling,$deployment}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Autoscale",
+      "type": "query_value",
+      "width": 12,
+      "x": 29,
+      "y": 14
+    },
+    {
+      "autoscale": true,
+      "board_id": 117666,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.8"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:cloudops_tools.updog.status{target:opsman,$deployment}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "OpsMan",
+      "type": "query_value",
+      "width": 12,
+      "x": 41,
+      "y": 7
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 16,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.75"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "1"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:bosh.healthmonitor.system.healthy{$deployment}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "query_value",
+      "width": 24,
+      "x": 0,
+      "y": 7
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:notifications.smoke.status{$deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Notifications Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 40
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:rabbitmq.smoke.status{$rabbit_deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "RabbitMQ Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 28
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{$mysql_deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "MySQL Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 22
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{$redis_deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Redis Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 34
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{loggregator_enabled:0,$deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Runtime Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 10
+    },
+    {
+      "autoscale": true,
+      "board_id": 132452,
+      "height": 4,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": 2,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 0.75
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 1
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 0.75
+              }
+            ],
+            "q": "avg:smoke.status{loggregator_enabled:1,$deployment}"
+          }
+        ],
+        "text_align": "left",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Loggregator Smoke Tests",
+      "type": "query_value",
+      "width": 23,
+      "x": 58,
+      "y": 16
+    },
+    {
+      "board_id": 117666,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 6,
+      "text": "Updog apps",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 29,
+      "y": 1
+    },
+    {
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 6,
+      "text": "VM Health",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 0,
+      "y": 1
+    },
+    {
+      "height": 24,
+      "margin": "",
+      "sizing": "fit",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "image",
+      "url": "<%= health_screen_image %>",
+      "width": 32,
+      "x": 25,
+      "y": 22
+    }
+  ],
+  "width": "100%"
+}
