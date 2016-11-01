@@ -271,7 +271,7 @@
       "type": "query_value",
       "width": 23,
       "x": 58,
-      "y": 40
+      "y": 34
     },
     {
       "autoscale": true,
@@ -326,7 +326,7 @@
       "type": "query_value",
       "width": 23,
       "x": 58,
-      "y": 28
+      "y": 22
     },
     {
       "autoscale": true,
@@ -381,7 +381,7 @@
       "type": "query_value",
       "width": 23,
       "x": 58,
-      "y": 22
+      "y": 16
     },
     {
       "autoscale": true,
@@ -436,7 +436,7 @@
       "type": "query_value",
       "width": 23,
       "x": 58,
-      "y": 34
+      "y": 28
     },
     {
       "autoscale": true,
@@ -492,61 +492,6 @@
       "width": 23,
       "x": 58,
       "y": 10
-    },
-    {
-      "autoscale": true,
-      "board_id": 132452,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.75
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.75
-              }
-            ],
-            "q": "avg:smoke.status{loggregator_enabled:1,$deployment}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Loggregator Smoke Tests",
-      "type": "query_value",
-      "width": 23,
-      "x": 58,
-      "y": 16
     },
     {
       "board_id": 117666,
