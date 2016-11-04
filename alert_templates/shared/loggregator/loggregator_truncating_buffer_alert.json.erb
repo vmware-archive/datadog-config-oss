@@ -1,7 +1,6 @@
 {
   "name": "<%= environment %> CF: Loggregator Truncating Buffer Alert",
-  "no_data_timeframe": 30, 
-  "notify_no_data": true,
+  "notify_no_data": false,
   "query": "avg(last_10m):per_second(sum:datadog.nozzle.DopplerServer.TruncatingBuffer.totalDroppedMessages{deployment:cf-cfapps-io2}) > 100000",
   "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  LAMBDA Team. \n\n## Possible Causes:\nDopplers under load.\n\n## Potential Solutions:\nIncrease number of dopplers.\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }
