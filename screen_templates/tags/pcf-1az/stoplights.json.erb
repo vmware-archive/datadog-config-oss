@@ -854,102 +854,6 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:smoke.status{deployment:deployment,loggregator_enabled:1}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 5,
-      "is_valid_query": true,
-      "metric": "smoke.status",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}",
-      "res_calc_func": "raw",
-      "tags": [
-        null,
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.75
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.75
-              }
-            ],
-            "q": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Loggregator smoke test",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 90,
-      "y": 73
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
           "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_red') %>
         },
         {
@@ -4274,7 +4178,7 @@
       "board_id": 14530,
       "font_size": "16",
       "height": 7,
-      "html": "**Smoke Tests**\n[CF](<%= smoke_tests_cf %>) [RabbitMQ](<%= smoke_tests_rabbit %>) [Logregator](<%= smoke_tests_loggregator %>) [MySQL](<%= smoke_tests_mysql %>)",
+      "html": "**Smoke Tests**\n[CF](<%= smoke_tests_cf %>) [RabbitMQ](<%= smoke_tests_rabbit %>) [MySQL](<%= smoke_tests_mysql %>)",
       "refresh_every": 30000,
       "text_align": "center",
       "tick": false,
