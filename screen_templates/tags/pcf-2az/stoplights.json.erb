@@ -920,7 +920,7 @@
                 "value": 0.75
               }
             ],
-            "q": "avg:rabbitmq.smoke.status{*}"
+            "q": "avg:rabbitmq.smoke.status{deployment:p-rabbitmq_<%= environment %>}"
           }
         ],
         "text_align": "left",
