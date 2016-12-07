@@ -1,0 +1,11 @@
+{
+  "escalation_message": null,
+  "message": "## Description:\n  Diego Crashed LRPs(long running processes) is increasing a lot during the last 5 minutes.\n\n## Escalation Path:\n  Diego/Garden team\n\n## Causes:\n  Usually the Crashed LRPs are quite stable in the platform, once it's increasing sharply, it probably indicates some cell is in an abnormal state.\n\n## Potential Solutions:\n  Escalate to Diego team <%= diego_oncall %> <%= monitoringAndMetrics_pagerduty %>",
+  "name": "<%= environment %> Diego: Crashed LRPs is increasing sharply",
+  "no_data_timeframe": 2,
+  "notify_audit": false,
+  "notify_no_data": false,
+  "query": "max(last_5m):derivative(ewma_10(avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})) > 0.5",
+  "renotify_interval": 0,
+  "timeout_h": 0
+}
