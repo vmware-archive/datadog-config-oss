@@ -1,0 +1,356 @@
+---
+prod:
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})
+  palette: red_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})
+  palette: yellow_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:metron_agent_deployment})
+  palette: green_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})
+  palette: red_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})
+  palette: yellow_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:metron_agent_deployment})
+  palette: green_on_white
+  value: 0
+- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+  palette: red_on_white
+  value: 80
+- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+  palette: yellow_on_white
+  value: 100
+- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+  palette: green_on_white
+  value: 100
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_deployment})
+  palette: white_on_green
+  value: 0
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_deployment})
+  palette: white_on_red
+  value: 0
+- query: per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_deployment})
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.metron_agent_deployment_apps{deployment:metron_agent_deployment}
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.metron_agent_deployment_apps{deployment:metron_agent_deployment}
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.Domain.metron_agent_deployment_apps{deployment:metron_agent_deployment}
+  palette: white_on_green
+  value: 0
+- query: per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:metron_agent_deployment})
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_deployment} / 1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_deployment} / 1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_deployment} / 1000000000
+  palette: white_on_yellow
+  value: 0
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
+  palette: white_on_red
+  value: 0.75
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
+  palette: white_on_green
+  value: 1
+- query: avg:smoke.status{deployment:deployment,loggregator_enabled:0}
+  palette: white_on_yellow
+  value: 0.75
+- query: avg:rabbitmq.smoke.status{*}
+  palette: white_on_red
+  value: 0.75
+- query: avg:rabbitmq.smoke.status{*}
+  palette: white_on_green
+  value: 1
+- query: avg:rabbitmq.smoke.status{*}
+  palette: white_on_yellow
+  value: 0.75
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_deployment} ) / 0.000001024"
+  palette: white_on_red
+  value: 0
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_deployment} ) / 0.000001024"
+  palette: white_on_yellow
+  value: 0
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_deployment} ) / 0.000001024"
+  palette: white_on_green
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_green
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsDesired{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_green
+  value: 0
+- query: avg:datadog.nozzle.bbs.LRPsRunning{deployment:deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_deployment}.rollup(avg,1800))
+  palette: white_on_yellow
+  value: 0
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_deployment}
+  palette: white_on_red
+  value: 0
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_deployment}
+  palette: white_on_green
+  value: 0
+- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_deployment}
+  palette: white_on_yellow
+  value: 0
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_deployment})"
+  palette: white_on_green
+  value: 0
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_deployment})"
+  palette: white_on_red
+  value: 0
+- query: "(((datadog.nozzle.bbs.LRPsDesired{deployment:deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_deployment})"
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_green
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_red
+  value: 0
+- query: max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_deployment}/1000000000
+  palette: white_on_yellow
+  value: 0
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_green
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
+  palette: white_on_red
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 50
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:brain_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:cell_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
+  palette: white_on_yellow
+  value: 100
+- query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_red
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:router_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_yellow
+  value: 100
+- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50"
+  palette: white_on_green
+  value: 100
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
+  palette: white_on_green
+  value: 3
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
+  palette: white_on_red
+  value: 5
+- query: max:datadog.nozzle.cc.requests.outstanding{*}
+  palette: white_on_yellow
+  value: 3
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_green
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_green
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_yellow
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_green
+  value: 65
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_red
+  value: 75
+- query: max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}
+  palette: white_on_yellow
+  value: 65
