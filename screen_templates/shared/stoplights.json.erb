@@ -593,86 +593,6 @@
       "calc_func": "raw",
       "conditional_formats": [
         {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:deployment}', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:cloudops_tools.etcd_leader_health{deployment:deployment}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "hrs",
-      "height": 4,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "cloudops_tools.etcd_leader_health",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:cloudops_tools.etcd_leader_health{deployment:<%= deployment %>}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "hrs",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 1
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_green",
-                "value": 0.9999999
-              }
-            ],
-            "q": "avg:cloudops_tools.etcd_leader_health{deployment:<%= deployment %>}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "ETCD Leader Uptime",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 0,
-      "y": 66
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
           "comparator": ">=",
           "custom_bg_color": null,
           "custom_fg_color": null,
@@ -1590,148 +1510,6 @@
           "comparator": "<",
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:production}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:pws.circuit.cloud_controller_get{host:production}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "metric": "pws.circuit.cloud_controller_get",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:pws.circuit.cloud_controller_get{host:production}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              }
-            ],
-            "q": "avg:pws.circuit.cloud_controller_get{host:production}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "CC GET Circuit",
-      "type": "query_value",
-      "width": 22,
-      "wrapped": true,
-      "x": 0,
-      "y": 91
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:production}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:pws.circuit.loggregator{host:production}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "metric": "pws.circuit.loggregator",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:pws.circuit.loggregator{host:production}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              }
-            ],
-            "q": "avg:pws.circuit.loggregator{host:production}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Console Loggregator Circuit",
-      "type": "query_value",
-      "width": 22,
-      "wrapped": true,
-      "x": 0,
-      "y": 85
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
           "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_red') %>
         },
         {
@@ -2181,101 +1959,6 @@
       "wrapped": true,
       "x": 159,
       "y": 43
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 6,
-      "is_valid_query": true,
-      "metric": "datadog.nozzle.bbs.ETCDWatchers",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 4
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 3
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 4
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.ETCDWatchers{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "ETCD Watchers",
-      "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 24,
-      "y": 54
     },
     {
       "aggr": "avg",
@@ -5300,7 +4983,7 @@
       "timeframe": "15m",
       "title": true,
       "title_align": "left",
-      "title_size": 16,
+      "title_size": 20,
       "title_text": "Top Ephemeral Disk usage (%) past 15 min",
       "type": "query_value",
       "width": 44,
@@ -5468,7 +5151,7 @@
                 "value": 65
               }
             ],
-            "q": "top(max:bosh.healthmonitor.system.disk.persistent.percent{*} by {index, job, deployment}, 10, 'mean', 'desc')",
+            "q": "top(max:bosh.healthmonitor.system.disk.persistent.percent{!deployment:pcf-metrics-v1-2} by {job}, 10, 'mean', 'desc')",
             "style": {
               "palette": "dog_classic"
             }

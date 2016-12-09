@@ -144,18 +144,6 @@ prod:
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:domain_url}
   palette: white_on_yellow
   value: 10
-- query: avg:pws.circuit.cloud_controller_get{host:production}
-  palette: white_on_red
-  value: 1
-- query: avg:pws.circuit.cloud_controller_get{host:production}
-  palette: white_on_green
-  value: 1
-- query: avg:pws.circuit.loggregator{host:production}
-  palette: white_on_red
-  value: 1
-- query: avg:pws.circuit.loggregator{host:production}
-  palette: white_on_green
-  value: 1
 - query: avg:natbox.pingout.health{*}
   palette: white_on_red
   value: 1
@@ -192,15 +180,6 @@ prod:
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}
   palette: white_on_yellow
   value: 30
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}
-  palette: white_on_red
-  value: 4
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}
-  palette: white_on_green
-  value: 3
-- query: avg:datadog.nozzle.bbs.ETCDWatchers{deployment:metron_agent_diego_deployment}
-  palette: white_on_yellow
-  value: 4
 - query: max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000
   palette: white_on_green
   value: 0
@@ -474,12 +453,3 @@ prod:
 - query: max:aws.ec2.status_check_failed{deployment:deployment}
   palette: white_on_red
   value: 0
-- query: sum:diego.canary.app.instance{deployment:diego_deployment}
-  palette: white_on_red
-  value: 15
-- query: sum:diego.canary.app.instance{deployment:diego_deployment}
-  palette: white_on_yellow
-  value: 19
-- query: sum:diego.canary.app.instance{deployment:diego_deployment}
-  palette: white_on_green
-  value: 20
