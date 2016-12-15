@@ -25,14 +25,28 @@
         },
         {
             "definition": {
-                "events": [],
+                "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "sum:datadog.nozzle.DopplerServer.grpcManager.subscriptions{deployment:<%= metron_agent_deployment %>}",
+                        "conditional_formats": [],
+                        "type": "line",
+                        "aggregator": "avg"
                     }
                 ]
             },
-            "title": "<%= environment %>: Number of WebSocket Sinks (Doppler)"
+            "title":"<%= environment %>: Number of gRPC Subscriptions"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.grpcManager.subscriptions{deployment: <%= metron_agent_deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of gRPC Subscriptions Per Doppler"
         },
         {
             "definition": {
@@ -40,7 +54,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "rate(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip})"
+                        "q": "rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{ deployment: <%= metron_agent_deployment %>, event_type: logmessage } by {ip})"
                     }
                 ]
             },
@@ -52,7 +66,7 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{ deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{ deployment: <%= metron_agent_deployment %>, event_type: logmessage } by {ip}"
                     }
                 ]
             },
@@ -122,7 +136,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})))",
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{*})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{deployment: <%= metron_agent_deployment %>} ))",
                         "type": "line"
                     }
                 ],
@@ -136,7 +150,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment: <%= metron_agent_deployment %>} ))) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= metron_agent_diego_deployment %>})) )"
+                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{*})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{deployment: <%= metron_agent_deployment %>})) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{deployment: <%= metron_agent_diego_deployment %>})) )"
                     }
                 ],
                 "events": []
@@ -147,7 +161,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: counterevent})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: counterevent, deployment: <%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -160,7 +174,7 @@
             "definition": {
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: valuemetric})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: valuemetric, deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -173,7 +187,7 @@
             "definition":{
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.containerMetricMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: containermetric})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: containermetric, deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -187,20 +201,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
-                        "type": "line"
-                    }
-                ]
-            },
-            "events":[],
-            "title":"<%= environment %>: Lost HttpStartStop/s Metron-Sent → Doppler-Received"
-        },
-        {
-            "definition":{
-                "viz": "timeseries",
-                "requests": [
-                    {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.sentEnvelopes{event_type: httpstartstop})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: httpstartstop, deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ]
@@ -212,7 +213,7 @@
             "definition":{
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= metron_agent_diego_deployment %>})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.sentEnvelopes{event_type: logmessage})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: logmessage, deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
@@ -255,48 +256,6 @@
                 ]
             },
             "title":"<%= environment %>: Loggregator Open File Descriptors Per VM"
-        },
-        {
-            "definition": {
-                "viz": "timeseries",
-                "requests": [
-                    {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip}), per_second(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>} by {ip})",
-                        "aggregator": "avg",
-                        "conditional_formats": [],
-                        "type": "area"
-                    }
-                ]
-            },
-            "title":"<%= environment %>: Doppler Message Counts by Protocol"
-        },
-        {
-            "definition": {
-                "viz": "timeseries",
-                "requests": [
-                    {
-                        "q": "per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:datadog-nozzle}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:opentsdb-nozzle}), per_second(sum:datadog.nozzle.DopplerServer.sentMessagesFirehose{deployment:<%= metron_agent_deployment %>,subscription_id:metrix})",
-                        "aggregator": "avg",
-                        "conditional_formats": [],
-                        "type": "area"
-                    }
-                ]
-            },
-            "title":"<%= environment %>: Nozzle Message Transport"
-        },
-        {
-            "definition": {
-                "viz": "timeseries",
-                "requests": [
-                    {
-                        "q": "sum:datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment:<%= metron_agent_deployment %>}",
-                        "conditional_formats": [],
-                        "type": "line",
-                        "aggregator": "avg"
-                    }
-                ]
-            },
-            "title":"<%= environment %>: Number of Websocket Sinks"
         }
     ],
     "title": "<%= environment %> Loggregator Information"

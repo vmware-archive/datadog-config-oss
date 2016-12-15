@@ -1,7 +1,7 @@
 {
   "name": "<%= environment %> CF: Loggregator Message reliability from Metron to Doppler below threshold",
-  "no_data_timeframe": 30, 
+  "no_data_timeframe": 30,
   "notify_no_data": true,
-  "query": "avg(last_1h):100 * (rate(sum:datadog.nozzle.DopplerServer.udpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>}) + rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>}) + rate(sum:datadog.nozzle.DopplerServer.tcpListener.receivedMessageCount{deployment:<%= metron_agent_deployment %>})) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= metron_agent_deployment %>}) + rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment:<%= metron_agent_diego_deployment %>})) < 90",
+  "query": "avg(last_1h):100 * rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{deployment:<%= metron_agent_deployment %>}) / rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{*}) < 90",
   "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \n\n## Escalation Path:\n  LAMBDA Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)"
 }
