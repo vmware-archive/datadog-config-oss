@@ -30,7 +30,7 @@
                     {
                         "q": "sum:datadog.nozzle.DopplerServer.grpcManager.subscriptions{deployment:<%= metron_agent_deployment %>}",
                         "conditional_formats": [],
-                        "type": "line",
+                        "type": "bars",
                         "aggregator": "avg"
                     }
                 ]
@@ -42,7 +42,8 @@
                 "events": [],
                 "requests": [
                     {
-                        "q": "datadog.nozzle.DopplerServer.grpcManager.subscriptions{deployment: <%= metron_agent_deployment %> } by {ip}"
+                        "q": "datadog.nozzle.DopplerServer.grpcManager.subscriptions{deployment: <%= metron_agent_deployment %> } by {ip}",
+                        "type": "bars"
                     }
                 ]
             },
@@ -156,58 +157,6 @@
                 "events": []
             },
             "title": "<%= environment %>: % (moving-avg) lost msg/s Metron-Sent → Doppler-Received"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: counterevent})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: counterevent, deployment: <%= metron_agent_deployment %>}))",
-                        "type": "line"
-                    }
-                ],
-                "viz": "timeseries"
-            },
-            "events":[],
-            "title": "<%= environment %>: Lost CounterEvent/s Metron-Sent → Doppler-Received"
-        },
-        {
-            "definition": {
-                "requests": [
-                    {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: valuemetric})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: valuemetric, deployment:<%= metron_agent_deployment %>}))",
-                        "type": "line"
-                    }
-                ],
-                "viz": "timeseries"
-            },
-            "events": [],
-            "title": "<%= environment %>: Lost ValueMetric/s Metron-Sent → Doppler-Received"
-        },
-        {
-            "definition":{
-                "requests": [
-                    {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: containermetric})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: containermetric, deployment:<%= metron_agent_deployment %>}))",
-                        "type": "line"
-                    }
-                ],
-                "viz": "timeseries"
-            },
-            "events":[],
-            "title": "<%= environment %>: Lost ContainerMetric/s Metron-Sent → Doppler-Received"
-        },
-        {
-            "definition":{
-                "viz": "timeseries",
-                "requests": [
-                    {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.sentEnvelopes{event_type: httpstartstop})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: httpstartstop, deployment:<%= metron_agent_deployment %>}))",
-                        "type": "line"
-                    }
-                ]
-            },
-            "events":[],
-            "title":"<%= environment %>: Lost HttpStartStop/s Metron-Sent → Doppler-Received"
         },
         {
             "definition":{
