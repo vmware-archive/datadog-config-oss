@@ -1,0 +1,11 @@
+{
+  "notify_audit": true,
+  "timeout_h": null,
+  "query": "max(last_15m):top(top(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} / sum:datadog.nozzle.rep.CapacityTotalMemory{deployment:<%= metron_agent_diego_deployment %>}, 10, 'min', 'desc'), 1, 'min', 'asc') * 100 < 10",
+  "message": "The environment has less that 10% available of Diego Cell Capacity.\n@pagerduty-datadog-cloudops-service @oncall-Diego_Production_Primary",
+  "name": "<%= environment %> Diego: min memory available too low",
+  "no_data_timeframe": 30,
+  "notify_no_data": false,
+  "renotify_interval": null,
+  "escalation_message": ""
+}
