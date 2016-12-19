@@ -55,6 +55,30 @@
                 "events": [],
                 "requests": [
                     {
+                        "q": "rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{ deployment: <%= metron_agent_deployment %> } by {ip})"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Envelopes Per Second (Doppler)"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "events": [],
+                "requests": [
+                    {
+                        "q": "sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{ deployment: <%= metron_agent_deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Envelopes Count (Doppler)"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "events": [],
+                "requests": [
+                    {
                         "q": "rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{ deployment: <%= metron_agent_deployment %>, event_type: logmessage } by {ip})"
                     }
                 ]
@@ -151,7 +175,7 @@
                 "viz": "timeseries",
                 "requests": [
                     {
-                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{*})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{deployment: <%= metron_agent_deployment %>})) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{deployment: <%= metron_agent_deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{deployment: <%= metron_agent_diego_deployment %>})) )"
+                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{*})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{deployment: <%= metron_agent_deployment %>})) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{deployment: <%= metron_agent_deployment %>})) )"
                     }
                 ],
                 "events": []
