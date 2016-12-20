@@ -5,7 +5,7 @@
   "no_data_timeframe": 30,
   "notify_audit": true,
   "notify_no_data": true,
-  "query": "avg(last_1h):rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{*}) / rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{*}) < 0.95",
+  "query": "avg(last_1h):rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{*}) / rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{*}) < 0.90",
   "renotify_interval": null,
   "timeout_h": null
 }
