@@ -1,7 +1,7 @@
 {
   "notify_audit": true,
   "timeout_h": null,
-  "query": "max(last_15m):top(top(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} / sum:datadog.nozzle.rep.CapacityTotalMemory{deployment:<%= metron_agent_diego_deployment %>}, 10, 'min', 'desc'), 1, 'min', 'asc') * 100 < 10",
+  "query": "max(last_15m):top(top(sum:datadog.nozzle.rep.CapacityRemainingMemory{*} / sum:datadog.nozzle.rep.CapacityTotalMemory{*}, 10, 'min', 'desc'), 1, 'min', 'asc') * 100 < 10",
   "message": "The environment has less than 10% available of Diego Cell Memory Capacity\nEscalation Path: Diego maybe...\nPossible Causes: Increased usage of CF. Click on the link below to see the trend.\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase diego cell count.\n @pagerduty-datadog-cloudops-service @oncall-Diego_Production_Primary",
   "name": "<%= environment %> Diego: min memory available too low",
   "no_data_timeframe": 30,
