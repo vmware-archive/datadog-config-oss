@@ -7,5 +7,6 @@
   "notify_no_data": true,
   "query": "avg(last_30m):avg:rabbitmq.smoke.status{deployment:p-rabbitmq_<%= environment %>} < 0.66",
   "renotify_interval": 0,
+  "require_full_window": false,
   "timeout_h": 0
 }
