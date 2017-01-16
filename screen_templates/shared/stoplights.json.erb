@@ -528,7 +528,7 @@
       "metric": "datadog.nozzle.bbs.Domain.cf_apps",
       "metric_type": "standard",
       "padding": 8,
-      "precision": "*",
+      "precision": 1,
       "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
       "res_calc_func": "raw",
       "tags": [
@@ -539,7 +539,7 @@
       "tile_def": {
         "autoscale": false,
         "custom_unit": "/5m",
-        "precision": "*",
+        "precision": 1,
         "requests": [
           {
             "aggregator": "avg",
