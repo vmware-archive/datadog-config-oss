@@ -1,6 +1,6 @@
 {
   "query": "avg(last_15m):max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n > 20",
-  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>",
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n<%= cloudops_pagerduty %> <%= diego_oncall %>",
   "name": "<%= environment %> Diego: Router emitter sync duration too high",
   "no_data_timeframe": 30,
   "notify_no_data": false

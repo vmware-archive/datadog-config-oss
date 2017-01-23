@@ -1,6 +1,6 @@
 {
   "query": "avg(last_15m):max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 0.8\n",
-  "message": "<%= cloudops_pagerduty %> <%= diego_oncall %>\nEscalation Path: DIEGO Team",
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n<%= cloudops_pagerduty %> <%= diego_oncall %>\n",
   "name": "<%= environment %> Diego: Domain cf-apps freshness too low.", 
   "no_data_timeframe": 30,
   "notify_no_data": true
