@@ -101,13 +101,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "left",
-      "title_size": 20,
-      "title_text": "API Req/sec - 5min",
+      "title_size": 13,
+      "title_text": "API Req",
       "type": "query_value",
-      "width": 13,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 98
+      "x": 103,
+      "y": 0
     },
     {
       "aggr": "avg",
@@ -143,6 +143,8 @@
       "custom_unit": "/s",
       "height": 4,
       "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
       "metric": "",
       "metric_type": "standard",
       "padding": 8,
@@ -196,13 +198,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "left",
-      "title_size": 20,
-      "title_text": "UAA Req/sec - 5min",
+      "title_size": 13,
+      "title_text": "UAA Req",
       "type": "query_value",
-      "width": 11,
+      "width": 10,
       "wrapped": true,
-      "x": 147,
-      "y": 98
+      "x": 93,
+      "y": 6
     },
     {
       "aggr": "avg",
@@ -293,18 +295,18 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "left",
-      "title_size": 20,
-      "title_text": "Router Req/sec - 5min",
+      "title_size": 13,
+      "title_text": "Router Req",
       "type": "query_value",
-      "width": 13,
+      "width": 10,
       "wrapped": true,
-      "x": 121,
-      "y": 98
+      "x": 93,
+      "y": 0
     },
     {
       "aggr": "avg",
       "aggregator": "avg",
-      "autoscale": false,
+      "autoscale": true,
       "calc_func": "raw",
       "conditional_formats": [
         {
@@ -312,16 +314,16 @@
           "custom_bg_color": null,
           "custom_fg_color": null,
           "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
+          "palette": "white_on_red",
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_red') %>
         },
         {
-          "comparator": ">",
+          "comparator": ">=",
           "custom_bg_color": null,
           "custom_fg_color": null,
           "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_red') %>
+          "palette": "white_on_green",
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_green') %>
         },
         {
           "comparator": ">=",
@@ -329,27 +331,29 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:metron_agent_diego_deployment})', 'white_on_yellow') %>
+          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_yellow') %>
         }
       ],
-      "custom_unit": "/m",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
+      "custom_unit": null,
+      "height": 4,
+      "is_valid_query": true,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "rabbitmq.smoke.status",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 1,
-      "query": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})",
+      "precision": 2,
+      "query": "avg:rabbitmq.smoke.status{*}",
       "res_calc_func": "raw",
       "tags": [
 
       ],
-      "text_align": "center",
+      "text_align": "left",
       "text_size": "auto",
       "tile_def": {
-        "autoscale": false,
-        "custom_unit": "/m",
-        "precision": 1,
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": "2",
         "requests": [
           {
             "aggregator": "avg",
@@ -359,15 +363,15 @@
                 "custom_bg_color": null,
                 "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_green",
-                "value": 0.5
+                "palette": "white_on_red",
+                "value": 0.75
               },
               {
-                "comparator": ">",
+                "comparator": ">=",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_red",
+                "palette": "white_on_green",
                 "value": 1
               },
               {
@@ -376,551 +380,10 @@
                 "custom_fg_color": null,
                 "invert": false,
                 "palette": "white_on_yellow",
-                "value": 0.5
+                "value": 0.75
               }
             ],
-            "q": "per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>})"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "LRP Auction Failures per Minute - 30m avg",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
-      "y": 39
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 5
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 5
-              }
-            ],
-            "q": "max:datadog.nozzle.auctioneer.AuctioneerFetchStatesDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Max. Fetch Cell State Times - 30m avg",
-      "type": "query_value",
-      "width": 16,
-      "wrapped": true,
-      "x": 35,
-      "y": 39
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_red') %>
-        },
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:metron_agent_diego_deployment}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "/5m",
-      "height": 6,
-      "is_valid_query": true,
-      "metric": "datadog.nozzle.bbs.Domain.cf_apps",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 1,
-      "query": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "/5m",
-        "precision": 1,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.8
-              },
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.9
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 0.9
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Domain 'cf-apps' Freshness - 5m avg",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
-      "y": 31
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "/Hr",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "system.load.1",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "/Hr",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 0
-              }
-            ],
-            "q": "per_hour(datadog.nozzle.auctioneer.AuctioneerLRPAuctionsStarted{deployment:<%= metron_agent_diego_deployment %>})"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "LRP Auctions per Hour - 30m avg",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
-      "y": 47
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_green') %>
-        },
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_red') %>
-        },
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:new_relic.apdex.score{application:webconsole_production}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "metric": "new_relic.apdex.score",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:new_relic.apdex.score{application:webconsole_production}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.5
-              },
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.65
-              }
-            ],
-            "q": "avg:new_relic.apdex.score{application:webconsole_production}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Apdex - 15m",
-      "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 0,
-      "y": 79
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.RequestLatency{deployment:metron_agent_diego_deployment} / 1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 2
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 2
-              }
-            ],
-            "q": "max:datadog.nozzle.bbs.RequestLatency{deployment:<%= metron_agent_diego_deployment %>} / 1000000000"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "BBS Request Latency",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
-      "y": 55
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
-        }
-      ],
-      "height": 12,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_red",
-                "value": -1000
-              },
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 300
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": -10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_yellow",
-                "value": 1000
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))"
+            "q": "avg:rabbitmq.smoke.status{*}"
           }
         ],
         "text_align": "center",
@@ -930,110 +393,12 @@
       "title": true,
       "title_align": "center",
       "title_size": 16,
-      "title_text": "App ∆ - 1h",
+      "title_text": "RabbitMQ Service smoke test",
       "type": "query_value",
-      "width": 16,
+      "width": 12,
       "wrapped": true,
-      "x": 117,
-      "y": 49
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_red') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:metron_agent_diego_deployment}.rollup(avg,1800))', 'white_on_yellow') %>
-        }
-      ],
-      "height": 12,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_red",
-                "value": -1000
-              },
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 1000
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": -10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_yellow",
-                "value": 1000
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}.rollup(avg,1800) - hour_before(avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg,1800))"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Instances ∆ - 1h",
-      "type": "query_value",
-      "width": 15,
-      "wrapped": true,
-      "x": 73,
-      "y": 49
+      "x": 20,
+      "y": 30
     },
     {
       "aggr": "avg",
@@ -1067,8 +432,10 @@
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 4,
       "is_valid_query": true,
+      "legend": false,
+      "legend_size": "0",
       "metric": "smoke.status",
       "metric_type": "standard",
       "padding": 8,
@@ -1084,7 +451,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": null,
-        "precision": 2,
+        "precision": "0",
         "requests": [
           {
             "aggregator": "avg",
@@ -1117,19 +484,19 @@
             "q": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:0}"
           }
         ],
-        "text_align": "left",
+        "text_align": "center",
         "viz": "query_value"
       },
       "timeframe": "30m",
       "title": true,
-      "title_align": "left",
+      "title_align": "center",
       "title_size": 16,
-      "title_text": "Runtime smoke test",
+      "title_text": "CF smoke club",
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 146,
-      "y": 49
+      "x": 32,
+      "y": 24
     },
     {
       "aggr": "avg",
@@ -1163,8 +530,10 @@
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 4,
       "is_valid_query": true,
+      "legend": false,
+      "legend_size": "0",
       "metric": "smoke.status",
       "metric_type": "standard",
       "padding": 8,
@@ -1213,7 +582,7 @@
             "q": "avg:smoke.status{deployment:<%= deployment %>,loggregator_enabled:1}"
           }
         ],
-        "text_align": "left",
+        "text_align": "center",
         "viz": "query_value"
       },
       "timeframe": "30m",
@@ -1224,103 +593,8 @@
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 134,
-      "y": 49
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:rabbitmq.smoke.status{*}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 6,
-      "is_valid_query": true,
-      "metric": "rabbitmq.smoke.status",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:rabbitmq.smoke.status{*}",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.75
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 0.75
-              }
-            ],
-            "q": "avg:rabbitmq.smoke.status{*}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "RabbitMQ Service smoke test",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 134,
-      "y": 56
+      "x": 20,
+      "y": 24
     },
     {
       "aggr": "avg",
@@ -1356,6 +630,8 @@
       "custom_unit": null,
       "height": 6,
       "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
       "metric": "",
       "metric_type": "standard",
       "padding": 8,
@@ -1400,7 +676,7 @@
                 "value": 22
               }
             ],
-            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024"
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{*} / 0.000001024"
           }
         ],
         "text_align": "center",
@@ -1410,12 +686,12 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "Total Avail. Memory - 5m avg",
+      "title_text": "Total Avail. Memory",
       "type": "query_value",
-      "width": 21,
+      "width": 15,
       "wrapped": true,
-      "x": 52,
-      "y": 15
+      "x": 64,
+      "y": 35
     },
     {
       "aggr": "avg",
@@ -1426,79 +702,72 @@
         {
           "comparator": "<",
           "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:domain_url}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:domain_url}', 'white_on_red') %>
+          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
           "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:domain_url}', 'white_on_yellow') %>
+          "palette": "white_on_green",
+          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 4,
       "is_valid_query": true,
-      "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
+      "legend": false,
+      "legend_size": "0",
+      "metric": "natbox.pingout.health",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 0,
-      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}",
+      "precision": 1,
+      "query": "avg:natbox.pingout.health{*}",
       "res_calc_func": "raw",
       "tags": [
-        null
+
       ],
       "text_align": "center",
       "text_size": "auto",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": null,
-        "precision": 0,
+        "custom_unit": "%",
+        "precision": "2",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
               {
                 "comparator": "<",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "invert": false,
                 "palette": "white_on_red",
-                "value": 30
+                "value": 0.98
               },
               {
                 "comparator": ">=",
-                "invert": false,
+                "palette": "white_on_green",
+                "value": 0.99
+              },
+              {
+                "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": 10
+                "value": 0.98
               }
             ],
-            "q": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:<%= domain_url %>}"
+            "q": "avg:natbox.pingout.health{*} * 100"
           }
         ],
         "text_align": "center",
         "viz": "query_value"
       },
-      "timeframe": "15m",
+      "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "CF dial Error",
+      "title_size": 13,
+      "title_text": "NAT Box",
       "type": "query_value",
-      "width": 12,
+      "width": 9,
       "wrapped": true,
-      "x": 159,
-      "y": 36
+      "x": 0,
+      "y": 49
     },
     {
       "aggr": "avg",
@@ -1537,7 +806,7 @@
       "text_size": "auto",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": null,
+        "custom_unit": " yep",
         "precision": "2",
         "requests": [
           {
@@ -1559,7 +828,7 @@
                 "value": 0.98
               }
             ],
-            "q": "avg:natbox.pingout.health{*}"
+            "q": "avg:natbox.pingout.health{*} * 100"
           }
         ],
         "text_align": "center",
@@ -1568,43 +837,47 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "NAT box - 24h",
+      "title_size": 13,
+      "title_text": "NAT box",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 14,
-      "y": 48
+      "x": 9,
+      "y": 49
     },
     {
       "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
+      "aggregator": "min",
+      "autoscale": false,
       "calc_func": "raw",
       "conditional_formats": [
         {
           "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_red') %>
         },
         {
           "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
         }
       ],
-      "custom_unit": null,
-      "height": 4.000000158945717,
-      "is_valid_query": true,
+      "custom_unit": "%",
+      "height": 4,
+      "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
-      "metric": "natbox.pingout.health",
+      "metric": "",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 1,
-      "query": "avg:natbox.pingout.health{*}",
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
       "res_calc_func": "raw",
       "tags": [
 
@@ -1612,30 +885,31 @@
       "text_align": "center",
       "text_size": "auto",
       "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": "2",
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
         "requests": [
           {
-            "aggregator": "avg",
+            "aggregator": "min",
             "conditional_formats": [
               {
                 "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
                 "palette": "white_on_red",
-                "value": 0.98
+                "value": 100
               },
               {
                 "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
                 "palette": "white_on_green",
-                "value": 0.99
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": 0.98
+                "value": 100
               }
             ],
-            "q": "avg:natbox.pingout.health{*}"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)))*25"
           }
         ],
         "text_align": "center",
@@ -1644,881 +918,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "NAT Box - 5m",
+      "title_size": 13,
+      "title_text": "Doppler",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
       "x": 0,
-      "y": 48
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}', 'white_on_red') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "metric": "new_relic.errors.all.errors_per_minute",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 0.41
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0.4
-              }
-            ],
-            "q": "avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Error Rate - 15m",
-      "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 11,
-      "y": 79
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z1}.rollup(avg,1800)', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)\n",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_yellow",
-                "value": 4000000
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_green",
-                "value": 4000000
-              }
-            ],
-            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,1800)"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "NATS_Z1 Net Bytes in",
-      "type": "query_value",
-      "width": 13,
-      "wrapped": true,
-      "x": 132,
-      "y": 92
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:aws.ec2.network_in{deployment:deployment,job:nats_z2}.rollup(avg,1800)', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "left",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_yellow",
-                "value": 4000000
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_green",
-                "value": 4000000
-              }
-            ],
-            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,1800)"
-          }
-        ],
-        "text_align": "left",
-        "viz": "query_value"
-      },
-      "timeframe": "30m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "NATS_Z2 Net Bytes In",
-      "type": "query_value",
-      "width": 13,
-      "wrapped": true,
-      "x": 145,
-      "y": 92
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 5,
-      "is_valid_query": true,
-      "metric": "cloudops_tools.app_instance_monitor.router.dial.errors",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 30
-              },
-              {
-                "comparator": ">",
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 30
-              }
-            ],
-            "q": "avg:cloudops_tools.app_instance_monitor.router.dial.errors{cf_component:false}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Non-CF dial Error",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 159,
-      "y": 43
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 20
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 10
-              }
-            ],
-            "q": "max:datadog.nozzle.bbs.ConvergenceLRPDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Convergence LRP Duration - 5m max",
-      "type": "query_value",
-      "width": 16,
-      "wrapped": true,
-      "x": 35,
-      "y": 31
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 15
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 10
-              }
-            ],
-            "q": "max:datadog.nozzle.nsync_bulker.DesiredLRPSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "NSYNC Bulker Time - 5m max",
-      "type": "query_value",
-      "width": 16,
-      "wrapped": true,
-      "x": 35,
-      "y": 7
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 20
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 10
-              }
-            ],
-            "q": "max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Rep Bulk Sync Duration - 5m max",
-      "type": "query_value",
-      "width": 16,
-      "wrapped": true,
-      "x": 35,
-      "y": 15
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:metron_agent_diego_deployment}/1000000000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 6,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 2,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 20
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 10
-              }
-            ],
-            "q": "max:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Router Emitter Sync Duration - 5m max",
-      "type": "query_value",
-      "width": 16,
-      "wrapped": true,
-      "x": 35,
-      "y": 23
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(((datadog.nozzle.bbs.LRPsDesired{deployment:diego_deployment} - datadog.nozzle.bbs.LRPsRunning{deployment:diego_deployment}) -datadog.nozzle.bbs.LRPsStarting{deployment:diego_deployment}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:metron_agent_diego_deployment})', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "/5m",
-      "height": 6,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "(((datadog.nozzle.bbs.LRPsDesired{deployment:<%= diego_deployment %>} - datadog.nozzle.bbs.LRPsRunning{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.LRPsStarting{deployment:<%= diego_deployment %>}) -datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "/5m",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 5
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 10
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 5
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Missing LRPs - 5m max",
-      "type": "query_value",
-      "width": 21,
-      "wrapped": true,
-      "x": 52,
-      "y": 23
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "s",
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 3,
-      "query": "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "s",
-        "precision": 3,
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 1
-              },
-              {
-                "comparator": ">",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 3
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 1
-              }
-            ],
-            "q": "(avg:new_relic.application_summary.response_time{application:webconsole_production})/1000"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "10m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Max Response Time Console - 10m",
-      "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 22,
-      "y": 91
+      "y": 37
     },
     {
       "aggr": "avg",
@@ -2593,13 +999,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Access - 5m",
+      "title_size": 13,
+      "title_text": "Access",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 5
+      "x": 46,
+      "y": 7
     },
     {
       "aggr": "avg",
@@ -2674,13 +1080,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Brain - 5m",
+      "title_size": 13,
+      "title_text": "Brain",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 11
+      "x": 46,
+      "y": 13
     },
     {
       "aggr": "avg",
@@ -2755,13 +1161,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "CC Bridge - 5m",
+      "title_size": 13,
+      "title_text": "CC Bridge",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 17
+      "x": 46,
+      "y": 19
     },
     {
       "aggr": "avg",
@@ -2836,13 +1242,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Cell - 5m",
+      "title_size": 13,
+      "title_text": "Cell",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 23
+      "x": 46,
+      "y": 25
     },
     {
       "aggr": "avg",
@@ -2917,13 +1323,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Route Emitter - 5m",
+      "title_size": 13,
+      "title_text": "Route Emitter",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 35
+      "x": 46,
+      "y": 37
     },
     {
       "aggr": "avg",
@@ -2998,92 +1404,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Database - 5m",
+      "title_size": 13,
+      "title_text": "Database",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
-      "x": 134,
-      "y": 29
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Doppler - 5m",
-      "type": "query_value",
-      "width": 14,
-      "wrapped": true,
-      "x": 0,
-      "y": 37
+      "x": 46,
+      "y": 31
     },
     {
       "aggr": "avg",
@@ -3174,13 +1501,13 @@
       "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "ETCD - 5m",
+      "title_size": 13,
+      "title_text": "ETCD",
       "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
       "x": 0,
-      "y": 54
+      "y": 55
     },
     {
       "aggr": "avg",
@@ -3263,13 +1590,256 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Doppler - 24h",
+      "title_size": 13,
+      "title_text": "Doppler",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 14,
+      "x": 9,
       "y": 37
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 4,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)))*50"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "ETCD",
+      "type": "query_value",
+      "width": 9,
+      "wrapped": true,
+      "x": 9,
+      "y": 55
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 4,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)))*50"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Access",
+      "type": "query_value",
+      "width": 9,
+      "wrapped": true,
+      "x": 55,
+      "y": 7
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 4,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)))*50"
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Brain",
+      "type": "query_value",
+      "width": 9,
+      "wrapped": true,
+      "x": 55,
+      "y": 13
     },
     {
       "aggr": "avg",
@@ -3352,13 +1922,13 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "CC bridge - 24h",
+      "title_size": 13,
+      "title_text": "CC Bridge",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 17
+      "x": 55,
+      "y": 19
     },
     {
       "aggr": "avg",
@@ -3441,13 +2011,13 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Cell - 24h",
+      "title_size": 13,
+      "title_text": "Cell",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 23
+      "x": 55,
+      "y": 25
     },
     {
       "aggr": "avg",
@@ -3522,13 +2092,13 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Route Emitter - 24h",
+      "title_size": 13,
+      "title_text": "Route Emitter",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 35
+      "x": 55,
+      "y": 37
     },
     {
       "aggr": "avg",
@@ -3611,13 +2181,13 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Database - 24h",
+      "title_size": 13,
+      "title_text": "Database",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 29
+      "x": 55,
+      "y": 31
     },
     {
       "aggr": "avg",
@@ -3627,108 +2197,27 @@
       "conditional_formats": [
         {
           "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
           "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
           "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:etcd_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
       "height": 4,
       "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
       "metric": "",
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "ETCD - 24h",
-      "type": "query_value",
-      "width": 9,
-      "wrapped": true,
-      "x": 14,
-      "y": 54
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50",
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -3745,37 +2234,33 @@
             "conditional_formats": [
               {
                 "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_yellow",
+                "palette": "white_on_red",
                 "value": 100
               },
               {
                 "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
                 "palette": "white_on_green",
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50"
+            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)))*50"
           }
         ],
         "text_align": "center",
         "viz": "query_value"
       },
-      "timeframe": "1d",
+      "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Access - 24h",
+      "title_size": 13,
+      "title_text": "NATS",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 5
+      "x": 0,
+      "y": 31
     },
     {
       "aggr": "avg",
@@ -3785,38 +2270,37 @@
       "conditional_formats": [
         {
           "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
           "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_yellow') %>
+          "palette": "white_on_red",
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_red') %>
         },
         {
           "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
       "height": 4,
       "is_valid_query": false,
-      "metric": "",
+      "legend": false,
+      "legend_size": "0",
+      "metric": "bosh.healthmonitor.system.healthy",
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50",
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
       "res_calc_func": "raw",
       "tags": [
-
+        null,
+        null
       ],
       "text_align": "center",
       "text_size": "auto",
       "tile_def": {
         "autoscale": false,
-        "custom_unit": "%",
+        "custom_unit": " cat",
         "precision": 0,
         "requests": [
           {
@@ -3824,37 +2308,33 @@
             "conditional_formats": [
               {
                 "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
-                "palette": "white_on_yellow",
+                "palette": "white_on_red",
                 "value": 100
               },
               {
                 "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
                 "invert": false,
                 "palette": "white_on_green",
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50"
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} * 100"
           }
         ],
         "text_align": "center",
         "viz": "query_value"
       },
-      "timeframe": "1d",
+      "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Brain - 24h",
+      "title_size": 13,
+      "title_text": "Bosh",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 148,
-      "y": 11
+      "x": 0,
+      "y": 43
     },
     {
       "aggr": "avg",
@@ -3922,81 +2402,10 @@
       "title_size": 16,
       "title_text": "API - 5m",
       "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 12,
-      "y": 13
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:nats_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "NATS - 5m",
-      "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
       "x": 0,
-      "y": 31
+      "y": 13
     },
     {
       "aggr": "avg",
@@ -4064,9 +2473,9 @@
       "title_size": 16,
       "title_text": "Router - 5m",
       "type": "query_value",
-      "width": 11,
+      "width": 9,
       "wrapped": true,
-      "x": 12,
+      "x": 0,
       "y": 7
     },
     {
@@ -4135,82 +2544,10 @@
       "title_size": 16,
       "title_text": "UAA - 5m",
       "type": "query_value",
-      "width": 11,
-      "wrapped": true,
-      "x": 12,
-      "y": 19
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 4,
-      "is_valid_query": false,
-      "metric": "bosh.healthmonitor.system.healthy",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
-      "res_calc_func": "raw",
-      "tags": [
-        null,
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Bosh - 5m",
-      "type": "query_value",
-      "width": 14,
+      "width": 9,
       "wrapped": true,
       "x": 0,
-      "y": 43
+      "y": 19
     },
     {
       "aggr": "avg",
@@ -4294,7 +2631,7 @@
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 23,
+      "x": 9,
       "y": 13
     },
     {
@@ -4374,12 +2711,12 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "NATS - 24h",
+      "title_size": 13,
+      "title_text": "NATS",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 14,
+      "x": 9,
       "y": 31
     },
     {
@@ -4464,7 +2801,7 @@
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 23,
+      "x": 9,
       "y": 7
     },
     {
@@ -4549,7 +2886,7 @@
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 23,
+      "x": 9,
       "y": 19
     },
     {
@@ -4590,7 +2927,7 @@
       "text_size": "auto",
       "tile_def": {
         "autoscale": false,
-        "custom_unit": "%",
+        "custom_unit": " bug",
         "precision": 0,
         "requests": [
           {
@@ -4603,9 +2940,8 @@
               },
               {
                 "comparator": ">=",
-                "invert": false,
                 "palette": "white_on_green",
-                "value": 100
+                "value": "99.9"
               },
               {
                 "comparator": ">=",
@@ -4622,12 +2958,12 @@
       "timeframe": "1d",
       "title": true,
       "title_align": "center",
-      "title_size": 16,
-      "title_text": "Bosh - 24h",
+      "title_size": 13,
+      "title_text": "Borscht",
       "type": "query_value",
       "width": 9,
       "wrapped": true,
-      "x": 14,
+      "x": 9,
       "y": 43
     },
     {
@@ -4690,21 +3026,21 @@
                 "custom_bg_color": null,
                 "custom_fg_color": null,
                 "palette": "white_on_red",
-                "value": 24
+                "value": "25"
               },
               {
                 "comparator": "<=",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
                 "palette": "white_on_yellow",
-                "value": 29
+                "value": "49"
               },
               {
                 "comparator": ">",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
                 "palette": "white_on_green",
-                "value": 29
+                "value": "49"
               }
             ],
             "q": "avg:cloudops_tools.diego_4gb_count{*}"
@@ -4717,12 +3053,12 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "Free 4GB Chunks in diego",
+      "title_text": "Free 4GB Chunks",
       "type": "query_value",
-      "width": 21,
+      "width": 13,
       "wrapped": true,
-      "x": 52,
-      "y": 7
+      "x": 79,
+      "y": 35
     },
     {
       "aggr": "avg",
@@ -4752,6 +3088,8 @@
       "custom_unit": null,
       "height": 4,
       "is_valid_query": true,
+      "legend": false,
+      "legend_size": "0",
       "metric": "cloudops_tools.ssh_abuse_monitor.ssh.attempts",
       "metric_type": "standard",
       "padding": 8,
@@ -4779,9 +3117,8 @@
               },
               {
                 "comparator": ">",
-                "invert": false,
                 "palette": "white_on_red",
-                "value": 100
+                "value": "150"
               },
               {
                 "comparator": ">=",
@@ -4799,13 +3136,13 @@
       "timeframe": "15m",
       "title": true,
       "title_align": "left",
-      "title_size": 16,
-      "title_text": "SSH Attempts - 15m",
+      "title_size": 13,
+      "title_text": "SSH Attempts",
       "type": "query_value",
-      "width": 13,
+      "width": 12,
       "wrapped": true,
-      "x": 0,
-      "y": 60
+      "x": 120,
+      "y": 17
     },
     {
       "aggr": "max",
@@ -4839,7 +3176,7 @@
         }
       ],
       "custom_unit": null,
-      "height": 10,
+      "height": 4,
       "is_valid_query": true,
       "legend": false,
       "legend_size": "0",
@@ -4893,13 +3230,13 @@
       "timeframe": "15m",
       "title": true,
       "title_align": "left",
-      "title_size": 16,
-      "title_text": "Max Response Queue Size - 10m",
+      "title_size": 13,
+      "title_text": "Max Response Queue Size",
       "type": "query_value",
-      "width": 22,
+      "width": 11,
       "wrapped": true,
-      "x": 22,
-      "y": 79
+      "x": 105,
+      "y": 12
     },
     {
       "aggr": "max",
@@ -4913,7 +3250,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_green') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -4921,7 +3258,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_red') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -4929,11 +3266,11 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "%",
-      "height": 10,
+      "height": 9,
       "is_valid_query": true,
       "legend": false,
       "legend_size": "0",
@@ -4941,7 +3278,97 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-<%= environment %>-worker}",
+      "res_calc_func": "raw",
+      "tags": [
+        null
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": 65
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": 75
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": 65
+              }
+            ],
+            "q": "top(avg:bosh.healthmonitor.system.cpu.user{!deployment:loggregator-staging, !deployment:<%= diego_deployment %>} by {index, job, deployment}, 10, 'mean', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            }
+          }
+        ],
+        "text_align": "center",
+        "viz": "toplist"
+      },
+      "timeframe": "15m",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Top CPU User usage (%) past 15 min",
+      "type": "query_value",
+      "width": 46,
+      "wrapped": true,
+      "x": 46,
+      "y": 44
+    },
+    {
+      "aggr": "max",
+      "aggregator": "max",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_green') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_yellow') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 9,
+      "is_valid_query": true,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-<%= environment %>-worker}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -4986,10 +3413,10 @@
       "title_size": 20,
       "title_text": "Top Ephemeral Disk usage (%) past 15 min",
       "type": "query_value",
-      "width": 44,
+      "width": 46,
       "wrapped": true,
-      "x": 44,
-      "y": 66
+      "x": 92,
+      "y": 55
     },
     {
       "aggr": "max",
@@ -5003,7 +3430,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_green') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -5011,7 +3438,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_red') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -5019,97 +3446,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 11,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 65
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": 75
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": 65
-              }
-            ],
-            "q": "top(avg:bosh.healthmonitor.system.cpu.user{*} by {index, job, deployment}, 10, 'mean', 'desc')",
-            "style": {
-              "palette": "dog_classic"
-            }
-          }
-        ],
-        "text_align": "center",
-        "viz": "toplist"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Top CPU User usage (%) past 15 min",
-      "type": "query_value",
-      "width": 44,
-      "wrapped": true,
-      "x": 44,
-      "y": 89
-    },
-    {
-      "aggr": "max",
-      "aggregator": "max",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}', 'white_on_yellow') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_yellow') %>
         }
       ],
       "custom_unit": "%",
@@ -5121,7 +3458,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-prod-worker}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-<%= environment %>-worker}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -5151,7 +3488,7 @@
                 "value": 65
               }
             ],
-            "q": "top(max:bosh.healthmonitor.system.disk.persistent.percent{!deployment:pcf-metrics-v1-2} by {job}, 10, 'mean', 'desc')",
+            "q": "top(max:bosh.healthmonitor.system.disk.persistent.percent{!deployment:pcf-metrics-v1-2, !deployment:<%= environment %>-logsearch} by {index, job, deployment}, 10, 'mean', 'desc')",
             "style": {
               "palette": "dog_classic"
             }
@@ -5166,10 +3503,10 @@
       "title_size": 16,
       "title_text": "Top Persistent Disk usage (%) past 15 min",
       "type": "query_value",
-      "width": 44,
+      "width": 46,
       "wrapped": true,
-      "x": 44,
-      "y": 78
+      "x": 92,
+      "y": 44
     },
     {
       "aggr": "max",
@@ -5178,12 +3515,12 @@
       "calc_func": "raw",
       "conditional_formats": [
         {
-          "comparator": "<=",
+          "comparator": "<",
           "custom_bg_color": null,
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:deployment}', 'white_on_green') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_green') %>
         },
         {
           "comparator": ">",
@@ -5191,19 +3528,27 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('max:aws.ec2.status_check_failed{deployment:deployment}', 'white_on_red') %>
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-environment-worker}', 'white_on_yellow') %>
         }
       ],
-      "custom_unit": "fail",
-      "height": 4,
+      "custom_unit": "%",
+      "height": 9,
       "is_valid_query": true,
       "legend": false,
       "legend_size": "0",
-      "metric": "aws.ec2.status_check_failed",
+      "metric": "bosh.healthmonitor.system.disk.ephemeral.percent",
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}",
+      "query": "max:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:concourse-<%= environment %>-worker}",
       "res_calc_func": "raw",
       "tags": [
         null
@@ -5212,173 +3557,78 @@
       "text_size": "auto",
       "tile_def": {
         "autoscale": false,
-        "custom_unit": "fail",
+        "custom_unit": "%",
         "precision": 0,
         "requests": [
           {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 0
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 0
-              }
-            ],
-            "q": "max:aws.ec2.status_check_failed{deployment:<%= deployment %>}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "query_value",
-      "width": 18,
-      "wrapped": true,
-      "x": 25,
-      "y": 66
-    },
-    {
-      "aggr": "sum",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:diego_deployment}', 'white_on_red') %>
-        },
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:diego_deployment}', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('sum:diego.canary.app.instance{deployment:diego_deployment}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 6,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "diego.canary.app.instance",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}",
-      "res_calc_func": "raw",
-      "tags": [
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "avg",
             "conditional_formats": [
               {
                 "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 15
+                "palette": "white_on_green",
+                "value": 75
               },
               {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 19
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": 85
               },
               {
                 "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_green",
-                "value": 19.1
+                "palette": "white_on_yellow",
+                "value": 75
               }
             ],
-            "q": "sum:diego.canary.app.instance{deployment:<%= diego_deployment %>}"
+            "q": "top(max:bosh.healthmonitor.system.mem.percent{!job:mysql_z1,!job:mysql_z2,!job:mysql_z3,!deployment:loggregator-staging, deployment:<%= deployment %>} by {index, job, deployment}, 10, 'mean', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            }
           }
         ],
         "text_align": "center",
-        "viz": "query_value"
+        "viz": "toplist"
       },
       "timeframe": "15m",
       "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Diego Canaries - 15m avg",
+      "title_align": "left",
+      "title_size": 20,
+      "title_text": "Top Memory usage (%) past 15 min",
       "type": "query_value",
-      "width": 16,
+      "width": 46,
       "wrapped": true,
-      "x": 35,
-      "y": 47
+      "x": 46,
+      "y": 55
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
-      "board_id": 14530,
-      "font_size": "16",
-      "height": 7,
-      "html": "**Smoke Tests**\n[CF](<%= smoke_tests_cf %>) [RabbitMQ](<%= smoke_tests_rabbit %>) [Logregator](<%= smoke_tests_loggregator %>) [MySQL](<%= smoke_tests_mysql %>)",
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "height": 5,
+      "html": "CC Queue",
       "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
+      "text_align": "left",
+      "tick": true,
+      "tick_edge": "right",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 24,
-      "x": 134,
-      "y": 42
+      "width": 12,
+      "x": 93,
+      "y": 12
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
-      "board_id": 14530,
-      "font_size": "24",
-      "height": 6,
-      "html": "[cf tasks](/dash/dash/<%= lookup_note_asset('cf tasks dashboard', :dashboard) %>)",
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "height": 5,
+      "html": "Open Issues",
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": false,
+      "tick": true,
       "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
@@ -5387,168 +3637,92 @@
       "title_text": "",
       "type": "note",
       "width": 12,
-      "x": 146,
-      "y": 65
+      "x": 120,
+      "y": 0
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "24",
-      "height": 5,
-      "html": "Router CPU",
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "height": 7,
+      "html": "**Smoke Tests**\n[CF](<%= smoke_tests_cf %>) [Wabbit](<%= smoke_tests_rabbit %>) [Loggregator](<%= smoke_tests_loggregator %>) [MySQL](<%= smoke_tests_mysql %>)",
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": false,
-      "tick_edge": "top",
+      "tick": true,
+      "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 44,
-      "x": 159,
-      "y": 59
+      "width": 24,
+      "x": 20,
+      "y": 17
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "24",
-      "height": 5,
-      "html": "[Router Dial Errors](/dash/dash/<%= lookup_note_asset('router dial error', :dashboard) %>)",
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "height": 7,
+      "html": "Frontend Health\n[Router](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>) [API](/dash/dash/50360) [UAA](/dash/dash/88874)",
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": false,
-      "tick_edge": "top",
+      "tick": true,
+      "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 44,
-      "x": 159,
-      "y": 31
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "24",
-      "height": 5.916666666666667,
-      "html": "[UAA](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>)",
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 12,
+      "width": 18,
       "x": 0,
-      "y": 19
+      "y": 0
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
+      "bgcolor": "yellow",
+      "board_id": 150202,
       "font_size": "24",
       "height": 6,
-      "html": "[API](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
+      "html": "Backend Health",
       "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
+      "text_align": "left",
+      "tick": true,
+      "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 12,
+      "width": 18,
       "x": 0,
-      "y": 13
+      "y": 25
     },
     {
       "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "24",
-      "height": 6,
-      "html": "[Console](/dash/dash/<%= lookup_note_asset('cloud_controller_ng Event Machine statistics', :dashboard) %>)",
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 44,
-      "x": 0,
-      "y": 73
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "24",
-      "height": 6,
-      "html": "[Router](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>)",
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 12,
-      "x": 0,
-      "y": 7
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "white",
+      "bgcolor": "yellow",
+      "board_id": 150202,
       "font_size": "36",
-      "height": 6,
+      "height": 7,
       "html": "[Diego Status](/dash/dash/<%= lookup_note_asset(environment + ' Diego Health', :dashboard) %>)",
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
+      "tick": true,
+      "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 81,
-      "x": 44,
-      "y": 1
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "white",
-      "font_size": "36",
-      "height": 6,
-      "html": "[Router Status](/dash/dash/<%= lookup_note_asset(environment + ' Router and ELB health metrics', :dashboard) %>)",
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 44,
-      "x": 159,
-      "y": 25
+      "width": 46,
+      "x": 46,
+      "y": 0
     },
     {
       "autoscale": true,
@@ -5557,132 +3731,8 @@
       "legend": false,
       "legend_size": "0",
       "tile_def": {
+        "autoscale": true,
         "precision": "0",
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 15
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_yellow",
-                "value": 15
-              }
-            ],
-            "q": "avg:cloudops_tools.logsearch.elblog.slow_backend_processing_count{*}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Slow Backend request count",
-      "type": "query_value",
-      "width": 16,
-      "x": 35,
-      "y": 55
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 5,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": false,
-        "precision": "1",
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "-1"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "avg:datadog.nozzle.cc.tasks_running.count{*}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "cf tasks running",
-      "type": "query_value",
-      "width": 11,
-      "x": 147,
-      "y": 72
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 5,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "precision": "1",
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "-1"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "avg:datadog.nozzle.cc.tasks_running.memory_in_mb{*}",
-            "type": "line"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "cf tasks memory",
-      "type": "query_value",
-      "width": 11,
-      "x": 147,
-      "y": 80
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 6,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
         "requests": [
           {
             "aggregator": "avg",
@@ -5710,22 +3760,22 @@
       },
       "timeframe": "1d",
       "title": true,
-      "title_align": "left",
+      "title_align": "center",
       "title_size": 16,
       "title_text": "mysql backups, 24hr",
       "type": "query_value",
       "width": 12,
-      "x": 146,
-      "y": 56
+      "x": 32,
+      "y": 30
     },
     {
       "autoscale": true,
+      "board_id": 14530,
       "height": 4,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
-        "autoscale": false,
-        "custom_unit": null,
+        "autoscale": true,
         "precision": "0",
         "requests": [
           {
@@ -5734,71 +3784,72 @@
               {
                 "comparator": "<=",
                 "palette": "white_on_green",
-                "value": 0.5
+                "value": "0"
               },
               {
-                "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": "0"
               }
             ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:cf}"
+            "q": "cumsum(sum:cloudops_tools.long_running_runc_exec{*})"
           }
         ],
-        "text_align": "right",
         "viz": "query_value"
       },
-      "timeframe": "1mo",
+      "timeframe": "1h",
       "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Prod CF Lock",
+      "title_align": "left",
+      "title_size": 13,
+      "title_text": "RunC Exec",
       "type": "query_value",
-      "width": 14,
-      "x": 90,
-      "y": 73
+      "width": 12,
+      "x": 120,
+      "y": 5
     },
     {
       "autoscale": true,
+      "board_id": 150202,
       "height": 4,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
-        "autoscale": false,
-        "custom_unit": null,
+        "autoscale": true,
         "precision": "0",
         "requests": [
           {
-            "aggregator": "last",
+            "aggregator": "sum",
             "conditional_formats": [
               {
-                "comparator": "<=",
+                "comparator": "<",
                 "palette": "white_on_green",
-                "value": 0.5
+                "value": "1"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": "5"
               },
               {
                 "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
+                "palette": "white_on_yellow",
+                "value": "1"
               }
             ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:diego}"
+            "q": "avg:cloudops_tools.coin_miner_count{*}"
           }
         ],
-        "text_align": "right",
         "viz": "query_value"
       },
-      "timeframe": "1mo",
+      "timeframe": "1h",
       "title": true,
-      "title_align": "center",
+      "title_align": "left",
       "title_size": 16,
-      "title_text": "Prod Diego Lock",
+      "title_text": "Miners",
       "type": "query_value",
-      "width": 14,
-      "x": 104,
-      "y": 73
+      "width": 12,
+      "x": 120,
+      "y": 23
     },
     {
       "autoscale": true,
@@ -5806,166 +3857,7 @@
       "legend": false,
       "legend_size": "0",
       "tile_def": {
-        "custom_unit": null,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 0.5
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
-              }
-            ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:micro-bosh}"
-          }
-        ],
-        "text_align": "right",
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Prod Microbosh Lock",
-      "type": "query_value",
-      "width": 14,
-      "x": 104,
-      "y": 79
-    },
-    {
-      "autoscale": true,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "custom_unit": null,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 0.5
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
-              }
-            ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:mysql}"
-          }
-        ],
-        "text_align": "right",
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Prod MySQL Lock",
-      "type": "query_value",
-      "width": 14,
-      "x": 90,
-      "y": 79
-    },
-    {
-      "autoscale": true,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "custom_unit": null,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 0.5
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
-              }
-            ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:rabbitmq}"
-          }
-        ],
-        "text_align": "right",
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Prod Rabbit MQ Lock",
-      "type": "query_value",
-      "width": 14,
-      "x": 104,
-      "y": 85
-    },
-    {
-      "autoscale": true,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "custom_unit": null,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 0.5
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": "#0215ff",
-                "palette": "custom_bg",
-                "value": 0.5
-              }
-            ],
-            "q": "avg:cloudops.deployment_locks.status{environment:<%= environment %>,deployment:redis}"
-          }
-        ],
-        "text_align": "right",
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "Prod Redis Lock",
-      "type": "query_value",
-      "width": 14,
-      "x": 90,
-      "y": 85
-    },
-    {
-      "autoscale": true,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
+        "autoscale": true,
         "precision": "0",
         "requests": [
           {
@@ -5995,565 +3887,87 @@
       "timeframe": "1h",
       "title": true,
       "title_align": "left",
-      "title_size": 16,
-      "title_text": "Unhealthy cells, 1hr",
+      "title_size": 13,
+      "title_text": "Unhealthy cells",
       "type": "query_value",
-      "width": 11,
-      "x": 12,
-      "y": 66
+      "width": 12,
+      "x": 120,
+      "y": 11
     },
     {
-      "autoscale": true,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": 0
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": 10
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_yellow",
-                "value": 0
-              }
-            ],
-            "q": "avg:datadog.nozzle.rep.StalledGardenDuration{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
+      "board_id": 150202,
+      "color": "#55b81c",
+      "font_size": "36",
+      "height": 6,
+      "text": "PWS Health Dashboard",
+      "text_align": "left",
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Stalled Gardens, 1 hr",
-      "type": "query_value",
-      "width": 10,
-      "x": 13,
-      "y": 60
+      "title_text": "",
+      "type": "free_text",
+      "width": 44,
+      "x": 92,
+      "y": 37
     },
     {
-      "autoscale": true,
-      "height": 4,
+      "board_id": 150202,
+      "height": 18,
+      "margin": "small",
+      "sizing": "fit",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "image",
+      "url": "http://orig06.deviantart.net/9d74/f/2013/152/c/0/c032cff5018b599625e96c5eaa424c66-d5xk0s3.png",
+      "width": 25,
+      "x": 93,
+      "y": 19
+    },
+    {
+      "height": 12,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>-cf failed deploying cf to <%= deployment %> "
+          }
+        ],
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>}by{ip})/0.000001024"
+          }
+        ],
+        "viz": "heatmap"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 13,
+      "title_text": "Min. Avail. Memory by Cell",
+      "type": "timeseries",
+      "width": 28,
+      "x": 64,
+      "y": 7
+    },
+    {
+      "height": 12,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": 60
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_red",
-                "value": 78
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": 60
-              }
-            ],
-            "q": "avg:aws.rds.cpuutilization{host:ccdb}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "CCDB CPU",
-      "type": "query_value",
-      "width": 11,
-      "x": 33,
-      "y": 91
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "24",
-      "height": 7,
-      "text": "Deployment Locks ",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 28,
-      "x": 90,
-      "y": 66
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "36",
-      "height": 6,
-      "text": "Monit Uptime",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 27,
-      "x": 119,
-      "y": 67
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "72",
-      "height": 6,
-      "text": "CloudOps",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 28,
-      "x": 0,
-      "y": 97
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 5,
-      "text": "Diego Health",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 24,
-      "x": 134,
-      "y": 0
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 6,
-      "text": "Backend Health",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 24,
-      "x": 0,
-      "y": 25
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 6,
-      "text": "Frontend Health",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 24,
-      "x": 0,
-      "y": 1
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 6,
-      "text": "NATS Traffic in Bytes",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 24,
-      "x": 108,
-      "y": 92
-    },
-    {
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 6,
-      "text": "Req / sec",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 13,
-      "x": 108,
-      "y": 98
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "BO",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 7,
-      "x": 104,
-      "y": 79
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "CF",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 7,
-      "x": 90,
-      "y": 73
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "DG",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 7,
-      "x": 104,
-      "y": 73
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "MQ",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 14,
-      "x": 104,
-      "y": 85
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "RD",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 7,
-      "x": 90,
-      "y": 85
-    },
-    {
-      "color": "#ec3",
-      "font_size": "auto",
-      "height": 6,
-      "text": "SQ",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 7,
-      "x": 90,
-      "y": 79
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
 
-        ],
-        "requests": [
-          {
-            "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
-            "style": {
-              "palette": "warm"
-            },
-            "type": "line"
-          }
-        ],
-        "viz": "heatmap"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "CPU Utilization (%) - 1h",
-      "type": "timeseries",
-      "width": 32,
-      "x": 101,
-      "y": 35
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> finished deploying."
-          },
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying."
-          }
-        ],
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>})"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "4h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 20,
-      "title_text": "Router Bad Gateways - 4h",
-      "type": "timeseries",
-      "width": 32,
-      "x": 171,
-      "y": 36
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying diego to <%= deployment %>"
-          }
-        ],
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:<%= metron_agent_diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "sum:datadog.nozzle.rep.ContainersActual{deployment:<%= metron_agent_diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "sum:datadog.nozzle.rep.ContainersExpected{deployment:<%= metron_agent_diego_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "Running Tasks and LRPs",
-      "type": "timeseries",
-      "width": 32,
-      "x": 101,
-      "y": 21
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying."
-          }
-        ],
-        "requests": [
-          {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {job,index}",
-            "stacked": false,
-            "type": "area"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "2d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Total Routes - 2d",
-      "type": "timeseries",
-      "width": 44,
-      "x": 159,
-      "y": 75
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %>-cf failed deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %>-cf finished deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= deployment %>-cf started deploying cf to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> failed deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> finished deploying diego to <%= deployment %>"
-          },
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          }
-        ],
-        "requests": [
-          {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024"
-          }
-        ],
-        "viz": "heatmap"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "Min. Avail. Memory by Cell - 1h",
-      "type": "timeseries",
-      "width": 28,
-      "x": 73,
-      "y": 7
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          }
-        ],
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.ETCDRaftTerm{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "ETCD Raft Term",
-      "type": "timeseries",
-      "width": 28,
-      "x": 73,
-      "y": 21
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "tags:deployment:<%= diego_deployment %> started deploying diego to <%= deployment %>"
-          }
-        ],
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.TasksClaimed{deployment:<%= metron_agent_diego_deployment %>}"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.TasksCompleted{deployment:<%= metron_agent_diego_deployment %>}"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.TasksPending{deployment:<%= metron_agent_diego_deployment %>}"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.TasksResolving{deployment:<%= metron_agent_diego_deployment %>}"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "Tasks",
-      "type": "timeseries",
-      "width": 29,
-      "x": 88,
-      "y": 49
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= metron_agent_diego_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "2d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Diego App Instances - 2d",
-      "type": "timeseries",
-      "width": 32,
-      "x": 101,
-      "y": 7
-    },
-    {
-      "height": 12,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "requests": [
-          {
+            ],
             "q": "max:bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
             "style": {
               "palette": "warm"
@@ -6566,41 +3980,15 @@
       "timeframe": "1h",
       "title": true,
       "title_align": "left",
-      "title_size": 16,
-      "title_text": "CPU Utilization (%) - 1h",
+      "title_size": 13,
+      "title_text": "CPU Utilization (%)",
       "type": "timeseries",
       "width": 28,
-      "x": 73,
-      "y": 35
+      "x": 64,
+      "y": 21
     },
     {
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "avg:cloudops_tools.ping_status{*} by {dest_ip,dest_port,src_ip,application_name,cf_instance_guid,cf_instance_addr,cf_instance_index} * 1000"
-          }
-        ],
-        "viz": "heatmap"
-      },
-      "timeframe": "4h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Pings to 4.2.2.1 in ms",
-      "type": "timeseries",
-      "width": 44,
-      "x": 159,
-      "y": 89
-    },
-    {
-      "height": 14,
+      "height": 12,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
@@ -6630,12 +4018,12 @@
       "title_size": 16,
       "title_text": "monit uptime in hours",
       "type": "timeseries",
-      "width": 27,
-      "x": 119,
-      "y": 73
+      "width": 24,
+      "x": 20,
+      "y": 43
     },
     {
-      "height": 25,
+      "height": 17,
       "margin": "",
       "sizing": "fit",
       "title": true,
@@ -6643,73 +4031,10 @@
       "title_size": 16,
       "title_text": "",
       "type": "image",
-      "url": "<%= health_screen_image %>",
-      "width": 27,
-      "x": 169,
+      "url": "http://i.giphy.com/WyeodYfrqvHCo.gif",
+      "width": 24,
+      "x": 20,
       "y": 0
-    },
-    {
-      "height": 8,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "requests": [
-          {
-            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z1} by {index,job}",
-            "type": "line"
-          },
-          {
-            "q": "avg:aws.ec2.network_in{deployment:<%= deployment %>,job:nats_z2} by {index,job}",
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "timeseries",
-      "width": 44,
-      "x": 159,
-      "y": 50
-    },
-    {
-      "height": 9,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-
-        ],
-        "requests": [
-          {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z1}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z1} by {index}",
-            "style": {
-              "palette": "dog_classic"
-            },
-            "type": "line"
-          },
-          {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>,job:router_z2}+bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>,job:router_z2} by {index}",
-            "style": {
-              "palette": "dog_classic"
-            },
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Router CPU (%) -1h",
-      "type": "timeseries",
-      "width": 44,
-      "x": 159,
-      "y": 64
     }
   ],
   "width": "100%"
