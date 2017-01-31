@@ -1,6 +1,0 @@
-{
-  "notify_no_data": false, 
-  "query": "avg(last_30m):avg:bosh.healthmonitor.system.disk.system.percent{*} by {job,index,deployment} > 90", 
-  "message": "## Description:\n system disk > 90% full. <%= cloudops_non_critical_pagerduty %>  \n\n## Escalation Path:\n  depend on the job:\n  router: router team\n  cell: Diego\n  uaa: UAA\n  etc.  \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)", 
-  "name": "<%= environment %> Bosh: A job is running out of system disk"
-}
