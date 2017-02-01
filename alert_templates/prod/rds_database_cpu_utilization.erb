@@ -1,8 +1,8 @@
 {
   "notify_audit": false,
   "timeout_h": 0,
-  "query": "avg(last_5m):avg:aws.rds.cpuutilization{!host:bosh-replica,!host:ccdb-replica1,!host:uaadb-replica} by {host} > 75",
-  "message": "## Description:\nHigh CPU utilization for the last 5 minutes on \nHost: {{host.dbname}} \nDB: {{host.dbname}} \n\n## Escalation Path:\nDepends on the DB. \n\n## Possible Causes:\nTraffic has increased substantially\nSlow queries overwhelming database\nRDS Migrations\n\n## Potential Solutions:\nIncrease RDS instance type (This WILL cause downtime of about 30 seconds)\nIn extreme cases we have tracked down a user who posts consistently long running queries and suspended their apps.  Do this with extreme caution.\n You can check the currently running tasks in the database using the script in prod-aws/scripts/ccdb-job-list while logged into the prod jumpbox\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-cloudops-service",
+  "query": "avg(last_10m):avg:aws.rds.cpuutilization{!host:bosh-replica,!host:ccdb-replica1,!host:uaadb-replica} by {host} > 75",
+  "message": "## Description:\nHigh CPU utilization for the last 10 minutes on \nHost: {{host.dbname}} \nDB: {{host.dbname}} \n\n## Escalation Path:\nDepends on the DB. \n\n## Possible Causes:\nTraffic has increased substantially\nSlow queries overwhelming database\nRDS Migrations\n\n## Potential Solutions:\nIncrease RDS instance type (This WILL cause downtime of about 30 seconds)\nIn extreme cases we have tracked down a user who posts consistently long running queries and suspended their apps.  Do this with extreme caution.\n You can check the currently running tasks in the database using the script in prod-aws/scripts/ccdb-job-list while logged into the prod jumpbox\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-cloudops-service",
   "name": "High database CPU utilization on {{host.name}}",
   "no_data_timeframe": 2,
   "notify_no_data": false,
