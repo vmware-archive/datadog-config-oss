@@ -3638,7 +3638,7 @@
       "type": "note",
       "width": 12,
       "x": 120,
-      "y": 0
+      "y": 5
     },
     {
       "auto_refresh": false,
@@ -3767,45 +3767,6 @@
       "width": 12,
       "x": 32,
       "y": 30
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 4,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "0"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "0"
-              }
-            ],
-            "q": "cumsum(sum:cloudops_tools.long_running_runc_exec{*})"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "RunC Exec",
-      "type": "query_value",
-      "width": 12,
-      "x": 120,
-      "y": 5
     },
     {
       "autoscale": true,
