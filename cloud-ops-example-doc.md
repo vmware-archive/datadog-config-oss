@@ -1,8 +1,8 @@
 # The Pivotal Cloud Ops Approach to Monitoring a Pivotal Cloud Foundry Deployment
 
-**NOTE: This content originally published as part of [Pivotal Cloud Foundry documentation](http://docs.pivotal.io/pivotalcf/1-6/opsguide/metrics.html). The PCF Docs team replaced it with more current content and moved it here for safe keeping.
+<strong>NOTE: This content originally published as part of [Pivotal Cloud Foundry documentation](http://docs.pivotal.io/pivotalcf/1-6/opsguide/metrics.html). The PCF Docs team replaced it with more current content and moved it here for safe keeping.</strong>
 
-Contributors to this `datadoc-config-oss` may have their way with this page in this location, no questions asked.**
+Contributors to this `datadoc-config-oss` repo may have their way with this page in this location, no questions asked.
 
 <hr>
 
