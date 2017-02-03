@@ -1,9 +1,10 @@
----
-title: The Pivotal Cloud Ops Approach to Monitoring a Pivotal Cloud Foundry Deployment
-owner: Cloud Ops
----
+# The Pivotal Cloud Ops Approach to Monitoring a Pivotal Cloud Foundry Deployment
 
-<strong><%= modified_date %></strong>
+**NOTE: This content originally published as part of [Pivotal Cloud Foundry documentation](http://docs.pivotal.io/pivotalcf/1-6/opsguide/metrics.html). The PCF Docs team replaced it with more current content and moved it here for safe keeping.
+
+Contributors to this `datadoc-config-oss` may have their way with this page in this location, no questions asked.**
+
+<hr>
 
 The Pivotal Cloud Ops team monitors the health of its Cloud Foundry deployments using a customized Datadog dashboard. This topic describes each of the key metrics as they are rendered in the custom dashboard, and why the Cloud Ops team uses them for monitoring the health of a Cloud Foundry deployment.
 
