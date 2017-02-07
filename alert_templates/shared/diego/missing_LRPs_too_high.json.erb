@@ -2,7 +2,7 @@
   "notify_audit": true,
   "timeout_h": null,
   "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>} > 70",
-  "message": "<%= cloudops_pagerduty %>",
+  "message": "## Description:\nSome of the apps are not running.\n## Escalation Path:\nDiego\n## Possible Causes:\nA cell failed to report status to the bbs, due to network or Consul.\nMultiple auctioneers aren't running.\n## Potential Solutions:\nEscalate to Diego team <%= cloudops_pagerduty %> <%= diego_oncall %>",
   "name": "<%= environment %> Diego: Missing LRPs are too high",
   "no_data_timeframe": 10,
   "notify_no_data": true,
