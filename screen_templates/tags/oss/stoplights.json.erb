@@ -3996,6 +3996,50 @@
       "width": 24,
       "x": 20,
       "y": 0
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "sum",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "-1"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:cloudops_tools.bosh_deployment_count{environment:<%= environment %>}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Deployments this month",
+      "type": "query_value",
+      "width": 24,
+      "x": 20,
+      "y": 57
     }
   ],
   "width": "100%"
