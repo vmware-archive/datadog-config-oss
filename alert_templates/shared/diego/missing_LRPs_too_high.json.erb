@@ -5,7 +5,7 @@
   "message": "## Description:\nSome of the apps are not running.\n## Escalation Path:\nDiego\n## Possible Causes:\nA cell failed to report status to the bbs, due to network or Consul.\nMultiple auctioneers aren't running.\n## Potential Solutions:\nEscalate to Diego team <%= cloudops_pagerduty %> <%= diego_oncall %>",
   "name": "<%= environment %> Diego: Missing LRPs are too high",
   "no_data_timeframe": 10,
-  "notify_no_data": true,
+  "notify_no_data": false,
   "renotify_interval": null,
   "escalation_message": ""
 }
