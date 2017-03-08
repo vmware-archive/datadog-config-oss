@@ -38,6 +38,22 @@
       "color": "#4d4d4d",
       "font_size": "auto",
       "height": 3,
+      "text": "# Java BuildPack apps (Beijing)",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 27,
+      "x": 50,
+      "y": 7
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 3,
       "text": "# Spring Cloud Services instances (Beijing)",
       "text_align": "left",
       "title": true,
@@ -79,22 +95,6 @@
       "type": "free_text",
       "width": 19,
       "x": 0,
-      "y": 7
-    },
-    {
-      "board_id": 161503,
-      "color": "#4d4d4d",
-      "font_size": "auto",
-      "height": 3,
-      "text": "# paid Java BuildPack apps (Beijing)",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 27,
-      "x": 50,
       "y": 7
     },
     {
@@ -272,6 +272,62 @@
       "width": 47,
       "x": 0,
       "y": 10
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "avg:opsdb.metrics.ccdb.buildpacks.java_buildpack{deployment:<%= deployment %>}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 32,
+      "x": 49,
+      "y": 10
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "avg:opsdb.metrics.ccdb.services_instances.p_spring_cloud_services{deployment:<%= deployment %>}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 33,
+      "x": 49,
+      "y": 30
     }
   ],
   "width": "100%"
