@@ -5,7 +5,7 @@
   "no_data_timeframe": 2,
   "notify_audit": false,
   "notify_no_data": false,
-  "query": "max(last_5m):derivative(ewma_10(avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})) > 0.5",
+  "query": "max(last_5m):derivative(ewma_20(avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>})) > 1",
   "renotify_interval": 0,
   "timeout_h": 0
 }
