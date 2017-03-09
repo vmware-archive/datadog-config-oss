@@ -4013,7 +4013,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.rep.CapacityRemainingMemory{!job:cell_iso_z1,!job:cell_iso_z2} by {ip}",
+            "q": "avg:datadog.nozzle.rep.CapacityRemainingMemory{!job:cell_iso_z1,!job:cell_iso_z2} by {ip} / 1024",
             "type": "line"
           }
         ],
@@ -4023,7 +4023,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Min. Avail Memory",
+      "title_text": "Min. Avail Memory (GB)",
       "type": "timeseries",
       "width": 28,
       "x": 64,
