@@ -36,6 +36,38 @@
     {
       "board_id": 161503,
       "color": "#4d4d4d",
+      "font_size": "16",
+      "height": 10,
+      "text": "Anyone who has thoughts on how to effectively measure this, please talk to Jim and Marie.",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 0,
+      "y": 26
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
+      "font_size": "16",
+      "height": 10,
+      "text": "Manually generated based on what's available on PivNet. US-PWS is running: ERT, Logsearch, Stemcells, ODB SDK, Redis, SSO, MySQL, RabbitMQ, SCS",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 0,
+      "y": 71
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
       "font_size": "auto",
       "height": 3,
       "text": "# Java BuildPack apps (Beijing)",
@@ -214,6 +246,22 @@
       "color": "#4d4d4d",
       "font_size": "auto",
       "height": 6,
+      "text": "9/24",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 0,
+      "y": 67
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 6,
       "text": "PWS Customer experience (monthly)",
       "text_align": "left",
       "title": true,
@@ -317,6 +365,34 @@
       "width": 47,
       "x": 0,
       "y": 10
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "avg:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>} by {servicename}",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 47,
+      "x": 117,
+      "y": 29
     },
     {
       "board_id": 161503,
