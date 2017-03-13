@@ -1,5 +1,6 @@
 {
   "board_title": "<%= environment %> capacity",
+  "disableCog": false,
   "disableEditing": false,
   "height": 80,
   "isIntegration": false,
@@ -11,139 +12,6 @@
   ],
   "title_edited": false,
   "widgets": [
-    {
-      "autoscale": true,
-      "board_id": 150486,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": null
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:diego_cell,deployment:<%= deployment %>}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "actual used mem%",
-      "type": "query_value",
-      "width": 24,
-      "x": 23,
-      "y": 20
-    },
-    {
-      "autoscale": true,
-      "board_id": 150486,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": null
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "app instances",
-      "type": "query_value",
-      "width": 24,
-      "x": 23,
-      "y": 5
-    },
-    {
-      "autoscale": true,
-      "board_id": 150486,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": null
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "sum:bosh.healthmonitor.system.mem.kb{job:diego_cell,deployment:<%= deployment %>} * 1000"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "actual used mem",
-      "type": "query_value",
-      "width": 23,
-      "x": 0,
-      "y": 20
-    },
     {
       "autoscale": true,
       "board_id": 150486,
@@ -182,11 +50,142 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "cell free mem",
+      "title_text": "runtime free mem",
       "type": "query_value",
-      "width": 23,
+      "width": 24,
       "x": 0,
-      "y": 5
+      "y": 0
+    },
+    {
+      "autoscale": true,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "100 - avg:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= deployment %>} / 320"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "runtime mem usage%",
+      "type": "query_value",
+      "width": 24,
+      "x": 0,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:diego_cell,deployment:<%= deployment %>}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "actual mem usage%",
+      "type": "query_value",
+      "width": 24,
+      "x": 24,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:<%= deployment %>}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "app instances",
+      "type": "query_value",
+      "width": 24,
+      "x": 24,
+      "y": 0
     },
     {
       "board_id": 150486,
@@ -216,9 +215,9 @@
       "title_size": 16,
       "title_text": "cpu.user",
       "type": "timeseries",
-      "width": 47,
+      "width": 48,
       "x": 0,
-      "y": 35
+      "y": 30
     },
     {
       "board_id": 150486,
@@ -245,9 +244,9 @@
       "title_size": 16,
       "title_text": "persistent disk",
       "type": "timeseries",
-      "width": 47,
+      "width": 48,
       "x": 0,
-      "y": 65
+      "y": 60
     },
     {
       "board_id": 150486,
@@ -277,9 +276,9 @@
       "title_size": 16,
       "title_text": "mem",
       "type": "timeseries",
-      "width": 47,
+      "width": 48,
       "x": 0,
-      "y": 50
+      "y": 45
     }
   ],
   "width": "100%"
