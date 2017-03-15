@@ -12,7 +12,7 @@ class AlertSynchronizer < Synchronizer
     # we don't want the query in the hash, they are separate parameters to datadog
     query = alert.delete(:query)
 
-    result = @dog.update_alert(id, query, alert)
+    result = @dog.update_monitor(id, query, alert)
 
     if result.first != '200'
       logger.error "Failed to update alert #{key.inspect}(#{result.first}): #{result.last}"
@@ -26,7 +26,7 @@ class AlertSynchronizer < Synchronizer
     # we don't want the query in the hash, they are separate parameters to datadog
     query = alert.delete(:query)
 
-    result = @dog.alert(query, alert)
+    result = @dog.monitor("metric alert", query, alert)
 
     if !['200', '201'].include?(result.first)
       logger.error "Failed to create alert #{key.inspect}(#{result.first}): #{result.last}"
@@ -35,8 +35,7 @@ class AlertSynchronizer < Synchronizer
 
   # @return [Hash] alert name -> alert id
   def fetch_from_datadog
-    dog_alerts = handle_datadog_errors { @dog.get_all_alerts }
-    alerts = dog_alerts.fetch('alerts', [])
+    alerts = handle_datadog_errors { @dog.get_all_monitors }
     logger.info "Found #{alerts.size} alerts at Datadog"
 
     result = {}
@@ -57,17 +56,17 @@ class AlertSynchronizer < Synchronizer
 
   def delete_unknown_alerts(templates)
     unknown_alert_ids(templates).each do |alert_id|
-      @dog.delete_alert(alert_id)
+      @dog.delete_monitor(alert_id)
     end
   end
 
   def delete(id)
-    @dog.delete_alert(id)
+    @dog.delete_monitor(id)
   end
 
 
   def fetch_by_id(id)
-    @dog.get_alert(id)
+    @dog.get_monitor(id)
   end
 
   private
