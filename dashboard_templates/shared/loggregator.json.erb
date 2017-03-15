@@ -186,7 +186,7 @@
             "definition":{
                 "requests": [
                     {
-                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.sentEnvelopes{event_type: logmessage})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: logmessage, deployment:<%= metron_agent_deployment %>}))",
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.sentEnvelopes{event_type: logmessage})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{event_type: logmessage, deployment:<%= metron_agent_deployment %>}))",
                         "type": "line"
                     }
                 ],
