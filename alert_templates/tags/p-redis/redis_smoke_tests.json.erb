@@ -1,12 +1,15 @@
 {
-  "escalation_message": null,
   "message": "<%= params.fetch('alert_header', "") %>## Description:\n The Smoke Tests have been unable to stage and run an application with p-redis recently. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  Redis, GSS\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-<%= metron_agent_deployment %>/datadog-config/issues/new)",
   "name": "<%= environment %>: p-redis Smoke tests failing",
-  "no_data_timeframe": 60,
-  "notify_audit": false,
-  "notify_no_data": true,
   "query": "avg(last_30m):avg:smoke.status{deployment:p-redis_<%= environment %>} < 0.66",
-  "renotify_interval": 0,
-  "require_full_window": false,
-  "timeout_h": 0
+  "options": {
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 2,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "timeout_h": 0
+  }
 }
