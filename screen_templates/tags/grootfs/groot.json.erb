@@ -1,734 +1,772 @@
 {
   "board_title": "Groot PWS",
-  "read_only": false,
-  "isIntegration": false,
-  "board_bgtype": "board_graph",
-  "created": "2017-03-06T09:40:48.119422+00:00",
-  "original_title": "Groot PWS",
-  "modified": "2017-03-06T10:33:59.318111+00:00",
+  "disableCog": false,
   "disableEditing": false,
   "height": 80,
-  "width": "100%",
-  "template_variables": [],
+  "isIntegration": false,
+  "isShared": false,
+  "original_title": "Groot PWS",
+  "read_only": false,
+  "template_variables": [
+
+  ],
   "templated": true,
+  "title_edited": false,
   "widgets": [
     {
+      "autoscale": true,
       "board_id": 163031,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "GROOT: Diego Total x Crashed LPRs",
       "height": 17,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:grootfs}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "palette": "warm"
-            }
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs}",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "cool"
-            }
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "palette": "cool",
-              "type": "dotted"
-            }
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.bbs.CrashedActualLRPs{job:grootfs})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "warm"
-            }
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z2}"
           }
         ],
-        "autoscale": true
+        "viz": "query_value"
       },
-      "width": 52,
-      "timeframe": "1w",
-      "y": 0,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
+      "timeframe": "1h",
       "title": true,
       "title_align": "left",
-      "title_text": "GROOT: Garden Container Creation Time",
+      "title_size": 16,
+      "title_text": "GROOT Container Creation",
+      "type": "query_value",
+      "width": 20,
+      "x": 52,
+      "y": 19
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
       "height": 17,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:diego-cell}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "cool"
-            }
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:diego-cell})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "width": "normal",
-              "type": "dotted"
-            }
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2}"
           }
         ],
-        "autoscale": true
+        "viz": "query_value"
       },
-      "width": 52,
-      "timeframe": "1w",
-      "y": 19,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
+      "timeframe": "1h",
       "title": true,
       "title_align": "left",
-      "title_text": "GROOT: Garden Container Succeed Deletion Time",
+      "title_size": 16,
+      "title_text": "SHED Container Creation",
+      "type": "query_value",
+      "width": 20,
+      "x": 124,
+      "y": 19
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
       "height": 18,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:diego-cell}",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "cool"
-            }
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:diego-cell})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "type": "dotted"
-            }
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 52,
-      "timeframe": "1w",
-      "y": 38,
-      "x": 0,
+      "legend": false,
       "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Grootfs Creation Time",
-      "height": 20,
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.grootfs.ImageCreationTime{*}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars"
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageCreationTime{*})",
-            "conditional_formats": [],
-            "type": "line"
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
-        "autoscale": true
+        "viz": "query_value"
       },
-      "width": 64,
       "timeframe": "1h",
-      "y": 58,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "Grootfs Stats Time",
-      "height": 20,
+      "title_size": 16,
+      "title_text": "GROOT Container Deletion",
+      "type": "query_value",
+      "width": 20,
+      "x": 52,
+      "y": 38
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
+      "height": 18,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.grootfs.ImageStatsTime{*}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars"
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageStatsTime{*})",
-            "conditional_formats": [],
-            "type": "line"
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{ip:10.0.31.16}"
           }
         ],
-        "autoscale": true
+        "viz": "query_value"
       },
-      "width": 68,
       "timeframe": "1h",
-      "y": 58,
-      "x": 129,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "Grootfs Deletion Time",
-      "height": 20,
+      "title_size": 16,
+      "title_text": "SHED Container Deletion",
+      "type": "query_value",
+      "width": 20,
+      "x": 124,
+      "y": 38
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
+      "height": 7,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{*}",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars"
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageDeletionTime{*})",
-            "conditional_formats": [],
-            "type": "line"
+            "aggregator": "max",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:garden-shed}"
           }
         ],
-        "autoscale": true
+        "viz": "query_value"
       },
-      "width": 65,
       "timeframe": "1h",
-      "y": 58,
-      "x": 64,
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "SHED Running LRPs",
+      "type": "query_value",
+      "width": 20,
+      "x": 124,
+      "y": 10
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
+      "height": 7,
+      "legend": false,
       "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "max",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:grootfs}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "GROOT Crashed LRPs",
+      "type": "query_value",
+      "width": 20,
+      "x": 52,
+      "y": 10
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
+      "height": 8,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "SHED Running LRPs",
+      "type": "query_value",
+      "width": 20,
+      "x": 124,
+      "y": 0
+    },
+    {
+      "autoscale": true,
+      "board_id": 163031,
+      "height": 8,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": null
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": null
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "GROOT Running LRPs",
+      "type": "query_value",
+      "width": 20,
+      "x": 52,
+      "y": 0
     },
     {
       "board_id": 163031,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED: Diego Total x Crashed LPRs",
       "height": 17,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:garden-shed}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:garden-shed}",
             "style": {
               "palette": "warm"
-            }
+            },
+            "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed}",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed}",
             "style": {
               "palette": "cool"
-            }
+            },
+            "type": "bars"
           },
           {
-            "q": "ewma_20(avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed})",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "palette": "cool",
-              "type": "dotted"
-            }
-          },
-          {
+            "conditional_formats": [
+
+            ],
             "q": "ewma_20(avg:datadog.nozzle.bbs.CrashedActualLRPs{job:garden-shed})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
             "style": {
               "palette": "warm"
-            }
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 52,
-      "timeframe": "1w",
-      "y": 0,
-      "x": 72,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED: Garden Container Creation Time",
-      "height": 17,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{ip:10.0.31.16}",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "cool"
-            }
+            },
+            "type": "bars"
           },
           {
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{ip:10.0.31.16})",
             "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed})",
             "style": {
-              "width": "normal",
+              "palette": "cool",
               "type": "dotted"
-            }
+            },
+            "type": "line"
           }
         ],
-        "autoscale": true
+        "viz": "timeseries"
       },
-      "width": 52,
       "timeframe": "1w",
-      "y": 19,
-      "x": 72,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "title_size": 16,
       "title": true,
       "title_align": "left",
-      "title_text": "SHED: Garden Container Succeed Deletion Time",
-      "height": 18,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{ip:10.0.31.16}",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "bars",
-            "style": {
-              "palette": "cool"
-            }
-          },
-          {
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{ip:10.0.31.16})",
-            "aggregator": "avg",
-            "conditional_formats": [],
-            "type": "line",
-            "style": {
-              "type": "dotted"
-            }
-          }
-        ],
-        "autoscale": true
-      },
+      "title_size": 16,
+      "title_text": "SHED: Diego Total x Crashed LRPs",
+      "type": "timeseries",
       "width": 52,
-      "timeframe": "1w",
-      "y": 38,
       "x": 72,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "y": 0
     },
     {
       "board_id": 163031,
-      "x": 124,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED CONTAINER CREATION",
       "height": 17,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "query_value",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{ip:10.0.31.16}",
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 19,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 124,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED CONTAINER DELETION",
-      "height": 18,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{ip:10.0.31.16}",
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 38,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 52,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "GROOT CONTAINER CREATION",
-      "height": 17,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:diego-cell}",
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 19,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 52,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "GROOT CONTAINER DELETION",
-      "height": 18,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{job:diego-cell}",
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 38,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 52,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "GROOT Running LPRs",
-      "height": 8,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs}",
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 0,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 52,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "GROOT Running LPRs",
-      "height": 7,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
-          {
+
+            ],
             "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:grootfs}",
-            "aggregator": "max",
-            "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 10,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
-    },
-    {
-      "board_id": 163031,
-      "x": 124,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED Running LPRs",
-      "height": 8,
-      "tile_def": {
-        "viz": "query_value",
-        "requests": [
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          },
           {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:garden-shed}",
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
+
+            ],
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.bbs.CrashedActualLRPs{job:grootfs})",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.bbs.LRPsRunning{job:grootfs})",
+            "style": {
+              "palette": "cool",
+              "type": "dotted"
+            },
+            "type": "line"
           }
         ],
-        "autoscale": true
+        "viz": "timeseries"
       },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 0,
-      "autoscale": true,
-      "legend_size": "0",
-      "type": "query_value",
-      "legend": false
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "GROOT: Diego Total x Crashed LRPs",
+      "type": "timeseries",
+      "width": 52,
+      "x": 0,
+      "y": 0
     },
     {
       "board_id": 163031,
-      "x": 124,
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "SHED Running LPRs",
-      "height": 7,
+      "height": 17,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "query_value",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{job:garden-shed}",
-            "aggregator": "max",
+            "aggregator": "avg",
             "conditional_formats": [
-              {
-                "palette": "white_on_red",
-                "comparator": ">",
-                "value": null
-              },
-              {
-                "palette": "white_on_yellow",
-                "comparator": ">=",
-                "value": null
-              },
-              {
-                "palette": "white_on_green",
-                "comparator": "<",
-                "value": null
-              }
-            ]
+
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z2}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_2xl_z2})",
+            "type": "line"
           }
         ],
-        "autoscale": true
+        "viz": "timeseries"
       },
-      "width": 20,
-      "timeframe": "1h",
-      "y": 10,
-      "autoscale": true,
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "GROOT: Garden Container Creation Time",
+      "type": "timeseries",
+      "width": 52,
+      "x": 0,
+      "y": 19
+    },
+    {
+      "board_id": 163031,
+      "height": 17,
+      "legend": false,
       "legend_size": "0",
-      "type": "query_value",
-      "legend": false
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2})",
+            "style": {
+              "type": "dotted",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "SHED: Garden Container Creation Time",
+      "type": "timeseries",
+      "width": 52,
+      "x": 72,
+      "y": 19
+    },
+    {
+      "board_id": 163031,
+      "height": 18,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_2xl_z1} + avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_2xl_z2}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_2xl_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_2xl_z2})",
+            "style": {
+              "type": "dotted"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "GROOT: Garden Container Succeed Deletion Time",
+      "type": "timeseries",
+      "width": 52,
+      "x": 0,
+      "y": 38
+    },
+    {
+      "board_id": 163031,
+      "height": 18,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2})",
+            "style": {
+              "type": "dotted"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "SHED: Garden Container Succeed Deletion Time",
+      "type": "timeseries",
+      "width": 52,
+      "x": 72,
+      "y": 38
+    },
+    {
+      "board_id": 163031,
+      "height": 20,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.grootfs.ImageCreationTime{*}",
+            "type": "bars"
+          },
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageCreationTime{*})",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Grootfs Creation Time",
+      "type": "timeseries",
+      "width": 64,
+      "x": 0,
+      "y": 58
+    },
+    {
+      "board_id": 163031,
+      "height": 20,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.grootfs.ImageDeletionTime{*}",
+            "type": "bars"
+          },
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageDeletionTime{*})",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Grootfs Deletion Time",
+      "type": "timeseries",
+      "width": 65,
+      "x": 64,
+      "y": 58
+    },
+    {
+      "board_id": 163031,
+      "height": 20,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.grootfs.ImageStatsTime{*}",
+            "type": "bars"
+          },
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20(avg:datadog.nozzle.grootfs.ImageStatsTime{*})",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Grootfs Stats Time",
+      "type": "timeseries",
+      "width": 68,
+      "x": 129,
+      "y": 58
     }
   ],
-  "disableCog": false,
-  "id": 163031,
-  "title_edited": false,
-  "isShared": false
+  "width": "100%"
 }
