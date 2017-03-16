@@ -17,25 +17,24 @@ describe AlertSynchronizer do
   describe "#fetch_from_datadog" do
     let(:alerts) do
       ["200",
-        {"alerts"=>
-          [{"id"=>273,
-            "state"=>"No Data",
-            "silenced"=>false,
-            "message"=>" @pagerduty",
-            "query"=>"avg(last_10m):max:system.load.5{host:alexsolo} > 6",
-            "name"=>"Load AVG on host:alexsolo",
-            "event_object"=>"f64854a9d66cd1eea9d77ec82588ff91",
-            "notify_no_data"=>false,
-            "creator"=>3658}]}]
+       [{"id"=>273,
+         "state"=>"No Data",
+         "silenced"=>false,
+         "message"=>" @pagerduty",
+         "query"=>"avg(last_10m):max:system.load.5{host:alexsolo} > 6",
+         "name"=>"Load AVG on host:alexsolo",
+         "event_object"=>"f64854a9d66cd1eea9d77ec82588ff91",
+         "notify_no_data"=>false,
+         "creator"=>3658}]]
     end
 
     it "returns alerts from datadog" do
-      allow_any_instance_of(Dogapi::Client).to receive(:get_all_alerts).and_return(alerts)
+      allow_any_instance_of(Dogapi::Client).to receive(:get_all_monitors).and_return(alerts)
       expect(synchronizer.fetch_from_datadog).to eq({ "Load AVG on host:alexsolo" => 273 })
     end
 
     it "retries in the face of adversity" do
-      allow_any_instance_of(Dogapi::Client).to receive(:get_all_alerts).and_return([-1, {}], alerts)
+      allow_any_instance_of(Dogapi::Client).to receive(:get_all_monitors).and_return([-1, {}], alerts)
 
       expect(synchronizer.fetch_from_datadog).to eq({ "Load AVG on host:alexsolo" => 273 })
     end
@@ -66,7 +65,7 @@ describe AlertSynchronizer do
     end
 
     it "updates alert that already exists" do
-      allow_any_instance_of(Dogapi::Client).to receive(:update_alert).with(
+      allow_any_instance_of(Dogapi::Client).to receive(:update_monitors).with(
         123,
         "some query",
         :name => "prod alert name",
@@ -162,7 +161,7 @@ describe AlertSynchronizer do
     let(:template_output_path) { '/random/output/path/file.json.erb' }
 
     before do
-      allow_any_instance_of(Dogapi::Client).to receive(:get_alert).with(54321).and_return(alert)
+      allow_any_instance_of(Dogapi::Client).to receive(:get_monitor).with(54321).and_return(alert)
 
       allow(File).to receive(:open).and_call_original
       allow(File).to receive(:open).with(template_output_path, 'w') do |file_path, _, &block|
