@@ -796,158 +796,6 @@
     },
     {
       "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "natbox.pingout.health",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 1,
-      "query": "avg:natbox.pingout.health{*}",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": 0.98
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": 0.99
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": 0.98
-              }
-            ],
-            "q": "avg:natbox.pingout.health{*} * 100"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "NAT Box",
-      "type": "query_value",
-      "width": 9,
-      "wrapped": true,
-      "x": 0,
-      "y": 49
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:natbox.pingout.health{*}', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4.000000158945717,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "natbox.pingout.health",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 1,
-      "query": "avg:natbox.pingout.health{*}",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": " yep",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": 0.98
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": 0.99
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": 0.98
-              }
-            ],
-            "q": "avg:natbox.pingout.health{*} * 100"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "NAT box",
-      "type": "query_value",
-      "width": 9,
-      "wrapped": true,
-      "x": 9,
-      "y": 49
-    },
-    {
-      "aggr": "avg",
       "aggregator": "min",
       "autoscale": false,
       "calc_func": "raw",
@@ -1608,7 +1456,7 @@
       "width": 9,
       "wrapped": true,
       "x": 0,
-      "y": 55
+      "y": 49
     },
     {
       "aggr": "avg",
@@ -1778,7 +1626,7 @@
       "width": 9,
       "wrapped": true,
       "x": 9,
-      "y": 55
+      "y": 49
     },
     {
       "aggr": "avg",
@@ -3223,9 +3071,8 @@
               },
               {
                 "comparator": ">=",
-                "invert": false,
                 "palette": "white_on_yellow",
-                "value": 50
+                "value": "20"
               }
             ],
             "q": "avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}"
