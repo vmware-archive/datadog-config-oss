@@ -3817,9 +3817,9 @@
             "aggregator": "max",
             "conditional_formats": [
               {
-                "comparator": "<=",
+                "comparator": "<",
                 "palette": "white_on_green",
-                "value": 0
+                "value": "1"
               },
               {
                 "comparator": ">",
@@ -3829,7 +3829,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": null
+                "value": "1"
               }
             ],
             "q": "avg:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>}"
