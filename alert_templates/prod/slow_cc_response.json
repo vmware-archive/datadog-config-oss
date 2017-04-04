@@ -1,0 +1,29 @@
+{
+  "created_at": 1491327940000,
+  "message": "## Description:\nNew Relic is reporting that CC is responding slowly in PWS\n\n## Escalation Path:\nCloudops\n\n## Possible Causes:\nTraffic has increased substantially\nSlow queries\nS3 is down\n\n## Potential Solutions:\n\n##Feedback:\ngo to #cloudops slack channel. @pagerduty-CAPI-service",
+  "multi": false,
+  "name": "New Relic is reporting that CC is responding slowly in PWS",
+  "options": {
+    "evaluation_delay": "",
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 2,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 10000.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "No Data",
+  "query": "avg(last_5m):avg:new_relic.application_summary.response_time{pws} > 10000",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}
