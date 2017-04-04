@@ -102,12 +102,6 @@ prod:
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
-  palette: white_on_red
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
-  palette: white_on_green
-  value: 100
 - query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
   palette: white_on_red
   value: 100
@@ -157,12 +151,6 @@ prod:
   palette: white_on_yellow
   value: 100
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50"
-  palette: white_on_green
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
-  palette: white_on_yellow
-  value: 100
-- query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:route_emitter_z2}.rollup(avg,60)) ) *50"
   palette: white_on_green
   value: 100
 - query: "(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3"
