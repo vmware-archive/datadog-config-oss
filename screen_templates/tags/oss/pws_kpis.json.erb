@@ -1,5 +1,5 @@
 {
-  "board_title": "PWS KPIs",
+  "board_title": "US-PWS KPIs",
   "disableCog": false,
   "disableEditing": false,
   "height": 80,
@@ -10,29 +10,8 @@
   "template_variables": [
 
   ],
-  "title_edited": false,
+  "title_edited": true,
   "widgets": [
-    {
-      "auto_refresh": false,
-      "bgcolor": "yellow",
-      "board_id": 161503,
-      "font_size": "14",
-      "height": 6,
-      "html": "https://github.com/pivotal-cloudops/release-lag",
-      "refresh_every": 30000,
-      "text_align": "left",
-      "tick": true,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 33,
-      "x": 0,
-      "y": 48
-    },
     {
       "board_id": 161503,
       "color": "#4d4d4d",
@@ -365,6 +344,38 @@
       "width": 47,
       "x": 0,
       "y": 10
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "top(avg:cloudops_tools.release_lag{*} by {release_version,deployment}, 10, 'mean', 'desc')",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "type": "area"
+          }
+        ],
+        "viz": "toplist"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 47,
+      "x": 0,
+      "y": 48
     },
     {
       "board_id": 161503,
