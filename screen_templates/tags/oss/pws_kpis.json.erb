@@ -5,12 +5,12 @@
   "height": 80,
   "isIntegration": false,
   "isShared": false,
-  "original_title": "PWS KPIs",
+  "original_title": "US-PWS KPIs",
   "read_only": false,
   "template_variables": [
 
   ],
-  "title_edited": true,
+  "title_edited": false,
   "widgets": [
     {
       "board_id": 161503,
@@ -446,8 +446,8 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:opsdb.metrics.ccdb.services_instances.p_spring_cloud_services{deployment:<%= deployment %>}",
-            "type": "line"
+            "q": "avg:opsdb.metrics.ccdb.services_instances.p_config_server{deployment:<%= deployment %>}, avg:opsdb.metrics.ccdb.services_instances.p_service_registry{deployment:<%= deployment %>}, avg:opsdb.metrics.ccdb.services_instances.p_circuit_breaker_dashboard{deployment:<%= deployment %>}",
+            "type": "bars"
           }
         ],
         "viz": "timeseries"
@@ -456,7 +456,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "",
+      "title_text": "Spring Cloud Service Instances (Beijing)",
       "type": "timeseries",
       "width": 47,
       "x": 49,
