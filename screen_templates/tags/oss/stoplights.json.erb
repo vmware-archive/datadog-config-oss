@@ -110,10 +110,10 @@
       "title_size": 13,
       "title_text": "UAA Req",
       "type": "query_value",
-      "width": 9,
+      "width": 11,
       "wrapped": true,
-      "x": 115,
-      "y": 19
+      "x": 126,
+      "y": 25
     },
     {
       "aggr": "avg",
@@ -205,10 +205,10 @@
       "title_size": 13,
       "title_text": "API Req",
       "type": "query_value",
-      "width": 9,
+      "width": 11,
       "wrapped": true,
-      "x": 115,
-      "y": 13
+      "x": 126,
+      "y": 19
     },
     {
       "aggr": "avg",
@@ -302,10 +302,10 @@
       "title_size": 13,
       "title_text": "Router Req",
       "type": "query_value",
-      "width": 9,
+      "width": 11,
       "wrapped": true,
-      "x": 115,
-      "y": 7
+      "x": 126,
+      "y": 13
     },
     {
       "aggr": "avg",
@@ -2927,8 +2927,8 @@
       "type": "query_value",
       "width": 12,
       "wrapped": true,
-      "x": 125,
-      "y": 13
+      "x": 112,
+      "y": 19
     },
     {
       "aggr": "max",
@@ -3019,10 +3019,10 @@
       "title_size": 13,
       "title_text": "Max Response Queue Size",
       "type": "query_value",
-      "width": 9,
+      "width": 11,
       "wrapped": true,
-      "x": 115,
-      "y": 0
+      "x": 126,
+      "y": 7
     },
     {
       "aggr": "max",
@@ -3392,9 +3392,9 @@
       "height": 6,
       "html": "CC Queue",
       "refresh_every": 30000,
-      "text_align": "left",
+      "text_align": "center",
       "tick": true,
-      "tick_edge": "right",
+      "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
       "title_align": "left",
@@ -3402,7 +3402,7 @@
       "title_text": "",
       "type": "note",
       "width": 12,
-      "x": 102,
+      "x": 125,
       "y": 0
     },
     {
@@ -3423,7 +3423,7 @@
       "title_text": "",
       "type": "note",
       "width": 12,
-      "x": 125,
+      "x": 112,
       "y": 0
     },
     {
@@ -3557,11 +3557,12 @@
     {
       "autoscale": true,
       "board_id": 14530,
-      "height": 5,
+      "height": 4,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
+        "precision": "0",
         "requests": [
           {
             "aggregator": "max",
@@ -3586,11 +3587,11 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Diego: Unhealthy Cells",
+      "title_text": "Unhealthy Cells",
       "type": "query_value",
-      "width": 18,
-      "x": 46,
-      "y": 37
+      "width": 12,
+      "x": 112,
+      "y": 13
     },
     {
       "autoscale": true,
@@ -3677,8 +3678,8 @@
       "title_text": "Miners",
       "type": "query_value",
       "width": 12,
-      "x": 125,
-      "y": 19
+      "x": 112,
+      "y": 25
     },
     {
       "autoscale": true,
@@ -3720,8 +3721,72 @@
       "title_text": "Unhealthy cells",
       "type": "query_value",
       "width": 12,
-      "x": 125,
+      "x": 112,
       "y": 7
+    },
+    {
+      "board_id": 14530,
+      "height": 10,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "sum:cloudops_tools.defunct_runc_healthcheck{deployment:<%= diego_deployment %>}",
+            "style": {
+              "palette": "orange"
+            },
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Defunct runC Processes",
+      "type": "timeseries",
+      "width": 24,
+      "x": 20,
+      "y": 33
+    },
+    {
+      "board_id": 14530,
+      "height": 10,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "sum:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Unhealthy Cells",
+      "type": "timeseries",
+      "width": 24,
+      "x": 20,
+      "y": 20
     },
     {
       "board_id": 14530,
@@ -3755,8 +3820,8 @@
     {
       "board_id": 150202,
       "color": "#39c",
-      "font_size": "56",
-      "height": 17,
+      "font_size": "36",
+      "height": 13,
       "text": "PWS Health Dashboard",
       "text_align": "right",
       "title": true,
@@ -3764,9 +3829,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "free_text",
-      "width": 25,
-      "x": 112,
-      "y": 27
+      "width": 22,
+      "x": 102,
+      "y": 32
     },
     {
       "board_id": 150202,
@@ -3779,12 +3844,12 @@
       "title_text": "",
       "type": "image",
       "url": "http://orig06.deviantart.net/9d74/f/2013/152/c/0/c032cff5018b599625e96c5eaa424c66-d5xk0s3.png",
-      "width": 14,
-      "x": 108,
-      "y": 27
+      "width": 12,
+      "x": 125,
+      "y": 32
     },
     {
-      "height": 12,
+      "height": 10,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
@@ -3816,7 +3881,7 @@
       "type": "timeseries",
       "width": 24,
       "x": 20,
-      "y": 44
+      "y": 46
     },
     {
       "height": 12,
