@@ -47,6 +47,22 @@
     {
       "board_id": 161503,
       "color": "#4d4d4d",
+      "font_size": "24",
+      "height": 3,
+      "text": "# Sping Cloud Service Instances (>= 5 bindings)",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 47,
+      "x": 49,
+      "y": 64
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
       "font_size": "auto",
       "height": 3,
       "text": "# Java BuildPack apps (Beijing)",
@@ -56,8 +72,8 @@
       "title_size": 16,
       "title_text": "",
       "type": "free_text",
-      "width": 27,
-      "x": 50,
+      "width": 47,
+      "x": 49,
       "y": 6
     },
     {
@@ -72,9 +88,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "free_text",
-      "width": 32,
+      "width": 47,
       "x": 49,
-      "y": 48
+      "y": 45
     },
     {
       "board_id": 161503,
@@ -88,9 +104,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "free_text",
-      "width": 31,
+      "width": 47,
       "x": 49,
-      "y": 26
+      "y": 25
     },
     {
       "board_id": 161503,
@@ -326,6 +342,35 @@
             "conditional_formats": [
 
             ],
+            "q": "avg:opsdb.metrics.ccdb.services_instances.scs.count_5{deployment:<%= deployment %>}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 47,
+      "x": 49,
+      "y": 67
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
             "q": "top(avg:cloudops_tools.bosh_deployment_count{*} by {bosh-stats}, 10, 'mean', 'desc')",
             "style": {
               "palette": "dog_classic"
@@ -431,7 +476,7 @@
       "type": "timeseries",
       "width": 47,
       "x": 49,
-      "y": 54
+      "y": 49
     },
     {
       "board_id": 161503,
@@ -460,7 +505,7 @@
       "type": "timeseries",
       "width": 47,
       "x": 49,
-      "y": 31
+      "y": 29
     }
   ],
   "width": "100%"
