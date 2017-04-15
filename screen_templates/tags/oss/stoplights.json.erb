@@ -3737,7 +3737,7 @@
             "conditional_formats": [
 
             ],
-            "q": "sum:cloudops_tools.defunct_runc_healthcheck{deployment:<%= diego_deployment %>}",
+            "q": "sum:cloudops_tools.defunct.60s.runc.INIT{deployment:<%= diego_deployment %>}",
             "style": {
               "palette": "orange"
             },
