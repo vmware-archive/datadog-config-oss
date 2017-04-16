@@ -3737,11 +3737,11 @@
             "conditional_formats": [
 
             ],
-            "q": "sum:cloudops_tools.defunct.60s.runc.CHILD{deployment:<%= diego_deployment %>}.rollup(sum, 300)",
+            "q": "sum:cloudops_tools.defunct.60s.runc.CHILD{deployment:<%= diego_deployment %>}",
             "style": {
               "palette": "warm"
             },
-            "type": "area"
+            "type": "bars"
           }
         ],
         "viz": "timeseries"
