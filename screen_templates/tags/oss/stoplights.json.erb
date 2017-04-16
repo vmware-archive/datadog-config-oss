@@ -3737,7 +3737,7 @@
             "conditional_formats": [
 
             ],
-            "q": "sum:cloudops_tools.defunct.60s.runc.CHILD{deployment:<%= diego_deployment %>}",
+            "q": "max:cloudops_tools.defunct.60s.runc.CHILD{deployment:<%= diego_deployment %>} by {instance}",
             "style": {
               "palette": "warm"
             },
@@ -3746,7 +3746,7 @@
         ],
         "viz": "timeseries"
       },
-      "timeframe": "1d",
+      "timeframe": "2d",
       "title": true,
       "title_align": "left",
       "title_size": 16,
@@ -3769,7 +3769,7 @@
             "conditional_formats": [
 
             ],
-            "q": "sum:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>}",
+            "q": "max:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>} by {index}",
             "style": {
               "palette": "warm"
             },
@@ -3778,7 +3778,7 @@
         ],
         "viz": "timeseries"
       },
-      "timeframe": "1d",
+      "timeframe": "2d",
       "title": true,
       "title_align": "left",
       "title_size": 16,
