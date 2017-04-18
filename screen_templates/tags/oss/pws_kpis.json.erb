@@ -371,6 +371,46 @@
             "conditional_formats": [
 
             ],
+            "q": "ewma_20(per_second(sum:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>})) * 86400",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "per_second(avg:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>} by {servicename}) * 86400",
+            "type": "bars"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "3mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 47,
+      "x": 117,
+      "y": 29
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
             "q": "top(avg:cloudops_tools.bosh_deployment_count{*} by {bosh-stats}, 10, 'mean', 'desc')",
             "style": {
               "palette": "dog_classic"
@@ -421,34 +461,6 @@
       "width": 47,
       "x": 0,
       "y": 48
-    },
-    {
-      "board_id": 161503,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "conditional_formats": [
-
-            ],
-            "q": "avg:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>} by {servicename}",
-            "type": "bars"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "timeseries",
-      "width": 47,
-      "x": 117,
-      "y": 29
     },
     {
       "board_id": 161503,
