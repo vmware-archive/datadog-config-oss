@@ -3737,7 +3737,7 @@
             "conditional_formats": [
 
             ],
-            "q": "max:cloudops_tools.defunct.60s.runc.CHILD{deployment:<%= diego_deployment %>} by {instance}",
+            "q": "max:cloudops_tools.defunct.CheckFailed{deployment:<%= diego_deployment %>} by {instance}",
             "style": {
               "palette": "warm"
             },
@@ -3750,11 +3750,11 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Defunct runC Processes",
+      "title_text": "Defunct Check: SSH Failures",
       "type": "timeseries",
       "width": 24,
       "x": 20,
-      "y": 33
+      "y": 20
     },
     {
       "board_id": 14530,
@@ -3769,7 +3769,7 @@
             "conditional_formats": [
 
             ],
-            "q": "max:datadog.nozzle.rep.UnhealthyCell{deployment:<%= metron_agent_diego_deployment %>} by {index}",
+            "q": "max:cloudops_tools.defunct.runc.CHILD{deployment:<%= diego_deployment %>} by {instance}",
             "style": {
               "palette": "warm"
             },
@@ -3782,11 +3782,11 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Unhealthy Cells",
+      "title_text": "Defunct Check: runC:[1:CHILD}",
       "type": "timeseries",
       "width": 24,
       "x": 20,
-      "y": 20
+      "y": 33
     },
     {
       "board_id": 14530,
