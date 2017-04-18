@@ -154,7 +154,7 @@
       "type": "free_text",
       "width": 24,
       "x": 117,
-      "y": 61
+      "y": 75
     },
     {
       "board_id": 161503,
@@ -186,7 +186,7 @@
       "type": "free_text",
       "width": 24,
       "x": 117,
-      "y": 45
+      "y": 59
     },
     {
       "board_id": 161503,
@@ -313,6 +313,46 @@
             "conditional_formats": [
 
             ],
+            "q": "( per_second(avg:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>} by {servicename}) * 86400 ) / avg:datadog.nozzle.bbs.LRPsRunning{*}",
+            "type": "bars"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "ewma_20( per_second(sum:aws.billing.estimated_charges{account_id:<%= aws_billing_id %>}) * 86400 ) / avg:datadog.nozzle.bbs.LRPsRunning{*}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "3mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Cost per Day per App Instance",
+      "type": "timeseries",
+      "width": 47,
+      "x": 117,
+      "y": 44
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
             "q": "avg:opsdb.metrics.ccdb.buildpacks.java_buildpack{deployment:<%= deployment %>}",
             "type": "line"
           }
@@ -392,7 +432,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "",
+      "title_text": "Cost per Day",
       "type": "timeseries",
       "width": 47,
       "x": 117,
