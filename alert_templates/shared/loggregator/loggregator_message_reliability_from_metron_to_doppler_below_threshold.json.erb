@@ -1,6 +1,6 @@
 {
   "escalation_message": "",
-  "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \nThe count of sent messages from the Metron Agent does not match the count of received messages on the Doppler Server.\n\n## Escalation Path:\n  LAMBDA Team. \n\n## Reasons this has alerted before:\n- Doppler had run out of file descriptors. Check by doing `ulimit -a`\n\n## What we have done before:\n- Recreated doppler servers when they had run out of file descriptors. \n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "message": "## Description:\n <%= loggregator_pagerduty %> \nThe count of sent messages from the Metron Agent does not match the count of received messages on the Doppler Server.\n\n## Escalation Path:\n  LAMBDA Team. \n\n## Reasons this has alerted before:\n- Doppler had run out of file descriptors. Check by doing `ulimit -a`\n\n## What we have done before:\n- Recreated doppler servers when they had run out of file descriptors. \n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
   "name": "<%= environment %> CF: Loggregator Message reliability from Metron to Doppler below threshold",
   "no_data_timeframe": 30,
   "notify_audit": true,
