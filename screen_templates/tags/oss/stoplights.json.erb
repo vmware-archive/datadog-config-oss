@@ -632,7 +632,7 @@
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 6,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -729,7 +729,7 @@
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 6,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -2785,7 +2785,7 @@
         }
       ],
       "custom_unit": null,
-      "height": 5,
+      "height": 6,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -3790,6 +3790,38 @@
     },
     {
       "board_id": 14530,
+      "height": 10,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "max:cloudops_tools.defunct.runc.INIT{deployment:<%= diego_deployment %>} by {instance}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "2d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Defunct Check: runC:[2:INIT]",
+      "type": "timeseries",
+      "width": 24,
+      "x": 20,
+      "y": 46
+    },
+    {
+      "board_id": 14530,
       "height": 13,
       "legend": false,
       "legend_size": "0",
@@ -3849,41 +3881,6 @@
       "y": 32
     },
     {
-      "height": 10,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "begin update deployment"
-          }
-        ],
-        "requests": [
-          {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{*} by {job,index,deployment} / 3600",
-            "style": {
-              "palette": "dog_classic",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries",
-        "yaxis": {
-          "scale": "pow0.25"
-        }
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "monit uptime in hours",
-      "type": "timeseries",
-      "width": 24,
-      "x": 20,
-      "y": 46
-    },
-    {
       "height": 12,
       "margin": "",
       "sizing": "fit",
@@ -3927,6 +3924,41 @@
       "width": 37,
       "x": 64,
       "y": 22
+    },
+    {
+      "height": 6,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "events": [
+          {
+            "q": "begin update deployment"
+          }
+        ],
+        "requests": [
+          {
+            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{*} by {job,index,deployment} / 3600",
+            "style": {
+              "palette": "dog_classic",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "yaxis": {
+          "scale": "pow0.25"
+        }
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "monit uptime in hours",
+      "type": "timeseries",
+      "width": 18,
+      "x": 46,
+      "y": 37
     }
   ],
   "width": "100%"
