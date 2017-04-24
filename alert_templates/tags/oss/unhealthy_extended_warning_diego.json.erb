@@ -1,11 +1,11 @@
 {
   "escalation_message": "",
   "message": "## Description:\n For an extended period of time, one or more of the BOSH agents are reporting either that the VM that they are running on or the job that they are running is unhealthy. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
-  "name": "<%= environment %> Extended downtime for BOSH Agent reporting as unhealthy",
+  "name": "<%= environment %>: BOSH Agent reporting as unhealthy in Diego Deployment",
   "no_data_timeframe": false,
   "notify_audit": true,
   "notify_no_data": false,
-  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{!deployment:,!deployment:loggregator-staging,!deployment:<%= metrics_sandbox_dev_deployment %>,!deployment:<%= metron_agent_deployment %>-jarvice-playground-v2,!deployment:<%= jarvice_deployment %>,!deployment:p-gemfire,!deployment:<%= environment %>-opentsdb,!deployment:<%= elk_deployment %>,!deployment:<%= environment %>-logsearch,!deployment:scalable-syslog-staging} by {index,job} < 1",
+  "query": "max(last_30m):avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>} by {index,job} < 1",
   "renotify_interval": null,
   "timeout_h": null
 }
