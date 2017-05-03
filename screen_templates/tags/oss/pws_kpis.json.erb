@@ -2,7 +2,7 @@
   "board_title": "US-PWS KPIs",
   "disableCog": false,
   "disableEditing": false,
-  "height": 80,
+  "height": 86,
   "isIntegration": false,
   "isShared": false,
   "original_title": "US-PWS KPIs",
@@ -145,6 +145,22 @@
       "color": "#4d4d4d",
       "font_size": "auto",
       "height": 3,
+      "text": "CF PUSH",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 102,
+      "y": 8
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 3,
       "text": "Conversions from trial to paid (SF BAM)",
       "text_align": "left",
       "title": true,
@@ -153,8 +169,8 @@
       "title_text": "",
       "type": "free_text",
       "width": 24,
-      "x": 117,
-      "y": 75
+      "x": 102,
+      "y": 94
     },
     {
       "board_id": 161503,
@@ -169,8 +185,8 @@
       "title_text": "",
       "type": "free_text",
       "width": 24,
-      "x": 117,
-      "y": 26
+      "x": 102,
+      "y": 46
     },
     {
       "board_id": 161503,
@@ -185,8 +201,24 @@
       "title_text": "",
       "type": "free_text",
       "width": 24,
-      "x": 117,
-      "y": 59
+      "x": 102,
+      "y": 79
+    },
+    {
+      "board_id": 161503,
+      "color": "#4d4d4d",
+      "font_size": "auto",
+      "height": 3,
+      "text": "Long Running Canaries",
+      "text_align": "left",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "free_text",
+      "width": 24,
+      "x": 134,
+      "y": 8
     },
     {
       "board_id": 161503,
@@ -224,22 +256,6 @@
       "board_id": 161503,
       "color": "#4d4d4d",
       "font_size": "auto",
-      "height": 3,
-      "text": "SLO Dashboard (EU)",
-      "text_align": "left",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "free_text",
-      "width": 24,
-      "x": 117,
-      "y": 7
-    },
-    {
-      "board_id": 161503,
-      "color": "#4d4d4d",
-      "font_size": "auto",
       "height": 6,
       "text": "9/24",
       "text_align": "left",
@@ -265,8 +281,8 @@
       "title_text": "",
       "type": "free_text",
       "width": 47,
-      "x": 117,
-      "y": 0
+      "x": 102,
+      "y": 1
     },
     {
       "board_id": 161503,
@@ -307,6 +323,76 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
+        "events": [
+          {
+            "q": "sli ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pingdom.response_time{check:_long_running_<%= environment %>} by {check}",
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 33,
+      "x": 134,
+      "y": 26
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "sli ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pingdom.uptime{check:_long_running_<%= environment %>} by {check}",
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 33,
+      "x": 134,
+      "y": 11
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
         "requests": [
           {
             "aggregator": "avg",
@@ -337,8 +423,8 @@
       "title_text": "Cost per Day per App Instance",
       "type": "timeseries",
       "width": 47,
-      "x": 117,
-      "y": 44
+      "x": 102,
+      "y": 64
     },
     {
       "board_id": 161503,
@@ -435,8 +521,8 @@
       "title_text": "Cost per Day",
       "type": "timeseries",
       "width": 47,
-      "x": 117,
-      "y": 29
+      "x": 102,
+      "y": 49
     },
     {
       "board_id": 161503,
@@ -558,6 +644,40 @@
       "width": 47,
       "x": 49,
       "y": 29
+    },
+    {
+      "board_id": 161503,
+      "height": 28,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "sli ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "avg:cloudops_tools.cf_sli.app_start_time_in_sec{*}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 32,
+      "x": 102,
+      "y": 11
     }
   ],
   "width": "100%"
