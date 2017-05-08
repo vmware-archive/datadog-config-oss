@@ -13,6 +13,94 @@
   "title_edited": false,
   "widgets": [
     {
+      "autoscale": true,
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": false,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "0.999"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "0.99"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{*}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Daily Start Success Rate",
+      "type": "query_value",
+      "width": 16,
+      "x": 102,
+      "y": 26
+    },
+    {
+      "autoscale": true,
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": false,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "0.999"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "0.99"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{*}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Monthly Start Success Rate",
+      "type": "query_value",
+      "width": 16,
+      "x": 118,
+      "y": 26
+    },
+    {
       "board_id": 161503,
       "color": "#4d4d4d",
       "font_size": "16",
@@ -393,6 +481,41 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
+        "events": [
+          {
+            "q": "sli ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.cf_sli.app_start_time_in_sec{*}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 32,
+      "x": 102,
+      "y": 11
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
         "requests": [
           {
             "aggregator": "avg",
@@ -644,40 +767,6 @@
       "width": 47,
       "x": 49,
       "y": 29
-    },
-    {
-      "board_id": 161503,
-      "height": 28,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "events": [
-          {
-            "q": "sli ",
-            "tags_execution": "and"
-          }
-        ],
-        "requests": [
-          {
-            "conditional_formats": [
-
-            ],
-            "q": "avg:cloudops_tools.cf_sli.app_start_time_in_sec{*}",
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "timeseries",
-      "width": 32,
-      "x": 102,
-      "y": 11
     }
   ],
   "width": "100%"
