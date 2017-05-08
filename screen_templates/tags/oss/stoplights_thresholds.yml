@@ -228,15 +228,6 @@ prod:
 - query: "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024"
   palette: white_on_green
   value: 0
-- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
-  palette: white_on_green
-  value: 20
-- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
-  palette: white_on_red
-  value: 100
-- query: avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}
-  palette: white_on_yellow
-  value: 50
 - query: max:datadog.nozzle.cc.requests.outstanding{*}
   palette: white_on_green
   value: 3

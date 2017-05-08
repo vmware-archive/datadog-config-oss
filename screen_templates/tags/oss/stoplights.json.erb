@@ -112,8 +112,8 @@
       "type": "query_value",
       "width": 11,
       "wrapped": true,
-      "x": 126,
-      "y": 25
+      "x": 44,
+      "y": 38
     },
     {
       "aggr": "avg",
@@ -207,8 +207,8 @@
       "type": "query_value",
       "width": 11,
       "wrapped": true,
-      "x": 126,
-      "y": 19
+      "x": 33,
+      "y": 38
     },
     {
       "aggr": "avg",
@@ -304,8 +304,8 @@
       "type": "query_value",
       "width": 11,
       "wrapped": true,
-      "x": 126,
-      "y": 13
+      "x": 33,
+      "y": 32
     },
     {
       "aggr": "avg",
@@ -2848,89 +2848,6 @@
       "y": 37
     },
     {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}', 'white_on_green') %>
-        },
-        {
-          "comparator": ">",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}', 'white_on_yellow') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 4,
-      "is_valid_query": true,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "cloudops_tools.ssh_abuse_monitor.ssh.attempts",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 20
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "150"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "20"
-              }
-            ],
-            "q": "avg:cloudops_tools.ssh_abuse_monitor.ssh.attempts{*}"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "15m",
-      "title": true,
-      "title_align": "left",
-      "title_size": 13,
-      "title_text": "SSH Attempts",
-      "type": "query_value",
-      "width": 12,
-      "wrapped": true,
-      "x": 112,
-      "y": 19
-    },
-    {
       "aggr": "max",
       "aggregator": "avg",
       "autoscale": true,
@@ -3021,8 +2938,8 @@
       "type": "query_value",
       "width": 11,
       "wrapped": true,
-      "x": 126,
-      "y": 7
+      "x": 33,
+      "y": 26
     },
     {
       "aggr": "max",
@@ -3109,9 +3026,9 @@
       "title_size": 20,
       "title_text": "Top Ephemeral Disk usage (%) past 15 min",
       "type": "query_value",
-      "width": 46,
+      "width": 43,
       "wrapped": true,
-      "x": 91,
+      "x": 58,
       "y": 57
     },
     {
@@ -3199,9 +3116,9 @@
       "title_size": 16,
       "title_text": "Top Persistent Disk usage (%) past 15 min",
       "type": "query_value",
-      "width": 46,
+      "width": 43,
       "wrapped": true,
-      "x": 91,
+      "x": 58,
       "y": 46
     },
     {
@@ -3289,9 +3206,9 @@
       "title_size": 16,
       "title_text": "Top CPU User usage (%) past 15 min",
       "type": "query_value",
-      "width": 46,
+      "width": 39,
       "wrapped": true,
-      "x": 45,
+      "x": 19,
       "y": 46
     },
     {
@@ -3379,9 +3296,9 @@
       "title_size": 20,
       "title_text": "Top Memory usage (%) past 15 min",
       "type": "query_value",
-      "width": 46,
+      "width": 39,
       "wrapped": true,
-      "x": 45,
+      "x": 19,
       "y": 57
     },
     {
@@ -3402,8 +3319,8 @@
       "title_text": "",
       "type": "note",
       "width": 12,
-      "x": 125,
-      "y": 0
+      "x": 32,
+      "y": 19
     },
     {
       "auto_refresh": false,
@@ -3423,8 +3340,8 @@
       "title_text": "",
       "type": "note",
       "width": 12,
-      "x": 112,
-      "y": 0
+      "x": 20,
+      "y": 19
     },
     {
       "auto_refresh": false,
@@ -3590,52 +3507,8 @@
       "title_text": "Unhealthy Cells",
       "type": "query_value",
       "width": 12,
-      "x": 112,
-      "y": 13
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "sum",
-            "conditional_formats": [
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "-1"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": null
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "sum:cloudops_tools.bosh_deployment_count{environment:<%= environment %>}"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Deployments this month",
-      "type": "query_value",
-      "width": 24,
       "x": 20,
-      "y": 59
+      "y": 32
     },
     {
       "autoscale": true,
@@ -3678,8 +3551,8 @@
       "title_text": "Miners",
       "type": "query_value",
       "width": 12,
-      "x": 112,
-      "y": 25
+      "x": 20,
+      "y": 38
     },
     {
       "autoscale": true,
@@ -3721,104 +3594,8 @@
       "title_text": "Unhealthy cells",
       "type": "query_value",
       "width": 12,
-      "x": 112,
-      "y": 7
-    },
-    {
-      "board_id": 14530,
-      "height": 10,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "max:cloudops_tools.defunct.CheckFailed{deployment:<%= diego_deployment %>} by {instance}",
-            "style": {
-              "palette": "warm"
-            },
-            "type": "bars"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "2d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Defunct Check: SSH Failures",
-      "type": "timeseries",
-      "width": 24,
       "x": 20,
-      "y": 20
-    },
-    {
-      "board_id": 14530,
-      "height": 10,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "max:cloudops_tools.defunct.runc.CHILD{deployment:<%= diego_deployment %>} by {instance}",
-            "style": {
-              "palette": "warm"
-            },
-            "type": "bars"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "2d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Defunct Check: runC:[1:CHILD]",
-      "type": "timeseries",
-      "width": 24,
-      "x": 20,
-      "y": 33
-    },
-    {
-      "board_id": 14530,
-      "height": 10,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "max:cloudops_tools.defunct.runc.INIT{deployment:<%= diego_deployment %>} by {instance}",
-            "style": {
-              "palette": "warm"
-            },
-            "type": "bars"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "2d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Defunct Check: runC:[2:INIT]",
-      "type": "timeseries",
-      "width": 24,
-      "x": 20,
-      "y": 46
+      "y": 26
     },
     {
       "board_id": 14530,
@@ -3861,13 +3638,13 @@
       "title_size": 16,
       "title_text": "",
       "type": "free_text",
-      "width": 22,
-      "x": 102,
-      "y": 32
+      "width": 18,
+      "x": 0,
+      "y": 55
     },
     {
       "board_id": 150202,
-      "height": 13,
+      "height": 7,
       "margin": "small",
       "sizing": "fit",
       "title": true,
@@ -3876,23 +3653,9 @@
       "title_text": "",
       "type": "image",
       "url": "http://orig06.deviantart.net/9d74/f/2013/152/c/0/c032cff5018b599625e96c5eaa424c66-d5xk0s3.png",
-      "width": 12,
-      "x": 125,
-      "y": 32
-    },
-    {
-      "height": 12,
-      "margin": "",
-      "sizing": "fit",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "image",
-      "url": "http://i.giphy.com/WyeodYfrqvHCo.gif",
-      "width": 18,
-      "x": 0,
-      "y": 56
+      "width": 8,
+      "x": 10,
+      "y": 55
     },
     {
       "height": 13,
@@ -3926,39 +3689,18 @@
       "y": 22
     },
     {
-      "height": 6,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "events": [
-          {
-            "q": "begin update deployment"
-          }
-        ],
-        "requests": [
-          {
-            "q": "min:cloudops_tools.monit_status_collector.uptime_in_seconds{*} by {job,index,deployment} / 3600",
-            "style": {
-              "palette": "dog_classic",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries",
-        "yaxis": {
-          "scale": "pow0.25"
-        }
-      },
-      "timeframe": "1h",
+      "height": 7,
+      "margin": "",
+      "sizing": "fit",
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "monit uptime in hours",
-      "type": "timeseries",
-      "width": 18,
-      "x": 46,
-      "y": 37
+      "title_text": "",
+      "type": "image",
+      "url": "http://i.giphy.com/WyeodYfrqvHCo.gif",
+      "width": 9,
+      "x": 55,
+      "y": 38
     }
   ],
   "width": "100%"
