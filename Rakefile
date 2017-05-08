@@ -366,6 +366,8 @@ end
 
 DIEGO_BENCHMARKS_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "benchmark_bbs_screen.json.erb"))
 DIEGO_BENCHMARKS_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["diego_benchmarks"] }.keys
+DIEGO_BENCHMARKS_POSTGRES_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["diego_benchmarks_postgres"] }.keys
+DIEGO_BENCHMARKS_POSTGRES_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "benchmark_bbs_postgres_screen.json.erb"))
 
 namespace :diego_benchmarks do
   deployments.each do |d|
@@ -374,6 +376,13 @@ namespace :diego_benchmarks do
       task :push do
         if DIEGO_BENCHMARKS_ENVIRONMENTS.include?(d)
           puts "[INFO] Synchronizing Diego Benchmarks dashboard for '#{d}' environment"
+          DashboardSynchronizer.new(CONFIG_PATH, d).run(DIEGO_BENCHMARKS_DASHBOARD_TEMPLATES)
+        else
+          puts "[WARN] The environment '#{d}' does not have the Diego you're looking for..."
+        end
+
+        if DIEGO_BENCHMARKS_POSTGRES_ENVIRONMENTS.include?(d)
+          puts "[INFO] Synchronizing Diego Benchmarks Postgres dashboard for '#{d}' environment"
           DashboardSynchronizer.new(CONFIG_PATH, d).run(DIEGO_BENCHMARKS_DASHBOARD_TEMPLATES)
         else
           puts "[WARN] The environment '#{d}' does not have the Diego you're looking for..."
