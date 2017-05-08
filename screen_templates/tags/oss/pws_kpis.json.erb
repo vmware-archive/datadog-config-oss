@@ -15,7 +15,7 @@
     {
       "autoscale": true,
       "board_id": 161503,
-      "height": 13,
+      "height": 5,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
@@ -52,14 +52,14 @@
       "title_size": 16,
       "title_text": "Daily Start Success Rate",
       "type": "query_value",
-      "width": 16,
+      "width": 32,
       "x": 102,
       "y": 26
     },
     {
       "autoscale": true,
       "board_id": 161503,
-      "height": 13,
+      "height": 5,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
@@ -96,9 +96,9 @@
       "title_size": 16,
       "title_text": "Monthly Start Success Rate",
       "type": "query_value",
-      "width": 16,
-      "x": 118,
-      "y": 26
+      "width": 32,
+      "x": 102,
+      "y": 33
     },
     {
       "board_id": 161503,
@@ -423,76 +423,6 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pingdom.response_time{check:_long_running_<%= environment %>} by {check}",
-            "type": "area"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "timeseries",
-      "width": 33,
-      "x": 134,
-      "y": 26
-    },
-    {
-      "board_id": 161503,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "events": [
-          {
-            "q": "sli ",
-            "tags_execution": "and"
-          }
-        ],
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "avg:pingdom.uptime{check:_long_running_<%= environment %>} by {check}",
-            "type": "area"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "timeseries",
-      "width": 33,
-      "x": 134,
-      "y": 11
-    },
-    {
-      "board_id": 161503,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "events": [
-          {
-            "q": "sli ",
-            "tags_execution": "and"
-          }
-        ],
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
             "q": "avg:pws.cf_sli.app_start_time_in_sec{*}",
             "type": "line"
           }
@@ -606,6 +536,64 @@
       "width": 47,
       "x": 49,
       "y": 67
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pingdom.response_time{check:_long_running_<%= environment %>} by {check}",
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 33,
+      "x": 134,
+      "y": 26
+    },
+    {
+      "board_id": 161503,
+      "height": 13,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pingdom.uptime{check:_long_running_<%= environment %>} by {check}",
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "timeseries",
+      "width": 33,
+      "x": 134,
+      "y": 11
     },
     {
       "board_id": 161503,
