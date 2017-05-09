@@ -1,334 +1,318 @@
 {
-  "board_title": "<%= environment %> Health",
-  "read_only": false,
-  "isIntegration": false,
   "board_bgtype": "board_graph",
+  "board_title": "<%= environment_label %> Health",
   "created": "2016-03-29T20:52:05.758147+00:00",
-  "original_title": "<%= environment %> Health",
-  "modified": "2017-02-08T23:51:33.282441+00:00",
+  "disableCog": false,
   "disableEditing": false,
   "height": 109,
-  "width": "100%",
+  "id": 72083,
+  "isIntegration": false,
+  "isShared": false,
+  "modified": "2017-05-09T17:44:02.531721+00:00",
+  "original_title": "<%= environment_label %> Health",
+  "read_only": false,
   "template_variables": [
     {
-      "default": "*",
-      "prefix": null,
-      "name": "scope"
+      "name": "scope",
+      "default": "deployment: <%= deployment %>",
+      "prefix": "deployment"
     }
   ],
   "templated": true,
+  "title_edited": false,
   "widgets": [
     {
-      "title_size": 30,
+      "auto_refresh": false,
+      "bgcolor": "pink",
+      "board_id": 72083,
+      "font_size": "36",
+      "height": 7,
+      "html": "<%= environment_label %>",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
       "title": true,
       "title_align": "left",
-      "title_text": "Failed Jobs",
-      "height": 35,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.cc.failed_job_count.total{deployment:cf-<%= environment %>}",
-            "aggregator": "avg",
-            "style": {
-              "palette": "warm"
-            },
-            "type": "line",
-            "conditional_formats": [
-
-            ]
-          },
-          {
-            "q": "avg:datadog.nozzle.cc.job_queue_length.total{deployment:cf-<%= environment %>}",
-            "style": {
-              "width": "thick",
-              "palette": "cool"
-            },
-            "type": "line"
-          }
-        ],
-        "autoscale": true,
-        "events": [
-          {
-            "q": "tags:deployment:cf-<%= environment %> started deploying. "
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "1w",
-      "y": 72,
-      "x": 66,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": "30",
-      "title": true,
-      "title_align": "left",
-      "title_text": "DIEGO Cell: LRPs",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsDesired{deployment:cf-<%= environment %>-diego}",
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsStarting{deployment:cf-<%= environment %>-diego}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.LRPsRunning{deployment:cf-<%= environment %>-diego}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:cf-<%= environment %>-diego}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:cf-<%= environment %>-diego} + avg:datadog.nozzle.bbs.LRPsStarting{deployment:cf-<%= environment %>-diego} + avg:datadog.nozzle.bbs.LRPsRunning{deployment:cf-<%= environment %>-diego}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:cf-<%= environment %>-diego} + avg:datadog.nozzle.bbs.LRPsStarting{deployment:cf-<%= environment %>-diego} + avg:datadog.nozzle.bbs.LRPsRunning{deployment:cf-<%= environment %>-diego}",
-            "type": "line"
-          }
-        ],
-        "autoscale": true,
-        "events": [
-          {
-            "q": "tags:deployment:cf-<%= environment %>-diego started deploying. "
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 40,
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 104,
       "x": 0,
-      "type": "timeseries"
-    },
-    {
-      "title_size": "30",
-      "title": true,
-      "title_align": "left",
-      "title_text": "DIEGO Cell: Missing LRPs",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "( ( ( avg:datadog.nozzle.bbs.LRPsDesired{deployment:cf-<%= environment %>-diego} - avg:datadog.nozzle.bbs.LRPsRunning{deployment:cf-<%= environment %>-diego} ) - avg:datadog.nozzle.bbs.LRPsStarting{deployment:cf-<%= environment %>-diego} ) - avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:cf-<%= environment %>-diego} )",
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "autoscale": true,
-        "events": [
-          {
-            "q": "tags:deployment:cf-<%= environment %>-diego started deploying. "
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 63,
-      "x": 0,
-      "type": "timeseries"
-    },
-    {
-      "title_size": "30",
-      "title": true,
-      "title_align": "left",
-      "title_text": "DIEGO Cell: Available Memory",
-      "height": 21,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:cf-<%= environment %>-diego}by{ip})/0.000001024",
-            "type": "bars"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:cf-<%= environment %>-diego started deploying."
-          }
-        ]
-      },
-      "width": 66,
-      "timeframe": "4h",
-      "y": 86,
-      "x": 0,
-      "type": "timeseries"
+      "y": 0
     },
     {
       "board_id": 72083,
-      "title_size": 30,
+      "height": 13,
+      "margin": "",
+      "sizing": "zoom",
       "title": true,
       "title_align": "left",
-      "title_text": "Outstanding Request Queue",
-      "height": 30,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.cc.requests.outstanding{*}",
-            "aggregator": "avg",
-            "style": {
-              "palette": "dog_classic"
-            },
-            "type": "line",
-            "conditional_formats": [
-
-            ]
-          }
-        ],
-        "autoscale": true
-      },
-      "width": 66,
-      "timeframe": "1w",
-      "y": 40,
-      "x": 66,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title_size": 16,
+      "title_text": "",
+      "type": "image",
+      "url": "<%= health_screen_image %>",
+      "width": 96,
+      "x": 4,
+      "y": 8
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "blue",
+      "board_id": 72083,
+      "font_size": "36",
+      "height": 7,
+      "html": "CC Status",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 50,
+      "x": 0,
+      "y": 22
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 72083,
+      "font_size": "36",
+      "height": 7,
+      "html": "Diego Status",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 51,
+      "x": 53,
+      "y": 22
     },
     {
       "board_id": 72083,
-      "title_size": 30,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Red: 5** Orange: 4** Blue: 3**",
-      "height": 26,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
+        "font_size": 20,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.http_status.3XX{*}",
             "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "avg:datadog.nozzle.cc.http_status.3XX{$scope}",
             "style": {
               "palette": "dog_classic"
             },
-            "type": "line",
-            "conditional_formats": [
-
-            ]
+            "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.cc.http_status.4XX{*}",
+            "q": "avg:datadog.nozzle.cc.http_status.4XX{$scope}",
             "style": {
               "palette": "orange"
             },
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.cc.http_status.5XX{*}",
+            "q": "avg:datadog.nozzle.cc.http_status.5XX{$scope}",
             "style": {
               "palette": "warm"
             },
             "type": "line"
           }
         ],
-        "autoscale": true
+        "viz": "timeseries"
       },
-      "width": 66,
       "timeframe": "1w",
-      "y": 7,
-      "x": 1,
-      "legend_size": "0",
+      "title": true,
+      "title_align": "left",
+      "title_size": 13,
+      "title_text": "Red: 5** Orange: 4** Blue: 3**",
       "type": "timeseries",
-      "legend": false
-    },
-    {
-      "board_id": 72083,
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "DIEGO",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 6,
-      "width": 24,
-      "y": 33,
+      "width": 50,
       "x": 0,
-      "font_size": "56",
-      "type": "free_text"
+      "y": 29
     },
     {
       "board_id": 72083,
-      "title_size": 16,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "avg:datadog.nozzle.cc.requests.outstanding{$scope}",
+            "style": {
+              "palette": "dog_classic"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
       "title": true,
-      "color": "#4d4d4d",
-      "text": "BACKGROUND JOBS",
       "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 7,
-      "width": 60,
-      "y": 32,
-      "x": 66,
-      "font_size": "56",
-      "type": "free_text"
+      "title_size": 13,
+      "title_text": "Outstanding Request Queue",
+      "type": "timeseries",
+      "width": 50,
+      "x": 0,
+      "y": 48
     },
     {
       "board_id": 72083,
-      "title_size": 16,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "avg:<%= metric_prefix %>.cc.failed_job_count.total{$scope}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.cc.job_queue_length.total{$scope}",
+            "style": {
+              "palette": "cool",
+              "width": "thick"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
       "title": true,
-      "color": "#4d4d4d",
-      "text": "CC HTTP Status Codes",
       "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 5,
-      "width": 54,
-      "y": 1,
-      "x": 1,
-      "font_size": "56",
-      "type": "free_text"
+      "title_size": 13,
+      "title_text": "Failed Jobs",
+      "type": "timeseries",
+      "width": 50,
+      "x": 0,
+      "y": 67
     },
     {
-      "sizing": "zoom",
       "board_id": 72083,
-      "title_size": 16,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "avg:datadog.nozzle.bbs.LRPsDesired{$scope}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.LRPsStarting{$scope}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.LRPsRunning{$scope}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{$scope}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{$scope} + avg:datadog.nozzle.bbs.LRPsStarting{$scope} + avg:datadog.nozzle.bbs.LRPsRunning{$scope}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.bbs.CrashedActualLRPs{$scope} + avg:datadog.nozzle.bbs.LRPsStarting{$scope} + avg:datadog.nozzle.bbs.LRPsRunning{$scope}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "4h",
       "title": true,
-      "url": "<%= health_screen_image %>",
-      "type": "image",
       "title_align": "left",
-      "title_text": "",
-      "height": 22,
-      "width": 65,
-      "y": 13,
-      "x": 67,
-      "margin": ""
+      "title_size": 13,
+      "title_text": "DIEGO Cell: LRPs",
+      "type": "timeseries",
+      "width": 51,
+      "x": 53,
+      "y": 29
     },
     {
       "board_id": 72083,
-      "title_size": 16,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "( ( ( avg:datadog.nozzle.bbs.LRPsDesired{$scope} - avg:datadog.nozzle.bbs.LRPsRunning{$scope} ) - avg:datadog.nozzle.bbs.LRPsStarting{$scope} ) - avg:datadog.nozzle.bbs.CrashedActualLRPs{$scope} )",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "4h",
       "title": true,
-      "color": "#4d4d4d",
-      "text": "<%= environment.upcase %>",
       "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 11,
-      "width": 24,
-      "y": 1,
-      "x": 108,
-      "font_size": "auto",
-      "type": "free_text"
+      "title_size": 13,
+      "title_text": "DIEGO Cell: Missing LRPs",
+      "type": "timeseries",
+      "width": 51,
+      "x": 53,
+      "y": 48
+    },
+    {
+      "board_id": 72083,
+      "height": 15,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [],
+            "q": "min:datadog.nozzle.rep.CapacityRemainingMemory{$scope} by {ip}",
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "4h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "DIEGO Cell: Available Memory (MiB)",
+      "type": "timeseries",
+      "width": 51,
+      "x": 53,
+      "y": 67
     }
   ],
-  "id": 72083,
-  "title_edited": false,
-  "isShared": false
+  "width": "100%"
 }
