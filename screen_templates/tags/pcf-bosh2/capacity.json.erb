@@ -276,35 +276,6 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{env:<%= environment %>} by {deployment,job,index}",
-            "type": "line"
-          }
-        ],
-        "viz": "heatmap"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "persistent disk",
-      "type": "timeseries",
-      "width": 48,
-      "x": 0,
-      "y": 60
-    },
-    {
-      "board_id": 150486,
-      "height": 13,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
             "q": "avg:bosh.healthmonitor.system.mem.percent{env:<%= environment %>} by {deployment,job,index}",
             "style": {
               "palette": "purple"
