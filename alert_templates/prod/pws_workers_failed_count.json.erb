@@ -4,7 +4,7 @@
   "query": "max(last_5m):avg:pws.workers.critical.failed.count{host:<%= environment %>uction} > 5",
   "message": "1. Check the PWS console dashboard - http://bit.ly/pws-console-dashboard\n1. If the problem is solvable by the playbook - http://bit.ly/pws-workers-failed , that's awesome\n1. Otherwise, escalate to Frontend First Responder - https://cfoundry.pagerduty.com/schedules#P69S0Q6 \n\n\n\n@pagerduty-pws-console  - pws.workers.critical.failed.count over 5\nCreated by: Tushar & Nolan",
   "name": "PWS Production - pws.workers.critical.failed.count over 5 - @pagerduty",
-  "no_data_timeframe": 10,
+  "no_data_timeframe": 30,
   "notify_no_data": true,
   "renotify_interval": 0,
   "escalation_message": null
