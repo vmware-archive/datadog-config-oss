@@ -2,11 +2,13 @@
   "graphs": [
     {
       "definition": {
-        "viz": "heatmap",
+        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.job_queue_length.cc_generic{$name} by {ip}",
-            "type": "area"
+            "q": "avg:datadog.nozzle.cc.job_queue_length.cc_generic{$name}",
+            "type": "line",
+            "conditional_formats": [],
+            "aggregator": "avg"
           }
         ],
         "events": [
