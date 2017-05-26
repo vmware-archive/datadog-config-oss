@@ -3658,6 +3658,63 @@
       "y": 55
     },
     {
+      "board_id": 150202,
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "bottom",
+      "text_align": "center",
+      "title_text": "",
+      "height": 7,
+      "bgcolor": "yellow",
+      "html": "CloudController",
+      "y": 0,
+      "x": 103,
+      "font_size": "36",
+      "tick": true,
+      "type": "note",
+      "width": 41,
+      "auto_refresh": false
+    },
+    {
+      "board_id": 186129,
+      "title_size": 13,
+      "title": true,
+      "title_align": "left",
+      "title_text": "Failed & Queued Jobs",
+      "height": 13,
+      "tile_def": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.cc.failed_job_count.total{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "warm"
+            },
+            "type": "line",
+            "conditional_formats": []
+          },
+          {
+            "q": "avg:datadog.nozzle.cc.job_queue_length.total{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "cool"
+            },
+            "type": "line"
+          }
+        ],
+        "autoscale": true
+      },
+      "width": 41,
+      "timeframe": "1w",
+      "y": 7,
+      "x": 103,
+      "legend_size": "0",
+      "type": "timeseries",
+      "legend": false
+    },
+    {
       "height": 13,
       "legend": false,
       "legend_size": "0",
