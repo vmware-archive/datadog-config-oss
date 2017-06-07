@@ -2,7 +2,7 @@
   "escalation_message": null,
   "message": "<%= params.fetch('alert_header', "") %>\n## Description:\nThe rabbitmq heartbeat has failed for the rabbitmq deployment.\n\n\n## Escalation Path:\ngetrabbitnow@cfoundry.pagerduty.com\n\n\n## Possible Causes: \nSometimes, when rabbit crashes, monit restarts the process. However, just starting epmd doesn't make the rabbit server participate in the cluster. What is needed is to run `rabbitmqctl start_app.` At this point, monit is happy and rabbitmq is 'running.' However, it is not actually running, and must have 'rabbitmqctl' started.\n\n## Potential Solutions:\n Log into each rabbitmq server and run `rabbitmqctl status`. If there are only a couple of started jobs, then this server is not participating in the cluster. Run `rabbitmqctl start_app`. Run `rabbitmqctl status` again, and compare the output. \n\nThere might be notes in the `operator_notes/` folder of the environment repo: how to connect, useful RabbitMQ commands, and how to alert the client. \n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) <%= cloudops_pagerduty %>",
   "name": "<%= environment %>: Heartbeat fail on rabbitmq node",
-  "no_data_timeframe": 15,
+  "no_data_timeframe": 30,
   "notify_audit": false,
   "notify_no_data": true,
   "query": "avg(last_5m):avg:datadog.nozzle.p_rabbitmq.p_rabbitmq_rabbitmq_heartbeat{deployment:cf-rabbitmq_<%= environment %>} < 0.8",
