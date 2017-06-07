@@ -17,6 +17,6 @@
     },
     "timeout_h": null
   },
-  "query": "avg(last_1h):100 * rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{env:<%= environment %>}) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{env:<%= environment %>}) ) < 85",
+  "query": "avg(last_4h):100 * rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{env:<%= environment %>}) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{env:<%= environment %>}) ) < 85",
   "type": "query alert"
 }
