@@ -3412,6 +3412,48 @@
       "board_id": 150202,
       "font_size": "36",
       "height": 7,
+      "html": "CloudController",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 41,
+      "x": 103,
+      "y": 0
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "36",
+      "height": 7,
+      "html": "Service Level Indicators",
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 41,
+      "x": 103,
+      "y": 26
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "36",
+      "height": 7,
       "html": "[Diego Status](/dash/dash/<%= lookup_note_asset(environment + ' Diego Health', :dashboard) %>)",
       "refresh_every": 30000,
       "text_align": "center",
@@ -3512,6 +3554,94 @@
     },
     {
       "autoscale": true,
+      "board_id": 14530,
+      "height": 8,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.995"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "0.999"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{*}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "App Start - Past Day",
+      "type": "query_value",
+      "width": 20,
+      "x": 124,
+      "y": 45
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 8,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.995"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "0.999"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "1"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{*}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "App Start - Past Hour",
+      "type": "query_value",
+      "width": 21,
+      "x": 103,
+      "y": 45
+    },
+    {
+      "autoscale": true,
       "board_id": 150202,
       "height": 4,
       "legend": false,
@@ -3599,6 +3729,35 @@
     },
     {
       "board_id": 14530,
+      "height": 10,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{*}",
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "CF Push Success",
+      "type": "timeseries",
+      "width": 41,
+      "x": 103,
+      "y": 33
+    },
+    {
+      "board_id": 14530,
       "height": 13,
       "legend": false,
       "legend_size": "0",
@@ -3658,61 +3817,42 @@
       "y": 55
     },
     {
-      "board_id": 150202,
-      "title_size": 16,
-      "title": true,
-      "refresh_every": 30000,
-      "tick_pos": "50%",
-      "title_align": "left",
-      "tick_edge": "bottom",
-      "text_align": "center",
-      "title_text": "",
-      "height": 7,
-      "bgcolor": "yellow",
-      "html": "CloudController",
-      "y": 0,
-      "x": 103,
-      "font_size": "36",
-      "tick": true,
-      "type": "note",
-      "width": 41,
-      "auto_refresh": false
-    },
-    {
       "board_id": 186129,
-      "title_size": 13,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Failed & Queued Jobs",
       "height": 13,
+      "legend": false,
+      "legend_size": "0",
       "tile_def": {
-        "viz": "timeseries",
+        "autoscale": true,
         "requests": [
           {
-            "q": "avg:datadog.nozzle.cc.failed_job_count.total{deployment:<%= deployment %>}",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.cc.failed_job_count.total{deployment:<%= metron_agent_deployment %>}",
             "style": {
               "palette": "warm"
             },
-            "type": "line",
-            "conditional_formats": []
+            "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.cc.job_queue_length.total{deployment:<%= deployment %>}",
+            "q": "avg:datadog.nozzle.cc.job_queue_length.total{deployment:<%= metron_agent_deployment %>}",
             "style": {
               "palette": "cool"
             },
             "type": "line"
           }
         ],
-        "autoscale": true
+        "viz": "timeseries"
       },
-      "width": 41,
       "timeframe": "1w",
-      "y": 7,
-      "x": 103,
-      "legend_size": "0",
+      "title": true,
+      "title_align": "left",
+      "title_size": 13,
+      "title_text": "Failed & Queued Jobs",
       "type": "timeseries",
-      "legend": false
+      "width": 41,
+      "x": 103,
+      "y": 7
     },
     {
       "height": 13,
