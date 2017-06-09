@@ -396,3 +396,15 @@ namespace :diego_benchmarks do
     deployments.each { |k| Rake::Task["diego_benchmarks:#{k}:push"].execute }
   end
 end
+
+namespace :shortcut do
+  desc "Persist prod stoplight with your screen id"
+  task :persist_stoplight, :screen_id do |t, args|
+    screen_id = args[:screen_id]
+    Rake::Task["prod:get_screen_json_erb"].execute(
+     {
+      :screen_id => screen_id,
+      :path => './oss_datadog/screen_templates/tags/oss/stoplights.json.erb'
+     })
+  end
+end
