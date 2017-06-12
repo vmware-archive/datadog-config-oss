@@ -1,7 +1,31 @@
 {
-  "query": "avg(last_15m):max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 0.8\n",
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n<%= cloudops_pagerduty %> <%= diego_oncall %>\n",
-  "name": "<%= environment %> Diego: Domain cf-apps freshness too low.", 
-  "no_data_timeframe": 30,
-  "notify_no_data": true
+  "created_at": 1450898658000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nCAPI \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to CAPI team @pagerduty-CAPI-service",
+  "multi": false,
+  "name": "<%= environment %> Diego: Domain cf-apps freshness too low.",
+  "options": {
+    "escalation_message": "",
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.8
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-06-12T22:07:13.350414+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 0.8",
+  "tags": [
+
+  ],
+  "type": "metric alert"
 }
