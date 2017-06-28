@@ -84,7 +84,7 @@
                 "value": null
               }
             ],
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2}"
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z3}"
           }
         ],
         "viz": "query_value"
@@ -542,7 +542,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2}",
+            "q": "avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2} + avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z3}",
             "style": {
               "palette": "cool"
             },
@@ -553,11 +553,7 @@
             "conditional_formats": [
 
             ],
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2})",
-            "style": {
-              "type": "dotted",
-              "width": "normal"
-            },
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z2}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationDuration{job:cell_z3})",
             "type": "line"
           }
         ],
@@ -629,7 +625,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2}",
+            "q": "avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1} + avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2} + avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z3}",
             "style": {
               "palette": "cool"
             },
@@ -640,7 +636,7 @@
             "conditional_formats": [
 
             ],
-            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2})",
+            "q": "ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z1}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerDestructionSucceededDuration{job:cell_z2}) + ewma_20(avg:datadog.nozzle.rep.GardenContainerCreationSucceededDuration{job:cell_z3})",
             "style": {
               "type": "dotted"
             },
