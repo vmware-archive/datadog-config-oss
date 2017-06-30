@@ -5,7 +5,9 @@
   "multi": false,
   "name": "<%= environment %> CF: SLI is lower than 100% in the last 5 minutes.",
   "options": {
+    "escalation_message": "",
     "evaluation_delay": "",
+    "include_tags": false,
     "locked": false,
     "new_host_delay": 300,
     "no_data_timeframe": 10,
@@ -16,16 +18,16 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 1.0
+      "critical": 0.95
     },
     "timeout_h": 0
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2017-06-15T23:01:12.529651+00:00",
-  "query": "max(last_5m):avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} < 1",
+  "overall_state_modified": "2017-06-30T05:34:15.024365+00:00",
+  "query": "max(last_5m):avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} < 0.95",
   "tags": [
-
+    null
   ],
   "type": "metric alert"
 }
