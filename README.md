@@ -106,7 +106,9 @@ search_and_replace:
 ```
 
 * **metron_agent_deployment_name**: This is the `name` value that is configured for metron_agent. This is sometimes different from the deployment name, namely in PCF deployments
-* **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.  NOTE: for Diego deployments, it's assumed that the name of your Diego deployment is `${name_of_cf-deployment}-diego`
+* **deployment**: This is the `name` value in the deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.
+* **metron_agent_diego_deployment_name**: This is the `name` value that is configured for metron_agent in your Diego deployment. This is sometimes different from the deployment name, namely in PCF deployments
+* **diego_deployment**: This is the `name` value in the diego deployment manifest for your Runtime deployment.  This can also be found via `bosh deployments`.
 * **bosh_deployment**: If you have a full BOSH deployed in your environment, this is the `name` from its deployment manifest
 * **services_deployment**: Corresponding services name to the BOSH deployment
 * **micro_deployment**: This is the `name` value in the Micro BOSH deployment manifest.
@@ -169,6 +171,14 @@ Anything else will be left as is.
 Use `rake <env>:emit[some.metric.name]` and follow the command line prompts.
 Be careful, as this data may trigger false alarms, so be mindful of what you
 are doing.
+
+## Using cf-deployment
+
+When using cf-deployment, make sure to use the
+`operations/test/add-datadog-firehose-nozzle.yml` ops file from the
+[`cf-deployment`](https://github.com/cloudfoundry/cf-deployment). Set the
+`metron_agent_deployment`  and `metron_agent_diego_deployment` in `config.yml` to be the `system_domain` var used in
+`cf-deployment`.
 
 ## Known issues
 - Pulling from non-prod results in thresholds file being incorrect. Be careful here, because this is almost by design. If thresholds vary across envionments, a design decision was made to use production as default values, and allow other environments to override as necessary. This is problematic when it's equal across environments. WIP to be smarter about how to handle. Right now, it will just produce broken threshold files if pulling from non-prod.
