@@ -43,9 +43,7 @@ def push(env)
 
   DashboardSynchronizer.new(CONFIG_PATH, env).run(DASHBOARD_TEMPLATES)
   ScreenSynchronizer.new(CONFIG_PATH, env).run(SCREEN_TEMPLATES)
-
-  alert = AlertSynchronizer.new(CONFIG_PATH, env)
-  alert.run(ALERT_TEMPLATES)
+  AlertSynchronizer.new(CONFIG_PATH, env).run(ALERT_TEMPLATES)
 end
 
 def client_for_env(env_name)

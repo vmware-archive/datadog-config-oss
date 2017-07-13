@@ -50,6 +50,49 @@ rake spec                                                # Run RSpec code exampl
 
 Note: `cf_deployment`, as used above, is a placeholder for a deployment named in your `config.yml`, such as `prod`.
 
+## Template directory layout
+
+```
+<alert,dashboard,screen>_templates/
+├── images
+├── prod
+├── shared
+├── staging
+└── tags
+```
+
+When the operator runs `rake <environment>:push`, the alert, dashboard, and screen templates are synchronized with Datadog. The templates loaded for each of these synchronizations are chosen as follows:
+
+* Shared templates from the `shared` directory
+* Environment specific templates from the `<environment>` directory
+* Tag templates that are specified in the configuration for your environment
+
+Tags specified but not found in either `alert_templates`, `dashboard_templates`, or `screen_templates` are ignored for that type.
+
+By example, US-PWS uses the environment name `prod` and several tags, `oss`, `aws`, `jarvice`, etc. When an operator runs `rake prod:push`, the following templates will be included:
+
+* Alert Templates
+  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/shared)
+  * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/prod)
+  * [oss](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/oss)
+  * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/aws)
+  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/jarvice)
+* Dashboard Templates
+  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/shared) 
+  * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/prod)
+  * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/aws)
+  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/jarvice)
+* Screen Templates
+  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/shared) 
+  * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/prod)
+  * [oss](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/oss)
+  * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/aws)
+  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/jarvice)
+
+### Screen Templates
+
+The screen_templates directory contains all of the template and thresholds for screen boards. Screen templates and thresholds should be located in the same directory as they need to be siblings.
+
 ## Workflow
 ### Dashboards / Screenboards
 #### Creating a new deployment
@@ -121,24 +164,6 @@ You should also know that these use default values from `prod`. So, while `prod`
 
 ### Params
 * **alert_header**: This will add a header to each alert. This can be useful to link operator notes or a Github repo for the environment. Note, this is experimental, and using `get_alert_json_erb` will then include the `alert_header` as text.
-
-
-## Folder structure
-
-```
-screen_templates/
-├── images
-├── prod
-├── shared
-├── staging
-└── tags
-```
-
-The screen_templates folder contains all of the template and thresholds for screen boards.  Templates in the `shared` folder are pushed to all of the environments, while templates in e.g. the `prod` folder will only be pushed to the prod DataDog.  Move the template json/erb file to the
-appropriate folder and move the thresholds yaml to the same folder so that the two files are siblings.
-`tags` will contain folders, and if the tag is present in `config.yml`, json/erb files present will be included for that environment.
-
-Edit the resultant json/erb file to make sure that the auto-gsub bit didn't mangle something that wasn't supposed to be static. Check [here for further](lib/screen_synchronizer.rb#L48).
 
 ## Useful notes
 Terminology
