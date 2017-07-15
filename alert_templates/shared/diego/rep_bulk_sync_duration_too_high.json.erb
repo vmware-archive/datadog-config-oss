@@ -1,7 +1,32 @@
 {
-  "query": "avg(last_15m):max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:<%= metron_agent_diego_deployment %>}/1000000000\n > 20",
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n <%= cloudops_pagerduty %> <%= diego_oncall %>",
-  "name": "<%= environment %> Diego: rep bulk sync duration too high",
-  "no_data_timeframe": 30,
-  "notify_no_data": true
+  "created_at": 1450898659000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\n- Before the nsync bulker was removed, these alerts were a pretty strong signal for us to look at the BBS, which was locked up.\n- After the nsync bulker was removed, this was more likely to be an issue with the cloud controller.\n\n\n## Potential Solutions: \n\n\n @pagerduty-CAPI-service",
+  "multi": false,
+  "name": "prod Diego: rep bulk sync duration too high",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 20.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-07-15T12:03:29.863886+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.rep.RepBulkSyncDuration{deployment:cf-cfapps-io2-diego} / 1000000000 > 20",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
 }
