@@ -680,7 +680,7 @@
                 "value": 22
               }
             ],
-            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z1} + sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z2}) * 1024 * 1000"
+            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z1} + sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z2} + sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z3}) * 1024 * 1000"
           }
         ],
         "text_align": "center",
@@ -777,7 +777,7 @@
                 "value": 22
               }
             ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>,!job:cell_iso_z1,!job:cell_iso_z2} * 1024 * 1000"
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>,!job:cell_iso_z1,!job:cell_iso_z2,!job:cell_iso_z3} * 1024 * 1000"
           }
         ],
         "text_align": "center",
