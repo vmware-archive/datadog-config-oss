@@ -23,7 +23,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2017-05-26T11:32:27.271393+00:00",
-  "query": "min(last_10m):max:datadog.nozzle.cc.job_queue_length.total{deployment:<%= metron_agent_deployment %>} by {deployment} > 150",
+  "query": "min(last_30m):max:datadog.nozzle.cc.job_queue_length.total{deployment:<%= metron_agent_deployment %>} by {deployment} > 150",
   "tags": [
 
   ],
