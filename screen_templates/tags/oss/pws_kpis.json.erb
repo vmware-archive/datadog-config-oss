@@ -41,7 +41,7 @@
                 "value": "0.99"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,!java_buildpack}"
           }
         ],
         "viz": "query_value"
@@ -50,9 +50,9 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Daily Start Success Rate",
+      "title_text": "Ruby Start 👍",
       "type": "query_value",
-      "width": 32,
+      "width": 15,
       "x": 102,
       "y": 26
     },
@@ -85,7 +85,7 @@
                 "value": "0.99"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,!java_buildpack}"
           }
         ],
         "viz": "query_value"
@@ -94,10 +94,98 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Monthly Start Success Rate",
+      "title_text": "Ruby Start 👍",
       "type": "query_value",
-      "width": 32,
+      "width": 15,
       "x": 102,
+      "y": 33
+    },
+    {
+      "autoscale": true,
+      "board_id": 161503,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": false,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "0.999"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "0.99"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,!ruby_buildpack}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Java Start 👍",
+      "type": "query_value",
+      "width": 16,
+      "x": 117,
+      "y": 26
+    },
+    {
+      "autoscale": true,
+      "board_id": 161503,
+      "height": 5,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": false,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "0.99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "0.999"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "0.99"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,!ruby_buildpack}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Java Start 👍",
+      "type": "query_value",
+      "width": 16,
+      "x": 117,
       "y": 33
     },
     {
@@ -142,7 +230,7 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 24,
-      "x": 134,
+      "x": 133,
       "y": 11
     },
     {
@@ -187,7 +275,7 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 24,
-      "x": 134,
+      "x": 133,
       "y": 29
     },
     {
@@ -232,7 +320,7 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 24,
-      "x": 134,
+      "x": 133,
       "y": 20
     },
     {
@@ -296,7 +384,7 @@
       "title_text": "",
       "type": "free_text",
       "width": 24,
-      "x": 134,
+      "x": 133,
       "y": 8
     },
     {
@@ -558,6 +646,14 @@
             "conditional_formats": [
 
             ],
+            "q": "avg:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,java_buildpack}",
+            "type": "line"
+          },
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
             "q": "avg:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>}",
             "type": "line"
           }
@@ -570,7 +666,7 @@
       "title_size": 16,
       "title_text": "",
       "type": "timeseries",
-      "width": 32,
+      "width": 31,
       "x": 102,
       "y": 11
     },
