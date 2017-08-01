@@ -3737,7 +3737,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
           }
         ],
         "viz": "query_value"
@@ -3781,7 +3781,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
           }
         ],
         "viz": "query_value"
@@ -3825,7 +3825,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
           }
         ],
         "viz": "query_value"
@@ -3940,7 +3940,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}",
             "type": "line"
           }
         ],
