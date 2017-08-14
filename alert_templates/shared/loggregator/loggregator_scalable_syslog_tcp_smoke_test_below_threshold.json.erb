@@ -1,0 +1,21 @@
+{
+    "message": "## Description:\n <%= loggregator_pagerduty %> \n\nScalable Syslog TCP reliability has fallen below the threshold of {{threshold}}% to a value of {{value}}%.",
+    "name": "<%= environment %> CF: Scalable Syslog TCP Throughput is below {{threshold}}% on {{host.name}}",
+    "query": "avg(last_1h):( sum:smoke_test.ss.loggregator.drain_msg_count{host:run.pivotal.io,drain_type:syslog} / sum:smoke_test.ss.loggregator.cycles{host:run.pivotal.io,drain_type:syslog} ) * 100 <= 50",
+    "options": {
+        "timeout_h": 1,
+        "notify_no_data": true,
+        "no_data_timeframe": 60,
+        "notify_audit": false,
+        "require_full_window": true,
+        "new_host_delay": 300,
+        "include_tags": false,
+        "escalation_message": "",
+        "locked": false,
+        "renotify_interval": "0",
+        "evaluation_delay": "",
+        "thresholds": {
+            "critical": 50
+        }
+    }
+}
