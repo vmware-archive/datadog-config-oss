@@ -25,11 +25,10 @@
           "viz": "query_value",
           "requests": [
             {
-              "q": "sum:bosh.healthmonitor.system.healthy{job:bosh-system-metrics-forwarder}",
-              "conditional_formats": []
-            },
-            {
-              "q": "max:bosh.healthmonitor.system.cpu.sys{*}"
+              "q": "sum:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{job:bosh-system-metrics-forwarder}",
+              "aggregator": "last",
+              "conditional_formats": [],
+              "type": "area"
             }
           ],
           "autoscale": true
