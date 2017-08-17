@@ -1,0 +1,136 @@
+{
+    "graphs": [
+      {
+        "definition": {
+          "viz": "timeseries",
+          "status": "done",
+          "requests": [
+            {
+              "q": "min:bosh.healthmonitor.system.cpu.sys{*}",
+              "aggregator": "avg",
+              "conditional_formats": [],
+              "type": "line"
+            },
+            {
+              "q": "min:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.sys{*}",
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: sys cpu percent"
+      },
+      {
+        "definition": {
+          "viz": "query_value",
+          "requests": [
+            {
+              "q": "sum:bosh.healthmonitor.system.healthy{job:bosh-system-metrics-forwarder}",
+              "conditional_formats": []
+            },
+            {
+              "q": "max:bosh.healthmonitor.system.cpu.sys{*}"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: number of healthy forwarders"
+      },
+      {
+        "definition": {
+          "viz": "timeseries",
+          "status": "done",
+          "requests": [
+            {
+              "q": "avg:bosh.healthmonitor.system.cpu.user{*}",
+              "aggregator": "avg",
+              "conditional_formats": [],
+              "type": "line"
+            },
+            {
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.user{*}",
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: user cpu percent"
+      },
+      {
+        "definition": {
+          "viz": "timeseries",
+          "requests": [
+            {
+              "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{*}",
+              "conditional_formats": [],
+              "type": "line"
+            },
+            {
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.disk.ephemeral.percent{*}",
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: ephemeral disk percent"
+      },
+      {
+        "definition": {
+          "viz": "timeseries",
+          "status": "done",
+          "requests": [
+            {
+              "q": "avg:bosh.healthmonitor.system.mem.kb{*}",
+              "aggregator": "avg",
+              "conditional_formats": [],
+              "type": "line"
+            },
+            {
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.kb{*}",
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: mem kb"
+      },
+      {
+        "definition": {
+          "viz": "timeseries",
+          "status": "done",
+          "requests": [
+            {
+              "q": "avg:bosh.healthmonitor.system.mem.percent{*}",
+              "aggregator": "avg",
+              "conditional_formats": [],
+              "type": "line"
+            },
+            {
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.percent{*}",
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: mem percent"
+      },
+      {
+        "definition": {
+          "viz": "timeseries",
+          "status": "done",
+          "requests": [
+            {
+              "q": "avg:bosh.healthmonitor.system.healthy{*}, avg:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{*}",
+              "aggregator": "avg",
+              "conditional_formats": [],
+              "type": "line"
+            }
+          ],
+          "autoscale": true
+        },
+        "title": "<%= environment %>: healthy"
+      }
+    ],
+    "description": "created by pcf-metrics-ui@pivotal.io",
+    "title": "<%= environment %>: bosh system metrics development"
+}
