@@ -1,0 +1,11 @@
+{
+  "escalation_message": null,
+  "message": "A cell has been reporting unhealthy for 30 minutes or more.\n\nPossible causes:\n- Diego cells can't make basic calls to the garden backend. \n\nEscalation Path: Pivotal Diego Engineering getdiegonow@cfoundry.pagerduty.com\n\n<%= cloudops_pagerduty %> \n\nCreated by: Tushar Dadlani & Derek Reeve",
+  "name": "<%= environment %> Diego: rep.UnhealthyCell >=1 for {{job.name}} / {{index.name}}",
+  "no_data_timeframe": 60,
+  "notify_audit": false,
+  "notify_no_data": false,
+  "query": "avg(last_30m):avg:datadog.nozzle.rep.UnhealthyCell{*} by {job,index} > 0.99",
+  "renotify_interval": 0,
+  "timeout_h": 4
+}
