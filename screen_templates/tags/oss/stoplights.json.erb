@@ -301,7 +301,7 @@
                 "value": 100
               }
             ],
-            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{*})"
+            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>})"
           }
         ],
         "text_align": "left",
@@ -398,7 +398,7 @@
                 "value": 0.75
               }
             ],
-            "q": "avg:rabbitmq.smoke.status{*}"
+            "q": "avg:rabbitmq.smoke.status{deployment:cf-rabbitmq}"
           }
         ],
         "text_align": "center",
@@ -691,7 +691,7 @@
                 "value": 22
               }
             ],
-            "q": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z1} + sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z2} + sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z3}) * 1024 * 1000"
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z2,deployment:<%= diego_deployment %>}, sum:datadog.nozzle.rep.CapacityRemainingMemory{job:cell_iso_z3,deployment:<%= metron_agent_diego_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -2935,7 +2935,7 @@
                 "value": 5
               }
             ],
-            "q": "max:datadog.nozzle.cc.requests.outstanding{*}"
+            "q": "max:datadog.nozzle.cc.requests.outstanding{deployment:<%= metron_agent_deployment %>}"
           }
         ],
         "text_align": "center",
@@ -3316,7 +3316,7 @@
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
-      "font_size": "16",
+      "font_size": "18",
       "height": 5,
       "html": "App Availability",
       "refresh_every": 30000,
@@ -3950,7 +3950,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.rep.CapacityRemainingMemory{!job:cell_iso_z1,!job:cell_iso_z2} by {ip} / 1024",
+            "q": "avg:datadog.nozzle.rep.CapacityRemainingMemory{!job:cell_iso_z1,!job:cell_iso_z2,deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1024",
             "type": "line"
           }
         ],
