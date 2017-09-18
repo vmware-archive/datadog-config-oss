@@ -1334,7 +1334,127 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 72,
+      "y": 18
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 55,
+      "y": 18
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 89,
+      "y": 18
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
         "requests": [
           {
             "aggregator": "avg",
@@ -1379,7 +1499,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "2",
         "requests": [
           {
             "aggregator": "avg",
@@ -1419,7 +1539,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "2",
         "requests": [
           {
             "aggregator": "avg",
@@ -1449,123 +1569,6 @@
       "width": 17,
       "x": 89,
       "y": 37
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 72,
-      "y": 18
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 55,
-      "y": 18
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 89,
-      "y": 18
     },
     {
       "board_id": 14530,
