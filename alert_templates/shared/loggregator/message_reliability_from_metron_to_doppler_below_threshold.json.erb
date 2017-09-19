@@ -5,7 +5,7 @@
   "no_data_timeframe": 30,
   "notify_audit": true,
   "notify_no_data": false,
-  "query": "avg(last_1h):100 * rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{*}) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{*}) + rate(sum:datadog.nozzle.metron.loggregator.egress{*}) ) < 85",
+  "query": "avg(last_1h):100 * rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{*}) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{*}) + rate(sum:datadog.nozzle.loggregator.metron.egress{*}) ) < 85",
   "renotify_interval": null,
   "timeout_h": null
 }
