@@ -6,13 +6,13 @@
           "status": "done",
           "requests": [
             {
-              "q": "min:bosh.healthmonitor.system.cpu.sys{*}",
+                "q": "min:bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>}",
               "aggregator": "avg",
               "conditional_formats": [],
               "type": "line"
             },
             {
-              "q": "min:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.sys{*}",
+              "q": "min:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.sys{deployment:<%= deployment %>}",
               "type": "line"
             }
           ],
@@ -25,7 +25,7 @@
           "viz": "query_value",
           "requests": [
             {
-              "q": "sum:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{job:bosh-system-metrics-forwarder}",
+              "q": "sum:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{job:bosh-system-metrics-forwarder,deployment:<%= deployment %>}",
               "aggregator": "last",
               "conditional_formats": [],
               "type": "area"
@@ -41,13 +41,13 @@
           "status": "done",
           "requests": [
             {
-              "q": "avg:bosh.healthmonitor.system.cpu.user{*}",
+              "q": "avg:bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>}",
               "aggregator": "avg",
               "conditional_formats": [],
               "type": "line"
             },
             {
-              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.user{*}",
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.cpu.user{deployment:<%= deployment %>}",
               "type": "line"
             }
           ],
@@ -60,12 +60,12 @@
           "viz": "timeseries",
           "requests": [
             {
-              "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{*}",
+                "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>}",
               "conditional_formats": [],
               "type": "line"
             },
             {
-              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.disk.ephemeral.percent{*}",
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.disk.ephemeral.percent{deployment:<%= deployment %>}",
               "type": "line"
             }
           ],
@@ -79,13 +79,13 @@
           "status": "done",
           "requests": [
             {
-              "q": "avg:bosh.healthmonitor.system.mem.kb{*}",
+              "q": "avg:bosh.healthmonitor.system.mem.kb{deployment:<%= deployment %>}",
               "aggregator": "avg",
               "conditional_formats": [],
               "type": "line"
             },
             {
-              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.kb{*}",
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.kb{deployment:<%= deployment %>}",
               "type": "line"
             }
           ],
@@ -99,13 +99,13 @@
           "status": "done",
           "requests": [
             {
-              "q": "avg:bosh.healthmonitor.system.mem.percent{*}",
+              "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>}",
               "aggregator": "avg",
               "conditional_formats": [],
               "type": "line"
             },
             {
-              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.percent{*}",
+              "q": "avg:datadog.nozzle.bosh_system_metrics_forwarder.system.mem.percent{deployment:<%= deployment %>}",
               "type": "line"
             }
           ],
@@ -119,7 +119,7 @@
           "status": "done",
           "requests": [
             {
-              "q": "avg:bosh.healthmonitor.system.healthy{*}, avg:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{*}",
+              "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>}, avg:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{deployment:<%= deployment %>}",
               "aggregator": "avg",
               "conditional_formats": [],
               "type": "line"
