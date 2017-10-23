@@ -25,7 +25,7 @@
           "viz": "query_value",
           "requests": [
             {
-              "q": "sum:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{job:bosh-system-metrics-forwarder,deployment:<%= deployment %>}",
+              "q": "sum:datadog.nozzle.bosh_system_metrics_forwarder.system.healthy{job:bosh-system-metrics-forwarder,deployment:bosh-system-metrics-forwarder}",
               "aggregator": "last",
               "conditional_formats": [],
               "type": "area"
