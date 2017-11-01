@@ -1,11 +1,32 @@
 {
-  "notify_audit": false,
-  "timeout_h": 1,
-  "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 1",
-  "message": "Cf-apps is used to translate cloud controller wishes into Diego implementation. Without freshness, changes will not propagate through the system. \n\n{{#is_alert}}\n  Freshness lost. \n  Please escalate to Diego On-call.\n  Potential things to look at are: \n{{/is_alert}} \n\n{{#is_recovery}}\n  Recovered. \n  Please follow up on this, this should not triggered in the first place. \n{{/is_recovery}} \n\n{{#is_no_data}}\n  Metric not available. \n  Please follow up on this during normal business hours, as this should not happen. \n{{/is_no_data}} @pagerduty-datadog-cloudops-<%= environment %>",
+  "created_at": 1444411720000,
+  "deleted": null,
+  "message": "Diego expects CAPI to periodically mark Desired State items as \"fresh.\" See the Diego LRP documentation for a detailed explanation: https://github.com/cloudfoundry/bbs/blob/master/doc/lrps.md\n\nRight now what this probably means is that either CAPI isn't sending those freshness updates to Diego anymore, or the BBS has locked up and isn't able to process requests. It might also mean that the two jobs are working fine but can't communicate effectively.\n\nFigure out which it is, then escalate to the appropriate team.\n\nIf there's no data, confirm that the SLIs are still succeeding, then make a story in the backlog to follow up during normal business hours. You may need to mute this alert until then.\n\nLast updated 11/1/2017\n\n@pagerduty-datadog-cloudops-<%= environment %>",
+  "multi": false,
   "name": "Cf-apps freshness lost",
-  "no_data_timeframe": 10,
-  "notify_no_data": true,
-  "renotify_interval": 0,
-  "escalation_message": "Freshness is still lost. \nPlease escalate to Diego On-call."
+  "options": {
+    "escalation_message": "Freshness is still lost. \nPlease escalate to Diego On-call.",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 10,
+    "notify_audit": false,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 1.0
+    },
+    "timeout_h": 1
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-09-21T20:42:16.840245+00:00",
+  "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>} < 1",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
 }
