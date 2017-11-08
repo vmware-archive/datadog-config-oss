@@ -105,7 +105,13 @@ The screen_templates directory contains all of the template and thresholds for s
 3. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
 
         bundle exec rake <environment>:get_dashboard_json_erb[<id number>,<path/to/template.json.erb>]
-
+        
+        - or -
+        
+        bundle exec rake <environment>:get_screen_json_erb[<id number>,<path/to/template.json.erb>]
+ex:
+        bundle exec rake prod:get_screen_json_erb[238435,oss_datadog/screen_templates/shared/simplelights.json.erb]
+        
     - Note: do not add a space between the id number and the path. Rake is weird.
     - Note: the filename must end in `.json.erb` for the rake task to find and push the dashboard.
     - Note: this will pull down the dashboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
@@ -113,18 +119,51 @@ The screen_templates directory contains all of the template and thresholds for s
 
 4. Commit your changes to source control.
 
+#### Pushing updates to source control
+        cd  ~/workspace/datadog-config/oss_datadog
+        git pull -r
+        git add [path to updated json]
+          ex: git add oss_datadog/screen_templates/shared/simplelights.json.erb
+        git ci
+        git push
+        cd  ~/workspace/datadog-config
+        git add -p (update commit sha for submodule)
+        git ci
+        git push
+
 #### Pushing dashboard to datadog
 1. Make sure your `config.yml` file is populated with necessary values. See [config.yml](#configyml) section for more information.
 2. Push changes to deployment
 
         bundle exec rake prod:push
 
-### Alerts
+### Alerts (Monitors)
 
-#### Creating a new alert from DataDog
+#### Creating / updating an alert from DataDog
 Basically the same workflow as dashboards, but with different commands.
 
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
+ex:
+        bundle exec rake prod:get_alert_json_erb[297884,oss_datadog/alert_templates/shared/diego/freshness_lost.json.erb]
+        
+#### Pushing updates to source control
+        cd  ~/workspace/datadog-config/oss_datadog
+        git pull -r
+        git add [path to updated json]
+          ex: git add alert_templates/shared/diego/freshness_lost.json.erb
+        git ci
+        git push
+        cd  ~/workspace/datadog-config
+        git add -p (update commit sha for submodule)
+        git ci
+        git push
+        
+#### Pulling down updates to source control
+If you need to grab the latest submodule changes that other users have committed:
+
+        cd  ~/workspace/datadog-config
+        git pull
+        git submodule update
 
 #### Pushing alerts to DataDog
 
