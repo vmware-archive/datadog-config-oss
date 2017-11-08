@@ -109,7 +109,7 @@ The screen_templates directory contains all of the template and thresholds for s
         - or -
         
         bundle exec rake <environment>:get_screen_json_erb[<id number>,<path/to/template.json.erb>]
-ex:
+        ex:
         bundle exec rake prod:get_screen_json_erb[238435,oss_datadog/screen_templates/shared/simplelights.json.erb]
         
     - Note: do not add a space between the id number and the path. Rake is weird.
@@ -143,7 +143,7 @@ ex:
 Basically the same workflow as dashboards, but with different commands.
 
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
-ex:
+        ex:
         bundle exec rake prod:get_alert_json_erb[297884,oss_datadog/alert_templates/shared/diego/freshness_lost.json.erb]
         
 #### Pushing updates to source control
