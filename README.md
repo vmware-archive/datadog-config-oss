@@ -94,7 +94,8 @@ By example, US-PWS uses the environment name `prod` and several tags, `oss`, `aw
 The screen_templates directory contains all of the template and thresholds for screen boards. Screen templates and thresholds should be located in the same directory as they need to be siblings.
 
 ## Workflow
-### Dashboards / Screenboards
+### Dashboards
+
 #### Creating a new deployment
 1. Copy `config-example.yml` to `config.yml` and update it to match your environment, see [config.yml](#configyml) section below for more information on the parameters used therein.
 
@@ -107,7 +108,8 @@ The screen_templates directory contains all of the template and thresholds for s
 
     - Note: do not add a space between the id number and the path. Rake is weird.
     - Note: the filename must end in `.json.erb` for the rake task to find and push the dashboard.
-    - Note: this will pull down the screenboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
+    - Note: this will pull down the dashboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
+    - Note: Datadog uses two sets of terminology for dashboards. "Timeboards" in the GUI are "dashboards" in the API/rake tasks. "Screens" or "Screenboards" in the GUI are "screens" in the API/rake tasks. If you get a "Failed to locate" error message you're probably trying to pull a screen with the dashboard task, or vice versa.
 
 4. Commit your changes to source control.
 
