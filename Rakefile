@@ -266,7 +266,7 @@ deployments.each do |d|
 end
 
 
-DIEGO_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "diego_health_screen.json.erb"))
+DIEGO_DASHBOARD_TEMPLATES = Dir.glob(File.join(DIR, "dashboard_templates", "**", "*diego_health_screen.json.erb"))
 DIEGO_ENVIRONMENTS = YAML.load_file(CONFIG_PATH).select { |_,v| v["diego"] }.keys
 
 namespace :diego do
