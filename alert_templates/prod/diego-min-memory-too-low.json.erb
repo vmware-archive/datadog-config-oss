@@ -1,15 +1,15 @@
 {
   "created_at": 1498680462000,
   "deleted": null,
-  "message": "The environment has less than 10% available of Diego Cell Memory Capacity\nPossible Causes: Increased usage of CF. Click on the link below to see the trend.\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `stubs/diego/instance-count-overrides.yml` by 5 per AZ. \n @slack-cloudops-us-pws",
+  "message": "The environment has less than 5% available of Diego Cell Memory Capacity\nPossible Causes: Increased usage of CF. Click on the link below to see the trend.\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `cf-deployment-cloudops/operations/cf/diego-cellblock.yml` by 2 per cell block. @slack-cloudops-us-pws",
   "multi": false,
   "name": "<%= environment %> Diego: min memory available too low",
   "options": {
-    "escalation_message": "The environment has less than 10% available of Diego Cell Memory Capacity\nPossible Causes: Increased usage of CF. Click on the link below to see the trend.\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `stubs/diego/instance-count-overrides.yml` by 5 per AZ. \n @slack-cloudops-us-pws",
+    "escalation_message": "The environment has less than 5% available of Diego Cell Memory Capacity\nPossible Causes: Increased usage of CF. Click on the link below to see the trend.\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `cf-deployment-cloudops/operations/cf/diego-cellblock.yml` by 2 per cell block. @slack-cloudops-us-pws",
     "include_tags": false,
     "locked": false,
     "new_host_delay": 300,
-    "no_data_timeframe": 30,
+    "no_data_timeframe": null,
     "notify_audit": true,
     "notify_no_data": false,
     "renotify_interval": 60,
@@ -22,9 +22,9 @@
     "timeout_h": null
   },
   "org_id": 4242,
-  "overall_state": "Alert",
-  "overall_state_modified": "2017-10-04T16:50:08.354013+00:00",
-  "query": "max(last_15m):top( top( sum:datadog.nozzle.rep.CapacityRemainingMemory{!job:cell_iso_z1,!job:cell_iso_z2} / sum:datadog.nozzle.rep.CapacityTotalMemory{!job:cell_iso_z1,!job:cell_iso_z2} , 10 , 'min' , 'desc' ) , 1 , 'min' , 'asc' ) * 100 < 5",
+  "overall_state": "OK",
+  "overall_state_modified": "2017-11-13T19:40:49.353491+00:00",
+  "query": "max(last_15m):top( top( sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} / sum:datadog.nozzle.rep.CapacityTotalMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} , 10 , 'min' , 'desc' ) , 1 , 'min' , 'asc' ) * 100 < 5",
   "tags": [
     null
   ],
