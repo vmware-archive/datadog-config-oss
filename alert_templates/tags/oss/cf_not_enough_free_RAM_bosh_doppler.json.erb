@@ -3,7 +3,7 @@
   "deleted": null,
   "message": "## Description:\n Healthmonitor reports a component has used more than 90% of its RAM. \n\n## Escalation Path:\n  It depends on the job. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) <%= monitoringAndMetrics_pagerduty %>",
   "multi": true,
-  "name": "<%= environment %> CF: A job has low free RAM (doppler_z1)",
+  "name": "<%= environment %> CF: A job has low free RAM (doppler)",
   "options": {
     "escalation_message": "",
     "evaluation_delay": null,
@@ -21,10 +21,7 @@
     },
     "timeout_h": null
   },
-  "org_id": 4242,
-  "overall_state": "OK",
-  "overall_state_modified": "2017-05-08T20:40:28.868956+00:00",
-  "query": "avg(last_15m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>,job:doppler_z1} by {job,index} > 90",
+  "query": "avg(last_15m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>,job:doppler} by {job,index} > 90",
   "tags": [
 
   ],
