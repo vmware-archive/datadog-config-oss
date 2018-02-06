@@ -1,0 +1,33 @@
+{
+  "created_at": 1517944784000,
+  "deleted": null,
+  "message": "possible solutions:\n\n- restart NATS\n\n@slack-cloudops-us-pws",
+  "multi": false,
+  "name": "route_emitter messages from NAT is dropping (using Anomaly Detection)",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.5,
+      "critical_recovery": 0.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2018-02-06T19:19:54.246889+00:00",
+  "query": "avg(last_15m):anomalies(per_second(sum:datadog.nozzle.gorouter.registry_message.route_emitter{*}), 'basic', 2, direction='both') >= 0.5",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}
