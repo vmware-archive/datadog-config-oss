@@ -1,13 +1,13 @@
 {
-  "board_title": "PWS Minimalist Dashboard",
+  "board_title": "PWS Minimalist Dashboard (post-cf-d)",
   "created_by": {
     "access_role": "st",
     "disabled": false,
-    "email": "dreeve@pivotal.io",
-    "handle": "dreeve@pivotal.io",
-    "icon": "https://secure.gravatar.com/avatar/13c1efc8ccc6a7c3c3de134a648e528f?s=48&d=retro",
+    "email": "jmalone@pivotal.io",
+    "handle": "jmalone@pivotal.io",
+    "icon": "https://secure.gravatar.com/avatar/a1450c3085570346d4476fc63866487a?s=48&d=retro",
     "is_admin": false,
-    "name": "Derek Reeve",
+    "name": "Jesse Malone",
     "role": null,
     "verified": true
   },
@@ -16,7 +16,7 @@
   "height": 161,
   "isIntegration": false,
   "isShared": false,
-  "original_title": "PWS Minimalist Dashboard",
+  "original_title": "PWS Minimalist Dashboard (post-cf-d)",
   "read_only": false,
   "shared": false,
   "template_variables": [
@@ -62,103 +62,7 @@
       ],
       "custom_unit": null,
       "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 18
-              },
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 22
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 22
-              }
-            ],
-            "q": "( sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>, job:cell_iso_z1} + sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= diego_deployment %>, job:cell_iso_z2} + sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>, job:cell_iso_z3} ) * 1024 * 1000"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Isolation total memory",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 72,
-      "y": 48
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
-        },
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -206,7 +110,7 @@
                 "value": 22
               }
             ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>,!job:cell_iso_z1,!job:cell_iso_z2,!job:cell_iso_z3} * 1024 * 1000"
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:<%= metron_agent_diego_deployment %>,!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops} * 1024 * 1000"
           }
         ],
         "text_align": "center",
@@ -220,332 +124,8 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 55,
-      "y": 48
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z3}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z3}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cell_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z3}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z3}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cell_z2}.rollup(avg,60)))*50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Cell",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 5,
-      "y": 33
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)) ) *25",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler_z2}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:loggregator_trafficcontroller_z2}.rollup(avg,60)))*25"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Doppler",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 25,
-      "y": 43
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:access_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:access_z2}.rollup(avg,60)))*50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Access",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 5,
+      "x": 36,
       "y": 6
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:brain_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:brain_z2}.rollup(avg,60)))*50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Brain",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 5,
-      "y": 15
     },
     {
       "aggr": "avg",
@@ -572,6 +152,7 @@
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -592,7 +173,7 @@
         "precision": 0,
         "requests": [
           {
-            "aggregator": "avg",
+            "aggregator": "min",
             "conditional_formats": [
               {
                 "comparator": "<",
@@ -611,7 +192,13 @@
                 "value": 100
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z2}.rollup(avg,60)))*50"
+            "q": "sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:scheduler}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:scheduler}.rollup(avg, 60)*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -621,12 +208,12 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "CC Bridge",
+      "title_text": "SCHEDULER",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 5,
-      "y": 24
+      "x": 71,
+      "y": 33
     },
     {
       "aggr": "avg",
@@ -640,7 +227,7 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) ) * 100 )/2', 'white_on_red') %>
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_red') %>
         },
         {
           "comparator": ">=",
@@ -648,11 +235,12 @@
           "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) ) * 100 )/2', 'white_on_green') %>
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_green') %>
         }
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -660,7 +248,7 @@
       "metric_type": "standard",
       "padding": 8,
       "precision": 0,
-      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) ) * 100 )/2",
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
       "res_calc_func": "raw",
       "tags": [
 
@@ -692,7 +280,13 @@
                 "value": 100
               }
             ],
-            "q": "(((avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)))*100)/2"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:diego-api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:diego-api}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -702,12 +296,98 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "Database",
+      "title_text": "DIEGO API",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 5,
-      "y": 42
+      "x": 54,
+      "y": 33
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('(( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:database_z3}.rollup(avg,60)) ) * 100 )/3', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_red",
+                "value": "99"
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_green",
+                "value": "99"
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:doppler}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "DOPPLER",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 54,
+      "y": 24
     },
     {
       "aggr": "avg",
@@ -742,6 +422,7 @@
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -789,7 +470,13 @@
                 "value": 99
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)))*50"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:log-api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:log-api}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -799,12 +486,1052 @@
       "title": true,
       "title_align": "center",
       "title_size": 13,
-      "title_text": "ETCD",
+      "title_text": "LOG-API",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 25,
-      "y": 52
+      "x": 71,
+      "y": 42
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:api}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "API",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 71,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:cc-worker}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:cc-worker}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CC-WORKER",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 54,
+      "y": 51
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:consul}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:consul}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CONSUL",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 54,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-01",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 1,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-02",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 1,
+      "y": 15
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-03",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 1,
+      "y": 24
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-04",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 1,
+      "y": 33
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-05",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 1,
+      "y": 42
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-06",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 18,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-07",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 18,
+      "y": 15
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-08",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 18,
+      "y": 24
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-09",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 18,
+      "y": 33
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "min",
+      "autoscale": false,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
+        },
+        {
+          "comparator": ">=",
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": "%",
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
+        "requests": [
+          {
+            "aggregator": "min",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 100
+              },
+              {
+                "comparator": ">=",
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 100
+              }
+            ],
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 16,
+      "title_text": "CELLBLOCK-10",
+      "type": "query_value",
+      "width": 17,
+      "wrapped": true,
+      "x": 18,
+      "y": 42
     },
     {
       "aggr": "avg",
@@ -827,6 +1554,7 @@
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -862,7 +1590,13 @@
                 "value": 100
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)))*50"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:nats}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -876,8 +1610,8 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 25,
-      "y": 34
+      "x": 54,
+      "y": 15
     },
     {
       "aggr": "avg",
@@ -900,6 +1634,7 @@
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
@@ -935,7 +1670,13 @@
                 "value": 100
               }
             ],
-            "q": "((avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60))+(avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60)))*50"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:router}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -945,156 +1686,11 @@
       "title": true,
       "title_align": "center",
       "title_size": 16,
-      "title_text": "Router - 5m",
+      "title_text": "ROUTER",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 25,
-      "y": 6
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "bosh.healthmonitor.system.healthy",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
-      "res_calc_func": "raw",
-      "tags": [
-        null,
-        null
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} * 100"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Bosh",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 5,
-      "y": 52
-    },
-    {
-      "aggr": "avg",
-      "aggregator": "min",
-      "autoscale": false,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
-        },
-        {
-          "comparator": ">=",
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:api_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": "%",
-      "height": 7,
-      "is_valid_query": false,
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 0,
-      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": false,
-        "custom_unit": "%",
-        "precision": 0,
-        "requests": [
-          {
-            "aggregator": "min",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 100
-              },
-              {
-                "comparator": ">=",
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 100
-              }
-            ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50"
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "timeframe": "5m",
-      "title": true,
-      "title_align": "center",
-      "title_size": 16,
-      "title_text": "API - 5m",
-      "type": "query_value",
-      "width": 17,
-      "wrapped": true,
-      "x": 25,
+      "x": 71,
       "y": 15
     },
     {
@@ -1118,7 +1714,10 @@
       ],
       "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
       "metric": "",
       "metric_type": "standard",
       "padding": 8,
@@ -1136,7 +1735,7 @@
         "precision": 0,
         "requests": [
           {
-            "aggregator": "avg",
+            "aggregator": "min",
             "conditional_formats": [
               {
                 "comparator": "<",
@@ -1151,7 +1750,13 @@
                 "value": 100
               }
             ],
-            "q": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:tcp-router}.rollup(avg, 60)/sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:tcp-router}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -1161,54 +1766,43 @@
       "title": true,
       "title_align": "center",
       "title_size": 16,
-      "title_text": "UAA - 5m",
+      "title_text": "TCP-ROUTER",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 25,
+      "x": 71,
       "y": 24
     },
     {
       "aggr": "avg",
       "aggregator": "min",
-      "autoscale": true,
+      "autoscale": false,
       "calc_func": "raw",
       "conditional_formats": [
         {
           "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
           "invert": false,
           "palette": "white_on_red",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_red') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_red') %>
         },
         {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
+          "comparator": ">=",
           "invert": false,
           "palette": "white_on_green",
-          "value": <%= threshold_value('(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} by {ip}) / 0.000001024', 'white_on_green') %>
+          "value": <%= threshold_value('( (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:uaa_z2}.rollup(avg,60)) ) *50', 'white_on_green') %>
         }
       ],
-      "custom_unit": null,
+      "custom_unit": "%",
       "height": 7,
+      "isShared": false,
       "is_valid_query": false,
       "legend": false,
       "legend_size": "0",
       "metric": "",
       "metric_type": "standard",
       "padding": 8,
-      "precision": 2,
-      "query": "(min:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} by {ip}) / 0.000001024",
+      "precision": 0,
+      "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
       "tags": [
 
@@ -1216,62 +1810,60 @@
       "text_align": "center",
       "text_size": "auto",
       "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": "0",
+        "autoscale": false,
+        "custom_unit": "%",
+        "precision": 0,
         "requests": [
           {
-            "aggregator": "last",
+            "aggregator": "min",
             "conditional_formats": [
               {
                 "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
+                "invert": false,
                 "palette": "white_on_red",
-                "value": "25"
+                "value": 100
               },
               {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "palette": "white_on_yellow",
-                "value": "49"
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
+                "comparator": ">=",
+                "invert": false,
                 "palette": "white_on_green",
-                "value": "49"
+                "value": 100
               }
             ],
-            "q": "avg:cloudops_tools.diego_4gb_count{*}"
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:uaa}.rollup(avg, 60)*100)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
         "viz": "query_value"
       },
-      "timeframe": "30m",
+      "timeframe": "5m",
       "title": true,
       "title_align": "center",
-      "title_size": 13,
-      "title_text": "Free 4GB Chunks",
+      "title_size": 16,
+      "title_text": "UAA",
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
-      "y": 48
+      "x": 54,
+      "y": 42
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
-      "font_size": "24",
-      "height": 6,
-      "html": "App Availability",
+      "font_size": "16",
+      "height": 13,
+      "html": "Run Existing Pipeline\n\nView Build History",
+      "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": true,
+      "tick": false,
       "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
@@ -1279,17 +1871,106 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 51,
-      "x": 55,
-      "y": 31
+      "width": 14,
+      "x": 140,
+      "y": 42
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "16",
+      "height": 5,
+      "html": "create svc and route traffic",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 140,
+      "y": 60
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "height": 5,
+      "html": "SSL Service",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 140,
+      "y": 56
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
       "font_size": "24",
+      "height": 5,
+      "html": "Concourse ",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 140,
+      "y": 37
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "24",
+      "height": 9,
+      "html": "App Availability",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 140,
+      "y": 27
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "36",
       "height": 6,
       "html": "CF Health",
+      "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
       "tick": true,
@@ -1300,17 +1981,18 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 17,
-      "x": 25,
+      "width": 34,
+      "x": 54,
       "y": 0
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
-      "font_size": "24",
+      "font_size": "36",
       "height": 6,
       "html": "Diego Status",
+      "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
       "tick": true,
@@ -1321,60 +2003,65 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 17,
-      "x": 5,
+      "width": 34,
+      "x": 1,
       "y": 0
     },
     {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.5"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 238435,
+      "font_size": "24",
+      "height": 6,
+      "html": "Free Memory",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": true,
+      "tick_edge": "bottom",
+      "tick_pos": "50%",
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 72,
-      "y": 18
+      "title_text": "",
+      "type": "note",
+      "width": 18,
+      "x": 36,
+      "y": 0
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 238435,
+      "font_size": "24",
+      "height": 9,
+      "html": "CF Push",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 140,
+      "y": 17
     },
     {
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
+      "isShared": false,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
+        "custom_unit": "",
+        "precision": "4",
         "requests": [
           {
             "aggregator": "avg",
@@ -1385,52 +2072,18 @@
                 "value": "99.5"
               },
               {
-                "comparator": ">=",
+                "comparator": "<=",
                 "palette": "white_on_green",
-                "value": "99.5"
+                "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 55,
-      "y": 18
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.5"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "viz": "query_value"
@@ -1442,19 +2095,439 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 89,
-      "y": 18
+      "x": 123,
+      "y": 17
     },
     {
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
+      "isShared": false,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "2",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            }
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 89,
+      "y": 56
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 106,
+      "y": 56
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 123,
+      "y": 56
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 106,
+      "y": 37
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 89,
+      "y": 37
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 123,
+      "y": 37
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 106,
+      "y": 46
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 89,
+      "y": 46
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 123,
+      "y": 46
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
         "requests": [
           {
             "aggregator": "avg",
@@ -1487,19 +2560,20 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 55,
-      "y": 37
+      "x": 89,
+      "y": 27
     },
     {
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
+      "isShared": false,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "2",
+        "precision": "4",
         "requests": [
           {
             "aggregator": "avg",
@@ -1527,19 +2601,20 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 72,
-      "y": 37
+      "x": 106,
+      "y": 27
     },
     {
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
+      "isShared": false,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "2",
+        "precision": "4",
         "requests": [
           {
             "aggregator": "avg",
@@ -1567,12 +2642,230 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
+      "x": 123,
+      "y": 27
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 106,
+      "y": 17
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
       "x": 89,
-      "y": 37
+      "y": 17
+    },
+    {
+      "autoscale": true,
+      "board_id": 238435,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "12"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "25"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "25"
+              }
+            ],
+            "q": "avg:cloudops_tools.diego_8gb_count{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Available 8GB",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 24
+    },
+    {
+      "autoscale": true,
+      "board_id": 238435,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "25"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "50"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "50"
+              }
+            ],
+            "q": "avg:cloudops_tools.diego_4gb_count{*}"
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Available 4GB",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "board_id": 238435,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "last",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "palette": "red_on_white",
+                "value": "0"
+              }
+            ],
+            "q": "avg:cloudops_tools.coin_miner_count{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "BTC Miner",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 42
     },
     {
       "board_id": 14530,
       "height": 15,
+      "isShared": false,
       "legend": false,
       "legend_size": "0",
       "tile_def": {
@@ -1583,7 +2876,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,ruby_buildpack} * 100",
             "type": "line"
           }
         ],
@@ -1595,9 +2888,58 @@
       "title_size": 16,
       "title_text": "CF Push Success",
       "type": "timeseries",
-      "width": 51,
-      "x": 55,
-      "y": 1
+      "width": 65,
+      "x": 89,
+      "y": 0
+    },
+    {
+      "board_id": 238435,
+      "height": 13,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "max:cloudops_tools.release_lag_hours{*} by {release_version}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 13,
+      "title_text": "Release Lag (in hours)",
+      "type": "timeseries",
+      "width": 48,
+      "x": 1,
+      "y": 55
+    },
+    {
+      "board_id": 238435,
+      "height": 24,
+      "isShared": false,
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "iframe",
+      "url": "https://concourse.<%= domain_url %>",
+      "width": 153,
+      "x": 1,
+      "y": 70
     }
   ],
   "width": "100%"
