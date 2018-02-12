@@ -2541,52 +2541,6 @@
                 "comparator": ">=",
                 "palette": "white_on_green",
                 "value": "99.9"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "( ( sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() - sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) / sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 89,
-      "y": 27
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.9"
               }
             ],
             "q": "( ( sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() - sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) / sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) * 100"
@@ -2654,6 +2608,7 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
+        "custom_unit": "%",
         "precision": "4",
         "requests": [
           {
@@ -2665,12 +2620,64 @@
                 "value": "99.9"
               },
               {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99.9"
+              }
+            ],
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 89,
+      "y": 27
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
                 "comparator": "<=",
                 "palette": "white_on_green",
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "viz": "query_value"
@@ -2702,7 +2709,7 @@
               {
                 "comparator": "<",
                 "palette": "white_on_red",
-                "value": "99.9"
+                "value": "99.5"
               },
               {
                 "comparator": "<=",
@@ -2710,7 +2717,13 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100"
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "viz": "query_value"
