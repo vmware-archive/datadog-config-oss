@@ -110,7 +110,13 @@
                 "value": 22
               }
             ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:<%= metron_agent_diego_deployment %>,!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops} * 1024 * 1000"
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops,!deployment:pws-pivotal-internal-apps}*1024*1000",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "text_align": "center",
@@ -122,9 +128,113 @@
       "title_size": 13,
       "title_text": "Total Avail. Memory",
       "type": "query_value",
-      "width": 17,
+      "width": 14,
       "wrapped": true,
       "x": 71,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "avg",
+      "autoscale": true,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
+        },
+        {
+          "comparator": "<=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": null,
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 2,
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_red",
+                "value": 18
+              },
+              {
+                "comparator": "<=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_yellow",
+                "value": 22
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "invert": false,
+                "palette": "white_on_green",
+                "value": 22
+              }
+            ],
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:pws-pivotal-internal-apps}*1024*1000",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "timeframe": "5m",
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Total Avail. Memory",
+      "type": "query_value",
+      "width": 14,
+      "wrapped": true,
+      "x": 85,
       "y": 6
     },
     {
@@ -212,7 +322,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 106,
+      "x": 117,
       "y": 33
     },
     {
@@ -300,7 +410,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
+      "x": 100,
       "y": 24
     },
     {
@@ -386,7 +496,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
+      "x": 100,
       "y": 15
     },
     {
@@ -490,7 +600,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 106,
+      "x": 117,
       "y": 42
     },
     {
@@ -570,7 +680,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 106,
+      "x": 117,
       "y": 6
     },
     {
@@ -650,7 +760,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
+      "x": 100,
       "y": 42
     },
     {
@@ -2330,7 +2440,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
+      "x": 100,
       "y": 6
     },
     {
@@ -2410,7 +2520,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 106,
+      "x": 117,
       "y": 15
     },
     {
@@ -2490,7 +2600,7 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 106,
+      "x": 117,
       "y": 24
     },
     {
@@ -2570,16 +2680,16 @@
       "type": "query_value",
       "width": 17,
       "wrapped": true,
-      "x": 89,
+      "x": 100,
       "y": 33
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
-      "font_size": "16",
-      "height": 13,
-      "html": "Run Existing Pipeline\n\nView Build History",
+      "font_size": "14",
+      "height": 18,
+      "html": "# Concourse\n\n## Run Pipeline\n\n## View Builds",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -2592,16 +2702,16 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 184,
-      "y": 41
+      "x": 186,
+      "y": 33
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
-      "font_size": "16",
-      "height": 5,
-      "html": "create svc and route traffic",
+      "font_size": "14",
+      "height": 9,
+      "html": "# SSL Service\n\n**Create and Route**",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -2614,42 +2724,20 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 184,
-      "y": 59
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "yellow",
-      "board_id": 150202,
-      "font_size": "18",
-      "height": 5,
-      "html": "SSL Service",
-      "isShared": false,
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "bottom",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 14,
-      "x": 184,
-      "y": 55
+      "x": 186,
+      "y": 51
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
       "font_size": "24",
-      "height": 5,
-      "html": "Concourse ",
+      "height": 6,
+      "html": "**CF Health**",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
-      "tick": false,
+      "tick": true,
       "tick_edge": "bottom",
       "tick_pos": "50%",
       "title": true,
@@ -2657,9 +2745,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 184,
-      "y": 36
+      "width": 34,
+      "x": 100,
+      "y": 0
     },
     {
       "auto_refresh": false,
@@ -2724,16 +2812,16 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 184,
-      "y": 26
+      "x": 186,
+      "y": 24
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
-      "board_id": 150202,
-      "font_size": "36",
+      "board_id": 238435,
+      "font_size": "14",
       "height": 6,
-      "html": "CF Health",
+      "html": "**Free Memory**\n(Pivotal)",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -2745,17 +2833,17 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 34,
-      "x": 89,
+      "width": 14,
+      "x": 85,
       "y": 0
     },
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
-      "font_size": "24",
+      "font_size": "14",
       "height": 6,
-      "html": "Free Memory",
+      "html": "**Free Memory**\n(Public)",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -2767,7 +2855,7 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 18,
+      "width": 14,
       "x": 71,
       "y": 0
     },
@@ -2790,8 +2878,8 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 184,
-      "y": 17
+      "x": 186,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -2837,8 +2925,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 167,
-      "y": 17
+      "x": 169,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -2888,8 +2976,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 133,
-      "y": 55
+      "x": 135,
+      "y": 51
     },
     {
       "autoscale": true,
@@ -2934,8 +3022,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 150,
-      "y": 55
+      "x": 152,
+      "y": 51
     },
     {
       "autoscale": true,
@@ -2980,8 +3068,8 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 17,
-      "x": 167,
-      "y": 55
+      "x": 169,
+      "y": 51
     },
     {
       "autoscale": true,
@@ -3026,8 +3114,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 150,
-      "y": 36
+      "x": 152,
+      "y": 33
     },
     {
       "autoscale": true,
@@ -3072,8 +3160,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 133,
-      "y": 36
+      "x": 135,
+      "y": 33
     },
     {
       "autoscale": true,
@@ -3118,8 +3206,8 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 17,
-      "x": 167,
-      "y": 36
+      "x": 169,
+      "y": 33
     },
     {
       "autoscale": true,
@@ -3164,8 +3252,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 150,
-      "y": 45
+      "x": 152,
+      "y": 42
     },
     {
       "autoscale": true,
@@ -3210,8 +3298,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 133,
-      "y": 45
+      "x": 135,
+      "y": 42
     },
     {
       "autoscale": true,
@@ -3256,8 +3344,8 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 17,
-      "x": 167,
-      "y": 45
+      "x": 169,
+      "y": 42
     },
     {
       "autoscale": true,
@@ -3297,8 +3385,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 150,
-      "y": 26
+      "x": 152,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -3338,8 +3426,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 167,
-      "y": 26
+      "x": 169,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -3385,8 +3473,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 133,
-      "y": 26
+      "x": 135,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -3431,8 +3519,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 150,
-      "y": 17
+      "x": 152,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -3477,8 +3565,49 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 133,
-      "y": 17
+      "x": 135,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "board_id": 238435,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "last",
+            "conditional_formats": [
+              {
+                "comparator": ">",
+                "palette": "red_on_white",
+                "value": "0"
+              }
+            ],
+            "q": "avg:cloudops_tools.coin_miner_count{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "BTC Miner",
+      "type": "query_value",
+      "width": 14,
+      "x": 71,
+      "y": 52
     },
     {
       "autoscale": true,
@@ -3527,7 +3656,7 @@
       "title_size": 16,
       "title_text": "Available 8GB",
       "type": "query_value",
-      "width": 17,
+      "width": 14,
       "x": 71,
       "y": 24
     },
@@ -3572,54 +3701,13 @@
       "title_size": 16,
       "title_text": "Available 4GB",
       "type": "query_value",
-      "width": 17,
+      "width": 14,
       "x": 71,
       "y": 15
     },
     {
-      "autoscale": true,
-      "board_id": 238435,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "last",
-            "conditional_formats": [
-              {
-                "comparator": ">",
-                "palette": "red_on_white",
-                "value": "0"
-              }
-            ],
-            "q": "avg:cloudops_tools.coin_miner_count{*}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "BTC Miner",
-      "type": "query_value",
-      "width": 17,
-      "x": 71,
-      "y": 42
-    },
-    {
       "board_id": 14530,
-      "height": 15,
+      "height": 12,
       "isShared": false,
       "legend": false,
       "legend_size": "0",
@@ -3644,12 +3732,26 @@
       "title_text": "CF Push Success",
       "type": "timeseries",
       "width": 65,
-      "x": 133,
+      "x": 135,
       "y": 0
     },
     {
       "board_id": 238435,
-      "height": 10,
+      "height": 33,
+      "isShared": false,
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "iframe",
+      "url": "https://concourse.<%= domain_url %>",
+      "width": 199,
+      "x": 1,
+      "y": 61
+    },
+    {
+      "board_id": 238435,
+      "height": 6,
       "isShared": false,
       "legend": false,
       "legend_size": "0",
@@ -3678,23 +3780,9 @@
       "title_size": 13,
       "title_text": "Release Lag (in hours)",
       "type": "timeseries",
-      "width": 52,
-      "x": 71,
-      "y": 52
-    },
-    {
-      "board_id": 238435,
-      "height": 29,
-      "isShared": false,
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "iframe",
-      "url": "https://concourse.<%= domain_url %>",
-      "width": 197,
+      "width": 69,
       "x": 1,
-      "y": 65
+      "y": 52
     }
   ],
   "width": "100%"
