@@ -22,6 +22,7 @@
   "template_variables": [
     {
       "default": "*",
+      "id": "2903703f-e0e3-4c91-8a21-b49bcd21aa71",
       "name": "var",
       "prefix": null
     }
@@ -302,7 +303,7 @@
                 "value": 100
               }
             ],
-            "q": "sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:scheduler}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:scheduler}.rollup(avg, 60)*100",
+            "q": "sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:scheduler}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:scheduler})*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -390,7 +391,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:diego-api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:diego-api}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:diego-api}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:diego-api})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -476,7 +477,7 @@
                 "value": "99"
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:doppler}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:doppler}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:doppler}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -580,7 +581,7 @@
                 "value": 99
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:log-api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:log-api}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:log-api}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:log-api})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -660,7 +661,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:api}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:api})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -740,7 +741,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:cc-worker}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:cc-worker}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:cc-worker}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:cc-worker})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -820,7 +821,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-01,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -900,7 +901,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-02,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -980,7 +981,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-03,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1060,7 +1061,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-04,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1140,7 +1141,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-05,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1220,7 +1221,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-06,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1300,7 +1301,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-07,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1380,7 +1381,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-08,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1460,7 +1461,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-09,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1540,7 +1541,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-10,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1620,7 +1621,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-01,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-01,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1700,7 +1701,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-02,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-02,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1780,7 +1781,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-03,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-03,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1860,7 +1861,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-04,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-04,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1940,7 +1941,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-05,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-05,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2020,7 +2021,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-06,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-06,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2100,7 +2101,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-07,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-07,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2180,7 +2181,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-08,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-08,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2260,7 +2261,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-09,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-09,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2340,7 +2341,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60))*100",
+            "q": "(sum:datadog.nozzle.system.healthy{deployment:pws-diego-cellblock-10,job:diego-cell}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:pws-diego-cellblock-10,job:diego-cell}))*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2420,7 +2421,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:nats}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:nats})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2500,7 +2501,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:router}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:router})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2580,7 +2581,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:tcp-router}.rollup(avg, 60)/sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:tcp-router}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:tcp-router}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:tcp-router})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2660,7 +2661,7 @@
                 "value": 100
               }
             ],
-            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa}.rollup(avg, 60)/sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:uaa}.rollup(avg, 60)*100)",
+            "q": "(sum:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa}.rollup(avg, 60)/hour_before(sum:aws.ec2.host_ok{deployment:<%= deployment %>,job:uaa})*100)",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
