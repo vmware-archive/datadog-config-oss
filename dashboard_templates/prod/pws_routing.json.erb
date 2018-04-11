@@ -1,0 +1,366 @@
+{
+  "created_by": {
+    "access_role": "st",
+    "disabled": false,
+    "email": "mtrestman@pivotal.io",
+    "handle": "mtrestman@pivotal.io",
+    "icon": "https://secure.gravatar.com/avatar/f60a25b2a7ec79c8d6f2a3bb8d90ff48?s=48&d=retro",
+    "is_admin": false,
+    "name": "Michael Trestman",
+    "role": null,
+    "verified": true
+  },
+  "description": "created by mtrestman@pivotal.io",
+  "graphs": [
+    {
+      "definition": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "sources:pagerduty tags:service:cloudops_pws_-_datadog ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "anomalies(log2(avg:datadog.nozzle.gorouter.registry_message.route_emitter{*}), 'robust', 2)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_invalid_id{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_tls_handshake_failed{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.bad_gateways{*}.rollup(avg, 60))",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.responses.5xx{*}.rollup(avg, 60))",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "min:smoke.status{*}.rollup(min, 600), 30*min:smoke.status{*}.rollup(min, 600)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "title": "Routing stuff"
+    },
+    {
+      "definition": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>,source:director \"director - finish update deployment\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.gorouter.backend_invalid_id{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "title": "Avg of datadog.nozzle.gorouter.backend_invalid_id over *"
+    },
+    {
+      "definition": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>,source:director \"director - finish update deployment\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "anomalies(log2(avg:datadog.nozzle.gorouter.registry_message.route_emitter{*}), 'basic', 2)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_invalid_id{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_tls_handshake_failed{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.bad_gateways{*}.rollup(avg, 60))",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "min:pws.cf_sli.app_stop_status{*}.rollup(min, 600), 25*min:pws.cf_sli.app_stop_status{*}.rollup(min, 600)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "min:smoke.status{*}.rollup(min, 60), 30*min:smoke.status{*}.rollup(min, 60)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "title": "Routing stuff"
+    },
+    {
+      "definition": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>,source:director \"director - finish update deployment\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "anomalies(log2(avg:datadog.nozzle.gorouter.registry_message.route_emitter{*}), 'robust', 2)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_invalid_id{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_tls_handshake_failed{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "min:pws.cf_sli.app_stop_status{*}, 25*min:pws.cf_sli.app_stop_status{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "min:smoke.status{*}.rollup(min, 600), 30*min:smoke.status{*}.rollup(min, 600)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "error",
+        "viz": "timeseries"
+      },
+      "title": "Routing stuff"
+    },
+    {
+      "definition": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "tags:deployment:<%= deployment %>,source:director \"director - finish update deployment\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.gorouter.registry_message.route_emitter{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_invalid_id{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "log2(avg:datadog.nozzle.gorouter.backend_tls_handshake_failed{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "title": "Routing stuff"
+    },
+    {
+      "definition": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "anomalies(avg:datadog.nozzle.gorouter.registry_message{*}.rollup(avg, 6), 'adaptive', 4)",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "title": "Avg of datadog.nozzle.gorouter.registry_message over *"
+    }
+  ],
+  "read_only": false,
+  "title": "PWS routing stuff"
+}
