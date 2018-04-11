@@ -1,0 +1,32 @@
+{
+  "created_at": 1523403031000,
+  "deleted": null,
+  "message": "Give it some more!\n1) Log in to AWS\n2) Go to the RDS Instances list page\nhttps://console.aws.amazon.com/rds/home?region=us-east-1#dbinstances:\n3) Click on the DB instance > Instance Actions > Modify\n4) Bump \"Allocated storage\" number by at least 50%.\n\n5) Discuss longer-term solution with team. @slack-cloudops-us-pws",
+  "multi": true,
+  "name": "RDS instance below 5% Free Storage Space",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.05
+    },
+    "timeout_h": 1
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2018-04-11T19:25:21.448714+00:00",
+  "query": "min(last_1h):avg:aws.rds.free_storage_space{*} by {host} / avg:aws.rds.total_storage_space{*} by {host} < 0.05",
+  "tags": [
+
+  ],
+  "type": "query alert"
+}
