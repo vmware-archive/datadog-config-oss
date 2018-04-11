@@ -1,0 +1,32 @@
+{
+  "created_at": 1523479464000,
+  "deleted": null,
+  "message": "Contact the relevant team",
+  "multi": true,
+  "name": "RDS instance above 90% CPU Utilization",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 90.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "No Data",
+  "overall_state_modified": null,
+  "query": "max(last_5m):avg:aws.rds.cpuutilization{*} by {host} > 90",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}
