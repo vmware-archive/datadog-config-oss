@@ -1,0 +1,32 @@
+{
+  "created_at": 1522789552000,
+  "deleted": null,
+  "message": "These errors are ok at a steady, low rate, but if they are spiking, get in touch with the routing team, as it may reflect problems with TLS configuration",
+  "multi": false,
+  "name": "TLS backend invalid ID",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 100.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "Alert",
+  "overall_state_modified": "2018-04-11T04:43:08.027214+00:00",
+  "query": "avg(last_5m):avg:datadog.nozzle.backend_invalid_id{*} > 100",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}
