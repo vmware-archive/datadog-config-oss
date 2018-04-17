@@ -24,10 +24,10 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2018-04-06T23:08:22.973602+00:00",
-  "query": "avg(last_5m):max:datadog.nozzle.gorouter.backend_tls_handshake_failed{*} > 1",
+  "overall_state_modified": "2018-04-17T20:51:49.305820+00:00",
+  "query": "avg(last_5m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 1",
   "tags": [
 
   ],
-  "type": "metric alert"
+  "type": "query alert"
 }
