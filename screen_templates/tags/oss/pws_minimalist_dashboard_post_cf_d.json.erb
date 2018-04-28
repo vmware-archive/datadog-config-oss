@@ -22,7 +22,6 @@
   "template_variables": [
     {
       "default": "*",
-      "id": "2903703f-e0e3-4c91-8a21-b49bcd21aa71",
       "name": "var",
       "prefix": null
     }
@@ -2908,7 +2907,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3548,7 +3547,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3720,7 +3719,12 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,ruby_buildpack} * 100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
             "type": "line"
           }
         ],
