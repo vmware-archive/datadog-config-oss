@@ -78,12 +78,12 @@ By example, US-PWS uses the environment name `prod` and several tags, `oss`, `aw
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/aws)
   * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/jarvice)
 * Dashboard Templates
-  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/shared) 
+  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/shared)
   * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/prod)
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/aws)
   * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/jarvice)
 * Screen Templates
-  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/shared) 
+  * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/shared)
   * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/prod)
   * [oss](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/oss)
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/aws)
@@ -105,13 +105,13 @@ The screen_templates directory contains all of the template and thresholds for s
 3. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
 
         bundle exec rake <environment>:get_dashboard_json_erb[<id number>,<path/to/template.json.erb>]
-        
+
         - or -
-        
+
         bundle exec rake <environment>:get_screen_json_erb[<id number>,<path/to/template.json.erb>]
         ex:
         bundle exec rake prod:get_screen_json_erb[238435,oss_datadog/screen_templates/shared/simplelights.json.erb]
-        
+
     - Note: do not add a space between the id number and the path. Rake is weird.
     - Note: the filename must end in `.json.erb` for the rake task to find and push the dashboard.
     - Note: this will pull down the dashboard into the given path, replacing the environment specific deployment with <%= deployment %>, the environment specific bosh deployment with <%= bosh_deployment %>, and putting the corresponding variables for the current environment in path/to/template_thresholds.yml.
@@ -127,7 +127,7 @@ The screen_templates directory contains all of the template and thresholds for s
         git ci
         git push
         cd  ~/workspace/datadog-config
-        git add -p (update commit sha for submodule)
+        git add -p # update commit sha for submodule
         git ci
         git push
 
@@ -145,7 +145,7 @@ Basically the same workflow as dashboards, but with different commands.
         bundle exec rake <environment>:get_alert_json_erb[<id number>,<path/to/template.json.erb>]
         ex:
         bundle exec rake prod:get_alert_json_erb[297884,oss_datadog/alert_templates/shared/diego/freshness_lost.json.erb]
-        
+
 #### Pushing updates to source control
         cd  ~/workspace/datadog-config/oss_datadog
         git pull -r
@@ -157,7 +157,7 @@ Basically the same workflow as dashboards, but with different commands.
         git add -p (update commit sha for submodule)
         git ci
         git push
-        
+
 #### Pulling down updates to source control
 If you need to grab the latest submodule changes that other users have committed:
 
@@ -177,10 +177,10 @@ Parameters to the rake tasks and templates are defined in `config/config.yml`.  
 search_and_replace:
   my_deployment_name: gobbledygoop
   # For example:
-  # datadog.nozzle.mything: {deployment: gobbledygoop } 
+  # datadog.nozzle.mything: {deployment: gobbledygoop }
   # turns into:
   # datadog.nozzle.mything: {deployment: <%= my_deployment_name %> }
-  # 
+  #
   # You can also specify distinct search (Regexp) and replace (String) patterns:
   another_key_name:
     search: 'datadog\.nozzle.*\K(gobbledygoop)'
