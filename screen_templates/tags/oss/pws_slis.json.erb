@@ -54,6 +54,28 @@
     {
       "auto_refresh": false,
       "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "24",
+      "height": 9,
+      "html": "Log\nCache",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 53,
+      "y": 65
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
       "board_id": 238435,
       "font_size": "24",
       "height": 9,
@@ -99,7 +121,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -274,7 +296,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -320,7 +342,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack}*100",
+            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -342,6 +364,159 @@
       "y": 32
     },
     {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 19,
+      "y": 65
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 2,
+      "y": 65
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 65
+    },
+    {
       "board_id": 14530,
       "height": 12,
       "isShared": false,
@@ -355,7 +530,48 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,java_buildpack} * 100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,ruby_buildpack} * 100",
+            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "timeseries"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Log-Cache Reliability",
+      "type": "timeseries",
+      "width": 65,
+      "x": 2,
+      "y": 51
+    },
+    {
+      "board_id": 14530,
+      "height": 12,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
             "type": "line"
           }
         ],

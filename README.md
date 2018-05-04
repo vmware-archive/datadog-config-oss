@@ -102,7 +102,10 @@ The screen_templates directory contains all of the template and thresholds for s
 #### Creating a new dashboard by importing from DataDog
 1. Make sure your `config.yml` file is populated with necessary values. See [config.yml](#configyml) section below for more information.
 2. Create a dashboard on the Datadog web UI (Dashboards -> New Dashboard)
-3. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
+3. Check that the dashboard has not been imported previously by searching for a
+   template that contains the dashboard title, for example:
+   `ag "PWS SLI Dashboard"`
+4. Import the dashboard by ID, `https://app.datadoghq.com/dash/85829` where 85829 is the dashboard ID.
 
         bundle exec rake <environment>:get_dashboard_json_erb[<id number>,<path/to/template.json.erb>]
 
