@@ -2907,7 +2907,7 @@
                 "value": "100"
               }
             ],
-            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3501,7 +3501,7 @@
                 "value": "100"
               }
             ],
-            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3547,7 +3547,7 @@
                 "value": "100"
               }
             ],
-            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}+abs(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}))/2)*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
