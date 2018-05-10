@@ -187,54 +187,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1mo",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 36,
-      "y": 16
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_1m{deployment:<%= deployment %>}*100",
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -281,7 +234,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_2m{deployment:<%= deployment %>}*100",
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -328,7 +281,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_5m{deployment:<%= deployment %>}*100",
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack})/2",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -348,6 +301,53 @@
       "width": 17,
       "x": 103,
       "y": 34
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 16
     },
     {
       "autoscale": true,
@@ -503,6 +503,282 @@
                 "value": "100"
               }
             ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 86,
+      "y": 16
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 69,
+      "y": 16
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 86,
+      "y": 25
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 69,
+      "y": 25
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 86,
+      "y": 34
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack})/2",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 69,
+      "y": 34
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
             "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
@@ -569,282 +845,6 @@
       "width": 17,
       "x": 2,
       "y": 16
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_1m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 86,
-      "y": 16
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_1m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 69,
-      "y": 16
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_2m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 86,
-      "y": 25
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_2m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 69,
-      "y": 25
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_5m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 86,
-      "y": 34
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_5m{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 69,
-      "y": 34
     },
     {
       "autoscale": true,
@@ -1084,7 +1084,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:pws.cf_sli_testing.app_start_time_in_sec{deployment:<%= deployment %>,java_buildpack}",
+            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,java_buildpack}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1093,7 +1093,7 @@
             "type": "line"
           },
           {
-            "q": "avg:pws.cf_sli_testing.app_start_time_in_sec{deployment:<%= deployment %>,ruby_buildpack}",
+            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,ruby_buildpack}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
