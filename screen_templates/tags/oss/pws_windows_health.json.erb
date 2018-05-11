@@ -1305,7 +1305,7 @@
                 "value": null
               }
             ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{*}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1352,7 +1352,7 @@
                 "value": "99.9"
               }
             ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{*}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1399,7 +1399,7 @@
                 "value": "99.9"
               }
             ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{*}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:pws_diego_cellblock_windows_app_availability}.as_count())*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
