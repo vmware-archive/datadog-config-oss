@@ -187,7 +187,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -281,7 +281,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -328,7 +328,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -503,7 +503,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -549,7 +549,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -687,7 +687,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -733,7 +733,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -779,7 +779,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -825,7 +825,7 @@
                 "value": "100"
               }
             ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack})/2",
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
