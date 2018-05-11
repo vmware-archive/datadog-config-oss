@@ -1093,6 +1093,15 @@
             "type": "line"
           },
           {
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
             "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,ruby_buildpack}",
             "style": {
               "palette": "dog_classic",
@@ -1108,7 +1117,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "CF App Start Time (seconds)",
+      "title_text": "CF App Start Time (seconds) and Push Success Percentage",
       "type": "timeseries",
       "width": 65,
       "x": 69,
