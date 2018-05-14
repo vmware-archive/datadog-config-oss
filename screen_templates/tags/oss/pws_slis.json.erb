@@ -33,6 +33,28 @@
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
+      "font_size": "14",
+      "height": 9,
+      "html": "# SSL Service\n\n**Create and Route**",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 121,
+      "y": 36
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
       "font_size": "24",
       "height": 9,
       "html": "App Availability",
@@ -49,7 +71,7 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 27
+      "y": 25
     },
     {
       "auto_refresh": false,
@@ -70,8 +92,30 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 53,
-      "y": 52
+      "x": 121,
+      "y": 16
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 238435,
+      "font_size": "14",
+      "height": 18,
+      "html": "# Concourse\n\n## Run Pipeline\n\n## View Builds",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 121,
+      "y": 47
     },
     {
       "auto_refresh": false,
@@ -114,8 +158,8 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 120,
-      "y": 16
+      "x": 53,
+      "y": 50
     },
     {
       "auto_refresh": false,
@@ -136,8 +180,8 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 120,
-      "y": 25
+      "x": 53,
+      "y": 59
     },
     {
       "auto_refresh": false,
@@ -158,8 +202,8 @@
       "title_text": "",
       "type": "note",
       "width": 14,
-      "x": 120,
-      "y": 34
+      "x": 53,
+      "y": 68
     },
     {
       "autoscale": true,
@@ -205,8 +249,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 103,
-      "y": 16
+      "x": 36,
+      "y": 50
     },
     {
       "autoscale": true,
@@ -299,8 +343,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 103,
-      "y": 25
+      "x": 36,
+      "y": 59
     },
     {
       "autoscale": true,
@@ -346,8 +390,476 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 103,
-      "y": 34
+      "x": 36,
+      "y": 68
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 70,
+      "y": 36
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 87,
+      "y": 36
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 104,
+      "y": 36
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 87,
+      "y": 47
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 70,
+      "y": 47
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.run_existing_pipeline{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 104,
+      "y": 47
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 87,
+      "y": 56
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 70,
+      "y": 56
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": null
+              }
+            ],
+            "q": "sum:concourse.view_build_history{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1w",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Week",
+      "type": "query_value",
+      "width": 17,
+      "x": 104,
+      "y": 56
     },
     {
       "autoscale": true,
@@ -388,7 +900,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 27
+      "y": 25
     },
     {
       "autoscale": true,
@@ -429,7 +941,7 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 27
+      "y": 25
     },
     {
       "autoscale": true,
@@ -476,7 +988,7 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 27
+      "y": 25
     },
     {
       "autoscale": true,
@@ -521,8 +1033,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 86,
-      "y": 16
+      "x": 19,
+      "y": 50
     },
     {
       "autoscale": true,
@@ -567,8 +1079,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 69,
-      "y": 16
+      "x": 2,
+      "y": 50
     },
     {
       "autoscale": true,
@@ -705,8 +1217,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 86,
-      "y": 25
+      "x": 19,
+      "y": 59
     },
     {
       "autoscale": true,
@@ -751,8 +1263,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 69,
-      "y": 25
+      "x": 2,
+      "y": 59
     },
     {
       "autoscale": true,
@@ -788,103 +1300,6 @@
             "type": null
           }
         ],
-        "viz": "query_value"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 86,
-      "y": 34
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "timeframe": "1h",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 69,
-      "y": 34
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "90"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "90"
-              }
-            ],
-            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "status": "done",
         "viz": "query_value"
       },
       "timeframe": "1d",
@@ -895,7 +1310,104 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 52
+      "y": 68
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "100*(avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,ruby_buildpack,source:concourse.<%= domain_url %>}+avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>,java_buildpack,source:concourse.<%= domain_url %>})/4",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 2,
+      "y": 68
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 87,
+      "y": 16
     },
     {
       "autoscale": true,
@@ -945,8 +1457,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 2,
-      "y": 52
+      "x": 70,
+      "y": 16
     },
     {
       "autoscale": true,
@@ -996,8 +1508,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 36,
-      "y": 52
+      "x": 104,
+      "y": 16
     },
     {
       "board_id": 14530,
@@ -1032,8 +1544,8 @@
       "title_text": "Log-Cache Reliability",
       "type": "timeseries",
       "width": 65,
-      "x": 2,
-      "y": 38
+      "x": 70,
+      "y": 2
     },
     {
       "board_id": 14530,
@@ -1120,8 +1632,8 @@
       "title_text": "CF App Start Time (seconds) and Push Success Percentage",
       "type": "timeseries",
       "width": 65,
-      "x": 69,
-      "y": 2
+      "x": 2,
+      "y": 36
     }
   ],
   "width": "100%"
