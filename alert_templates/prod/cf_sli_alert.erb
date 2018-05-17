@@ -1,7 +1,7 @@
 {
   "created_at": 1497567450000,
   "deleted": null,
-  "message": "## **FIRST:** Update the PWS Status Page\n\nCreate a new incident on the status page at https://manage.statuspage.io/\n\n## Details\n\nCF Push SLI has reported failures several times within the last ten minutes.\n\n\n- SLI Pipeline: https://concourse.<%= domain_url %>/teams/main/pipelines/cf:cf-sli\n- Incident Playbook: https://github.com/pivotal-cloudops/cloudops-docs/blob/master/playbooks/push-is-broken.md\n\nThis probably means that the SLI test Application is failing to stage or start successfully. It could also mean that the CF CLI is failing to communicate with the CF at some point. `cf push` takes about a dozen HTTP calls and involves most CF components.\n\n## Possible Causes\n\n- **Diego Cell is Unhealthy.** Saw a flurry of staging failures July 3 2017. A cell became unhealthy and then was presumably fixed by a BOSH scan-and-fix. Eric thinks ClamAV is likely implicated.\n- **CAPI can't find Diego BBS during MySQL deploys.** This can be checked quickly by looking for deploy alerts in the #cf-diego channel. Locket has a known issue during MySQL deploys. The Diego team is investigating and fixing.\n- **Dependency for the CC stats endpoint is failing.** We've seen push failures when CAPI couldn't contact Doppler nodes successfully. The CAPI team is aware of this and should be working on failing more gracefully in this case. Though if it appears that this has happened again we should follow up with them.\n\n## Diagnosis\n\n- Look for failing jobs with `bosh instances --vitals --ps`.\n- Check the \"<%= environment %> CF-Deployment Diego Health\" [Datadog dashboard](https://pivotalcloudopspws.datadoghq.com/dash/390895/<%= environment %>-cf-deployment-diego-health).\n- Check the \"Cloud Controller (<%= deployment %>)\" [NewRelic dashboard](https://rpm.newrelic.com/accounts/39624/applications/3276070).\n- Look for clues in the component logs for CAPI and Diego BBS.\n\n## Escalation\n\nDepending on your findings (or lack thereof) from the steps above, escalate to one or more of:\n\n- CAPI\n- Diego\n- CloudOps secondary or team\n\n## Notes\n\nThe basic dependency list for `cf push` is:\n\n- UAA (and its database)\n- S3 blob store\n- CC and CCDB\n- Diego staging cell\n- Diego BBS\n- Router\n- Doppler (for the status check)",
+  "message": "## **FIRST:** Update the PWS Status Page\n\nCreate a new incident on the status page at https://manage.statuspage.io/\n\n## Details\n\nCF Push SLI has reported failures several times within the last ten minutes.\n\n\n- SLI Pipeline: https://concourse.<%= domain_url %>/teams/main/pipelines/cf:cf-sli\n- Incident Playbook: https://github.com/pivotal-cloudops/cloudops-docs/blob/master/playbooks/push-is-broken.md\n\nThis probably means that the SLI test Application is failing to stage or start successfully. It could also mean that the CF CLI is failing to communicate with the CF at some point. `cf push` takes about a dozen HTTP calls and involves most CF components.\n\n## Possible Causes\n\n- **Diego Cell is Unhealthy.** Saw a flurry of staging failures July 3 2017. A cell became unhealthy and then was presumably fixed by a BOSH scan-and-fix. Eric thinks ClamAV is likely implicated.\n- **CAPI can't find Diego BBS during MySQL deploys.** This can be checked quickly by looking for deploy alerts in the #cf-diego channel. Locket has a known issue during MySQL deploys. The Diego team is investigating and fixing.\n- **Dependency for the CC stats endpoint is failing.** We've seen push failures when CAPI couldn't contact Doppler nodes successfully. The CAPI team is aware of this and should be working on failing more gracefully in this case. Though if it appears that this has happened again we should follow up with them.\n\n## Diagnosis\n\n- Look for failing jobs with `bosh instances --vitals --ps`.\n- Check the \"<%= environment %> CF-Deployment Diego Health\" [Datadog dashboard](https://pivotalcloudopspws.datadoghq.com/dash/390895/<%= environment %>-cf-deployment-diego-health).\n- Check the \"Cloud Controller (<%= deployment %>)\" [NewRelic dashboard](https://rpm.newrelic.com/accounts/39624/applications/3276070).\n- Look for clues in the component logs for CAPI and Diego BBS.\n\n## Escalation\n\nDepending on your findings (or lack thereof) from the steps above, escalate to one or more of:\n\n- CAPI\n- Diego\n- CloudOps secondary or team\n\n## Notes\n\nThe basic dependency list for `cf push` is:\n\n- UAA (and its database)\n- S3 blob store\n- CC and CCDB\n- Diego staging cell\n- Diego BBS\n- Router\n- Doppler (for the status check) <%= cloudops_pagerduty %> @slack-cloudops-us-pws",
   "multi": false,
   "name": "<%= environment %> CF: SLI is lower than 100% in the last 5 minutes.",
   "options": {
@@ -17,14 +17,14 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 0.9
+      "critical": 0.49
     },
     "timeout_h": 0
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2018-03-12T21:45:48.863513+00:00",
-  "query": "min(last_5m):avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} < 0.9",
+  "overall_state_modified": "2018-05-17T22:49:50.010009+00:00",
+  "query": "max(last_10m):avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} < 0.49",
   "tags": [
     null
   ],
