@@ -71,7 +71,7 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 25
+      "y": 35
     },
     {
       "auto_refresh": false,
@@ -123,7 +123,7 @@
       "board_id": 238435,
       "font_size": "24",
       "height": 9,
-      "html": "CF Push",
+      "html": "CF Push\n(old)",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -137,7 +137,29 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 16
+      "y": 17
+    },
+    {
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 238435,
+      "font_size": "24",
+      "height": 9,
+      "html": "CF Push\n(synthetic)",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 14,
+      "x": 53,
+      "y": 26
     },
     {
       "auto_refresh": false,
@@ -159,7 +181,7 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 50
+      "y": 60
     },
     {
       "auto_refresh": false,
@@ -181,7 +203,7 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 59
+      "y": 69
     },
     {
       "auto_refresh": false,
@@ -203,7 +225,7 @@
       "type": "note",
       "width": 14,
       "x": 53,
-      "y": 68
+      "y": 78
     },
     {
       "autoscale": true,
@@ -250,7 +272,54 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 50
+      "y": 60
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1mo",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 36,
+      "y": 26
     },
     {
       "autoscale": true,
@@ -297,7 +366,7 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 16
+      "y": 17
     },
     {
       "autoscale": true,
@@ -344,7 +413,7 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 59
+      "y": 69
     },
     {
       "autoscale": true,
@@ -391,7 +460,7 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 68
+      "y": 78
     },
     {
       "autoscale": true,
@@ -900,7 +969,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 25
+      "y": 35
     },
     {
       "autoscale": true,
@@ -941,7 +1010,7 @@
       "type": "query_value",
       "width": 17,
       "x": 36,
-      "y": 25
+      "y": 35
     },
     {
       "autoscale": true,
@@ -988,7 +1057,7 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 25
+      "y": 35
     },
     {
       "autoscale": true,
@@ -1034,7 +1103,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 50
+      "y": 60
     },
     {
       "autoscale": true,
@@ -1080,7 +1149,99 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 50
+      "y": 60
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 19,
+      "y": 26
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "timeframe": "1h",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 2,
+      "y": 26
     },
     {
       "autoscale": true,
@@ -1126,7 +1287,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 16
+      "y": 17
     },
     {
       "autoscale": true,
@@ -1172,7 +1333,7 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 16
+      "y": 17
     },
     {
       "autoscale": true,
@@ -1218,7 +1379,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 59
+      "y": 69
     },
     {
       "autoscale": true,
@@ -1264,7 +1425,7 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 59
+      "y": 69
     },
     {
       "autoscale": true,
@@ -1310,7 +1471,7 @@
       "type": "query_value",
       "width": 17,
       "x": 19,
-      "y": 68
+      "y": 78
     },
     {
       "autoscale": true,
@@ -1356,7 +1517,7 @@
       "type": "query_value",
       "width": 17,
       "x": 2,
-      "y": 68
+      "y": 78
     },
     {
       "autoscale": true,
@@ -1519,6 +1680,85 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
+        "markers": [
+          {
+            "dim": "y",
+            "label": "1m",
+            "type": "ok dashed",
+            "val": 60,
+            "value": "y = 60"
+          },
+          {
+            "dim": "y",
+            "label": "2m",
+            "type": "warning dashed",
+            "val": 120,
+            "value": "y = 120"
+          },
+          {
+            "dim": "y",
+            "label": "5m",
+            "type": "error dashed",
+            "val": 300,
+            "value": "y = 300"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,java_buildpack}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,ruby_buildpack}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "yaxis": {
+          "max": "305"
+        }
+      },
+      "timeframe": "1d",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "CF App Start Time (seconds) and Push Success Percentage",
+      "type": "timeseries",
+      "width": 65,
+      "x": 2,
+      "y": 46
+    },
+    {
+      "board_id": 14530,
+      "height": 12,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
         "requests": [
           {
             "aggregator": "avg",
@@ -1561,6 +1801,15 @@
             "conditional_formats": [
 
             ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100, avg:pws.cf_sli.aggregated_start_status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
             "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
@@ -1581,59 +1830,6 @@
       "width": 65,
       "x": 2,
       "y": 2
-    },
-    {
-      "board_id": 14530,
-      "height": 12,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,java_buildpack}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          },
-          {
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100, avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          },
-          {
-            "q": "max:pws.cf_sli.app_start_time_in_sec{deployment:<%= deployment %>,ruby_buildpack}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "viz": "timeseries"
-      },
-      "timeframe": "1d",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "CF App Start Time (seconds) and Push Success Percentage",
-      "type": "timeseries",
-      "width": 65,
-      "x": 2,
-      "y": 36
     }
   ],
   "width": "100%"
