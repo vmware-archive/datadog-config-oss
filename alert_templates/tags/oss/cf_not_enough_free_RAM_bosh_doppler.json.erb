@@ -21,7 +21,7 @@
     },
     "timeout_h": null
   },
-  "query": "avg(last_15m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>,job:doppler} by {job,index} > 90",
+  "query": "avg(last_30m):max:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>,job:doppler} by {job,index} > 90",
   "tags": [
 
   ],
