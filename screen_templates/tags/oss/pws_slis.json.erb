@@ -2292,7 +2292,7 @@
             "conditional_formats": [
 
             ],
-            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.duration{deployment:<%= deployment %>}, max:datadog.nozzle.healthwatch.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
+            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2301,11 +2301,11 @@
             "type": "line"
           },
           {
-            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= deployment %>}, max:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
-              "width": "thick"
+              "width": "normal"
             },
             "type": "line"
           }
