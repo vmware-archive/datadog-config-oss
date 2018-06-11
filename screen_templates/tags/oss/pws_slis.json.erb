@@ -19,7 +19,7 @@
   "original_title": "PWS SLI Dashboard",
   "read_only": false,
   "shared": false,
-  "showGlobalTimeOnboarding": false,
+  "showGlobalTimeOnboarding": true,
   "template_variables": [
     {
       "default": "*",
@@ -49,7 +49,7 @@
       "title_text": "",
       "type": "note",
       "width": 13,
-      "x": 121,
+      "x": 118,
       "y": 60
     },
     {
@@ -70,9 +70,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 35
+      "width": 13,
+      "x": 52,
+      "y": 24
     },
     {
       "auto_refresh": false,
@@ -93,8 +93,8 @@
       "title_text": "",
       "type": "note",
       "width": 13,
-      "x": 121,
-      "y": 50
+      "x": 118,
+      "y": 49
     },
     {
       "auto_refresh": false,
@@ -115,7 +115,7 @@
       "title_text": "",
       "type": "note",
       "width": 13,
-      "x": 121,
+      "x": 118,
       "y": 69
     },
     {
@@ -137,8 +137,8 @@
       "title_text": "",
       "type": "note",
       "width": 13,
-      "x": 121,
-      "y": 17
+      "x": 118,
+      "y": 15
     },
     {
       "auto_refresh": false,
@@ -158,31 +158,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 17
-    },
-    {
-      "auto_refresh": false,
-      "bgcolor": "yellow",
-      "board_id": 238435,
-      "font_size": "24",
-      "height": 9,
-      "html": "CF Push\n(synthetic)",
-      "isShared": false,
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 26
+      "width": 13,
+      "x": 52,
+      "y": 15
     },
     {
       "auto_refresh": false,
@@ -203,8 +181,8 @@
       "title_text": "",
       "type": "note",
       "width": 13,
-      "x": 121,
-      "y": 26
+      "x": 118,
+      "y": 24
     },
     {
       "auto_refresh": false,
@@ -224,9 +202,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 60
+      "width": 13,
+      "x": 52,
+      "y": 49
     },
     {
       "auto_refresh": false,
@@ -246,9 +224,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 69
+      "width": 13,
+      "x": 52,
+      "y": 58
     },
     {
       "auto_refresh": false,
@@ -268,9 +246,9 @@
       "title_size": 16,
       "title_text": "",
       "type": "note",
-      "width": 14,
-      "x": 53,
-      "y": 78
+      "width": 13,
+      "x": 52,
+      "y": 67
     },
     {
       "autoscale": true,
@@ -281,22 +259,93 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": "",
-        "precision": "4",
+        "custom_unit": "%",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 18,
+      "y": 49
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 1,
+      "y": 49
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
             ],
             "q": "100*avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>}",
             "style": {
@@ -318,8 +367,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 36,
-      "y": 60
+      "x": 35,
+      "y": 49
     },
     {
       "autoscale": true,
@@ -330,22 +379,93 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": "",
-        "precision": "4",
+        "custom_unit": "%",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.7"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 18,
+      "y": 58
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 1,
+      "y": 58
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
             ],
             "q": "100*avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>}",
             "style": {
@@ -367,8 +487,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 36,
-      "y": 69
+      "x": 35,
+      "y": 58
     },
     {
       "autoscale": true,
@@ -379,22 +499,93 @@
       "legend_size": "0",
       "tile_def": {
         "autoscale": true,
-        "custom_unit": "",
-        "precision": "4",
+        "custom_unit": "%",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 18,
+      "y": 67
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "100*avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 1,
+      "y": 67
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
             ],
             "q": "100*avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>}",
             "style": {
@@ -416,8 +607,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 36,
-      "y": 78
+      "x": 35,
+      "y": 67
     },
     {
       "autoscale": true,
@@ -429,80 +620,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "0",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "avg:pws.ssl_sli.status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 70,
-      "y": 60
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "avg:pws.ssl_sli.status{*}*100",
             "style": {
@@ -524,7 +647,7 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 87,
+      "x": 84,
       "y": 60
     },
     {
@@ -537,26 +660,52 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 67,
+      "y": 60
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
             ],
             "q": "avg:pws.ssl_sli.status{*}*100",
             "style": {
@@ -578,7 +727,7 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 17,
-      "x": 104,
+      "x": 101,
       "y": 60
     },
     {
@@ -591,26 +740,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "sum:concourse.run_existing_pipeline{*}*100",
             "style": {
@@ -632,7 +767,7 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 87,
+      "x": 84,
       "y": 69
     },
     {
@@ -645,26 +780,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "sum:concourse.run_existing_pipeline{*}*100",
             "style": {
@@ -686,7 +807,7 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 70,
+      "x": 67,
       "y": 69
     },
     {
@@ -699,26 +820,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "sum:concourse.run_existing_pipeline{*}*100",
             "style": {
@@ -740,7 +847,7 @@
       "title_text": "Past Week",
       "type": "query_value",
       "width": 17,
-      "x": 104,
+      "x": 101,
       "y": 69
     },
     {
@@ -753,26 +860,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "sum:concourse.view_build_history{*}*100",
             "style": {
@@ -794,7 +887,7 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 87,
+      "x": 84,
       "y": 78
     },
     {
@@ -807,26 +900,12 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
+
             ],
             "q": "sum:concourse.view_build_history{*}*100",
             "style": {
@@ -848,7 +927,7 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 70,
+      "x": 67,
       "y": 78
     },
     {
@@ -861,355 +940,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": null
-              }
-            ],
-            "q": "sum:concourse.view_build_history{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1w"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Week",
-      "type": "query_value",
-      "width": 17,
-      "x": 104,
-      "y": 78
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 87,
-      "y": 17
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 70,
-      "y": 17
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 104,
-      "y": 17
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 19,
-      "y": 26
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 2,
-      "y": 26
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:pws.cf_sli.aggregated_start_status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 36,
-      "y": 26
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
@@ -1245,8 +976,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 19,
-      "y": 17
+      "x": 18,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -1258,7 +989,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
@@ -1294,8 +1025,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 2,
-      "y": 17
+      "x": 1,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -1307,7 +1038,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
@@ -1343,8 +1074,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 36,
-      "y": 17
+      "x": 35,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -1356,7 +1087,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
@@ -1372,7 +1103,13 @@
                 "value": "99.9"
               }
             ],
-            "q": "( ( sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() - sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) / sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) * 100"
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
           }
         ],
         "viz": "query_value"
@@ -1386,8 +1123,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 19,
-      "y": 35
+      "x": 18,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -1399,50 +1136,7 @@
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.9"
-              }
-            ],
-            "q": "( ( sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() - sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) / sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count() ) * 100"
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 36,
-      "y": 35
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "4",
+        "precision": "3",
         "requests": [
           {
             "aggregator": "avg",
@@ -1478,8 +1172,204 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 2,
-      "y": 35
+      "x": 1,
+      "y": 24
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.9"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99.9"
+              }
+            ],
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 35,
+      "y": 24
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 84,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 67,
+      "y": 15
+    },
+    {
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "4",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 101,
+      "y": 15
     },
     {
       "autoscale": true,
@@ -1496,21 +1386,7 @@
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "60"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "300"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_yellow",
-                "value": "60"
-              }
+
             ],
             "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
             "style": {
@@ -1532,8 +1408,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 87,
-      "y": 26
+      "x": 84,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -1550,21 +1426,7 @@
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "60"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "300"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_yellow",
-                "value": "60"
-              }
+
             ],
             "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
             "style": {
@@ -1586,8 +1448,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 70,
-      "y": 26
+      "x": 67,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -1604,21 +1466,7 @@
           {
             "aggregator": "avg",
             "conditional_formats": [
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "60"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "300"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_yellow",
-                "value": "60"
-              }
+
             ],
             "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
             "style": {
@@ -1640,296 +1488,8 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 104,
-      "y": 26
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 19,
-      "y": 60
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_1m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 2,
-      "y": 60
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.7"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 19,
-      "y": 69
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.7"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_2m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 2,
-      "y": 69
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 19,
-      "y": 78
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "precision": "4",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.9"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "100*avg:pws.cf_sli.app_start_time_5m{deployment:<%= deployment %>}",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 2,
-      "y": 78
+      "x": 101,
+      "y": 24
     },
     {
       "autoscale": true,
@@ -1981,8 +1541,8 @@
       "title_text": "Past Day",
       "type": "query_value",
       "width": 17,
-      "x": 87,
-      "y": 50
+      "x": 84,
+      "y": 49
     },
     {
       "autoscale": true,
@@ -2034,8 +1594,8 @@
       "title_text": "Past Hour",
       "type": "query_value",
       "width": 17,
-      "x": 70,
-      "y": 50
+      "x": 67,
+      "y": 49
     },
     {
       "autoscale": true,
@@ -2087,8 +1647,48 @@
       "title_text": "Past Month",
       "type": "query_value",
       "width": 17,
-      "x": 104,
-      "y": 50
+      "x": 101,
+      "y": 49
+    },
+    {
+      "autoscale": true,
+      "board_id": 312781,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "sum:concourse.view_build_history{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 101,
+      "y": 78
     },
     {
       "board_id": 14530,
@@ -2167,9 +1767,9 @@
       "title_size": 16,
       "title_text": "CF App Start Time (seconds) and Push Success Percentage",
       "type": "timeseries",
-      "width": 65,
-      "x": 2,
-      "y": 46
+      "width": 64,
+      "x": 1,
+      "y": 35
     },
     {
       "board_id": 14530,
@@ -2206,8 +1806,8 @@
       "title_text": "Log-Cache Reliability",
       "type": "timeseries",
       "width": 64,
-      "x": 70,
-      "y": 36
+      "x": 67,
+      "y": 35
     },
     {
       "board_id": 14530,
@@ -2249,15 +1849,15 @@
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "CF Push Success",
+      "title_text": "CloudOps CF Push Success",
       "type": "timeseries",
-      "width": 65,
-      "x": 2,
-      "y": 2
+      "width": 64,
+      "x": 1,
+      "y": 1
     },
     {
       "board_id": 312781,
-      "height": 13,
+      "height": 12,
       "isShared": false,
       "legend": false,
       "legend_size": "0",
@@ -2324,8 +1924,8 @@
       "title_text": "PCF Healthwatch Success % / Duration",
       "type": "timeseries",
       "width": 64,
-      "x": 70,
-      "y": 2
+      "x": 67,
+      "y": 1
     }
   ],
   "width": "100%"
