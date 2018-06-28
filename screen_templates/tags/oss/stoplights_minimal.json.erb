@@ -19,6 +19,7 @@
   "original_title": "PWS Health Dashboard",
   "read_only": false,
   "shared": false,
+  "showGlobalTimeOnboarding": true,
   "template_variables": [
     {
       "default": "*",
@@ -29,112 +30,6 @@
   "templated": true,
   "title_edited": false,
   "widgets": [
-    {
-      "aggr": "avg",
-      "aggregator": "avg",
-      "autoscale": true,
-      "calc_func": "raw",
-      "conditional_formats": [
-        {
-          "comparator": "<",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_red",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
-        },
-        {
-          "comparator": "<=",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_yellow",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
-        },
-        {
-          "comparator": ">",
-          "custom_bg_color": null,
-          "custom_fg_color": null,
-          "invert": false,
-          "palette": "white_on_green",
-          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
-        }
-      ],
-      "custom_unit": null,
-      "height": 7,
-      "isShared": false,
-      "is_valid_query": false,
-      "legend": false,
-      "legend_size": "0",
-      "metric": "",
-      "metric_type": "standard",
-      "padding": 8,
-      "precision": 2,
-      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
-      "res_calc_func": "raw",
-      "tags": [
-
-      ],
-      "text_align": "center",
-      "text_size": "auto",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": null,
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_red",
-                "value": 18
-              },
-              {
-                "comparator": "<=",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_yellow",
-                "value": 22
-              },
-              {
-                "comparator": ">",
-                "custom_bg_color": null,
-                "custom_fg_color": null,
-                "invert": false,
-                "palette": "white_on_green",
-                "value": 22
-              }
-            ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops,!deployment:pws-pivotal-internal-apps}*1024*1000",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "text_align": "center",
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "5m"
-      },
-      "title": true,
-      "title_align": "center",
-      "title_size": 13,
-      "title_text": "Avail. Memory",
-      "type": "query_value",
-      "width": 14,
-      "wrapped": true,
-      "x": 71,
-      "y": 6
-    },
     {
       "aggr": "avg",
       "aggregator": "avg",
@@ -239,6 +134,109 @@
       "width": 14,
       "wrapped": true,
       "x": 85,
+      "y": 6
+    },
+    {
+      "aggr": "avg",
+      "aggregator": "avg",
+      "autoscale": true,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
+        },
+        {
+          "comparator": "<=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": null,
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 2,
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": null,
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_red",
+                "value": "285000000000"
+              },
+              {
+                "comparator": "<=",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_yellow",
+                "value": "350000000000"
+              },
+              {
+                "comparator": ">",
+                "custom_bg_color": null,
+                "custom_fg_color": null,
+                "palette": "white_on_green",
+                "value": "350000000000"
+              }
+            ],
+            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops,!deployment:pws-pivotal-internal-apps}*1024*1000",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "5m"
+      },
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Avail. Memory",
+      "type": "query_value",
+      "width": 14,
+      "wrapped": true,
+      "x": 71,
       "y": 6
     },
     {
@@ -3030,6 +3028,7 @@
       "height": 94,
       "hideZeroCounts": true,
       "isShared": false,
+      "new_widget": false,
       "params": {
         "count": 50,
         "sort": "status,asc",
