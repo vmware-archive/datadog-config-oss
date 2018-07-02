@@ -1,0 +1,25 @@
+{
+	"name": "Loggregator message reliability fell to {{var}}",
+	"type": "query alert",
+	"query": "avg(last_1d):( avg:smoke_test.loggregator.msg_count{dripspinner-smoke-test,host:https://api.run.pivotal.io} / avg:smoke_test.loggregator.cycles{dripspinner-smoke-test,host:https://api.run.pivotal.io} ) * 100 < 99",
+	"message": "@pagerduty-Loggregator",
+	"tags": [
+		"*"
+	],
+	"options": {
+		"timeout_h": 0,
+		"notify_no_data": true,
+		"no_data_timeframe": 30,
+		"notify_audit": false,
+		"require_full_window": true,
+		"new_host_delay": 300,
+		"include_tags": false,
+		"escalation_message": "",
+		"locked": false,
+		"renotify_interval": "0",
+		"evaluation_delay": "",
+		"thresholds": {
+			"critical": 99
+		}
+	}
+}
