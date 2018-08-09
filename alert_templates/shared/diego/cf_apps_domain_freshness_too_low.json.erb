@@ -1,7 +1,7 @@
 {
   "created_at": 1450898658000,
   "deleted": null,
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nCAPI \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to CAPI team @pagerduty-CAPI-service",
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to @<%= diego_alerts_email ? diego_alerts_email : "pagerduty-CAPI-service" %>",
   "multi": false,
   "name": "<%= environment %> Diego: Domain cf-apps freshness too low.",
   "options": {
