@@ -69,25 +69,22 @@ When the operator runs `rake <environment>:push`, the alert, dashboard, and scre
 
 Tags specified but not found in either `alert_templates`, `dashboard_templates`, or `screen_templates` are ignored for that type.
 
-By example, US-PWS uses the environment name `prod` and several tags, `oss`, `aws`, `jarvice`, etc. When an operator runs `rake prod:push`, the following templates will be included:
+By example, US-PWS uses the environment name `prod` and several tags, `oss`, `aws`, etc. When an operator runs `rake prod:push`, the following templates will be included:
 
 * Alert Templates
   * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/shared)
   * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/prod)
   * [oss](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/oss)
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/aws)
-  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/alert_templates/tags/jarvice)
 * Dashboard Templates
   * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/shared)
   * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/prod)
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/aws)
-  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/dashboard_templates/tags/jarvice)
 * Screen Templates
   * [shared](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/shared)
   * [prod](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/prod)
   * [oss](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/oss)
   * [aws](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/aws)
-  * [jarvice](https://github.com/pivotal-cf-experimental/datadog-config-oss/tree/master/screen_templates/tags/jarvice)
 
 ### Screen Templates
 

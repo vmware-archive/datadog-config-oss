@@ -10,7 +10,7 @@
             "conditional_formats": [
 
             ],
-            "q": "top20_max(max:bosh.healthmonitor.system.load.1m{!deployment:<%= elk_deployment %>,!deployment:<%= deployment %>-jarvice-v2,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,index,deployment})",
+            "q": "top20_max(max:bosh.healthmonitor.system.load.1m{!deployment:<%= elk_deployment %>,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,index,deployment})",
             "style": {
               "width": "thin"
             },
@@ -30,7 +30,7 @@
             "conditional_formats": [
 
             ],
-            "q": "top20_max(max:bosh.healthmonitor.system.cpu.user{!deployment:<%= elk_deployment %>,!deployment:<%= deployment %>-jarvice-v2,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,index,deployment})",
+            "q": "top20_max(max:bosh.healthmonitor.system.cpu.user{!deployment:<%= elk_deployment %>,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,index,deployment})",
             "style": {
               "width": "thin"
             },
@@ -50,7 +50,7 @@
             "conditional_formats": [
 
             ],
-            "q": "top20_max(max:bosh.healthmonitor.system.mem.percent{!deployment:<%= elk_deployment %>,!deployment:<%= deployment %>-jarvice-v2,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index})",
+            "q": "top20_max(max:bosh.healthmonitor.system.mem.percent{!deployment:<%= elk_deployment %>,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index})",
             "style": {
               "width": "thin"
             },
@@ -70,7 +70,7 @@
             "conditional_formats": [
 
             ],
-            "q": "top20_max(max:bosh.healthmonitor.system.swap.kb{!deployment:<%= elk_deployment %>,!deployment:<%= deployment %>-jarvice-v2,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index,availability-zone,instance_id})",
+            "q": "top20_max(max:bosh.healthmonitor.system.swap.kb{!deployment:<%= elk_deployment %>,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index,availability-zone,instance_id})",
             "style": {
               "width": "thin"
             },
@@ -90,7 +90,7 @@
             "conditional_formats": [
 
             ],
-            "q": "top20_max(max:bosh.healthmonitor.system.swap.percent{!deployment:<%= elk_deployment %>,!deployment:<%= deployment %>-jarvice-v2,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index})",
+            "q": "top20_max(max:bosh.healthmonitor.system.swap.percent{!deployment:<%= elk_deployment %>,!job:cell_z1,!job:cell_z2,!job:cell_z3} by {job,deployment,index})",
             "style": {
               "width": "thin"
             },
