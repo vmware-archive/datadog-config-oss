@@ -1,12 +1,12 @@
 {
   "board_title": "PWS Health Dashboard",
   "created_by": {
-    "access_role": "st",
+    "access_role": "adm",
     "disabled": false,
     "email": "jmalone@pivotal.io",
     "handle": "jmalone@pivotal.io",
     "icon": "https://secure.gravatar.com/avatar/a1450c3085570346d4476fc63866487a?s=48&d=retro",
-    "is_admin": false,
+    "is_admin": true,
     "name": "Jesse Malone",
     "role": null,
     "verified": true
@@ -214,7 +214,7 @@
                 "value": "350000000000"
               }
             ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{!deployment:pws-isolation-segment,!deployment:pws-isolation-cloudops,!deployment:pws-pivotal-internal-apps}*1024*1000",
+            "q": "(sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-01}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-02}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-03}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-04}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-05}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-06}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-07}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-08}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-09}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-10})*1024*1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3028,12 +3028,11 @@
       "height": 94,
       "hideZeroCounts": true,
       "isShared": false,
-      "new_widget": false,
       "params": {
         "count": 50,
         "sort": "status,asc",
         "start": 0,
-        "text": ""
+        "text": "muted:false"
       },
       "showTitle": true,
       "title": true,
@@ -3045,7 +3044,7 @@
       "title_text": "",
       "type": "manage_status",
       "userEditedTitle": false,
-      "widgetID": 45,
+      "widgetID": 41,
       "width": 50,
       "x": 139,
       "y": 0
