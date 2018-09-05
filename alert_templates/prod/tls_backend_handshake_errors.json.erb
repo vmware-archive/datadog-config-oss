@@ -17,15 +17,15 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 1.0,
+      "critical": 2.0,
       "warning": 0.01
     },
     "timeout_h": 0
   },
   "org_id": 4242,
-  "overall_state": "OK",
-  "overall_state_modified": "2018-04-17T20:51:49.305820+00:00",
-  "query": "avg(last_5m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 1",
+  "overall_state": "Warn",
+  "overall_state_modified": "2018-09-05T21:03:13.341132+00:00",
+  "query": "avg(last_10m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 2",
   "tags": [
 
   ],
