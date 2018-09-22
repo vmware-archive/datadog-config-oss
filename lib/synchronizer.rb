@@ -170,7 +170,10 @@ class Synchronizer
 
   def delete_all
     fetch_from_datadog.values.each do |id|
-      delete(id)
+      # Our tls-test-env-dashboard
+      if id != "923755"
+        delete(id)
+      end
     end
   end
 
