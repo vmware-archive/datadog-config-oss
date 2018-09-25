@@ -5,6 +5,8 @@ gem "thread"
 gem "rake"
 gem "awesome_print"
 gem 'activesupport'
+gem 'pry'
+gem 'pry-byebug'
 
 group :development, :test do
   gem "rspec"
