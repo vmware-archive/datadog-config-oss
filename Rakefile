@@ -38,12 +38,7 @@ def push(env)
   config_for_env = YAML.load_file(CONFIG_PATH).fetch(env.to_s)
   puts "Loading templates..."
   DASHBOARD_TEMPLATES.concat(TemplateHelper.templates_for(:dashboard, env, DASHBOARD_TEMPLATES_PATH, config_for_env))
-  SCREEN_TEMPLATES.concat(TemplateHelper.templates_for(:screen, env, SCREEN_TEMPLATES_PATH, config_for_env))
-  ALERT_TEMPLATES.concat(TemplateHelper.templates_for(:alert, env, ALERT_TEMPLATES_PATH, config_for_env))
-
   DashboardSynchronizer.new(CONFIG_PATH, env).run(DASHBOARD_TEMPLATES)
-  ScreenSynchronizer.new(CONFIG_PATH, env).run(SCREEN_TEMPLATES)
-  AlertSynchronizer.new(CONFIG_PATH, env).run(ALERT_TEMPLATES)
 end
 
 def client_for_env(env_name)
