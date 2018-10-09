@@ -33,6 +33,7 @@
   "title_edited": false,
   "widgets": [
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
@@ -56,6 +57,7 @@
       "y": 26
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
@@ -79,6 +81,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
@@ -102,6 +105,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -125,6 +129,7 @@
       "y": 35
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -148,6 +153,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -171,6 +177,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -194,6 +201,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -217,6 +225,7 @@
       "y": 38
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -240,6 +249,7 @@
       "y": 47
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -263,6 +273,7 @@
       "y": 69
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -286,6 +297,7 @@
       "y": 24
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -309,6 +321,7 @@
       "y": 51
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -332,6 +345,7 @@
       "y": 33
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -355,6 +369,7 @@
       "y": 42
     },
     {
+      "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
@@ -378,6 +393,7 @@
       "y": 60
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -418,6 +434,7 @@
       "y": 38
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -458,6 +475,7 @@
       "y": 38
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -498,6 +516,7 @@
       "y": 38
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -538,6 +557,7 @@
       "y": 47
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -578,6 +598,7 @@
       "y": 47
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -618,6 +639,7 @@
       "y": 47
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -634,7 +656,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -658,6 +680,7 @@
       "y": 69
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -674,7 +697,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -698,6 +721,7 @@
       "y": 24
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -714,7 +738,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -738,6 +762,7 @@
       "y": 51
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -754,7 +779,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -778,6 +803,7 @@
       "y": 33
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -794,7 +820,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -818,6 +844,7 @@
       "y": 42
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -834,7 +861,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -858,6 +885,7 @@
       "y": 60
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -874,7 +902,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -898,6 +926,7 @@
       "y": 69
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -914,7 +943,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.delete{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -938,6 +967,7 @@
       "y": 69
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -954,7 +984,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -978,6 +1008,7 @@
       "y": 24
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -994,7 +1025,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.login{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1018,6 +1049,7 @@
       "y": 24
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1034,7 +1066,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1058,6 +1090,7 @@
       "y": 51
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1074,7 +1107,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.logs{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1098,6 +1131,7 @@
       "y": 51
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1114,7 +1148,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1138,6 +1172,7 @@
       "y": 33
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1154,7 +1189,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1178,6 +1213,7 @@
       "y": 33
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1194,7 +1230,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1218,6 +1254,7 @@
       "y": 42
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1234,7 +1271,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.start{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1258,6 +1295,7 @@
       "y": 42
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1274,7 +1312,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1298,6 +1336,7 @@
       "y": 60
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1314,7 +1353,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.stop{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1338,6 +1377,7 @@
       "y": 60
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1378,6 +1418,7 @@
       "y": 26
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1418,6 +1459,7 @@
       "y": 26
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1458,6 +1500,7 @@
       "y": 26
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1498,6 +1541,7 @@
       "y": 35
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1538,6 +1582,7 @@
       "y": 35
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1578,6 +1623,7 @@
       "y": 35
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1618,6 +1664,7 @@
       "y": 44
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1658,6 +1705,7 @@
       "y": 44
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1707,6 +1755,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1756,6 +1805,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1805,6 +1855,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1830,7 +1881,59 @@
                 "value": "100"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value",
+        "xaxis": {
+        }
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 65,
+      "y": 15
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "99.5"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_green",
+                "value": "100"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1854,6 +1957,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -1879,56 +1983,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 65,
-      "y": 15
-    },
-    {
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "3",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "99.5"
-              },
-              {
-                "comparator": "<=",
-                "palette": "white_on_green",
-                "value": "100"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1952,6 +2007,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2001,6 +2057,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2050,6 +2107,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2099,6 +2157,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2115,7 +2174,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}/1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2139,6 +2198,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2155,7 +2215,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}/1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2179,6 +2239,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2195,7 +2256,7 @@
             "conditional_formats": [
 
             ],
-            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}/1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2219,6 +2280,7 @@
       "y": 78
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2272,6 +2334,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2325,6 +2388,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 14530,
       "height": 7,
@@ -2378,6 +2442,7 @@
       "y": 15
     },
     {
+      "add_timeframe": true,
       "autoscale": true,
       "board_id": 312781,
       "height": 7,
@@ -2418,6 +2483,7 @@
       "y": 44
     },
     {
+      "add_timeframe": true,
       "board_id": 14530,
       "height": 12,
       "isShared": false,
@@ -2462,6 +2528,7 @@
       "y": 1
     },
     {
+      "add_timeframe": true,
       "board_id": 14530,
       "height": 12,
       "isShared": false,
@@ -2514,6 +2581,7 @@
       "y": 1
     },
     {
+      "add_timeframe": true,
       "board_id": 14530,
       "height": 12,
       "isShared": false,
@@ -2595,6 +2663,7 @@
       "y": 24
     },
     {
+      "add_timeframe": true,
       "board_id": 312781,
       "height": 12,
       "isShared": false,
@@ -2638,6 +2707,7 @@
       "y": 64
     },
     {
+      "add_timeframe": true,
       "board_id": 312781,
       "height": 12,
       "isShared": false,
@@ -2680,7 +2750,7 @@
             "conditional_formats": [
 
             ],
-            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>}/1000",
+            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.duration{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}/1000",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2689,7 +2759,7 @@
             "type": "line"
           },
           {
-            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "max:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
