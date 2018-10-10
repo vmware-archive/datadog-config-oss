@@ -54,7 +54,7 @@
       "type": "note",
       "width": 13,
       "x": 180,
-      "y": 26
+      "y": 78
     },
     {
       "add_timeframe": true,
@@ -109,10 +109,10 @@
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 238435,
-      "font_size": "14",
+      "font_size": "18",
       "generated_title": "Note",
-      "height": 18,
-      "html": "# Concourse\n\n## Run Pipeline\n\n## View Builds",
+      "height": 9,
+      "html": "Concourse\nRun Pipeline",
       "isShared": false,
       "refresh_every": 30000,
       "text_align": "center",
@@ -126,7 +126,7 @@
       "type": "note",
       "width": 13,
       "x": 180,
-      "y": 35
+      "y": 42
     },
     {
       "add_timeframe": true,
@@ -391,6 +391,30 @@
       "width": 12,
       "x": 116,
       "y": 60
+    },
+    {
+      "add_timeframe": true,
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 312781,
+      "font_size": "18",
+      "generated_title": "Note",
+      "height": 10,
+      "html": "Concourse\nView Builds",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 13,
+      "x": 180,
+      "y": 66
     },
     {
       "add_timeframe": true,
@@ -1415,7 +1439,7 @@
       "type": "query_value",
       "width": 17,
       "x": 146,
-      "y": 26
+      "y": 78
     },
     {
       "add_timeframe": true,
@@ -1456,7 +1480,7 @@
       "type": "query_value",
       "width": 17,
       "x": 129,
-      "y": 26
+      "y": 78
     },
     {
       "add_timeframe": true,
@@ -1497,7 +1521,7 @@
       "type": "query_value",
       "width": 17,
       "x": 163,
-      "y": 26
+      "y": 78
     },
     {
       "add_timeframe": true,
@@ -1538,7 +1562,7 @@
       "type": "query_value",
       "width": 17,
       "x": 146,
-      "y": 35
+      "y": 42
     },
     {
       "add_timeframe": true,
@@ -1579,7 +1603,7 @@
       "type": "query_value",
       "width": 17,
       "x": 129,
-      "y": 35
+      "y": 42
     },
     {
       "add_timeframe": true,
@@ -1620,7 +1644,7 @@
       "type": "query_value",
       "width": 17,
       "x": 163,
-      "y": 35
+      "y": 42
     },
     {
       "add_timeframe": true,
@@ -1661,7 +1685,7 @@
       "type": "query_value",
       "width": 17,
       "x": 146,
-      "y": 44
+      "y": 66
     },
     {
       "add_timeframe": true,
@@ -1702,7 +1726,7 @@
       "type": "query_value",
       "width": 17,
       "x": 129,
-      "y": 44
+      "y": 66
     },
     {
       "add_timeframe": true,
@@ -2486,7 +2510,7 @@
       "type": "query_value",
       "width": 17,
       "x": 163,
-      "y": 44
+      "y": 66
     },
     {
       "add_timeframe": true,
@@ -2667,6 +2691,99 @@
       "width": 64,
       "x": 0,
       "y": 24
+    },
+    {
+      "add_timeframe": true,
+      "board_id": 312781,
+      "generated_title": "Graph",
+      "height": 12,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "\"Begin update deployment for 'concourse' against Director\" OR \"Finish update deployment for 'concourse' against Director\" OR \"Error during update deployment for 'concourse'\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "conditional_formats": [
+
+            ],
+            "q": "100*avg:concourse.view_build_history{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "xaxis": {
+        }
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Concourse: View Builds",
+      "type": "timeseries",
+      "width": 64,
+      "x": 129,
+      "y": 52
+    },
+    {
+      "add_timeframe": true,
+      "board_id": 312781,
+      "generated_title": "system.cpu.user",
+      "height": 12,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "events": [
+          {
+            "q": "\"Begin update deployment for 'concourse' against Director\" OR \"Finish update deployment for 'concourse' against Director\" OR \"Error during update deployment for 'concourse'\" ",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:concourse.run_existing_pipeline{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries",
+        "xaxis": {
+        }
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Concourse: Run Pipeline",
+      "type": "timeseries",
+      "width": 64,
+      "x": 129,
+      "y": 28
     },
     {
       "add_timeframe": true,
