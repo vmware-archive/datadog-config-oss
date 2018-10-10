@@ -83,6 +83,101 @@
       "text_size": "auto",
       "tile_def": {
         "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "10"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "10"
+              }
+            ],
+            "q": "((sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-01}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-02}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-03}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-04}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-05}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-06}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-07}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-08}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-09}+sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-diego-cellblock-10})/(sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-01}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-02}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-03}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-04}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-05}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-06}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-07}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-08}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-09}+sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-diego-cellblock-10}))*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "text_align": "center",
+        "viz": "query_value",
+        "xaxis": {
+        }
+      },
+      "time": {
+        "live_span": "5m"
+      },
+      "title": true,
+      "title_align": "center",
+      "title_size": 13,
+      "title_text": "Headroom",
+      "type": "query_value",
+      "width": 14,
+      "wrapped": true,
+      "x": 85,
+      "y": 26
+    },
+    {
+      "add_timeframe": true,
+      "aggr": "avg",
+      "aggregator": "avg",
+      "autoscale": true,
+      "calc_func": "raw",
+      "conditional_formats": [
+        {
+          "comparator": "<",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_red",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_red') %>
+        },
+        {
+          "comparator": "<=",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_yellow",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_yellow') %>
+        },
+        {
+          "comparator": ">",
+          "custom_bg_color": null,
+          "custom_fg_color": null,
+          "invert": false,
+          "palette": "white_on_green",
+          "value": <%= threshold_value('(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024', 'white_on_green') %>
+        }
+      ],
+      "custom_unit": null,
+      "height": 7,
+      "isShared": false,
+      "is_valid_query": false,
+      "legend": false,
+      "legend_size": "0",
+      "metric": "",
+      "metric_type": "standard",
+      "padding": 8,
+      "precision": 2,
+      "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
+      "res_calc_func": "raw",
+      "tags": [
+
+      ],
+      "text_align": "center",
+      "text_size": "auto",
+      "tile_def": {
+        "autoscale": true,
         "custom_unit": null,
         "precision": "2",
         "requests": [

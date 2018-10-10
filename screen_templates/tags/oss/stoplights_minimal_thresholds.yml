@@ -27,6 +27,15 @@ prod:
 - query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024"
   palette: white_on_green
   value: 0
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024"
+  palette: white_on_red
+  value: 0
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024"
+  palette: white_on_yellow
+  value: 0
+- query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:metron_agent_diego_deployment} ) / 0.000001024"
+  palette: white_on_green
+  value: 0
 - query: "( (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:diego_deployment,job:cc_bridge_z2}.rollup(avg,60)) ) *50"
   palette: white_on_red
   value: 100
