@@ -1,0 +1,17 @@
+{
+  "created_at": 1494275951000,
+  "message": "## Description:\n Read reliabilty from LogCache fell to {{value}}%\n\n ## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) <%= logcache_pagerduty %>",
+  "multi": false,
+  "name": "<%= environment %> CF: LogCache Reliability is {{value}}%",
+  "options": {
+    "no_data_timeframe": 5,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "require_full_window": true,
+    "thresholds": {
+      "critical": 99.0
+    }
+  },
+  "query": "avg(last_1d):( avg:log_cache_grpc_blackbox.logs_received{host:prod} / avg:log_cache_grpc_blackbox.logs_sent{host:prod} ) * 100 < 99",
+  "type": "metric alert"
+}
