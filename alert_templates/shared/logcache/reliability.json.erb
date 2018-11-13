@@ -12,6 +12,6 @@
       "critical": 99.0
     }
   },
-  "query": "avg(last_1d):( avg:log_cache.blackbox.http_reliability ) * 100 < 99",
+  "query": "avg(last_1d):avg:log_cache.blackbox.http_reliability{*} * 100 < 99",
   "type": "metric alert"
 }
