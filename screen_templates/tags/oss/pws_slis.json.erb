@@ -61,6 +61,54 @@
       "auto_refresh": false,
       "bgcolor": "yellow",
       "board_id": 150202,
+      "font_size": "16",
+      "generated_title": "Note",
+      "height": 9,
+      "html": "Log\nCache\nComponent Logs",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 13,
+      "x": 180,
+      "y": 15
+    },
+    {
+      "add_timeframe": true,
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
+      "font_size": "18",
+      "generated_title": "Note",
+      "height": 8,
+      "html": "Log\nCache\nApp Logs",
+      "isShared": false,
+      "refresh_every": 30000,
+      "text_align": "center",
+      "tick": false,
+      "tick_edge": "left",
+      "tick_pos": "50%",
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "",
+      "type": "note",
+      "width": 13,
+      "x": 180,
+      "y": 24
+    },
+    {
+      "add_timeframe": true,
+      "auto_refresh": false,
+      "bgcolor": "yellow",
+      "board_id": 150202,
       "font_size": "24",
       "generated_title": "Note",
       "height": 9,
@@ -84,30 +132,6 @@
       "add_timeframe": true,
       "auto_refresh": false,
       "bgcolor": "yellow",
-      "board_id": 150202,
-      "font_size": "24",
-      "generated_title": "Note",
-      "height": 9,
-      "html": "Log\nCache",
-      "isShared": false,
-      "refresh_every": 30000,
-      "text_align": "center",
-      "tick": false,
-      "tick_edge": "left",
-      "tick_pos": "50%",
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "",
-      "type": "note",
-      "width": 13,
-      "x": 180,
-      "y": 15
-    },
-    {
-      "add_timeframe": true,
-      "auto_refresh": false,
-      "bgcolor": "yellow",
       "board_id": 238435,
       "font_size": "18",
       "generated_title": "Note",
@@ -126,7 +150,7 @@
       "type": "note",
       "width": 13,
       "x": 180,
-      "y": 42
+      "y": 46
     },
     {
       "add_timeframe": true,
@@ -399,7 +423,7 @@
       "board_id": 312781,
       "font_size": "18",
       "generated_title": "Note",
-      "height": 10,
+      "height": 9,
       "html": "Concourse\nView Builds",
       "isShared": false,
       "refresh_every": 30000,
@@ -414,7 +438,331 @@
       "type": "note",
       "width": 13,
       "x": 180,
-      "y": 66
+      "y": 69
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.grpc_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 146,
+      "y": 15
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.grpc_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 129,
+      "y": 15
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.grpc_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 163,
+      "y": 15
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.http_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 146,
+      "y": 24
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.http_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 17,
+      "x": 129,
+      "y": 24
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "height": 6,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "90"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "90"
+              }
+            ],
+            "q": "100*avg:log_cache.blackbox.http_reliability{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "status": "done",
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Month",
+      "type": "query_value",
+      "width": 17,
+      "x": 163,
+      "y": 24
     },
     {
       "add_timeframe": true,
@@ -1562,7 +1910,7 @@
       "type": "query_value",
       "width": 17,
       "x": 146,
-      "y": 42
+      "y": 46
     },
     {
       "add_timeframe": true,
@@ -1603,7 +1951,7 @@
       "type": "query_value",
       "width": 17,
       "x": 129,
-      "y": 42
+      "y": 46
     },
     {
       "add_timeframe": true,
@@ -1644,7 +1992,7 @@
       "type": "query_value",
       "width": 17,
       "x": 163,
-      "y": 42
+      "y": 46
     },
     {
       "add_timeframe": true,
@@ -1685,7 +2033,7 @@
       "type": "query_value",
       "width": 17,
       "x": 146,
-      "y": 66
+      "y": 69
     },
     {
       "add_timeframe": true,
@@ -1726,7 +2074,7 @@
       "type": "query_value",
       "width": 17,
       "x": 129,
-      "y": 66
+      "y": 69
     },
     {
       "add_timeframe": true,
@@ -2312,168 +2660,6 @@
     {
       "add_timeframe": true,
       "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "90"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "90"
-              }
-            ],
-            "q": "100*(avg:log_cache_grpc_blackbox.logs_received{*}/avg:log_cache_grpc_blackbox.logs_sent{*})",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "status": "done",
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 146,
-      "y": 15
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "90"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "90"
-              }
-            ],
-            "q": "100*(avg:log_cache_grpc_blackbox.logs_received{*}/avg:log_cache_grpc_blackbox.logs_sent{*})",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "status": "done",
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 17,
-      "x": 129,
-      "y": 15
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "90"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "90"
-              }
-            ],
-            "q": "100*(avg:log_cache_grpc_blackbox.logs_received{*}/avg:log_cache_grpc_blackbox.logs_sent{*})",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": "line"
-          }
-        ],
-        "status": "done",
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Month",
-      "type": "query_value",
-      "width": 17,
-      "x": 163,
-      "y": 15
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
       "board_id": 312781,
       "height": 7,
       "isShared": false,
@@ -2510,7 +2696,7 @@
       "type": "query_value",
       "width": 17,
       "x": 163,
-      "y": 66
+      "y": 69
     },
     {
       "add_timeframe": true,
@@ -2533,7 +2719,7 @@
             "conditional_formats": [
 
             ],
-            "q": "100*(avg:log_cache_blackbox.logs_received{*}/avg:log_cache_blackbox.logs_sent{*})",
+            "q": "avg:log_cache.blackbox.grpc_reliability{*}*100, avg:log_cache.blackbox.http_reliability{*}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -2736,7 +2922,7 @@
       "type": "timeseries",
       "width": 64,
       "x": 129,
-      "y": 52
+      "y": 55
     },
     {
       "add_timeframe": true,
@@ -2783,7 +2969,7 @@
       "type": "timeseries",
       "width": 64,
       "x": 129,
-      "y": 28
+      "y": 32
     },
     {
       "add_timeframe": true,
