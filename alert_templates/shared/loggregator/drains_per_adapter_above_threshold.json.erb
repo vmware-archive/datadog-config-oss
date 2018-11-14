@@ -1,21 +1,24 @@
 {
-    "message": "## Description:\n <%= loggregator_pagerduty %> \n\nThere are more than {{threshold}} drains per adapter. You need to scale the number of adapters.",
-    "name": "<%= environment %> CF: More than {{threshold}} drains per adapter",
-	"query": "avg(last_5m):avg:datadog.nozzle.cf_syslog_drain.scheduler.drains{*} / avg:datadog.nozzle.cf_syslog_drain.scheduler.adapters{*} > 500",
+	"name": "<%= environment %> CF: More than {{threshold}} drains per adapter",
+	"type": "query alert",
+	"query": "avg(last_30m):avg:datadog.nozzle.cf_syslog_drain.adapter.drain_bindings{bosh_environment:vpc-bosh-run-pivotal-io} > 550",
+	"message": "## Description:\n{{#is_alert}} <%= loggregator_pagerduty %> {{/is_alert}} \n{{#is_warning}}@cf-loggregator@pivotal.io{{/is_warning}} \n\nThere are more than {{threshold}} drains per adapter. You need to scale the number of adapters. ",
+	"tags": [],
 	"options": {
-		"timeout_h": 0,
-		"notify_no_data": false,
-		"no_data_timeframe": 10,
 		"notify_audit": false,
-		"require_full_window": true,
-		"new_host_delay": 300,
-		"include_tags": false,
-		"escalation_message": "",
 		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": false,
 		"renotify_interval": "0",
-		"evaluation_delay": "",
+		"escalation_message": "",
+		"no_data_timeframe": null,
+		"include_tags": false,
+		"synthetics_check_id": null,
 		"thresholds": {
-			"critical": 500
+			"critical": 550,
+			"warning": 400
 		}
 	}
 }
