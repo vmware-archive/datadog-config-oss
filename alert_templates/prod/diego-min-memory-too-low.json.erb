@@ -17,14 +17,14 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 700000.0
+      "critical": 350000.0
     },
     "timeout_h": null
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2018-04-16T16:47:48.556227+00:00",
-  "query": "max(last_15m):sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} < 700000",
+  "overall_state_modified": "2019-01-08T22:14:47.571376+00:00",
+  "query": "max(last_15m):sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} < 350000",
   "tags": [
     null
   ],
