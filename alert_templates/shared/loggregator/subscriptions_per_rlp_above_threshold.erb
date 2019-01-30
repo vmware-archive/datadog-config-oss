@@ -1,0 +1,22 @@
+{
+	"name": "<%= environment %> CF: More than {{threshold}} subscriptions per RLP",
+	"type": "metric alert",
+	"query": "avg(last_2h):avg:datadog.nozzle.loggregator.rlp.subscriptions{deployment:cf-cfapps-io2} > 450",
+	"message": "## Description:\n{{#is_alert}} <%= loggregator_pagerduty %> {{/is_alert}}\n\nThere are more than {{threshold}} subscriptions per RLP. You need to scale the number of RLPs.",
+	"tags": [],
+	"options": {
+		"notify_audit": false,
+		"locked": false,
+		"timeout_h": 0,
+		"new_host_delay": 300,
+		"require_full_window": true,
+		"notify_no_data": false,
+		"renotify_interval": "0",
+		"escalation_message": "",
+		"no_data_timeframe": null,
+		"include_tags": true,
+		"thresholds": {
+			"critical": 450
+		}
+	}
+}
