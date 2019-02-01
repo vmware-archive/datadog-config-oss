@@ -9,9 +9,9 @@
     "notify_no_data": true,
     "require_full_window": false,
     "thresholds": {
-      "critical": 90.0
+      "critical": 80.0
     }
   },
-  "query": "avg(last_2h):avg:log_cache.blackbox.http_reliability{*} * 100 < 90",
+  "query": "avg(last_2h):avg:log_cache.blackbox.http_reliability{*} * 100 < 80",
   "type": "metric alert"
 }
