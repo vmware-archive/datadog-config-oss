@@ -1,4 +1,7 @@
 {
+  "author_info": {
+    "author_name": "Jesse Malone"
+  },
   "board_title": "PWS Health Dashboard",
   "created_by": {
     "access_role": "adm",
@@ -11,6 +14,7 @@
     "role": null,
     "verified": true
   },
+  "description": "",
   "disableCog": false,
   "disableEditing": false,
   "height": 161,
@@ -114,7 +118,7 @@
       "width": 14,
       "wrapped": true,
       "x": 71,
-      "y": 25
+      "y": 34
     },
     {
       "add_timeframe": true,
@@ -198,7 +202,7 @@
       "width": 14,
       "wrapped": true,
       "x": 85,
-      "y": 25
+      "y": 34
     },
     {
       "add_timeframe": true,
@@ -261,25 +265,22 @@
                 "comparator": "<",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
-                "invert": false,
                 "palette": "white_on_red",
-                "value": 18
+                "value": "35000000000"
               },
               {
                 "comparator": "<=",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
-                "invert": false,
                 "palette": "white_on_yellow",
-                "value": 22
+                "value": "45000000000"
               },
               {
                 "comparator": ">",
                 "custom_bg_color": null,
                 "custom_fg_color": null,
-                "invert": false,
                 "palette": "white_on_green",
-                "value": 22
+                "value": "45000000000"
               }
             ],
             "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:pws-pivotal-internal-apps}*1024*1024",
@@ -2974,7 +2975,7 @@
       "type": "note",
       "width": 28,
       "x": 71,
-      "y": 37
+      "y": 46
     },
     {
       "add_timeframe": true,
@@ -3137,7 +3138,7 @@
       "title_text": "BTC Miner",
       "type": "query_value",
       "width": 14,
-      "x": 71,
+      "x": 100,
       "y": 52
     },
     {
@@ -3189,6 +3190,60 @@
       "title_align": "left",
       "title_size": 16,
       "title_text": "Available 8GB",
+      "type": "query_value",
+      "width": 14,
+      "x": 71,
+      "y": 24
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 238435,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "2"
+              },
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "3"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "3"
+              }
+            ],
+            "q": "min:datadog.nozzle.Diego.AvailableFreeChunks{deployment:pws-pivotal-internal-apps}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Available 4GB",
       "type": "query_value",
       "width": 14,
       "x": 85,

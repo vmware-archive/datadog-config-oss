@@ -1,0 +1,32 @@
+{
+  "created_at": 1549399417000,
+  "deleted": null,
+  "message": "We are alerting on 35 GB:\n\n* We deploy 1 cells at a time\n* Each cell advertises 31,111 MB\n* This requires 31,111 MB free for evacuation and replacement\n* We've set our warning threshold on the Health Dashboard to 45 GB\n\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `pws-cf/operations/deployments/internal-apps.yml`. @slack-cloudops-us-pws",
+  "multi": false,
+  "name": "Internal Apps Diego: min memory available too low",
+  "options": {
+    "escalation_message": "The Internal Apps environment has less than 35 GB of Diego cell memory capacity available.\n\nPotential Solutions: If it is a sudden spike, escalate to Diego and BAM team.\nOtherwise, increase Diego Cell count in `pws-cf/operations/deployments/internal-apps.yml`. @slack-cloudops-us-pws",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": 120,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 35000.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-02-05T20:43:47.421767+00:00",
+  "query": "max(last_1h):sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,deployment:pws-pivotal-internal-apps} < 35000",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}
