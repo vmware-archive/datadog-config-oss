@@ -1,7 +1,7 @@
 {
   "created_at": 1523056100000,
   "deleted": null,
-  "message": "Gorouter backend TLS handshake failed! This really should not happen. Did you just deploy something bad?\nGet in touch with routing.\n\n\n @slack-cloudops-us-pws <%= cloudops_pagerduty %>",
+  "message": "Gorouter backend TLS handshake failed! This really should not happen. Did you just deploy something bad?\nGet in touch with [#pcf-networking](https://pivotal.slack.com/messages/CFKJZ9B3J).\n\n@slack-cloudops-us-pws",
   "multi": false,
   "name": "TLS Backend Handshake Errors",
   "options": {
@@ -17,15 +17,15 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 2.0,
-      "warning": 0.01
+      "critical": 30.0,
+      "warning": 5.0
     },
     "timeout_h": 0
   },
   "org_id": 4242,
-  "overall_state": "Warn",
-  "overall_state_modified": "2018-09-05T21:03:13.341132+00:00",
-  "query": "avg(last_10m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 2",
+  "overall_state": "OK",
+  "overall_state_modified": null,
+  "query": "min(last_1m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 30",
   "tags": [
 
   ],
