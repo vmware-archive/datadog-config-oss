@@ -17,7 +17,7 @@
   "description": "",
   "disableCog": false,
   "disableEditing": false,
-  "height": 90,
+  "height": 64,
   "isIntegration": false,
   "isShared": false,
   "new_id": "qzw-d4q-arv",
@@ -117,9 +117,10 @@
       "font_size": "36",
       "generated_title": "Note",
       "height": 6,
-      "html": "Quarterly Error Budget",
+      "html": "Monthly Error Budget",
       "isShared": false,
       "refresh_every": 30000,
+      "scaleFactor": 1,
       "text_align": "center",
       "tick": true,
       "tick_edge": "bottom",
@@ -141,9 +142,10 @@
       "font_size": "36",
       "generated_title": "Note",
       "height": 6,
-      "html": "Quarterly Error Budget",
+      "html": "Monthly Error Budget",
       "isShared": false,
       "refresh_every": 30000,
+      "scaleFactor": 1,
       "text_align": "center",
       "tick": true,
       "tick_edge": "bottom",
@@ -190,6 +192,59 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "1",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_green",
+                "value": "75"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_red",
+                "value": "100"
+              }
+            ],
+            "q": "(1-((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()))/0.001*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "% Used Error Budget",
+      "type": "query_value",
+      "width": 24,
+      "x": 72,
+      "y": 21
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "scaleFactor": 1,
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
@@ -221,7 +276,7 @@
         "viz": "query_value"
       },
       "time": {
-        "live_span": "3mo"
+        "live_span": "1mo"
       },
       "title": true,
       "title_align": "left",
@@ -241,183 +296,7 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "1",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_green",
-                "value": "75"
-              },
-              {
-                "comparator": ">",
-                "palette": "white_on_red",
-                "value": "100"
-              }
-            ],
-            "q": "(1-(sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/0.001*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "3mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "% Used Error Budget",
-      "type": "query_value",
-      "width": 24,
-      "x": 72,
-      "y": 21
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "3",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "avg:pws.ssl_sli.status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 16,
-      "x": 64,
-      "y": 36
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "3",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "avg:pws.ssl_sli.status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Hour",
-      "type": "query_value",
-      "width": 16,
-      "x": 48,
-      "y": 36
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "3",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "q": "avg:pws.ssl_sli.status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "3mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Quarter",
-      "type": "query_value",
-      "width": 16,
-      "x": 80,
-      "y": 36
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
+      "scaleFactor": 1,
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
@@ -469,6 +348,7 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "scaleFactor": 1,
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
@@ -488,7 +368,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -497,9 +377,7 @@
             "type": null
           }
         ],
-        "viz": "query_value",
-        "xaxis": {
-        }
+        "viz": "query_value"
       },
       "time": {
         "live_span": "1d"
@@ -522,6 +400,7 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "scaleFactor": 1,
       "tile_def": {
         "autoscale": true,
         "custom_unit": "%",
@@ -541,7 +420,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -550,9 +429,7 @@
             "type": null
           }
         ],
-        "viz": "query_value",
-        "xaxis": {
-        }
+        "viz": "query_value"
       },
       "time": {
         "live_span": "1h"
@@ -565,6 +442,236 @@
       "width": 16,
       "x": 0,
       "y": 6
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "min",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "163"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "163"
+              }
+            ],
+            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/2-0.995)*60*24*28",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Remaining",
+      "type": "query_value",
+      "width": 24,
+      "x": 0,
+      "y": 21
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "min",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_red",
+                "value": "33"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "33"
+              }
+            ],
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-0.999)*28*24*60",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Remaining",
+      "type": "query_value",
+      "width": 24,
+      "x": 48,
+      "y": 21
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 16,
+      "x": 64,
+      "y": 36
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Hour",
+      "type": "query_value",
+      "width": 16,
+      "x": 48,
+      "y": 36
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "3",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "3mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Quarter",
+      "type": "query_value",
+      "width": 16,
+      "x": 80,
+      "y": 36
     },
     {
       "add_timeframe": true,
@@ -856,109 +963,7 @@
       "width": 16,
       "x": 32,
       "y": 36
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "min",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "163"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "163"
-              }
-            ],
-            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/2-0.995)*60*24*91",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "3mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Remaining",
-      "type": "query_value",
-      "width": 24,
-      "x": 0,
-      "y": 21
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "min",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "33"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "33"
-              }
-            ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-0.999)*91*24*60",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "3mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Remaining",
-      "type": "query_value",
-      "width": 24,
-      "x": 48,
-      "y": 21
     }
   ],
-  "width": "100%"
+  "width": 97
 }
