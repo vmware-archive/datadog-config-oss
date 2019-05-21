@@ -2,7 +2,7 @@
   "author_info": {
     "author_name": "James Pollard"
   },
-  "board_title": "PWS SLI Dashboard (proposed)",
+  "board_title": "PWS SLI Dashboard",
   "created_by": {
     "access_role": "st",
     "disabled": false,
@@ -21,8 +21,8 @@
   "isIntegration": false,
   "isShared": false,
   "new_id": "qzw-d4q-arv",
-  "originalHeight": 90,
-  "originalWidth": "100%",
+  "originalHeight": 64,
+  "originalWidth": 97,
   "original_title": "PWS SLI Dashboard",
   "read_only": false,
   "shared": false,
@@ -131,7 +131,7 @@
       "title_text": "",
       "type": "note",
       "width": 48,
-      "x": 0,
+      "x": 48,
       "y": 15
     },
     {
@@ -142,7 +142,7 @@
       "font_size": "36",
       "generated_title": "Note",
       "height": 6,
-      "html": "Monthly Error Budget",
+      "html": "Rolling 4-Week Error Budget",
       "isShared": false,
       "refresh_every": 30000,
       "scaleFactor": 1,
@@ -156,7 +156,7 @@
       "title_text": "",
       "type": "note",
       "width": 48,
-      "x": 48,
+      "x": 0,
       "y": 15
     },
     {
@@ -259,9 +259,14 @@
                 "value": "75"
               },
               {
-                "comparator": ">",
+                "comparator": ">=",
                 "palette": "white_on_red",
                 "value": "100"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "75"
               }
             ],
             "q": "(1-(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/2)/0.005*100",
@@ -328,12 +333,12 @@
         "viz": "query_value"
       },
       "time": {
-        "live_span": "3mo"
+        "live_span": "1mo"
       },
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Past Quarter",
+      "title_text": "Past Month",
       "type": "query_value",
       "width": 16,
       "x": 32,
@@ -368,7 +373,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -420,7 +425,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -442,58 +447,6 @@
       "width": 16,
       "x": 0,
       "y": 6
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": 14530,
-      "error": null,
-      "height": 7,
-      "isShared": false,
-      "legend": false,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "min",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "palette": "white_on_red",
-                "value": "163"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "163"
-              }
-            ],
-            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/2-0.995)*60*24*28",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1mo"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Remaining",
-      "type": "query_value",
-      "width": 24,
-      "x": 0,
-      "y": 21
     },
     {
       "add_timeframe": true,
@@ -545,6 +498,63 @@
       "type": "query_value",
       "width": 24,
       "x": 48,
+      "y": 21
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": 14530,
+      "error": null,
+      "height": 7,
+      "isShared": false,
+      "legend": false,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "min",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<=",
+                "palette": "white_on_red",
+                "value": "0"
+              },
+              {
+                "comparator": "<=",
+                "palette": "white_on_yellow",
+                "value": "50"
+              },
+              {
+                "comparator": ">",
+                "palette": "white_on_green",
+                "value": "50"
+              }
+            ],
+            "q": "((avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:wings.pivotal.io}+avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/2-0.995)*60*24*28",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1mo"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Remaining",
+      "type": "query_value",
+      "width": 24,
+      "x": 0,
       "y": 21
     },
     {
