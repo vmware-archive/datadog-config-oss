@@ -1,7 +1,7 @@
 {
   "created_at": 1522789552000,
   "deleted": null,
-  "message": "These errors are ok at a steady, low rate, but if they are spiking, get in touch with the routing team, as it may reflect problems with TLS configuration",
+  "message": "Rate of backend_invalid_id holding at more than 1/minute, indicating that gorouters have stale routing information. Check NATS server logs for 'Slow Consumer' messages and reach out to Networking Program.",
   "multi": false,
   "name": "TLS backend invalid ID",
   "options": {
@@ -23,10 +23,10 @@
   },
   "org_id": 4242,
   "overall_state": "Alert",
-  "overall_state_modified": "2018-04-11T04:43:08.027214+00:00",
-  "query": "avg(last_5m):avg:datadog.nozzle.backend_invalid_id{*} > 100",
+  "overall_state_modified": null,
+  "query": "min(last_5m):per_minute(avg:datadog.nozzle.backend_invalid_id{*}) > 1",
   "tags": [
 
   ],
-  "type": "metric alert"
+  "type": "query alert"
 }
