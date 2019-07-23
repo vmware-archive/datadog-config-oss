@@ -264,11 +264,6 @@
                 "custom_bg_color": "#654321",
                 "palette": "custom_bg",
                 "value": "75"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_gray",
-                "value": "100"
               }
             ],
             "q": "(1-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/0.005*100",
@@ -736,12 +731,12 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "custom_bg",
-                "value": "33"
+                "value": "11"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_green",
-                "value": "33"
+                "value": "11"
               }
             ],
             "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-0.999)*28*24*60",
