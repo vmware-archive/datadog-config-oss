@@ -1,12 +1,11 @@
 {
   "created_at": 1450898657000,
   "deleted": null,
-  "message": "## Description:\n It's been at least 30 seconds since a router received a \"router.register\" message from an app..  \n\n## Escalation Path:\n  DIEGO Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @slack-pws-platform",
-  "multi": true,
+  "message": "## Description:\n It's been at least 30 seconds since a router received a \"router.register\" message from an app.\n\n## Escalation Path:\n  Diego or Routing Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @slack-pws-platform",
+  "multi": false,
   "name": "<%= environment %> CF: routes not being registered",
   "options": {
     "escalation_message": "",
-    "evaluation_delay": "",
     "include_tags": false,
     "locked": false,
     "new_host_delay": 300,
@@ -24,10 +23,10 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2017-07-07T09:00:42.679637+00:00",
-  "query": "max(last_5m):avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip} > 30000",
+  "overall_state_modified": null,
+  "query": "max(last_5m):avg:datadog.nozzle.gorouter.ms_since_last_registry_update{*} > 30000",
   "tags": [
-    null
+
   ],
   "type": "metric alert"
 }
