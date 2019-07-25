@@ -689,17 +689,17 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "custom_bg",
-                "value": "99.9"
+                "value": "99.8"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_green",
-                "value": "99.95"
+                "value": "99.9"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "99.9"
+                "value": "99.8"
               }
             ],
             "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
@@ -750,17 +750,17 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "custom_bg",
-                "value": "99.9"
+                "value": "99.8"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_green",
-                "value": "99.95"
+                "value": "99.9"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "99.9"
+                "value": "99.8"
               }
             ],
             "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
