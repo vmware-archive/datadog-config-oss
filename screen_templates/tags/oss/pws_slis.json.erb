@@ -229,8 +229,8 @@
       },
       "title": true,
       "title_align": "left",
-      "title_size": 16,
-      "title_text": "% Used Error Budget",
+      "title_size": 20,
+      "title_text": "% Used",
       "type": "query_value",
       "width": 24,
       "x": 72,
@@ -282,7 +282,7 @@
       },
       "title": true,
       "title_align": "left",
-      "title_size": 16,
+      "title_size": 20,
       "title_text": "% Used",
       "type": "query_value",
       "width": 24,
@@ -331,12 +331,12 @@
         "viz": "query_value"
       },
       "time": {
-        "live_span": "1mo"
+        "live_span": "3mo"
       },
       "title": true,
       "title_align": "left",
       "title_size": 16,
-      "title_text": "Past Month",
+      "title_text": "Past Quarter",
       "type": "query_value",
       "width": 16,
       "x": 32,
@@ -372,7 +372,7 @@
                 "value": "99.5"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -582,7 +582,7 @@
                 "value": "99.5"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -634,7 +634,7 @@
                 "value": "99.5"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.success{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,environment:production,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -755,7 +755,7 @@
       },
       "title": true,
       "title_align": "left",
-      "title_size": 16,
+      "title_size": 20,
       "title_text": "Remaining",
       "type": "query_value",
       "width": 24,
@@ -813,7 +813,7 @@
       },
       "title": true,
       "title_align": "left",
-      "title_size": 16,
+      "title_size": 20,
       "title_text": "Remaining",
       "type": "query_value",
       "width": 24,
