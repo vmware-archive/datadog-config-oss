@@ -1,90 +1,141 @@
 {
+  "created_by": {
+    "access_role": "st",
+    "disabled": false,
+    "email": "cloudops+datadog-dashboard@pivotal.io",
+    "handle": "cloudops+datadog-dashboard@pivotal.io",
+    "icon": "https://secure.gravatar.com/avatar/79b447724ebe8b28f74400947cb1f873?s=48&d=retro",
+    "is_admin": false,
+    "name": null,
+    "role": null,
+    "verified": true
+  },
+  "description": "created by spark@pivotal.io",
   "graphs": [
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.users_email.min{*}"
+            "q": "max:datadog.nozzle.gorouter.latency.uaa{bosh_environment:<%= bosh_deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.users_email.min"
+      "title": "Request Latency (ms)"
     },
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.users_email.max{*}"
+            "q": "per_minute(avg:datadog.nozzle.audit_service.client_authentication_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.client_authentication_failure_count{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.users_email.max"
+      "title": "client authentication count vs failures (per minute)"
     },
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.client_token.max{*}"
+            "q": "per_minute(avg:datadog.nozzle.audit_service.principal_not_found_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.user_not_found_count{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.client_token.max"
+      "title": "users vs principals not found (per minute)"
     },
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.client_token.min{*}"
+            "q": "per_minute(avg:datadog.nozzle.audit_service.user_authentication_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.user_authentication_failure_count{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.client_token.min"
+      "title": "user authentication count vs failure (per minute)"
     },
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.client_token.count{*}"
+            "q": "per_minute(avg:datadog.nozzle.audit_service.user_password_changes{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.client_token.count"
+      "title": "user password changes (per minute)"
     },
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:notifications.external_requests.uaa.client_token.percentile.95{*}"
+            "q": "per_minute(avg:datadog.nozzle.audit_service.user_password_failures{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           }
         ],
-        "events": [
-
-        ]
+        "viz": "timeseries"
       },
-      "title": "notifications.external_requests.uaa.client_token.percentile.95"
+      "title": "user password failures (per minute)"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.uaa.requests.global.completed.count{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "title": "Throughput (reqs/minute)"
     }
   ],
-  "description": "created by spark@pivotal.io",
+  "new_id": "mtc-s2e-kiz",
+  "read_only": false,
+  "template_variables": [
+
+  ],
   "title": "UAA"
 }
