@@ -1,15 +1,15 @@
 {
   "created_at": 1497567450000,
   "deleted": null,
-  "message": “CF Push SLI has reported failures several times within the last ten minutes. FIRST, check if we’re getting SLI data or not. If we are getting SLI data and it’s failing badly, open an incident with ‘incident-start failing cf push sli’. If not seeing SLI data, investigate the root cause for that BUT wait on starting an incident as this may not be customer-facing. For more information, debugging suggestions, and page history, see this doc: https://github.com/pivotal/pws-docs/blob/master/playbooks/push-is-broken.md”
+  "message": "CF Push SLI has reported failures several times within the last ten minutes. FIRST, check if we’re getting SLI data or not. If we are getting SLI data and it’s failing badly, open an incident with ‘incident-start failing cf push sli’. If not seeing SLI data, investigate the root cause for that BUT wait on starting an incident as this may not be customer-facing. For more information, debugging suggestions, and page history, see this doc: https://github.com/pivotal/pws-docs/blob/master/playbooks/push-is-broken.md <%= cloudops_pagerduty %>",
   "multi": false,
-  "name": "<%= environment %> CF: SLI is lower than 100% in the last 5 minutes.",
+  "name": "<%= environment %> CF: SLI is lower than 100% in the last 10 minutes.",
   "options": {
     "escalation_message": "",
     "include_tags": false,
     "locked": false,
     "new_host_delay": 300,
-    "no_data_timeframe": 5,
+    "no_data_timeframe": 20,
     "notify_audit": false,
     "notify_no_data": true,
     "renotify_interval": 0,
@@ -23,7 +23,7 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2018-05-17T22:49:50.010009+00:00",
+  "overall_state_modified": "2019-06-10T19:19:57+00:00",
   "query": "max(last_10m):avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>} < 0.49",
   "tags": [
     null
