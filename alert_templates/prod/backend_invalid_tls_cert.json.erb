@@ -1,7 +1,7 @@
 {
   "created_at": 1522790106000,
   "deleted": null,
-  "message": "Are the certs out of sync between the control plane and cell block deploys?\nCheck in with routing, this is not good!",
+  "message": "Are the certs out of sync between the control plane and cell block deploys?\nCheck in with routing, this is not good!\n\nThis metric is a counter that lasts for the lifetime of the Gorouter process; if this alert has triggered you will need to 'bosh restart' the Gorouter instances after debugging the issue.",
   "multi": false,
   "name": "Backend TLS invalid cert errors are spiking",
   "options": {
@@ -23,7 +23,7 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2018-04-03T21:15:14.853345+00:00",
+  "overall_state_modified": "2019-08-02T00:21:19+00:00",
   "query": "sum(last_5m):avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*} >= 10",
   "tags": [
 
