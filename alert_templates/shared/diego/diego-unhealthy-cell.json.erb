@@ -1,0 +1,31 @@
+{
+  "created_at": 1504313458000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Excalation Path:\nDiego \n\n## A cell has been reporting unhealthy for 30 minutes or more.\n\n## Possible causes:\nGarden healthchecks are failing. \n\n## Potential Solutions:\nEscalate to @<%= diego_alerts_email %>",
+  "multi": true,
+  "name": "<%= environment %> Diego: rep.GardenHealthCheckFailed >=1",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.99
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "Alert",
+  "overall_state_modified": "2017-10-27T19:02:27.790158+00:00",
+  "query": "avg(last_30m):avg:datadog.nozzle.rep.GardenHealthCheckFailed{*} by {job,index} > 0.99",
+  "tags": [
+  ],
+  "type": "metric alert"
+}
