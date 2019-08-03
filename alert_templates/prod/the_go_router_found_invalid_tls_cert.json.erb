@@ -1,12 +1,12 @@
 {
-  "created_at": 1522790106000,
+  "created_at": 1564797415000,
   "deleted": null,
-  "message": "The go-routers are complaining about TLS certs being invalid. Are the certificates out of sync between the control plane and cell block deployments?\n\nWarning: This alert has proven to generate false alarms in the past! (read more for details)\n\nThe reason the alert causes confusion is that it is not specified anywhere that each go-router is reporting its monotonically increasing count of witnessed TLS handshake failures. This means the metric will only grow. Additionally, the metric can appear spiky due to router count differences and less than synchronized router checkin intervals.\n\nAlso, the alert triggers in a strange way. It adds up all counts over a 5 minute window, while this alone is not an issue; the rate of reports is about 1 a second across all routers, so if a couple routers have seen one or two errors this thing will go off. (And stay that way until you restart the routers, even if you have fixed the underlying issue.) This also makes it look like the metric is far under the alert threshold on the graph...\n\n[BW]\n- I am attempting to create a [better metric](https://pivotalcloudopspws.datadoghq.com/monitors#10784390) but it is unclear if it will actually feel better during a time of stress (aka RED alert).\n- This new metric is also less sensitive; so, I wanted to err on the safe-side and vet it before we committed to it. If these help you during a RED alert, maybe consider replacing the \"Backend TLS invalid cert errors are spiking\" metric with this new one.\n\nThere is a story to track improving this here: https://www.pivotaltracker.com/story/show/167662632",
+  "message": "The go-routers are complaining about TLS certs being invalid. Are the certificates out of sync between the control plane and cell block deployments?\n\nThis alert attempts to use the metric's rate change to decide if it should alert or not.\nThis metric is a counter that grows monotonically.\n\nFor more history on this alert see:\n- https://pivotalcloudopspws.datadoghq.com/monitors/10784390\n- https://www.pivotaltracker.com/story/show/167662632\n\nNOTES:\n\nEach go-router is reporting its monotonically increasing count of witnessed TLS handshake failures. This means the metric will only grow. Additionally, the metric can appear spiky due to router count differences and less than synchronized router checkin intervals.\n\nV0: this metric starts with the largest value seen in a 60 second window. (This ensures the largest router count is always taken; so, there is less rate change noise.) From these maxes, it calculates the rate of change (over one minute intervals) and finally alerts when that rate breaks 0.5 and stops when the rate falls back down. So, it doesn't stay active while counts aren't moving. This means it is very sensitive to change, I am curious to see if it is a useful metric!",
   "multi": false,
-  "name": "Backend TLS invalid cert errors are spiking",
+  "name": "The go router found invalid tls cert(s)",
   "options": {
     "escalation_message": "",
-    "include_tags": false,
+    "include_tags": true,
     "locked": false,
     "new_host_delay": 300,
     "no_data_timeframe": null,
@@ -17,16 +17,16 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 10.0
+      "critical": 0.5
     },
     "timeout_h": 0
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-08-02T00:21:19+00:00",
-  "query": "sum(last_5m):avg:datadog.nozzle.gorouter.backend_invalid_tls_cert{*} >= 10",
+  "overall_state_modified": "2019-08-03T01:57:01+00:00",
+  "query": "avg(last_5m):per_minute(avg:datadog.nozzle.backend_invalid_tls_cert{*}.rollup(max, 60)) > 0.5",
   "tags": [
 
   ],
-  "type": "metric alert"
+  "type": "query alert"
 }
