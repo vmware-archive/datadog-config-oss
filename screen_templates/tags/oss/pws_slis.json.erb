@@ -739,7 +739,7 @@
                 "value": "11"
               }
             ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-0.999)*28*24*60",
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-0.999)*30*24*60",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -797,7 +797,7 @@
                 "value": "50"
               }
             ],
-            "q": "(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}-0.995)*60*24*28",
+            "q": "(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}-0.995)*60*24*30",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
