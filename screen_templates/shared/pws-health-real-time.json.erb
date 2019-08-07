@@ -323,250 +323,6 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "custom_bg",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "95"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": false,
-      "type": "query_value",
-      "width": 17,
-      "x": 50,
-      "y": 18
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": "2uk-2zu-yxv",
-      "error": null,
-      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
-      "globalTimeframe": {
-        "end": 1562865480000,
-        "isLive": true,
-        "start": 1562861880000
-      },
-      "height": 13,
-      "isShared": false,
-      "legend": true,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": "#654321",
-                "palette": "custom_bg",
-                "value": "95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "95"
-              }
-            ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": false,
-      "type": "query_value",
-      "width": 17,
-      "x": 67,
-      "y": 18
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": "2uk-2zu-yxv",
-      "error": null,
-      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
-      "globalTimeframe": {
-        "end": 1562865480000,
-        "isLive": true,
-        "start": 1562861880000
-      },
-      "height": 13,
-      "isShared": false,
-      "legend": true,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": "#654321",
-                "palette": "custom_bg",
-                "value": "97"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "97"
-              }
-            ],
-            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": false,
-      "type": "query_value",
-      "width": 17,
-      "x": 17,
-      "y": 18
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": "2uk-2zu-yxv",
-      "error": null,
-      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
-      "globalTimeframe": {
-        "end": 1562865480000,
-        "isLive": true,
-        "start": 1562861880000
-      },
-      "height": 13,
-      "isShared": false,
-      "legend": true,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": "#654321",
-                "palette": "custom_bg",
-                "value": "97"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_green",
-                "value": "99.95"
-              },
-              {
-                "comparator": ">=",
-                "palette": "white_on_yellow",
-                "value": "97"
-              }
-            ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1h"
-      },
-      "title": false,
-      "type": "query_value",
-      "width": 17,
-      "x": 0,
-      "y": 18
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": "2uk-2zu-yxv",
-      "error": null,
-      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
-      "globalTimeframe": {
-        "end": 1562865480000,
-        "isLive": true,
-        "start": 1562861880000
-      },
-      "height": 13,
-      "isShared": false,
-      "legend": true,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "2",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-              {
-                "comparator": "<",
-                "custom_bg_color": "#654321",
-                "palette": "custom_bg",
                 "value": "99.0"
               },
               {
@@ -782,6 +538,250 @@
       "width": 17,
       "x": 0,
       "y": 31
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": "2uk-2zu-yxv",
+      "error": null,
+      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
+      "globalTimeframe": {
+        "end": 1562865480000,
+        "isLive": true,
+        "start": 1562861880000
+      },
+      "height": 13,
+      "isShared": false,
+      "legend": true,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": "#654321",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "95"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": false,
+      "type": "query_value",
+      "width": 17,
+      "x": 50,
+      "y": 18
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": "2uk-2zu-yxv",
+      "error": null,
+      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
+      "globalTimeframe": {
+        "end": 1562865480000,
+        "isLive": true,
+        "start": 1562861880000
+      },
+      "height": 13,
+      "isShared": false,
+      "legend": true,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": "#654321",
+                "palette": "white_on_red",
+                "value": "95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "95"
+              }
+            ],
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": false,
+      "type": "query_value",
+      "width": 17,
+      "x": 67,
+      "y": 18
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": "2uk-2zu-yxv",
+      "error": null,
+      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
+      "globalTimeframe": {
+        "end": 1562865480000,
+        "isLive": true,
+        "start": 1562861880000
+      },
+      "height": 13,
+      "isShared": false,
+      "legend": true,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": "#654321",
+                "palette": "white_on_red",
+                "value": "97"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99.95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "97"
+              }
+            ],
+            "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": false,
+      "type": "query_value",
+      "width": 17,
+      "x": 17,
+      "y": 18
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": "2uk-2zu-yxv",
+      "error": null,
+      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
+      "globalTimeframe": {
+        "end": 1562865480000,
+        "isLive": true,
+        "start": 1562861880000
+      },
+      "height": 13,
+      "isShared": false,
+      "legend": true,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "2",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "custom_bg_color": "#654321",
+                "palette": "white_on_red",
+                "value": "97"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_green",
+                "value": "99.95"
+              },
+              {
+                "comparator": ">=",
+                "palette": "white_on_yellow",
+                "value": "97"
+              }
+            ],
+            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1h"
+      },
+      "title": false,
+      "type": "query_value",
+      "width": 17,
+      "x": 0,
+      "y": 18
     },
     {
       "add_timeframe": true,
