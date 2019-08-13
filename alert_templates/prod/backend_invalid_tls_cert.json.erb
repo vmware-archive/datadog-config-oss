@@ -17,14 +17,14 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 10.0
+      "critical": 0.5
     },
     "timeout_h": 0
   },
   "org_id": 4242,
-  "overall_state": "Alert",
-  "overall_state_modified": "2019-08-05T23:23:18+00:00",
-  "query": "sum(last_5m):per_minute(sum:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}.rollup(sum, 60)) >= 10",
+  "overall_state": "OK",
+  "overall_state_modified": "2019-08-13T20:03:20+00:00",
+  "query": "max(last_5m):derivative(piecewise_constant(sum:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}.rollup(sum, 60))) >= 0.5",
   "tags": [
 
   ],
