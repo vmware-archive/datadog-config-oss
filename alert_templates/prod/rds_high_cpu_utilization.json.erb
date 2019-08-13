@@ -17,14 +17,15 @@
     "silenced": {
     },
     "thresholds": {
-      "critical": 90.0
+      "critical": 90.0,
+      "warning": 80.0
     },
     "timeout_h": 0
   },
   "org_id": 4242,
-  "overall_state": "No Data",
-  "overall_state_modified": null,
-  "query": "max(last_5m):avg:aws.rds.cpuutilization{*} by {host} > 90",
+  "overall_state": "OK",
+  "overall_state_modified": "2019-08-13T20:48:06+00:00",
+  "query": "avg(last_10m):avg:aws.rds.cpuutilization{*} by {host} > 90",
   "tags": [
 
   ],
