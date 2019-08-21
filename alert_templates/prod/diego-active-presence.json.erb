@@ -1,0 +1,37 @@
+{
+  "created_at": 1566410030000,
+  "deleted": null,
+  "message": "This metric is the count of total active presences of diego cells. It's expected to remain fairly consistent with some variance during a deploy.\n\nCheck out the [diego <%= environment %> health dashboard](https://pivotalcloudopspws.datadoghq.com/dashboard/ufp-swt-fq3/<%= environment %>-cf-deployment-diego-health) to get an idea what may be occurring.\n\n @slack-pws-platform @slack-cf-diego",
+  "multi": false,
+  "name": "Diego Locket ActivePresences < 95% over the past 15 minutes",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 10,
+    "notify_audit": false,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "threshold_windows": {
+      "recovery_window": "last_15m",
+      "trigger_window": "last_15m"
+    },
+    "thresholds": {
+      "critical": 0.95,
+      "critical_recovery": 0.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-08-21T17:53:58+00:00",
+  "query": "avg(last_4h):anomalies(max:datadog.nozzle.locket.ActivePresences{*}, 'basic', 2, direction='below', alert_window='last_15m', interval=60, count_default_zero='true') >= 0.95",
+  "tags": [
+
+  ],
+  "type": "query alert"
+}
