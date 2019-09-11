@@ -17,12 +17,11 @@
   "description": "",
   "disableCog": false,
   "disableEditing": false,
-  "height": 64,
   "isIntegration": false,
   "isShared": false,
   "new_id": "2uk-2zu-yxv",
-  "originalHeight": 64,
-  "originalWidth": "100%",
+  "originalHeight": 80,
+  "originalWidth": "calc(100% - 32px)",
   "read_only": false,
   "template_variables": [
 
@@ -336,7 +335,7 @@
                 "value": "99.0"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -519,7 +518,7 @@
                 "value": "99.8"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -580,7 +579,7 @@
                 "value": "95"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -763,7 +762,7 @@
                 "value": "97"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -823,7 +822,7 @@
                 "value": "85"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1003,7 +1002,7 @@
                 "value": "85"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>}*100",
+            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -1446,6 +1445,5 @@
       "x": 103,
       "y": 0
     }
-  ],
-  "width": "100%"
+  ]
 }
