@@ -566,7 +566,7 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "white_on_red",
-                "value": "95"
+                "value": "88"
               },
               {
                 "comparator": ">=",
@@ -576,7 +576,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "95"
+                "value": "88"
               }
             ],
             "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
@@ -627,7 +627,7 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "white_on_red",
-                "value": "95"
+                "value": "88"
               },
               {
                 "comparator": ">=",
@@ -637,7 +637,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "95"
+                "value": "88"
               }
             ],
             "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
@@ -688,7 +688,7 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "white_on_red",
-                "value": "97"
+                "value": "97.6"
               },
               {
                 "comparator": ">=",
@@ -698,7 +698,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "97"
+                "value": "97.6"
               }
             ],
             "q": "((sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count()-sum:new_relic.synthetic_check.errors{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())/sum:new_relic.synthetic_check.count{monitor_name:us_pws_zero_downtime_aviary_http}.as_count())*100",
@@ -749,7 +749,7 @@
                 "comparator": "<",
                 "custom_bg_color": "#654321",
                 "palette": "white_on_red",
-                "value": "97"
+                "value": "97.6"
               },
               {
                 "comparator": ">=",
@@ -759,7 +759,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "97"
+                "value": "97.6"
               }
             ],
             "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
@@ -809,17 +809,17 @@
               {
                 "comparator": "<",
                 "palette": "white_on_red",
-                "value": "85"
+                "value": "72"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_green",
-                "value": "99.7"
+                "value": "99.5"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "85"
+                "value": "72"
               }
             ],
             "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
@@ -869,17 +869,17 @@
               {
                 "comparator": "<",
                 "palette": "white_on_red",
-                "value": "85"
+                "value": "72"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_green",
-                "value": "99.7"
+                "value": "99.5"
               },
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "85"
+                "value": "72"
               }
             ],
             "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
@@ -989,7 +989,7 @@
               {
                 "comparator": "<",
                 "palette": "white_on_red",
-                "value": "85"
+                "value": "86"
               },
               {
                 "comparator": ">=",
@@ -999,7 +999,7 @@
               {
                 "comparator": ">=",
                 "palette": "white_on_yellow",
-                "value": "85"
+                "value": "86"
               }
             ],
             "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_deployment %>,foundation:<%= domain_url %>}*100",
