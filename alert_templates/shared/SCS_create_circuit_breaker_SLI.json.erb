@@ -1,0 +1,37 @@
+{
+  "created_at": 1521196981000,
+  "deleted": null,
+  "message": "A value is lower than the expected threshold: [Review the SLIs](https://tinyurl.com/scs-pws-sli) @slack-spring-cloud-services\n\nPWS Platform team has seen this metric go red during BOSH deploys. It would be nice to stabilize the platform during BOSH life cycle actions. Prior Slack conversation here: https://pivotal.slack.com/archives/C064Q28L9/p1565659609160600\n\nmonitor: 4415321",
+  "multi": false,
+  "name": "SCS Create Circuit Breaker Dashboard SLI on PWS",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 150,
+    "notify_audit": false,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "threshold_windows": {
+      "recovery_window": "last_4h",
+      "trigger_window": "last_4h"
+    },
+    "thresholds": {
+      "critical": 0.3,
+      "critical_recovery": 0.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "Alert",
+  "overall_state_modified": "2019-09-16T21:26:41+00:00",
+  "query": "avg(last_12h):anomalies(avg:pws.scs.create_service.cb_dashboard{deployment:scs-pws-test} * 100, 'basic', 2, direction='both', alert_window='last_4h', interval=120, count_default_zero='false') >= 0.3",
+  "tags": [
+
+  ],
+  "type": "query alert"
+}
