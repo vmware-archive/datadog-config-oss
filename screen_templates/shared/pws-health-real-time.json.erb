@@ -133,7 +133,7 @@
         "start": 1562861880000
       },
       "height": 5,
-      "html": "[SSL Service](dig-deeper)",
+      "html": "[SSL Service](https://docs.google.com/document/d/1cWvWvNEfJ2ji5Beh3PQoBjV7ORdToJxR_VX0-o3XzJ8/edit#)",
       "isShared": false,
       "refresh_every": 30000,
       "scaleFactor": 1,
@@ -171,56 +171,11 @@
           {
             "aggregator": "avg",
             "conditional_formats": [
-
-            ],
-            "q": "avg:pws.ssl_sli.status{*}*100",
-            "style": {
-              "palette": "dog_classic",
-              "type": "solid",
-              "width": "normal"
-            },
-            "type": null
-          }
-        ],
-        "viz": "query_value"
-      },
-      "time": {
-        "live_span": "1d"
-      },
-      "title": true,
-      "title_align": "left",
-      "title_size": 16,
-      "title_text": "Past Day",
-      "type": "query_value",
-      "width": 17,
-      "x": 85,
-      "y": 31
-    },
-    {
-      "add_timeframe": true,
-      "autoscale": true,
-      "board_id": "2uk-2zu-yxv",
-      "error": null,
-      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
-      "globalTimeframe": {
-        "end": 1562104804449,
-        "isLive": true,
-        "start": 1562101204449
-      },
-      "height": 11,
-      "isShared": false,
-      "legend": true,
-      "legend_size": "0",
-      "scaleFactor": 1,
-      "tile_def": {
-        "autoscale": true,
-        "custom_unit": "%",
-        "precision": "0",
-        "requests": [
-          {
-            "aggregator": "avg",
-            "conditional_formats": [
-
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "10"
+              }
             ],
             "q": "avg:pws.ssl_sli.status{*}*100",
             "style": {
@@ -269,7 +224,11 @@
           {
             "aggregator": "avg",
             "conditional_formats": [
-
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "10"
+              }
             ],
             "q": "avg:pws.ssl_sli.status{*}*100",
             "style": {
@@ -293,6 +252,59 @@
       "width": 17,
       "x": 85,
       "y": 5
+    },
+    {
+      "add_timeframe": true,
+      "autoscale": true,
+      "board_id": "2uk-2zu-yxv",
+      "error": null,
+      "generated_title": "datadog.nozzle.healthwatch.health.check.CanaryApp.available",
+      "globalTimeframe": {
+        "end": 1562104804449,
+        "isLive": true,
+        "start": 1562101204449
+      },
+      "height": 11,
+      "isShared": false,
+      "legend": true,
+      "legend_size": "0",
+      "scaleFactor": 1,
+      "tile_def": {
+        "autoscale": true,
+        "custom_unit": "%",
+        "precision": "0",
+        "requests": [
+          {
+            "aggregator": "avg",
+            "conditional_formats": [
+              {
+                "comparator": "<",
+                "palette": "white_on_yellow",
+                "value": "25"
+              }
+            ],
+            "q": "avg:pws.ssl_sli.status{*}*100",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": null
+          }
+        ],
+        "viz": "query_value"
+      },
+      "time": {
+        "live_span": "1d"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Past Day",
+      "type": "query_value",
+      "width": 17,
+      "x": 85,
+      "y": 31
     },
     {
       "add_timeframe": true,
