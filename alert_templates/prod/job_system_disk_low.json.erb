@@ -1,0 +1,25 @@
+{
+  "created_at": 1447283910000,
+  "deleted": null,
+  "message": "## Description:\n Healthmonitor reports system disk is > 92% full on {{job.name}}/{{index.name}}. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  It depends on the job \n\n## Possible Causes:\n## Potential Solutions:",
+  "multi": true,
+  "name": "<%= environment %> CF: A job is running out of system disk",
+  "options": {
+    "escalation_message": "",
+    "no_data_timeframe": false,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "silenced": {
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-07-02T18:08:31+00:00",
+  "query": "avg(last_10m):avg:bosh.healthmonitor.system.disk.system.percent{deployment:<%= deployment %>} by {job,index} > 92",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

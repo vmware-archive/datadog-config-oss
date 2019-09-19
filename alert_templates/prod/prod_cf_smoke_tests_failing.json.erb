@@ -1,0 +1,31 @@
+{
+  "created_at": 1489620892000,
+  "deleted": null,
+  "message": "## Description:\n The Smoke Tests have been unable to stage and run an application recently. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  CAPI, Diego \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "multi": false,
+  "name": "<%= environment %> CF: Smoke tests failing",
+  "options": {
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 2,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.66
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-08-31T18:04:59+00:00",
+  "query": "avg(last_1h):avg:smoke.status{deployment:<%= deployment %>} < 0.66",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
+}

@@ -1,0 +1,25 @@
+{
+  "created_at": 1370459319000,
+  "deleted": null,
+  "message": "Healthmonitor reports CPU load (1m) for router above 5. <%= cloudops_pagerduty %>",
+  "multi": true,
+  "name": "<%= environment %> CF: router job is reporting a high CPU load average",
+  "options": {
+    "escalation_message": "",
+    "no_data_timeframe": false,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "silenced": {
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-07-25T23:07:02+00:00",
+  "query": "avg(last_10m):avg:bosh.healthmonitor.system.load.1m{deployment:<%= deployment %>,job:router} by {index} > 10",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

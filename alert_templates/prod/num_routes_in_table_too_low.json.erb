@@ -1,0 +1,32 @@
+{
+  "created_at": 1450898657000,
+  "deleted": null,
+  "message": "## Description:\n The number of routes in the router's routing table is dangerously low.  It appears that too few applications are known. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  Router Team. \n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "multi": false,
+  "name": "<%= environment %> CF: Number of routes in the router's routing table is too low",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 10,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 100.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-11-04T01:07:14+00:00",
+  "query": "avg(last_10m):min:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>,!job:r_iso} < 100",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}
