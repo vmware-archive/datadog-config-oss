@@ -82,6 +82,9 @@
       "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "res_calc_func": "raw",
       "scaleFactor": 1,
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -193,6 +196,9 @@
       "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "res_calc_func": "raw",
       "scaleFactor": 1,
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -302,6 +308,9 @@
       "precision": 2,
       "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -387,6 +396,9 @@
       "precision": 2,
       "query": "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:<%= metron_agent_diego_deployment %>} ) / 0.000001024",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -464,6 +476,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:cc_bridge_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -556,6 +571,9 @@
       "precision": 0,
       "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -648,6 +666,9 @@
       "precision": 0,
       "query": "(( (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z2}.rollup(avg,60)) + + (avg:bosh.healthmonitor.system.healthy{deployment:<%= diego_deployment %>,job:database_z3}.rollup(avg,60)) ) * 100 )/3",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -746,6 +767,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:etcd_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -842,6 +866,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -926,6 +953,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1010,6 +1040,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1094,6 +1127,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1178,6 +1214,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1262,6 +1301,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1346,6 +1388,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1430,6 +1475,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1514,6 +1562,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1598,6 +1649,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1682,6 +1736,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1766,6 +1823,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1850,6 +1910,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -1934,6 +1997,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2018,6 +2084,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2102,6 +2171,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2186,6 +2258,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2270,6 +2345,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2354,6 +2432,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2438,6 +2519,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2522,6 +2606,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2606,6 +2693,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:api_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2690,6 +2780,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:nats_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2774,6 +2867,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:router_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2858,6 +2954,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -2942,6 +3041,9 @@
       "precision": 0,
       "query": "( (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z1}.rollup(avg,60)) + (avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:uaa_z2}.rollup(avg,60)) ) *50",
       "res_calc_func": "raw",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags": [
 
       ],
@@ -3000,13 +3102,13 @@
       "board_id": 238435,
       "font_size": "24",
       "generated_title": "Notes & Links",
-      "height": 14,
-      "html": "Looking for **SLIs**?\n\nThey're **[HERE!]( https://pivotalcloudopspws.datadoghq.com/dashboard/2uk-2zu-yxv/aarons-sli-mockup-wip)**",
+      "height": 16,
+      "html": "Looking for **SLIs**?\n\nThey're **[HERE!]( https://pivotalcloudopspws.datadoghq.com/dashboard/2uk-2zu-yxv/pws-health-real-time)**",
       "isShared": false,
       "refresh_every": 30000,
       "scaleFactor": 1,
       "text_align": "center",
-      "tick": true,
+      "tick": false,
       "tick_edge": "left",
       "tick_pos": "50%",
       "title": true,
@@ -3016,7 +3118,7 @@
       "type": "note",
       "width": 28,
       "x": 71,
-      "y": 46
+      "y": 44
     },
     {
       "add_timeframe": true,
@@ -3149,6 +3251,9 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tile_def": {
         "autoscale": true,
         "precision": "0",
@@ -3195,6 +3300,9 @@
       "legend": false,
       "legend_size": "0",
       "scaleFactor": 1,
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tile_def": {
         "autoscale": true,
         "precision": "0",
@@ -3250,6 +3358,9 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tile_def": {
         "autoscale": true,
         "precision": "0",
@@ -3300,6 +3411,9 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tile_def": {
         "autoscale": true,
         "precision": "0",
@@ -3348,6 +3462,29 @@
     },
     {
       "add_timeframe": true,
+      "board_id": "6tq-a28-cn6",
+      "error": null,
+      "event_size": "l",
+      "generated_title": "Events that match \"*\"",
+      "height": 20,
+      "isShared": false,
+      "query": "(\"Begin update deployment for\" OR \"Finish update deployment for\") AND (deployment:<%= deployment %>* OR deployment:pws-diego-cellblock* OR deployment:concourse)",
+      "scaleFactor": 1,
+      "tags_execution": "and",
+      "time": {
+        "live_span": "1h"
+      },
+      "title": true,
+      "title_align": "left",
+      "title_size": 16,
+      "title_text": "Recent Deploy Activity (Past Hour)",
+      "type": "event_stream",
+      "width": 50,
+      "x": 135,
+      "y": 38
+    },
+    {
+      "add_timeframe": true,
       "board_id": 238435,
       "colorPreference": "text",
       "displayFormat": "countsAndList",
@@ -3358,7 +3495,7 @@
         "isLive": true,
         "start": 1563548160000
       },
-      "height": 60,
+      "height": 37,
       "hideZeroCounts": true,
       "isShared": false,
       "params": {
@@ -3379,7 +3516,7 @@
       "userEditedTitle": false,
       "widgetID": 41,
       "width": 50,
-      "x": 139,
+      "x": 135,
       "y": 0
     },
     {
@@ -3390,6 +3527,9 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tile_def": {
         "autoscale": true,
         "requests": [
