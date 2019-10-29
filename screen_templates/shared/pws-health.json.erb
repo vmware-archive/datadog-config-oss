@@ -3470,6 +3470,9 @@
       "isShared": false,
       "query": "(\"Begin update deployment for\" OR \"Finish update deployment for\") AND (deployment:<%= deployment %>* OR deployment:pws-diego-cellblock* OR deployment:concourse)",
       "scaleFactor": 1,
+      "sharedGlobalTime": {
+        "live_span": "1h"
+      },
       "tags_execution": "and",
       "time": {
         "live_span": "1h"
@@ -3497,13 +3500,16 @@
       },
       "height": 37,
       "hideZeroCounts": true,
+      "isEditMode": true,
       "isShared": false,
+      "mode": "monitors",
       "params": {
         "count": 50,
         "sort": "status,asc",
         "start": 0,
-        "text": "muted:false"
+        "text": "muted:false tag:(team:pws-platform)"
       },
+      "scaleFactor": 1,
       "showTitle": true,
       "title": true,
       "titleAlign": "left",
@@ -3514,7 +3520,7 @@
       "title_text": "",
       "type": "manage_status",
       "userEditedTitle": false,
-      "widgetID": 41,
+      "widgetID": 45,
       "width": 50,
       "x": 135,
       "y": 0
