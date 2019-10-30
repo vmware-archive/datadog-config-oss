@@ -1,0 +1,32 @@
+{
+  "created_at": 1495237262000,
+  "deleted": null,
+  "message": "@pagerduty-CAPI-failed-jobs-non-critical \n\nThere may not be a clear actionable step to resolve the jobs failing, but please investigate and collect any relevant logs.\n\nTEMP: increased threshold from 2000 to 4200. Plan is to reset to 2000 in 1 month (at the end of November)",
+  "multi": true,
+  "name": "Too many failed CloudController background jobs",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 4200.0
+    },
+    "timeout_h": 24
+  },
+  "org_id": 4242,
+  "overall_state": "Alert",
+  "overall_state_modified": "2019-10-18T06:42:12+00:00",
+  "query": "avg(last_5m):avg:datadog.nozzle.cc.failed_job_count.total{deployment:<%= metron_agent_deployment %>} by {deployment} > 4200",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}
