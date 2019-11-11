@@ -1,7 +1,7 @@
 {
   "created_at": 1573078714000,
   "deleted": null,
-  "message": "notes on the 2019/10/29 incident from this issue may be helpful to look at:\nhttps://github.com/pivotal-cf/<%= environment %>-aws/issues/692 <%= cloudops_pagerduty %>",
+  "message": "notes on the 2019/10/29 incident from this issue may be helpful to look at:\nhttps://github.com/pivotal-cf/<%= environment %>-aws/issues/692\n\n{{#is_alert}} @pagerduty-datadog-pws-platform {{/is_alert}}\n{{^is_alert}}  This is currently in a WARNING state. @slack-pws-notifications {{/is_alert}}",
   "multi": false,
   "name": "<%= environment %> Bosh: RDS above 90% CPU Utilization",
   "options": {
