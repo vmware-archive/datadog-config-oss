@@ -1,11 +1,32 @@
 {
-  "notify_audit": true,
-  "timeout_h": null,
-  "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>} > 70",
-  "message": "## Description:\nSome of the apps are not running.\n## Escalation Path:\nDiego\n## Possible Causes:\nA cell failed to report status to the bbs, due to network or Consul.\nMultiple auctioneers aren't running.\n## Potential Solutions:\nEscalate to Diego team <%= cloudops_pagerduty %> <%= diego_oncall %>",
+  "created_at": 1450898658000,
+  "deleted": null,
+  "message": "## Description:\nSome of the apps are not running.\n## Escalation Path:\nDiego\n## Possible Causes:\nA cell failed to report status to the bbs, due to network or Consul.\nMultiple auctioneers aren't running.\n## Potential Solutions:\nEscalate to Diego team @pagerduty-datadog-pws-platform <%= diego_oncall %>",
+  "multi": false,
   "name": "<%= environment %> Diego: Missing LRPs are too high",
-  "no_data_timeframe": 10,
-  "notify_no_data": false,
-  "renotify_interval": null,
-  "escalation_message": ""
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 10,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 70.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-11-06T22:33:30+00:00",
+  "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>} > 70",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
 }

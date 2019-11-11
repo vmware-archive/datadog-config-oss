@@ -1,7 +1,32 @@
 {
-  "query": "min(last_15m):per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>}) > 1",
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n<%= cloudops_pagerduty %> <%= diego_oncall %>",
+  "created_at": 1450898658000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
+  "multi": false,
   "name": "<%= environment %> Diego: LRP Auction Failure per min is too high",
-  "no_data_timeframe": 30,
-  "notify_no_data": false
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 1.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-11-06T20:23:18+00:00",
+  "query": "min(last_15m):per_minute(avg:datadog.nozzle.auctioneer.AuctioneerLRPAuctionsFailed{deployment:<%= metron_agent_diego_deployment %>}) > 1",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
 }

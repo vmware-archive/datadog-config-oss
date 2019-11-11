@@ -1,14 +1,15 @@
 {
   "created_at": 1493766436000,
   "deleted": null,
-  "message": "## Description:\n  Diego Crashed LRPs(long running processes) is above our arbitrarily selected threshold.\n\n## Escalation Path:\n  Diego/Garden team\n\n## Causes:\n  Usually the Crashed LRPs are quite stable in the platform. If the count climbs unexpectedly, that may be an indication that some cells are in an abnormal state.\n\n## Potential Solutions:\n  - If this increase appears to be due natural application instance growth, increase the threshold.\n  - Otherwise, consider escalating to the Diego team\n\n<%= diego_oncall %> <%= cloudops_pagerduty %>",
+  "message": "## Description:\n  Diego Crashed LRPs(long running processes) is above our arbitrarily selected threshold.\n\n## Escalation Path:\n  Diego/Garden team\n\n## Causes:\n  Usually the Crashed LRPs are quite stable in the platform. If the count climbs unexpectedly, that may be an indication that some cells are in an abnormal state.\n\n## Potential Solutions:\n  - If this increase appears to be due natural application instance growth, increase the threshold.\n  - Otherwise, consider escalating to the Diego team\n\n<%= diego_oncall %> @pagerduty-datadog-pws-platform",
   "multi": false,
   "name": "<%= environment %> Diego: Crashed LRPs is above an *ARBITRARY* threshold",
   "options": {
     "escalation_message": null,
+    "include_tags": true,
     "locked": false,
     "new_host_delay": 300,
-    "no_data_timeframe": 10,
+    "no_data_timeframe": null,
     "notify_audit": false,
     "notify_no_data": false,
     "renotify_interval": 0,
@@ -22,7 +23,7 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2017-05-08T23:31:56.002297+00:00",
+  "overall_state_modified": "2017-05-09T21:17:47+00:00",
   "query": "max(last_5m):avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg, 900) > 1300",
   "tags": [
 

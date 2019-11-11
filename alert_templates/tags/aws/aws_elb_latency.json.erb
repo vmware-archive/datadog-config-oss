@@ -1,5 +1,32 @@
 {
+  "created_at": 1453222179000,
+  "deleted": null,
+  "message": "## Description: \nThe router latency has spiked over 1 second for the last 5 minutes. This can cause a slowdown on all apps.\n\n## Escalation Path:\nGorouter, Diego\n\n## Possible Causes\n- NAT has degraded outbound Internet connection\n- gorouter performance\n- DDOS\n\n\n## Possible Solutions:\n- Recreate NAT box or failover to the standby one\n- add more gorouter\n- block the ddos\n\n\n##Feedback:\nHave feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-pws-platform",
+  "multi": false,
+  "name": "High Router latency",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 10.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-10-18T18:44:14+00:00",
   "query": "avg(last_30m):avg:aws.elb.latency{host:cf-router} > 10",
-  "message": "## Description: \nThe router latency has spiked over 1 second for the last 5 minutes. This can cause a slowdown on all apps.\n\n## Escalation Path:\nGorouter, Diego\n\n## Possible Causes\n- NAT has degraded outbound Internet connection\n- gorouter performance\n- DDOS\n\n\n## Possible Solutions:\n- Recreate NAT box or failover to the standby one\n- add more gorouter\n- block the ddos\n\n\n##Feedback:\nHave feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new) @pagerduty-datadog-cloudops-service",
-  "name": "High Router latency"
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
 }

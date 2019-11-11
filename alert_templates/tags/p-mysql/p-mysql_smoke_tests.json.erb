@@ -1,15 +1,33 @@
 {
-  "message": "## Description:\n The Smoke Tests have been unable to stage and run an application with MySQL recently. <%= cloudops_pagerduty %>.  \n\n## Escalation Path:\n  Core Services Team, GSS\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-<%= metron_agent_deployment %>/datadog-config/issues/new)",
+  "created_at": 1474309001000,
+  "deleted": null,
+  "message": "## Description:\n The Smoke Tests have been unable to stage and run an application with MySQL recently. @pagerduty-datadog-pws-platform.  \n\n## Escalation Path:\n  Core Services Team, GSS\n\n## Possible Causes:\n## Potential Solutions:\n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-<%= deployment %>/datadog-config/issues/new)",
+  "multi": false,
   "name": "<%= environment %>: MySQL Smoke tests failing",
-  "query": "avg(last_30m):avg:smoke.status{deployment:<%= params.fetch("p_mysql_deployment", 'p-mysql') %>} < 0.66",
   "options": {
+    "escalation_message": "",
+    "include_tags": true,
     "locked": false,
     "new_host_delay": 300,
-    "no_data_timeframe": 2,
+    "no_data_timeframe": null,
     "notify_audit": false,
     "notify_no_data": false,
     "renotify_interval": 0,
     "require_full_window": false,
+    "silenced": {
+      "*": null
+    },
+    "thresholds": {
+      "critical": 0.66
+    },
     "timeout_h": 0
-  }
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-03-07T04:08:23+00:00",
+  "query": "avg(last_30m):avg:smoke.status{deployment:p-mysql} < 0.66",
+  "tags": [
+
+  ],
+  "type": "metric alert"
 }

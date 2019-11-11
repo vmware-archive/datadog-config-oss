@@ -1,7 +1,7 @@
 {
   "created_at": 1444411720000,
   "deleted": null,
-  "message": "Last updated Nov 2017\nLast triggered Aug 2019\n\nFor 2019 alerts, this frequently resolves itself within 5 minutes.\n\nDiego expects CAPI to periodically requests to run apps (\"Desired State\", as opposed to \"Actual State\") as \"fresh.\" See the Diego LRP documentation for a detailed explanation: https://github.com/cloudfoundry/bbs/blob/master/doc/lrps.md\n\nRight now what this probably means is that either CAPI isn't sending updates regularly to Diego anymore, or the BBS has crashed or locked up and isn't able to process requests. It might also mean that the two jobs are working fine, but networking between them is broken.\n\nFigure out which it is, then escalate to the appropriate team.\n\nYou might try:\n1. Looking for failing jobs with `bosh is --ps` or `bosh vms --vitals` (or in Datadog metrics)\n2. Checking the `<%= environment %> diego health` dashboard in Datadog\n3. Checking the NewRelic `Cloud Controller (<%= deployment %>)` app\n4. Checking the logs for CAPI and the Diego BBS\n\nIf nothing is obviously wrong (process has crashed, log file full of errors, transactions have cratered, etc.) escalate to the secondary on-call, or the whole CloudOps team.\n\nIf there's no data, confirm that the SLIs are still succeeding, then make a story in the backlog to follow up during normal business hours. You may need to mute this alert until then.\n\n <%= cloudops_pagerduty %>",
+  "message": "Last updated Nov 2017\nLast triggered Aug 2019\n\nFor 2019 alerts, this frequently resolves itself within 5 minutes.\n\nDiego expects CAPI to periodically requests to run apps (\"Desired State\", as opposed to \"Actual State\") as \"fresh.\" See the Diego LRP documentation for a detailed explanation: https://github.com/cloudfoundry/bbs/blob/master/doc/lrps.md\n\nRight now what this probably means is that either CAPI isn't sending updates regularly to Diego anymore, or the BBS has crashed or locked up and isn't able to process requests. It might also mean that the two jobs are working fine, but networking between them is broken.\n\nFigure out which it is, then escalate to the appropriate team.\n\nYou might try:\n1. Looking for failing jobs with `bosh is --ps` or `bosh vms --vitals` (or in Datadog metrics)\n2. Checking the `<%= environment %> diego health` dashboard in Datadog\n3. Checking the NewRelic `Cloud Controller (<%= deployment %>)` app\n4. Checking the logs for CAPI and the Diego BBS\n\nIf nothing is obviously wrong (process has crashed, log file full of errors, transactions have cratered, etc.) escalate to the secondary on-call, or the whole CloudOps team.\n\nIf there's no data, confirm that the SLIs are still succeeding, then make a story in the backlog to follow up during normal business hours. You may need to mute this alert until then.\n\n @pagerduty-datadog-pws-platform",
   "multi": false,
   "name": "Cf-apps freshness lost",
   "options": {
@@ -23,7 +23,7 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-08-07T21:32:45+00:00",
+  "overall_state_modified": "2019-09-10T18:33:45+00:00",
   "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_deployment %>} < 1",
   "tags": [
     null
