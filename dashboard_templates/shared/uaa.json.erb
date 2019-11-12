@@ -14,9 +14,163 @@
   "graphs": [
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "legend_size": "0",
         "requests": [
           {
-            "q": "max:datadog.nozzle.gorouter.latency.uaa{bosh_environment:<%= bosh_deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:uaa,deployment:<%= deployment %>} by {id}+avg:bosh.healthmonitor.system.cpu.user{job:uaa,deployment:<%= deployment %>} by {id}+avg:bosh.healthmonitor.system.cpu.wait{job:uaa,deployment:<%= deployment %>} by {id}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Average CPU (sys + user + wait)"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>,job:uaa} by {id}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Average % Memory Used"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.requests.ui.completed.time{deployment:<%= metron_agent_deployment %>,job:uaa} by {host}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Average requests.ui.completed.time"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.load.1m{job:uaa,deployment:<%= deployment %>} by {id}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Max Load1m"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_hour(avg:datadog.nozzle.uaa.requests.global.unhealthy.count{deployment:<%= metron_agent_deployment %>} by {host})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Average Hourly Rate requests.global.unhealthy.completed.time"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.vitals.jvm.heap.used{deployment:<%= metron_agent_deployment %>,job:uaa} by {host}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "title": "Avg of datadog.nozzle.vitals.jvm.heap.used over deployment:<%= metron_agent_deployment %>,job:..."
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.gorouter.latency.uaa{bosh_environment:<%= bosh_deployment %>} by {host}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -31,6 +185,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.audit_service.client_authentication_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.client_authentication_failure_count{deployment:<%= metron_agent_deployment %>} by {ip})",
@@ -48,6 +208,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.audit_service.principal_not_found_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.user_not_found_count{deployment:<%= metron_agent_deployment %>} by {ip})",
@@ -65,6 +231,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.audit_service.user_authentication_count{deployment:<%= deployment %>} by {ip}), per_minute(avg:datadog.nozzle.audit_service.user_authentication_failure_count{deployment:<%= metron_agent_deployment %>} by {ip})",
@@ -82,6 +254,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.audit_service.user_password_changes{deployment:<%= metron_agent_deployment %>} by {ip})",
@@ -99,6 +277,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.audit_service.user_password_failures{deployment:<%= metron_agent_deployment %>} by {ip})",
@@ -116,6 +300,12 @@
     },
     {
       "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
             "q": "per_minute(avg:datadog.nozzle.uaa.requests.global.completed.count{deployment:<%= metron_agent_deployment %>} by {ip})",
