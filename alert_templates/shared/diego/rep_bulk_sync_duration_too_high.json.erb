@@ -3,7 +3,7 @@
   "deleted": null,
   "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\n- Before the nsync bulker was removed, these alerts were a pretty strong signal for us to look at the BBS, which was locked up.\n- After the nsync bulker was removed, this was more likely to be an issue with the cloud controller.\n\n\n## Potential Solutions: \n\n\n <%= diego_oncall %>",
   "multi": false,
-  "name": "prod Diego: rep bulk sync duration too high",
+  "name": "<%= environment %> Diego: rep bulk sync duration too high",
   "options": {
     "escalation_message": "",
     "include_tags": false,
@@ -23,8 +23,8 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2017-07-15T12:03:29.863886+00:00",
-  "query": "avg(last_15m):max:datadog.nozzle.rep.RepBulkSyncDuration / 1000000000 > 20",
+  "overall_state_modified": "2019-08-02T14:22:21+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.rep.RepBulkSyncDuration{*} / 1000000000 > 20",
   "tags": [
     null
   ],
