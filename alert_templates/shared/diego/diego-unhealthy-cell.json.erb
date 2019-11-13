@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "Alert",
   "overall_state_modified": "2017-10-27T19:02:27.790158+00:00",
-  "query": "avg(last_30m):avg:datadog.nozzle.rep.GardenHealthCheckFailed by {job,index} > 0.99",
+  "query": "avg(last_30m):avg:datadog.nozzle.rep.GardenHealthCheckFailed{*} by {job,index} > 0.99",
   "tags": [
   ],
   "type": "metric alert"
