@@ -1,0 +1,33 @@
+{
+  "created_at": 1561053637000,
+  "deleted": null,
+  "message": "@cf-loggregator@pivotal.io",
+  "multi": false,
+  "name": "HTTPS Syslog reliability is less than {{threshold}}",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 98.0,
+      "warning": 99.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-11-16T20:40:44+00:00",
+  "query": "avg(last_2h):( avg:smoke_test.syslog.log_count{drain_type:https} / 10000 ) * 100 < 98",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}
