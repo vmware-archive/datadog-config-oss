@@ -1,7 +1,7 @@
 {
   "created_at": 1504313458000,
   "deleted": null,
-  "message": "##Description:\nDiego internal metrics \n\n## Excalation Path:\nDiego \n\n## A cell has been reporting unhealthy for 30 minutes or more.\n\n## Possible causes:\nGarden healthchecks are failing. \n\n## Potential Solutions:\nEscalate to @<%= diego_alerts_email %>",
+  "message": "##Description:\nDiego internal metrics \n\n## Excalation Path:\nDiego \n\n## A cell has been reporting unhealthy for 30 minutes or more.\n\n## Possible causes:\nGarden healthchecks are failing. Take a look at Garden logs and see if healthcheck container creations are failing. \n\n## Potential Solutions:\nEscalate to @<%= diego_alerts_email %>",
   "multi": true,
   "name": "<%= environment %> Diego: rep.GardenHealthCheckFailed >= 1",
   "options": {

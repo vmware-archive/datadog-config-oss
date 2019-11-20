@@ -1,8 +1,5 @@
 {
-  "created_at": 1450898658000,
-  "deleted": null,
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
-  "multi": false,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\n1. Check the state of the cells in the deployment with `cfdot cells` or `cfdot cell-states` to ensure there are enough available resources\n2. This could also be a signal that a stack/rootfs was removed from cells and is causing running apps or new apps to fail to be placed\n3. Check the Auctioneer logs for specific errors\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
   "name": "<%= environment %> Diego: LRP Auction Failure per min is too high",
   "options": {
     "escalation_message": "",

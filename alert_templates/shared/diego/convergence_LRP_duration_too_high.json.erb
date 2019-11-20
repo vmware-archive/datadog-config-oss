@@ -1,8 +1,8 @@
 {
   "created_at": 1452193615000,
   "deleted": null,
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\n[Documented Mitigations](https://docs.pivotal.io/pivotalcf/1-10/monitoring/kpi.html#ConvergenceLRPDuration)\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
   "multi": false,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at:\n1. Slow connection between BBS and Database VM\n2. Consider looking at the load average on the BBS vm, it could be under-provisioned if there is a large number of LRPs\n\n## Potential Solutions:\n[Documented Mitigations](https://docs.pivotal.io/pivotalcf/1-10/monitoring/kpi.html#ConvergenceLRPDuration)\n@pagerduty-datadog-pws-platform <%= diego_oncall %>\n",
   "name": "<%= environment %> Diego: Convergence LRP duration too high.",
   "options": {
     "escalation_message": "",

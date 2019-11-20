@@ -1,8 +1,8 @@
 {
   "created_at": 1505238007000,
   "deleted": null,
-  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
   "multi": false,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at:\n1. Slow connection between BBS and Database vm\n2. Claim a lock using cfdot cli and see if it's taking too long\n3. Look at DBQueryDurationMax metric coming from bbs\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>\n",
   "name": "<%= environment %> Diego: BBS request latency is too high.",
   "options": {
     "escalation_message": "",
