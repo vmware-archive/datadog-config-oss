@@ -10,10 +10,10 @@
     "locked": false,
     "new_host_delay": 300,
     "no_data_timeframe": null,
-    "notify_audit": true,
+    "notify_audit": false,
     "notify_no_data": false,
     "renotify_interval": 0,
-    "require_full_window": true,
+    "require_full_window": false,
     "silenced": {
     },
     "thresholds": {
@@ -25,9 +25,9 @@
     "timeout_h": 0
   },
   "org_id": 4242,
-  "overall_state": "Warn",
-  "overall_state_modified": "2019-11-21T20:34:07+00:00",
-  "query": "max(last_5m):max:concourse.worker.containers{*} by {worker} > 180",
+  "overall_state": "OK",
+  "overall_state_modified": "2019-11-22T19:29:27+00:00",
+  "query": "max(last_5m):avg:concourse.worker.containers{*} by {worker} > 180",
   "tags": [
 
   ],
