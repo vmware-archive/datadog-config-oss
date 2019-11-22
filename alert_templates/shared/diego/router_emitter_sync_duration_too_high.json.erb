@@ -2,6 +2,7 @@
   "created_at": 1502990533000,
   "deleted": null,
   "multi": false,
+  "name": "<%= environment %> Diego: Router emitter sync duration too high",
   "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\n1. BBS request latency is high, also check that metric, could be related to DB issues\n2. BBS is under-provisioned for the number of LRPs that are desired, check load average and VM size\n3. Check route-emitter logs, load average\n\n## Potential Solutions:\nEscalate to Diego team\n@pagerduty-datadog-pws-platform <%= diego_oncall %>",
   "options": {
     "escalation_message": "",
