@@ -1,0 +1,26 @@
+---
+prod:
+- query: avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}
+  color: white_on_red
+  value: 0.4
+- query: avg:new_relic.errors.all.errors_per_minute{application:webconsole_production}
+  color: white_on_green
+  value: 0.42
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_red
+  value: 0.5
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_yellow
+  value: 0.65
+- query: avg:new_relic.apdex.score{application:webconsole_production}
+  color: white_on_green
+  value: 1
+- query: avg:aws.rds.database_connections{dbinstanceidentifier:console}
+  color: green_on_white
+  value: 0
+- query: sum:new_relic.http_dispatcher.calls_per_minute{application:webconsole_production}
+  color: red_on_white
+  value: 50
+- query: sum:new_relic.http_dispatcher.calls_per_minute{application:webconsole_production}
+  color: green_on_white
+  value: 51
