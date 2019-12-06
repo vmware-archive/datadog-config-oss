@@ -3561,6 +3561,7 @@
       "isShared": false,
       "legend": false,
       "legend_size": "0",
+      "scaleFactor": 1,
       "sharedGlobalTime": {
         "live_span": "1h"
       },
@@ -3572,7 +3573,7 @@
             "conditional_formats": [
 
             ],
-            "q": "max:cloudops_tools.release_lag_hours{*} by {release_version}",
+            "q": "max:cloudops_tools.release_lag_hours{*} by {release_version}/24",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -3581,7 +3582,10 @@
             "type": "bars"
           }
         ],
-        "viz": "timeseries"
+        "viz": "timeseries",
+        "yaxis": {
+          "max": "14"
+        }
       },
       "time": {
         "live_span": "1mo"
@@ -3589,7 +3593,7 @@
       "title": true,
       "title_align": "left",
       "title_size": 13,
-      "title_text": "Release Lag (in hours)",
+      "title_text": "Release Lag (in days)",
       "type": "timeseries",
       "width": 69,
       "x": 1,
