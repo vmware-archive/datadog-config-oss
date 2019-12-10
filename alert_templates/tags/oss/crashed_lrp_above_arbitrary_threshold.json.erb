@@ -15,7 +15,6 @@
     "renotify_interval": 0,
     "require_full_window": false,
     "silenced": {
-      "*": 1574465530
     },
     "thresholds": {
       "critical": 4.5,
@@ -27,7 +26,7 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-11-21T23:06:36+00:00",
+  "overall_state_modified": "2019-12-04T16:58:37+00:00",
   "query": "pct_change(avg(last_1h),last_1d):avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg, 900) > 4.5",
   "tags": [
 
