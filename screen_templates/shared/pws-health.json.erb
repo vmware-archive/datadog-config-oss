@@ -238,7 +238,7 @@
                 "value": "-10000000000000000"
               }
             ],
-            "q": "sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:pws-pivotal-internal-apps}/sum:datadog.nozzle.rep.CapacityTotalMemory{deployment:pws-pivotal-internal-apps}*100",
+            "q": "sum:datadog.nozzle.CapacityRemainingMemory{deployment:pws-pivotal-internal-apps,origin:rep}/sum:datadog.nozzle.CapacityTotalMemory{deployment:pws-pivotal-internal-apps,origin:rep}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
