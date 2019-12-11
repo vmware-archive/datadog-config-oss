@@ -216,7 +216,7 @@
                 "value": "99.0"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -408,7 +408,7 @@
                 "value": "99.8"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -472,7 +472,7 @@
                 "value": "88"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -664,7 +664,7 @@
                 "value": "97.6"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -727,7 +727,7 @@
                 "value": "72"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.cliCommand.push{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -916,7 +916,7 @@
                 "value": "86"
               }
             ],
-            "q": "avg:datadog.nozzle.healthwatch.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>}*100",
+            "q": "avg:datadog.nozzle.health.check.CanaryApp.available{deployment:<%= metron_agent_diego_deployment %>,foundation:<%= domain_url %>,origin:healthwatch}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
