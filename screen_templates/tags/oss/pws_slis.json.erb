@@ -4,12 +4,12 @@
   },
   "board_title": "PWS SLI Dashboard",
   "created_by": {
-    "access_role": "st",
+    "access_role": "adm",
     "disabled": false,
     "email": "jpollard@pivotal.io",
     "handle": "jpollard@pivotal.io",
     "icon": "https://secure.gravatar.com/avatar/bb561237f35fb8534f3ef914c7eebf4b?s=48&d=retro",
-    "is_admin": false,
+    "is_admin": true,
     "name": "James Pollard",
     "role": null,
     "verified": true
@@ -266,7 +266,7 @@
                 "value": "75"
               }
             ],
-            "q": "(1-avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>})/0.005*100",
+            "q": "(1-avg:pws.cf_sli.app_start_status{deployment:<%= diego_deployment %>,source:concourse.<%= domain_url %>})/0.005*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -319,7 +319,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= diego_deployment %>,source:concourse.<%= domain_url %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -478,7 +478,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= diego_deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -530,7 +530,7 @@
                 "value": "100"
               }
             ],
-            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>}*100",
+            "q": "avg:pws.cf_sli.app_start_status{deployment:<%= diego_deployment %>}*100",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -797,7 +797,7 @@
                 "value": "50"
               }
             ],
-            "q": "(avg:pws.cf_sli.app_start_status{deployment:<%= deployment %>,source:concourse.<%= domain_url %>}-0.995)*60*24*30",
+            "q": "(avg:pws.cf_sli.app_start_status{deployment:<%= diego_deployment %>,source:concourse.<%= domain_url %>}-0.995)*60*24*30",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
