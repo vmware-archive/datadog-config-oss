@@ -23,8 +23,8 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-02-05T20:43:47.421767+00:00",
-  "query": "max(last_1h):sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,deployment:pws-pivotal-internal-apps} < 35000",
+  "overall_state_modified": "2019-08-21T00:54:06+00:00",
+  "query": "max(last_1h):sum:datadog.nozzle.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,deployment:pws-pivotal-internal-apps,origin:rep} < 35000",
   "tags": [
     null
   ],

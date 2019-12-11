@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-09-10T18:33:45+00:00",
-  "query": "max(last_5m):avg:datadog.nozzle.bbs.Domain.cf_apps{deployment:<%= metron_agent_deployment %>} < 1",
+  "query": "max(last_5m):avg:datadog.nozzle.Domain.cf_apps{deployment:<%= metron_agent_deployment %>,origin:bbs} < 1",
   "tags": [
     null
   ],

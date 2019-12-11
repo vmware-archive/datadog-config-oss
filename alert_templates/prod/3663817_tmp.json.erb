@@ -1,0 +1,32 @@
+{
+  "created_at": 1513943803000,
+  "deleted": null,
+  "message": "{{#is_alert}}\nCurrently the memory alarm was set off for the PWS Prod deployment. Check it out.\nPWS pipeline: https://concourse.<%= domain_url %>/teams/pcf-rabbitmq \n{{/is_alert}} \n{{#is_recovery}}\nMemory alarm is now in a healthy state for the PWS Prod deployment.\n{{/is_recovery}} @slack-pcf-rabbitmq",
+  "multi": false,
+  "name": "@pcf-rabbits PWS RabbitMQ Prod memory alarm triggered",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 20,
+    "notify_audit": false,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.0
+    },
+    "timeout_h": 1
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2018-09-12T06:58:39+00:00",
+  "query": "max(last_5m):sum:datadog.nozzle.p_rabbitmq_rabbitmq_system_mem_alarm{origin:p-rabbitmq} > 0",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
+}

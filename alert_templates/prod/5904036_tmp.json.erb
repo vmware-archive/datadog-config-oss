@@ -1,0 +1,32 @@
+{
+  "created_at": 1533920324000,
+  "deleted": null,
+  "message": "Time since last leader heartbeat has consistently exceeded 600 seconds over the past minute. This may indicate that the leader instance is down and a failover to the follower is necessary. @cf-dedicated-mysql@pivotal.io\n\n## Suggested Steps:\n- Review the PWS datadog dashboard titled \"cf-dedicated-mysql-pws-environment-dashboards\": https://pivotalcloudopspws.datadoghq.com/screen/267738/cf-dedicated-mysql-pws-environment-dashboards-150158084\n- Investigate which service-instance deployment is struggling\n- Optionally, notify the owners of the service instance via email @cf-dedicated-mysql@pivotal.io",
+  "multi": true,
+  "name": "Leader / Follower delay > 600s",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 600.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-09-25T19:46:37+00:00",
+  "query": "min(last_1m):avg:datadog.nozzle.p.mysql_follower_seconds_since_leader_heartbeat{origin:p.mysql,!deployment:service-instance_cd09f890-6873-437a-b26d-7535448209ea} by {deployment} > 600",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

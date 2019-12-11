@@ -23,8 +23,8 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-08-13T20:03:20+00:00",
-  "query": "max(last_5m):derivative(piecewise_constant(sum:datadog.nozzle.gorouter.backend_invalid_tls_cert{*}.rollup(sum, 60))) >= 0.5",
+  "overall_state_modified": "2019-11-21T07:22:19+00:00",
+  "query": "max(last_5m):derivative(piecewise_constant(sum:datadog.nozzle.backend_invalid_tls_cert{origin:gorouter}.rollup(sum, 60))) >= 0.5",
   "tags": [
 
   ],

@@ -1,0 +1,32 @@
+{
+  "created_at": 1495236910000,
+  "deleted": null,
+  "message": "@pagerduty-CAPI-service\n\nImpact:\nMinimal, only async actions like cleanup jobs are affected. Some user-facing async jobs like async service provisioning may take longer.\n\nMitigation:\nThe queue should drain on its own eventually, but adding more CC workers can speed the process. If this alert was not actionable, tweak the alert settings to avoid needless pages.\n\nPossible Cause:\nA sharp spike (~5 to >2000 jobs in a minute) in the CC job queue can be caused by the deletion of Organizations. Deleting the org will delete all apps in that org and each app delete can trigger several background jobs.\n\nPrevious Investigation: https://www.pivotaltracker.com/story/show/146152819",
+  "multi": true,
+  "name": "CloudController Jobs' Queue is not being processed",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 150.0
+    },
+    "timeout_h": 2
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-02-06T18:48:54+00:00",
+  "query": "min(last_30m):max:datadog.nozzle.job_queue_length.total{deployment:<%= metron_agent_deployment %>,origin:cc} by {deployment} > 150",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

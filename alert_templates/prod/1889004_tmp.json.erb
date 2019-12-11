@@ -1,0 +1,32 @@
+{
+  "created_at": 1492227753000,
+  "deleted": null,
+  "message": "PWS-Logsearch log queue is so big that it has started dropping logs.\n\n@pagerduty-pws-logsearch\n\nGeneral troubleshooting info and tools: https://www.pivotaltracker.com/n/projects/1598663/stories/131794531\n\nQuestions that might be useful to answer:\nIs Logsearch being deployed?\nAre the elastic_search nodes out of disk space? Is the trendline up or flat?\nAre the parsers failing?\nAre any other components failing?\nHas log generation by the platform increased recently?\nHas Logsearch been deployed/modified recently?\n\nIf no disk space available, this can be temporarily mitigated by deleting old logs: https://www.pivotaltracker.com/story/show/142002145",
+  "multi": false,
+  "name": "PWS-Logsearch log queue max",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 140000000.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-11-07T14:28:17+00:00",
+  "query": "max(last_1m):avg:datadog.nozzle.logsearch_redis_queue_size{deployment:<%= environment %>-logsearch,job:queue,origin:logsearch} > 140000000",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

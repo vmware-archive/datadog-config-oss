@@ -1,0 +1,32 @@
+{
+  "created_at": 1520624453000,
+  "deleted": null,
+  "message": "## Suggested Steps\n- Review the PWS datadog dashboard titled \"cf-dedicated-mysql-pws-environment-dashboards\": https://pivotalcloudopspws.datadoghq.com/screen/267738/cf-dedicated-mysql-pws-environment-dashboards-150158084\n- Investigate which service-instance deployment is struggling\n- Optionally, notify the owners of the service instance via email @cf-dedicated-mysql@pivotal.io",
+  "multi": false,
+  "name": "Dedicated MySQL: Follower Seconds Behind Leader",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 2880,
+    "notify_audit": false,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 86400.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-06-04T16:43:01+00:00",
+  "query": "max(last_30m):max:datadog.nozzle.p.mysql_follower_seconds_behind_master{origin:p.mysql} > 86400",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

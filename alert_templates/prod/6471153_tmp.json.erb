@@ -1,0 +1,34 @@
+{
+  "created_at": 1538080412000,
+  "deleted": null,
+  "message": "PresenceExpired is higher than 0. Investigate:\n\n1. Which cell presence is expiring the most\n2. Is there anything intersting happening on the cell (i.e. network bandwidth, cpu, load average, swap ?)\n3. How long do cfdot commands take on that cell ?\n4. Check the NIC error rate using ifconfig\n\nMost recent context as of 2019/11/11: https://pivotal.slack.com/archives/C3MGYF9B9/p1566321757216300\n\n@slack-cf-diego",
+  "multi": true,
+  "name": "Presence expiration is high",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+      "*": null
+    },
+    "thresholds": {
+      "critical": 0.5,
+      "warning": 0.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-12-11T17:55:33+00:00",
+  "query": "avg(last_1m):per_minute(max:datadog.nozzle.PresenceExpired{origin:locket} by {job,index,ip}) > 0.5",
+  "tags": [
+
+  ],
+  "type": "query alert"
+}

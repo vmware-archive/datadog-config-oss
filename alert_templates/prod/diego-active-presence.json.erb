@@ -28,8 +28,8 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-08-21T17:53:58+00:00",
-  "query": "avg(last_4h):anomalies(max:datadog.nozzle.locket.ActivePresences{*}, 'basic', 2, direction='below', alert_window='last_15m', interval=60, count_default_zero='true') >= 0.95",
+  "overall_state_modified": "2019-10-24T20:01:19+00:00",
+  "query": "avg(last_4h):anomalies(max:datadog.nozzle.ActivePresences{origin:locket}, 'basic', 2, direction='below', alert_window='last_15m', interval=60, count_default_zero='true') >= 0.95",
   "tags": [
 
   ],

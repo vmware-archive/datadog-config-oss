@@ -1,0 +1,33 @@
+{
+  "created_at": 1470650923000,
+  "deleted": null,
+  "message": "PWS-Logsearch log queue is too big. Log ingestion has stopped or slowed, or log generation has increased beyond the rate of log ingestion.\n\nMax size is 140M. After the queue reaches maximum size, Logsearch will start dropping platform logs.\n\n@pagerduty-pws-logsearch\n\nGeneral troubleshooting info and tools: https://www.pivotaltracker.com/n/projects/1598663/stories/131794531\n\nQuestions that might be useful to answer:\nIs Logsearch being deployed?\nAre the elastic_search nodes out of disk space? Is the trendline up or flat?\nAre the parsers failing?\nAre any other components failing?\nHas log generation by the platform increased recently?\nHas Logsearch been deployed/modified recently?\n\nIf no disk space available, this can be temporarily mitigated by deleting old logs: https://www.pivotaltracker.com/story/show/142002145\n\nThis alert last updated by Natalie Bennett on March 29, 2017.",
+  "multi": false,
+  "name": "PWS-Logsearch log queue",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": false,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 9000000.0,
+      "warning": 5000000.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-01-25T23:17:11+00:00",
+  "query": "max(last_1m):avg:datadog.nozzle.logsearch_redis_queue_size{deployment:<%= environment %>-logsearch,job:queue,origin:logsearch} > 9000000",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

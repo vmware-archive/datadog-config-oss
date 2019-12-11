@@ -1,0 +1,33 @@
+{
+  "created_at": 1568743228000,
+  "deleted": null,
+  "message": "Steps to follow:\n\n1. Understand why persistent disk is high. Are backups failing? Is the user outgrowing the service instance sizing?\n2. Check to see what type of plan the service instance is using. Is there a larger plan available?\n3. If corrective action is needed by user, contact them and tell them to update to a larger plan.\n\n @cf-dedicated-mysql+datadog@pivotal.io",
+  "multi": true,
+  "name": "MySQL Service Instance Persistent Disk is high on deployment {{deployment}}",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 80.0,
+      "warning": 50.0
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "Warn",
+  "overall_state_modified": "2019-12-11T00:30:25+00:00",
+  "query": "avg(last_5m):max:datadog.nozzle.p.mysql_system_persistent_disk_used_percent{origin:p.mysql} by {deployment} > 80",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}
