@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "Alert",
   "overall_state_modified": "2019-12-12T22:08:24+00:00",
-  "query": "avg(last_1h):100 * ( rate(sum:datadog.nozzle.ingress{source_id:doppler}) / rate(sum:datadog.nozzle.egress{source_id:doppler}) ) < 85",
+  "query": "avg(last_1h):100 * ( rate(sum:datadog.nozzle.ingress{source_id:metron}) / rate(sum:datadog.nozzle.egress{source_id:metron}) ) < 85",
   "tags": [
     null
   ],
