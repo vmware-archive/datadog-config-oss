@@ -1,11 +1,32 @@
 {
-  "escalation_message": "",
-  "message": "## Description:\n <%= loggregator_pagerduty %> \nThe count of sent messages from the Metron Agent does not match the count of received messages on the Doppler Server.\n\n## Escalation Path:\n  LAMBDA Team. \n\n## Reasons this has alerted before:\n- Doppler had run out of file descriptors. Check by doing `ulimit -a`\n\n## What we have done before:\n- Recreated doppler servers when they had run out of file descriptors. \n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "created_at": 1450898659000,
+  "deleted": null,
+  "message": "## Description:\n <%= monitoringAndMetrics_pagerduty %> \nThe count of sent messages from the Metron Agent does not match the count of received messages on the Doppler Server.\n\n## Escalation Path:\n  LAMBDA Team. \n\n## Reasons this has alerted before:\n- Doppler had run out of file descriptors. Check by doing `ulimit -a`\n\n## What we have done before:\n- Recreated doppler servers when they had run out of file descriptors. \n\n##Feedback:\n Have feedback for this alert? [File an issue](https://github.com/pivotal-cf/datadog-config/issues/new)",
+  "multi": false,
   "name": "<%= environment %> CF: Loggregator Message reliability from Metron to Doppler below threshold",
-  "no_data_timeframe": 30,
-  "notify_audit": false,
-  "notify_no_data": false,
-  "query": "avg(last_1h):100 * ( rate(sum:datadog.nozzle.DopplerServer.listeners.receivedEnvelopes{*}) + rate(sum:datadog.nozzle.loggregator.doppler.ingress{*}) ) / ( rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{*}) + rate(sum:datadog.nozzle.loggregator.metron.egress{*}) ) < 85",
-  "renotify_interval": null,
-  "timeout_h": null
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 85.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "Alert",
+  "overall_state_modified": "2019-12-12T22:08:24+00:00",
+  "query": "avg(last_1h):100 * ( rate(sum:datadog.nozzle.ingress{source_id:doppler}) / rate(sum:datadog.nozzle.egress{source_id:doppler}) ) < 85",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
 }
