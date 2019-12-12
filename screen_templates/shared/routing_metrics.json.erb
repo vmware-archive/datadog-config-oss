@@ -1,1726 +1,681 @@
 {
-  "board_title": "<%= environment %> Routing Metrics",
-  "board_bgtype": "board_graph",
-  "original_title": "<%= environment %> Routing Metrics",
-  "height": 133,
-  "width": "100%",
-  "template_variables": [
+  "created_by": {
+    "access_role": "st",
+    "disabled": true,
+    "email": "cpiraino@pivotal.io",
+    "handle": "cpiraino@pivotal.io",
+    "icon": "https://secure.gravatar.com/avatar/68bd887253afe4eb7587d688179e652b?s=48&d=retro",
+    "is_admin": false,
+    "name": "",
+    "role": "",
+    "verified": true
+  },
+  "description": "",
+  "graphs": [
     {
-      "default": "*",
-      "prefix": null,
-      "name": "scope"
-    }
-  ],
-  "templated": true,
-  "widgets": [
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "Routing API",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 34,
-      "y": 0,
-      "x": 0,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "Route Emitter",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 39,
-      "y": 0,
-      "x": 35,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "App request roundtrip (ns) (Week)",
-      "height": 20,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-01' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-01' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-01' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-02' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-02' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-02' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-03' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-03' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-03' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-04' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-04' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-04' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-05' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-05' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-05' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-06' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-06' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-06' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-07' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-07' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-07' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-08' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-08' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-08' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-09' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-09' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-09' against Director\" OR \"Begin update deployment for 'pws-diego-cellblock-10' against Director\" OR \"Finish update deployment for 'pws-diego-cellblock-10' against Director\" OR \"Error during update deployment for 'pws-diego-cellblock-10' against Director\"",
+            "tags_execution": "and"
+          }
+        ],
         "requests": [
           {
-            "q": "avg:app_benchmarking.rest_of_time{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_gorouter{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_app{deployment:<%= deployment %>} by {status}",
-            "type": "bars"
+            "q": "per_minute(sum:datadog.nozzle.bad_gateways{deployment:<%= metron_agent_deployment %>,origin:gorouter} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
+          }
+        ],
+        "viz": "timeseries"
+      },
+      "title": "Bad Gateways per minute"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\" OR \"Error during update deployment for '<%= deployment %>' against Director\" "
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.unregistry_message.route_emitter{deployment:<%= metron_agent_deployment %>})",
+            "style": {
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
           },
           {
-            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= deployment %>} by {status})",
+            "q": "per_minute(sum:datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>})",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Routes Unregistered Per Min By Route Emitter vs Gorouter"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\" OR \"Error during update deployment for '<%= deployment %>' against Director\" "
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Requests per second, per router"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= diego_deployment %>' against Director\" "
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.routes_pruned{deployment:<%= metron_agent_deployment %>} by {index}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Routes Pruned per Router"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "\"Begin update deployment for '<%= diego_deployment %>' against Director\" OR \"Finish update deployment for '<%= diego_deployment %>' against Director\" OR \"Error during update deployment for '<%= diego_deployment %>' against Director\" OR \"Begin update deployment for '<%= deployment %>' against Director\" OR \"Finish update deployment for '<%= deployment %>' against Director\" OR \"Error during update deployment for '<%= deployment %>' against Director\" "
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "(per_second(min:datadog.nozzle.route_emitter.HTTPRouteNATSMessagesEmitted{*} by {ip}))",
             "style": {
-              "palette": "warm"
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Messages Emitted by all Route Emitters per Second"
+    },
+    {
+      "definition": {
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy OR tags:deployment:<%= environment %> end_deploy"
+          }
+        ],
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Latency (ms)"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:aws.ec2.network_in{job:nats} by {index}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
+          },
+          {
+            "q": "avg:aws.ec2.network_out{job:nats} by {index}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "nats traffic"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router} by {index} + avg:bosh.healthmonitor.system.cpu.sys{job:router} by {index} + avg:bosh.healthmonitor.system.cpu.wait{job:router} by {index}, avg:bosh.healthmonitor.system.cpu.user{job:router} by {index} + avg:bosh.healthmonitor.system.cpu.sys{job:router} by {index} + avg:bosh.healthmonitor.system.cpu.wait{job:router} by {index}",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Avg CPU usage per Router"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router} by {index}",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Avg of bosh.healthmonitor.system.mem.percent over job:router by index"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
             },
             "type": "line"
           }
         ],
-        "outliers": "1%",
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying."
-          }
-        ],
-        "markers": [
-          {
-            "dim": "y",
-            "type": "error dashed",
-            "value": "y = 0",
-            "val": 0
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 34,
-      "timeframe": "1w",
-      "y": 99,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "Avg of bosh.healthmonitor.system.mem.percent over job:router"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total HTTP Subscriptions",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_http_subscriptions{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total HTTP Routes",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.routing_api.total_http_routes{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 19,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total TCP Subscriptions",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 34,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total TCP Routes",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 49,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Routes Synced Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesSynced{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Routes",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.route_emitter.RoutesTotal{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 19,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Routes Registered Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesRegistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 34,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Routes Unregistered Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 49,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Route Emitter Bulk Duration (seconds)",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.route_emitter.RouteEmitterSyncDuration{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000000",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 64,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "Process Health",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 39,
-      "y": 0,
-      "x": 154,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "GoRouter",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 39,
-      "y": 0,
-      "x": 75,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Requests Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "DEA App Requests Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.routed_app_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 49,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Responses Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Seconds since Routing Table update",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip} / 1000",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 64,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Average Latency for Responses (milliseconds)",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 64,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Bad Gateways Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(sum:datadog.nozzle.gorouter.bad_gateways{deployment:<%= metron_agent_deployment %>})",
+            "q": "avg:datadog.nozzle.backend_tls_handshake_failed{*}",
             "style": {
-              "palette": "orange"
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
             },
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 34,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "backend_tls_failed"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Responses with 2xx Status Code Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.2xx{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 49,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "App Responses with 4xx Status Code Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 19,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "App Responses with 5xx Status Code Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 34,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Rejected Requests Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_second(sum:datadog.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>})",
+            "q": "avg:datadog.nozzle.gorouter.buffered_messages{*}",
             "style": {
-              "palette": "orange"
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
             },
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 19,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "Avg of datadog.nozzle.gorouter.buffered_messages over *"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "# of GoRoutines",
-      "height": 17,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.numGoRoutines{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.numGoRoutines{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.numGoRoutines{deployment:<%= routing_deployment || metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.gorouter.file_descriptors{*}",
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 154,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "Avg of datadog.nozzle.gorouter.file_descriptors over *"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "# of Bytes Allocated on Heap",
-      "height": 17,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedHeap{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{*}",
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 22,
-      "x": 193,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "Avg of datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS over *"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "# of Bytes Allocated on Stack",
-      "height": 15,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocatedStack{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 23,
-      "x": 154,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "GC Pause Time (ns)"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total # of Bytes Allocated",
-      "height": 17,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.numBytesAllocated{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.numBytesAllocated{deployment:<%= routing_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 41,
-      "x": 193,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "milliseconds since last route update"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "# of Mallocs Per Second",
-      "height": 18,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:r_iso}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:r_iso}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "ms since last registry update (iso seg routers)"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:router}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:router}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "ms since last registry update"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_dropped_messages{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Avg of datadog.nozzle.gorouter.total_dropped_messages over *"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Total routes"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "sum:datadog.nozzle.route_emitter.HTTPRouteCount{*}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "route emitter routing table vs gorouter routing table"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_routes{ip:10.10.81.3}",
+            "type": "line"
+          },
+          {
+            "q": "avg:datadog.nozzle.gorouter.total_routes{ip:10.10.81.4}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "datadog.nozzle.gorouter.total_routes, datadog.nozzle.gorouter.total_routes"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "max:bosh.healthmonitor.system.mem.percent{job:router} by {id}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "% memory used by id"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "max:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>}",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Max of datadog.nozzle.gorouter.latency over deployment:<%= metron_agent_deployment %>"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Gorouter 404 per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.responses.2xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "2xx responses per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "type": "area"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "4xx responses per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_failures{deployment:<%= metron_agent_deployment %>})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_upgrades{deployment:<%= metron_agent_deployment %>})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          },
+          {
+            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_upgrades{deployment:pws-isolation-segment})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "datadog.nozzle.gorouter.websocket_upgrades, datadog.nozzle.gorouter.websocket..."
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(max:datadog.nozzle.gorouter.websocket_upgrades{*})",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "Max of datadog.nozzle.gorouter.websocket_upgrades over *"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(sum:datadog.nozzle.gorouter.backend_invalid_id{deployment:<%= metron_agent_deployment %>})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "backend_invalid_id per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{deployment:<%= metron_agent_deployment %>})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "backend_tls_handshake per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_minute(sum:datadog.nozzle.gorouter.bad_gateways{*})",
+            "type": "line"
+          },
+          {
+            "q": "per_minute(sum:datadog.nozzle.gorouter.responses.5xx{*})",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "5xx and Bad Gateways per minute"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numFrees{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "type": "line"
+          }
+        ],
+        "show_legend": false,
+        "viz": "timeseries"
+      },
+      "title": "# of Frees per second"
+    },
+    {
+      "definition": {
+        "legend_size": "0",
         "requests": [
           {
             "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "line"
-          },
-          {
-            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
-            "type": "line"
-          },
-          {
-            "q": "per_second(avg:datadog.nozzle.route_emitter.memoryStats.numMallocs{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
-            "type": "line"
-          },
-          {
-            "q": "per_second(avg:datadog.nozzle.tcp_emitter.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
-            "type": "line"
-          },
-          {
-            "q": "per_second(avg:datadog.nozzle.router_configurer.memoryStats.numMallocs{deployment:<%= routing_deployment %>} by {ip})",
-            "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "show_legend": false,
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 40,
-      "x": 154,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "# Mallocs per Second"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Last GC Pause Time (milliseconds)",
-      "height": 16,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip} / 1000000",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_diego_deployment %>} by {ip} / 1000000",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.memoryStats.lastGCPauseTimeNS{deployment:<%= routing_deployment %>} by {ip} / 1000000",
+            "q": "avg:datadog.nozzle.numGoRoutines{deployment:<%= metron_agent_deployment %>,origin:gorouter} by {ip}",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
             "type": "line"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 4,
-      "x": 193,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "# of GoRoutines"
     },
     {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "# of CPUs",
-      "height": 17,
-      "tile_def": {
-        "viz": "timeseries",
+      "definition": {
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.numCPUS{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.route_emitter.numCPUS{deployment:<%= metron_agent_diego_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.tcp_emitter.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
-          },
-          {
-            "q": "avg:datadog.nozzle.router_configurer.numCPUS{deployment:<%= routing_deployment %>} by {ip}",
-            "type": "line"
+            "q": "per_second(avg:datadog.nozzle.registry_message.route_emitter{deployment:<%= metron_agent_deployment %>,origin:gorouter} by {ip})",
+            "style": {
+              "palette": "dog_classic",
+              "type": "solid",
+              "width": "normal"
+            },
+            "type": "area"
           }
         ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
+        "viz": "timeseries"
       },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 60,
-      "x": 193,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "Thoth - Request Tracing",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 34,
-      "y": 95,
-      "x": 0,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "System Health",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 3,
-      "width": 34,
-      "y": 78,
-      "x": 155,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "CPU System",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ],
-        "markers": [
-          {
-            "max": null,
-            "min": 80,
-            "type": "error bold",
-            "value": "y > 80",
-            "dim": "y"
-          },
-          {
-            "max": 80,
-            "min": null,
-            "type": "ok dashed",
-            "value": "y < 80",
-            "dim": "y"
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 82,
-      "x": 155,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "CPU User",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ],
-        "markers": [
-          {
-            "max": null,
-            "min": 80,
-            "type": "error bold",
-            "value": "y > 80",
-            "dim": "y"
-          },
-          {
-            "max": 80,
-            "min": null,
-            "type": "ok dashed",
-            "value": "y < 80",
-            "dim": "y"
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 82,
-      "x": 194,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "CPU Wait",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ],
-        "markers": [
-          {
-            "max": null,
-            "min": 80,
-            "type": "error bold",
-            "value": "y > 80",
-            "dim": "y"
-          },
-          {
-            "max": 80,
-            "min": null,
-            "type": "ok dashed",
-            "value": "y < 80",
-            "dim": "y"
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 97,
-      "x": 194,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "System Memory Percent",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ],
-        "markers": [
-          {
-            "max": null,
-            "min": 80,
-            "type": "error bold",
-            "value": "y > 80",
-            "dim": "y"
-          },
-          {
-            "max": 80,
-            "min": null,
-            "type": "ok dashed",
-            "value": "y < 80",
-            "dim": "y"
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 97,
-      "x": 155,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Ephemeral Disk Percent",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z1,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z2,deployment:<%= deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:route_emitter_z1,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:route_emitter_z2,deployment:<%= diego_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_router_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_router_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_emitter_z1,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          },
-          {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:tcp_emitter_z2,deployment:<%= routing_deployment %>}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ],
-        "markers": [
-          {
-            "max": null,
-            "min": 80,
-            "type": "error bold",
-            "value": "y > 80",
-            "dim": "y"
-          },
-          {
-            "max": 80,
-            "min": null,
-            "type": "ok dashed",
-            "value": "y < 80",
-            "dim": "y"
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 112,
-      "x": 155,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Requests (Uptime)",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1w",
-      "y": 79,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Token Errors",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= routing_deployment %> started deploying. OR tags:deployment:<%= routing_deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 64,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Key Refresh Events",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 34,
-      "timeframe": "1h",
-      "y": 79,
-      "x": 0,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Token Fetch Errors",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.gorouter.token_fetch_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 79,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Subscribe Event Errors",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.gorouter.subscribe_events_errors{deployment:<%= metron_agent_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 94,
-      "x": 75,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "color": "#4d4d4d",
-      "text": "TCP Router",
-      "title_align": "left",
-      "text_align": "left",
-      "title_text": "",
-      "height": 2,
-      "width": 39,
-      "y": 80,
-      "x": 35,
-      "font_size": "36",
-      "type": "free_text"
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Current Queued Req",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.router_configurer.TotalCurrentQueuedRequests{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 84,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Total Backend Connection Errors",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.router_configurer.TotalBackendConnectionErrors{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 99,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Avg Queue Time (ms)",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.router_configurer.AverageQueueTimeMs{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 114,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Avg Connect Time (ms)",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:datadog.nozzle.router_configurer.AverageConnectTimeMs{deployment:<%= routing_deployment %>} by {ip}",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 129,
-      "x": 35,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
-    },
-    {
-      "title_size": 16,
-      "title": true,
-      "title_align": "left",
-      "title_text": "Route Emitter vs GoRouter Registry Messages Per Second",
-      "height": 13,
-      "tile_def": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.registry_message.route_emitter{deployment:<%= metron_agent_deployment %>} by {ip})",
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          },
-          {
-            "q": "per_minute(avg:datadog.nozzle.route_emitter.MessagesEmitted{deployment:<%= metron_agent_diego_deployment %>} by {ip})",
-            "aggregator": "avg",
-            "conditional_formats": [
-
-            ],
-            "type": "line"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= deployment %> started deploying. OR tags:deployment:<%= deployment %> finished deploying."
-          }
-        ]
-      },
-      "width": 39,
-      "timeframe": "1h",
-      "y": 94,
-      "x": 114,
-      "legend_size": "0",
-      "type": "timeseries",
-      "legend": false
+      "title": "Route Emitter NATs messages received by GoRouter"
     }
   ],
-  "shared": false,
-  "title_edited": true
+  "new_id": "k8i-fcv-c2i",
+  "read_only": false,
+  "template_variables": [
+
+  ],
+  "title": "GoRouter"
 }
