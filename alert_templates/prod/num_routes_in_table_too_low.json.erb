@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2017-11-04T01:07:14+00:00",
-  "query": "avg(last_10m):min:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>,!job:r_iso} < 100",
+  "query": "avg(last_10m):min:datadog.nozzle.total_routes{deployment:<%= metron_agent_diego_deployment %>,origin:gorouter,!job:r_iso} < 100",
   "tags": [
 
   ],

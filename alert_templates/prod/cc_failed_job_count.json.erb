@@ -22,9 +22,9 @@
     "timeout_h": 24
   },
   "org_id": 4242,
-  "overall_state": "Alert",
-  "overall_state_modified": "2019-11-04T04:31:14+00:00",
-  "query": "avg(last_5m):avg:datadog.nozzle.cc.failed_job_count.total{deployment:<%= metron_agent_deployment %>} by {deployment} > 2000",
+  "overall_state": "OK",
+  "overall_state_modified": "2019-11-30T21:04:12+00:00",
+  "query": "avg(last_5m):avg:datadog.nozzle.failed_job_count.total{deployment:<%= metron_agent_diego_deployment %>,origin:cc} by {deployment} > 2000",
   "tags": [
     null
   ],

@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-07-23T23:23:07+00:00",
-  "query": "max(last_5m):avg:datadog.nozzle.gorouter.ms_since_last_registry_update{*} > 30000",
+  "query": "max(last_5m):avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter} > 30000",
   "tags": [
 
   ],

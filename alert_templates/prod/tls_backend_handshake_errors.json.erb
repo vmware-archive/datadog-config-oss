@@ -24,8 +24,8 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": null,
-  "query": "min(last_1m):per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{*}) > 30",
+  "overall_state_modified": "2019-03-18T07:08:12+00:00",
+  "query": "min(last_1m):per_minute(sum:datadog.nozzle.backend_tls_handshake_failed{origin:gorouter}) > 30",
   "tags": [
 
   ],

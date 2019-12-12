@@ -25,7 +25,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-11-12T19:02:54+00:00",
-  "query": "avg(last_15m):max:datadog.nozzle.gorouter.latency.uaa{bosh_environment:<%= bosh_deployment %>} > 500",
+  "query": "avg(last_15m):max:datadog.nozzle.latency.uaa{bosh_environment:<%= bosh_deployment %>,origin:gorouter} > 500",
   "tags": [
 
   ],

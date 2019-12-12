@@ -27,7 +27,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-11-09T01:48:54+00:00",
-  "query": "avg(last_10m):avg:datadog.nozzle.uaa.requests.ui.completed.time{deployment:<%= metron_agent_diego_deployment %>,job:uaa} by {host} > 1000",
+  "query": "avg(last_10m):avg:datadog.nozzle.requests.ui.completed.time{deployment:<%= metron_agent_diego_deployment %>,job:uaa,origin:uaa} by {host} > 1000",
   "tags": [
 
   ],
