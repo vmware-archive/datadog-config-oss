@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-01-08T22:14:47+00:00",
-  "query": "max(last_15m):sum:datadog.nozzle.rep.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} < 350000",
+  "query": "max(last_15m):sum:datadog.nozzle.CapacityRemainingMemory{bosh_environment:<%= bosh_deployment %>,job:diego-cell,origin:rep,!deployment:pws-isolation-cloudops,!deployment:pws-isolation-segment} < 350000",
   "tags": [
     null
   ],

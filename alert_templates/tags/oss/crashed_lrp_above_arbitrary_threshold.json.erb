@@ -27,7 +27,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2019-12-04T16:58:37+00:00",
-  "query": "pct_change(avg(last_1h),last_1d):avg:datadog.nozzle.bbs.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>}.rollup(avg, 900) > 4.5",
+  "query": "pct_change(avg(last_1h),last_1d):avg:datadog.nozzle.CrashedActualLRPs{deployment:<%= metron_agent_diego_deployment %>,origin:bbs}.rollup(avg, 900) > 4.5",
   "tags": [
 
   ],

@@ -1,0 +1,32 @@
+{
+  "created_at": 1486513902000,
+  "deleted": null,
+  "message": "{{#is_alert}}\n\n## Diego has more LRP running than expected\n\n# Actions\n\n## Who to escalate to: \n\n\\<%= diego_oncall %>  \n\n## Statuspage update:\n\n## How to confirm a false positive:\n\n## How to confirm a true positive:  \n\n{{/is_alert}}\n\n## Background:\nWhen Diego wants to add more apps, the converger will send a request to the auctioneer to spin up additional Long Running Processes(LRPs). \n\nLRPsExtra is the total number of LRP instances that are no longer desired but still have a BBS record. \n\n<%= cloudops_non_critical_pagerduty %>",
+  "multi": false,
+  "name": "<%= environment %>: Diego has more LRP running than expected",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": false,
+    "notify_no_data": false,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.5
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-09-25T08:32:53+00:00",
+  "query": "min(last_30m):avg:datadog.nozzle.LRPsExtra{deployment:<%= metron_agent_diego_deployment %>,origin:bbs} > 0.5",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
+}

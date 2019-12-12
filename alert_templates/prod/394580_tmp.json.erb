@@ -1,0 +1,32 @@
+{
+  "created_at": 1450898659000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\n1. BBS request latency is high, also check that metric, could be related to DB issues\n2. BBS is under-provisioned for the number of LRPs that are desired, check load average and VM size\n3. Rep is slow to do container operations (list, etc.), check the logs, load average, Garden\n\n## Potential Solutions: \n\n\n <%= diego_oncall %>",
+  "multi": false,
+  "name": "<%= environment %> Diego: rep bulk sync duration too high",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 20.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-08-02T14:22:21+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.RepBulkSyncDuration{origin:rep} / 1000000000 > 20",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}

@@ -1,0 +1,32 @@
+{
+  "created_at": 1450898658000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics \n\n## Escalation Path:\nDiego \n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at: \n1. Expired Certs that CAPI is using to talk to routing components or BBS\n2. CAPI requests to the BBS to update the domain freshness failing\n3. BBS errors updating the domain freshness (in the db, or sending the metric)\n4. Metrics are not being forwarded to datadog, check the datadog firehose nozzle\n\n## Potential Solutions:\nEscalate to @pagerduty-CAPI-service",
+  "multi": false,
+  "name": "<%= environment %> Diego: Domain cf-apps freshness too low.",
+  "options": {
+    "escalation_message": "",
+    "include_tags": true,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.8
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-09-21T20:52:16+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.Domain.cf_apps{deployment:<%= metron_agent_diego_deployment %>,origin:bbs} < 0.8",
+  "tags": [
+
+  ],
+  "type": "metric alert"
+}

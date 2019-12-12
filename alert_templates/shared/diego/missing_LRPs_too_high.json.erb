@@ -1,8 +1,8 @@
 {
   "created_at": 1450898658000,
   "deleted": null,
-  "multi": false,
   "message": "## Description:\nSome of the apps are not running.\n## Escalation Path:\nDiego\n## Possible Causes:\nA cell failed to report status to the bbs, due to network.\nMultiple auctioneers aren't running.\n## Potential Solutions:\nEscalate to Diego team @pagerduty-datadog-pws-platform <%= diego_oncall %>",
+  "multi": false,
   "name": "<%= environment %> Diego: Missing LRPs are too high",
   "options": {
     "escalation_message": "",
@@ -24,7 +24,7 @@
   "org_id": 4242,
   "overall_state": "OK",
   "overall_state_modified": "2017-11-06T22:33:30+00:00",
-  "query": "min(last_5m):avg:datadog.nozzle.bbs.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>} > 70",
+  "query": "min(last_5m):avg:datadog.nozzle.LRPsMissing{deployment:<%= metron_agent_diego_deployment %>,origin:bbs} > 70",
   "tags": [
     null
   ],

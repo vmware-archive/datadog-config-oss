@@ -1,0 +1,32 @@
+{
+  "created_at": 1498673762000,
+  "deleted": null,
+  "message": "##Description\nDiego expects CAPI to periodically mark Desired State items as \"fresh.\" See the Diego LRP documentation for a detailed explanation: https://github.com/cloudfoundry/bbs/blob/master/doc/lrps.md\n\nRight now what this means is that either CAPI isn't sending those freshness updates to Diego anymore, or the BBS has locked up and isn't able to process requests. \n\nFigure out which it is, then escalate to the appropriate team to figure out what's going on.\n\n## Escalation Path:\nCAPI or Diego\n\n## Possible Causes:\nThose alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to CAPI team @pagerduty-CAPI-service",
+  "multi": false,
+  "name": "<%= environment %> Diego: Domain cf-tasks freshness too low.",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": 30,
+    "notify_audit": true,
+    "notify_no_data": true,
+    "renotify_interval": 0,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 0.8
+    },
+    "timeout_h": 0
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2019-03-25T23:13:32+00:00",
+  "query": "avg(last_15m):avg:datadog.nozzle.Domain.cf_tasks{deployment:<%= metron_agent_diego_deployment %>,origin:bbs} < 0.8",
+  "tags": [
+    null
+  ],
+  "type": "metric alert"
+}
