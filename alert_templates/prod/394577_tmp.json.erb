@@ -1,0 +1,32 @@
+{
+  "created_at": 1450898658000,
+  "deleted": null,
+  "message": "##Description:\nDiego internal metrics\n\nTime in nanoseconds that the active route-emitter took to perform its synchronization pass. Emitted every 60 seconds. \n\n## Escalation Path:\nDiego \n\n\n## Occurrences:\nThis has been happening intermittently for short periods of time. \n\n2017/06/17: https://pivotalcloudopspws.datadoghq.com/monitors#394577?to_ts=1497750810694&from_ts=1497729898853&group=all\n2017/07/27: https://pivotalcloudopspws.datadoghq.com/monitors#394577?to_ts=1501210768991&from_ts=1501125638481&group=all\n2017/08/02: https://pivotalcloudopspws.datadoghq.com/monitors#394577?to_ts=1501775257688&from_ts=1501667724413&group=all\n2017/08/11: https://pivotalcloudopspws.datadoghq.com/monitors#394577?to_ts=1502512747000&from_ts=1502509147000&group=all\n\n\n\n## Possible Causes:\nPrior to 2017, those alerts were a pretty strong signal for us to look at the BBS, which was locked up\n\n## Potential Solutions:\nEscalate to Diego team @slack-cf-diego @slack-cloudops-us-pws",
+  "multi": false,
+  "name": "<%= environment %> Diego: Route emitter sync duration too high",
+  "options": {
+    "escalation_message": "",
+    "include_tags": false,
+    "locked": false,
+    "new_host_delay": 300,
+    "no_data_timeframe": null,
+    "notify_audit": true,
+    "notify_no_data": false,
+    "renotify_interval": null,
+    "require_full_window": true,
+    "silenced": {
+    },
+    "thresholds": {
+      "critical": 20.0
+    },
+    "timeout_h": null
+  },
+  "org_id": 4242,
+  "overall_state": "OK",
+  "overall_state_modified": "2017-10-01T03:31:19+00:00",
+  "query": "avg(last_15m):max:datadog.nozzle.RouteEmitterSyncDuration{origin:route_emitter} / 1000000000 > 20",
+  "tags": [
+    null
+  ],
+  "type": "query alert"
+}
