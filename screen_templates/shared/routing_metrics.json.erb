@@ -45,7 +45,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.unregistry_message.route_emitter{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_minute(avg:datadog.nozzle.unregistry_message.route_emitter{origin:gorouter,deployment:<%= metron_agent_deployment %>})",
             "style": {
               "type": "solid",
               "width": "normal"
@@ -53,7 +53,7 @@
             "type": "line"
           },
           {
-            "q": "per_minute(sum:datadog.nozzle.route_emitter.RoutesUnregistered{deployment:<%= metron_agent_diego_deployment %>})",
+            "q": "per_minute(sum:datadog.nozzle.RoutesUnregistered{origin:route_emitter,deployment:<%= metron_agent_diego_deployment %>})",
             "type": "line"
           }
         ],
@@ -72,7 +72,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= metron_agent_deployment %>} by {job,index})",
+            "q": "per_second(sum:datadog.nozzle.total_requests{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {job,index})",
             "type": "line"
           }
         ],
@@ -91,7 +91,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.routes_pruned{deployment:<%= metron_agent_deployment %>} by {index}",
+            "q": "avg:datadog.nozzle.routes_pruned{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {index}",
             "type": "line"
           }
         ],
@@ -110,7 +110,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "(per_second(min:datadog.nozzle.route_emitter.HTTPRouteNATSMessagesEmitted{*} by {ip}))",
+            "q": "(per_second(min:datadog.nozzle.HTTPRouteNATSMessagesEmitted{origin:route_emitter} by {ip}))",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -134,7 +134,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "max:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "max:datadog.nozzle.latency{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -242,7 +242,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.buffered_messages{*}",
+            "q": "avg:datadog.nozzle.buffered_messages{origin:gorouter}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -254,28 +254,28 @@
         "show_legend": false,
         "viz": "timeseries"
       },
-      "title": "Avg of datadog.nozzle.gorouter.buffered_messages over *"
+      "title": "Avg of datadog.gorouter.buffered_messages over *"
     },
     {
       "definition": {
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.file_descriptors{*}",
+            "q": "avg:datadog.nozzle.file_descriptors{origin:gorouter}",
             "type": "line"
           }
         ],
         "show_legend": false,
         "viz": "timeseries"
       },
-      "title": "Avg of datadog.nozzle.gorouter.file_descriptors over *"
+      "title": "Avg of datadog.nozzle.file_descriptors over *"
     },
     {
       "definition": {
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{*}",
+            "q": "avg:datadog.nozzle.memoryStats.lastGCPauseTimeNS{origin:gorouter}",
             "type": "line"
           }
         ],
@@ -289,7 +289,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.memoryStats.lastGCPauseTimeNS{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.memoryStats.lastGCPauseTimeNS{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -303,7 +303,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -317,11 +317,11 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:r_iso}",
+            "q": "avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter,job:r_iso}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:r_iso}",
+            "q": "avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter,job:r_iso}",
             "type": "line"
           }
         ],
@@ -335,11 +335,11 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:router}",
+            "q": "avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter,job:router}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.gorouter.ms_since_last_registry_update{job:router}",
+            "q": "avg:datadog.nozzle.ms_since_last_registry_update{origin:gorouter,job:router}",
             "type": "line"
           }
         ],
@@ -353,7 +353,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_dropped_messages{*}",
+            "q": "avg:datadog.nozzle.total_dropped_messages{origin:gorouter,*}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -372,7 +372,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.total_routes{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -386,7 +386,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= metron_agent_deployment %>}",
+            "q": "avg:datadog.nozzle.total_routes{origin:gorouter,deployment:<%= metron_agent_deployment %>}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -395,7 +395,7 @@
             "type": "line"
           },
           {
-            "q": "sum:datadog.nozzle.route_emitter.HTTPRouteCount{*}",
+            "q": "sum:datadog.nozzle.HTTPRouteCount{origin:route_emitter}",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -414,11 +414,11 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.gorouter.total_routes{ip:10.10.81.3}",
+            "q": "avg:datadog.nozzle.total_routes{origin:gorouter,ip:10.10.81.3}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.gorouter.total_routes{ip:10.10.81.4}",
+            "q": "avg:datadog.nozzle.total_routes{origin:gorouter,ip:10.10.81.4}",
             "type": "line"
           }
         ],
@@ -451,7 +451,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "max:datadog.nozzle.gorouter.latency{deployment:<%= metron_agent_deployment %>}",
+            "q": "max:datadog.nozzle.latency{origin:gorouter,deployment:<%= metron_agent_deployment %>}",
             "type": "line"
           }
         ],
@@ -465,7 +465,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_minute(avg:datadog.nozzle.rejected_requests{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -479,7 +479,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.responses.2xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_minute(avg:datadog.nozzle.responses.2xx{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -493,7 +493,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_minute(avg:datadog.nozzle.responses.4xx{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -507,7 +507,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_failures{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_minute(avg:datadog.nozzle.websocket_failures{origin:gorouter,deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -516,7 +516,7 @@
             "type": "line"
           },
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_upgrades{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_minute(avg:datadog.nozzle.websocket_upgrades{origin:gorouter,deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -525,7 +525,7 @@
             "type": "line"
           },
           {
-            "q": "per_minute(avg:datadog.nozzle.gorouter.websocket_upgrades{deployment:pws-isolation-segment})",
+            "q": "per_minute(avg:datadog.nozzle.websocket_upgrades{origin:gorouter,deployment:pws-isolation-segment})",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -544,7 +544,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(max:datadog.nozzle.gorouter.websocket_upgrades{*})",
+            "q": "per_minute(max:datadog.nozzle.websocket_upgrades{origin:gorouter})",
             "type": "line"
           }
         ],
@@ -558,7 +558,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(sum:datadog.nozzle.gorouter.backend_invalid_id{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_minute(sum:datadog.nozzle.backend_invalid_id{origin:gorouter,deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -577,7 +577,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(sum:datadog.nozzle.gorouter.backend_tls_handshake_failed{deployment:<%= metron_agent_deployment %>})",
+            "q": "per_minute(sum:datadog.nozzle.backend_tls_handshake_failed{origin:gorouter,deployment:<%= metron_agent_deployment %>})",
             "style": {
               "palette": "dog_classic",
               "type": "solid",
@@ -596,11 +596,11 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_minute(sum:datadog.nozzle.gorouter.bad_gateways{*})",
+            "q": "per_minute(sum:datadog.nozzle.bad_gateways{origin:gorouter})",
             "type": "line"
           },
           {
-            "q": "per_minute(sum:datadog.nozzle.gorouter.responses.5xx{*})",
+            "q": "per_minute(sum:datadog.nozzle.responses.5xx{origin:gorouter})",
             "type": "line"
           }
         ],
@@ -614,7 +614,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numFrees{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.memoryStats.numFrees{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "line"
           }
         ],
@@ -628,7 +628,7 @@
         "legend_size": "0",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.memoryStats.numMallocs{deployment:<%= metron_agent_deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.memoryStats.numMallocs{origin:gorouter,deployment:<%= metron_agent_deployment %>} by {ip})",
             "type": "line"
           }
         ],
