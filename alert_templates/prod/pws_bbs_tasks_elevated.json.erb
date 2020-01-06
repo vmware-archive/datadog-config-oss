@@ -18,16 +18,16 @@
     },
     "thresholds": {
       "critical": 35.0,
-      "critical_recovery": 33.0,
+      "critical_recovery": 30.0,
       "warning": 25.0,
-      "warning_recovery": 23.0
+      "warning_recovery": 22.0
     },
     "timeout_h": 4
   },
   "org_id": 4242,
-  "overall_state": "OK",
-  "overall_state_modified": "2019-12-10T01:20:39+00:00",
-  "query": "avg(last_30m):avg:datadog.nozzle.TasksRunning{origin:bbs} > 35",
+  "overall_state": "Warn",
+  "overall_state_modified": "2020-01-05T10:04:39+00:00",
+  "query": "avg(last_1h):avg:datadog.nozzle.TasksRunning{origin:bbs} > 35",
   "tags": [
 
   ],
