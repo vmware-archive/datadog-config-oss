@@ -1,7 +1,7 @@
 {
   "created_at": 1566410030000,
   "deleted": null,
-  "message": "This metric is the count of total active presences of diego cells. It's expected to remain fairly consistent with some variance during a deploy.\n\nCheck out the [diego <%= environment %> health dashboard](https://pivotalcloudopspws.datadoghq.com/dashboard/ufp-swt-fq3/<%= environment %>-cf-deployment-diego-health) to get an idea what may be occurring.\n\n @slack-pws-platform @slack-cf-diego",
+  "message": "This metric is the count of total active presences of diego cells. It's expected to remain fairly consistent with some variance during a deploy.\n\nCheck out the [diego <%= environment %> health dashboard](https://pivotalcloudopspws.datadoghq.com/dashboard/ufp-swt-fq3/<%= environment %>-cf-deployment-diego-health) to get an idea what may be occurring.",
   "multi": false,
   "name": "Diego Locket ActivePresences < 95% over the past 15 minutes",
   "options": {
@@ -28,8 +28,9 @@
   },
   "org_id": 4242,
   "overall_state": "OK",
-  "overall_state_modified": "2019-10-24T20:01:19+00:00",
+  "overall_state_modified": "2019-12-26T22:31:19+00:00",
   "query": "avg(last_4h):anomalies(max:datadog.nozzle.ActivePresences{origin:locket}, 'basic', 2, direction='below', alert_window='last_15m', interval=60, count_default_zero='true') >= 0.95",
+  "restricted_roles": null,
   "tags": [
 
   ],
