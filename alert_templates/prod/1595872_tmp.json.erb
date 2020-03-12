@@ -1,7 +1,7 @@
 {
   "created_at": 1486513902000,
   "deleted": null,
-  "message": "{{#is_alert}}\n\n## Diego has more LRP running than expected\n\n# Actions\n\n## Who to escalate to: \n\n\\<%= diego_oncall %>  \n\n## Statuspage update:\n\n## How to confirm a false positive:\n\n## How to confirm a true positive:  \n\n{{/is_alert}}\n\n## Background:\nWhen Diego wants to add more apps, the converger will send a request to the auctioneer to spin up additional Long Running Processes(LRPs). \n\nLRPsExtra is the total number of LRP instances that are no longer desired but still have a BBS record. \n\n<%= cloudops_non_critical_pagerduty %>",
+  "message": "{{#is_alert}}\n\n## Diego has more LRP running than expected\n\n# Actions\n\n## Who to escalate to: \n\n\\<%= diego_oncall %>  \n\n## Statuspage update:\n\n## How to confirm a false positive:\n\n## How to confirm a true positive:  \n\n{{/is_alert}}\n\n## Background:\nWhen Diego wants to add more apps, the converger will send a request to the auctioneer to spin up additional Long Running Processes(LRPs). \n\nLRPsExtra is the total number of LRP instances that are no longer desired but still have a BBS record. \n\n",
   "multi": false,
   "name": "<%= environment %>: Diego has more LRP running than expected",
   "options": {
